@@ -1,0 +1,16 @@
+{
+  "name": "sempre-presente-fribal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hotsite da promocao Sempre Presente Fribal",
+  "scripts": {
+    "build:img": "node tools/optimize-images.mjs",
+    "start": "node tools/serve.mjs",
+    "build:icons": "node tools/make-icons.mjs",
+    "build": "npm run build:img && npm run build:icons"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.9.0",
+    "sharp": "^0.34.4"
+  }
+}

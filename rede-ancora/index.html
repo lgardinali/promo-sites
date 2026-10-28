@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arrancada da Sorte | Rede ANCORA</title>
+  <meta name="description" content="Comprou autopeças? Sua sorte pode arrancar! A cada R$100 em uma mesma compra válida nas lojas participantes da Rede ANCORA, você recebe 1 Número da Sorte e concorre a uma moto zero km e muito mais.">
+  <meta name="theme-color" content="#003a5d">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Arrancada da Sorte | Rede ANCORA">
+  <meta property="og:description" content="Comprou autopeças? Sua sorte pode arrancar! Concorra a uma moto zero km e muito mais.">
+  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="preload" href="assets/fonts/barlow-300.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/roboto-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/roboto-condensed-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" as="image" href="assets/img/bg-hero.webp" media="(min-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/bg-hero-m.webp" media="(max-width: 767.98px)" fetchpriority="high">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function (d) {
+      var r = d.documentElement;
+      function setVw() {
+        var w = r.clientWidth || window.innerWidth;
+        r.style.setProperty('--vw', w + 'px');
+        r.style.setProperty('--vwn', w);
+      }
+      setVw();
+      window.addEventListener('resize', setVw);
+      r.classList.add('js');
+    })(document);
+  </script>
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ============ MENU ============ -->
+  <header class="nav" id="topo">
+    <div class="container nav__inner">
+      <a class="nav__logo" href="#inicio" aria-label="Rede ANCORA — voltar ao início">
+        <img src="assets/img/logo-rede-ancora.png" width="134" height="101" alt="Rede ANCORA">
+      </a>
+
+      <nav class="nav__menu" aria-label="Menu principal">
+        <ul class="nav__links">
+          <li><a class="nav__link" href="#inicio" data-spy-link="inicio">Início</a></li>
+          <li><a class="nav__link" href="#como-participar" data-spy-link="como-participar">Como participar</a></li>
+          <li><a class="nav__link" href="#premios" data-spy-link="premios">Prêmios</a></li>
+          <li><a class="nav__link" href="#duvidas" data-spy-link="duvidas">Dúvidas frequentes</a></li>
+          <li><a class="nav__link" href="#ganhadores" data-spy-link="ganhadores">Ganhadores</a></li>
+          <li><a class="nav__link" href="#" data-link="login">Login/Cadastro</a></li>
+        </ul>
+        <a class="btn-login" href="#" data-link="login" data-magnetic>
+          <img class="btn-login__icon" src="assets/img/icon-user.svg" width="18" height="20" alt="">
+          <span>Login/Cadastro</span>
+        </a>
+      </nav>
+
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+        <img class="nav__toggle-icon" src="assets/img/icon-menu.svg" width="53" height="37" alt="">
+        <span class="nav__toggle-close" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mmenu" id="menu-mobile" aria-hidden="true" inert>
+    <nav class="mmenu__nav" aria-label="Menu">
+      <ul class="mmenu__links">
+        <li><a href="#inicio" data-spy-link="inicio"><span class="mmenu__n">01</span>Início</a></li>
+        <li><a href="#como-participar" data-spy-link="como-participar"><span class="mmenu__n">02</span>Como participar</a></li>
+        <li><a href="#premios" data-spy-link="premios"><span class="mmenu__n">03</span>Prêmios</a></li>
+        <li><a href="#duvidas" data-spy-link="duvidas"><span class="mmenu__n">04</span>Dúvidas frequentes</a></li>
+        <li><a href="#ganhadores" data-spy-link="ganhadores"><span class="mmenu__n">05</span>Ganhadores</a></li>
+      </ul>
+    </nav>
+    <div class="mmenu__actions">
+      <a class="btn-login btn-login--block" href="#" data-link="login">
+        <img class="btn-login__icon" src="assets/img/icon-user.svg" width="18" height="20" alt="">
+        <span>Login/Cadastro</span>
+      </a>
+      <a class="btn-cta" href="#" data-link="cadastro">Participe agora!</a>
+    </div>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ============ KV / HOME ============ -->
+    <section class="section hero" id="inicio" data-spy="inicio" aria-labelledby="hero-title">
+      <div class="bg" aria-hidden="true">
+        <div class="bg__stage hero__stage">
+          <div class="hero__drift">
+            <picture>
+              <source media="(min-width: 768px)" srcset="assets/img/bg-hero.webp" width="3440" height="1080">
+              <img class="bg__img" src="assets/img/bg-hero-m.webp" width="501" height="1351" alt="" fetchpriority="high">
+            </picture>
+            <div class="streaks">
+              <span class="streak" style="--l:0%;--t:72%;--w:64%;--a:-7.3deg;--d:3.4s;--dl:.2s"></span>
+              <span class="streak streak--g" style="--l:19%;--t:46%;--w:31%;--a:-14.6deg;--d:2.8s;--dl:1.4s"></span>
+              <span class="streak" style="--l:6%;--t:56%;--w:47%;--a:-9.9deg;--d:3.1s;--dl:2.3s"></span>
+              <span class="streak streak--g" style="--l:35%;--t:42%;--w:25%;--a:-8.8deg;--d:2.6s;--dl:.9s"></span>
+              <span class="streak" style="--l:7%;--t:65%;--w:51%;--a:-7.5deg;--d:3.8s;--dl:3.1s"></span>
+              <span class="streak streak--w" style="--l:2%;--t:60%;--w:40%;--a:-12deg;--d:4.2s;--dl:1.9s"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__logo">
+        <div class="hero__logo-in">
+          <img class="hero__logo-img"
+               src="assets/img/logo-arrancada.webp"
+               srcset="assets/img/logo-arrancada-sm.webp 860w, assets/img/logo-arrancada.webp 1700w"
+               sizes="(min-width: 1024px) 842px, (min-width: 768px) 62vw, 100vw"
+               width="1700" height="790" alt="Arrancada da Sorte — promoção Rede ANCORA" fetchpriority="high">
+        </div>
+      </div>
+
+      <div class="container hero__content">
+        <h1 class="hero__title" id="hero-title" data-split data-reveal="words">
+          <span class="lt">COMPROU</span><br>
+          <strong>AUTOPEÇAS?</strong><br>
+          <span class="lt">SUA SORTE PODE</span><br>
+          <strong>ARRANCAR</strong>
+        </h1>
+        <p class="hero__sub" data-reveal style="--i:3">CONCORRA A<br class="br-m"> UMA <strong>MOTO ZERO KM</strong><br> E MUITO MAIS!</p>
+        <p class="hero__rule" data-reveal style="--i:4">A CADA R$<span class="big" data-count="100">100</span> EM UMA MESMA<br class="br-m"> COMPRA VÁLIDA,<br class="br-d"> VOCÊ RECEBE <strong>1 NÚMERO DA SORTE.</strong></p>
+        <div class="hero__cta" data-reveal style="--i:5">
+          <a class="btn-cta btn-cta--pulse" href="#" data-link="cadastro" data-magnetic>Participe agora!</a>
+        </div>
+        <div class="hero__vig" data-reveal style="--i:6">
+          <p class="hero__date">VIGÊNCIA <strong>01/10/2026</strong> A <strong>31/12/2026</strong></p>
+          <p class="hero__cert">Certificados de Autorização<br class="br-m"> SPA/ME nº 04.052102/2026 e nº 05.052101/2026.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ COMO PARTICIPAR ============ -->
+    <section class="section how" id="como-participar" data-spy="como-participar" aria-labelledby="how-title">
+      <div class="bg how__bg" aria-hidden="true">
+        <div class="bg__stage">
+          <picture>
+            <source media="(min-width: 1921px)" srcset="assets/img/bg-como-xl.webp" width="4046" height="1271">
+            <source media="(min-width: 768px)" srcset="assets/img/bg-como.webp" width="2258" height="1271">
+            <img class="bg__img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2 class="title how__title" id="how-title" data-split data-reveal="words"><strong>PARTICIPAR</strong><br> <span class="lt">É FÁCIL</span></h2>
+        <p class="how__desc" data-reveal>Você compra o que precisa, cadastra sua nota e concorre. Veja como dar a largada.</p>
+
+        <p class="how__hint" aria-hidden="true">
+          <span>Arraste para o lado!</span>
+          <img class="how__hint-icon" src="assets/img/chevrons.svg" width="26" height="22" alt="">
+        </p>
+
+        <ol class="steps" data-carousel aria-label="Etapas para participar">
+          <li class="step step--compre" data-reveal style="--i:0" data-tilt>
+            <img class="step__bg" src="assets/img/card-compre.webp" width="410" height="802" alt="" loading="lazy">
+            <span class="step__sheen" aria-hidden="true"></span>
+            <h3 class="step__title">COMPRE</h3>
+            <p class="step__desc">Faça uma compra válida em uma das lojas participantes.</p>
+            <p class="step__note">A cada R$100 em uma mesma compra válida, você recebe 1 Número da Sorte.</p>
+          </li>
+          <li class="step step--cadastre" data-reveal style="--i:1" data-tilt>
+            <img class="step__bg" src="assets/img/card-cadastre.webp" width="411" height="802" alt="" loading="lazy">
+            <span class="step__sheen" aria-hidden="true"></span>
+            <h3 class="step__title">CADASTRE-SE</h3>
+            <p class="step__desc">Faça seu cadastro único no site da campanha e aceite o regulamento.</p>
+          </li>
+          <li class="step step--compra" data-reveal style="--i:2" data-tilt>
+            <img class="step__bg" src="assets/img/card-compra.webp" width="411" height="802" alt="" loading="lazy">
+            <span class="step__sheen" aria-hidden="true"></span>
+            <h3 class="step__title">CADASTRE<br> SUA COMPRA</h3>
+            <p class="step__desc">Informe os dados da nota fiscal, a chave de acesso e envie uma imagem legível do documento fiscal.</p>
+          </li>
+          <li class="step step--pronto" data-reveal style="--i:3" data-tilt>
+            <img class="step__bg" src="assets/img/card-pronto.webp" width="411" height="802" alt="" loading="lazy">
+            <span class="step__sheen" aria-hidden="true"></span>
+            <h3 class="step__title">PRONTO!</h3>
+            <p class="step__desc">Consulte seus Números da Sorte e acompanhe os resultados no site.</p>
+          </li>
+        </ol>
+
+        <div class="how__foot">
+          <div data-reveal>
+            <a class="btn-cta" href="#" data-link="cadastro" data-magnetic data-center>Participe agora!</a>
+          </div>
+          <p class="how__note" data-reveal style="--i:1">Importante: valores de notas fiscais diferentes não são acumulados.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GIRO DA SORTE ============ -->
+    <section class="section giro" id="giro-da-sorte" data-spy="como-participar" aria-labelledby="giro-title">
+      <div class="bg" aria-hidden="true">
+        <div class="bg__stage">
+          <picture>
+            <source media="(min-width: 1921px)" srcset="assets/img/bg-giro-xl.webp" width="4046" height="471">
+            <source media="(min-width: 768px)" srcset="assets/img/bg-giro.webp" width="2258" height="471">
+            <img class="bg__img" src="assets/img/bg-giro-m.webp" width="501" height="1081" alt="" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <div class="giro__wheel" data-reveal="rise" aria-hidden="true">
+        <div class="giro__wheel-in">
+          <img src="assets/img/roleta.webp" width="557" height="471" alt="" loading="lazy">
+          <span class="giro__led"></span>
+          <span class="giro__hit"></span>
+        </div>
+      </div>
+
+      <div class="container giro__inner">
+        <h2 class="title giro__title" id="giro-title" data-split data-reveal="words"><span class="lt">GIRO DA</span><br> <strong class="neon">SORTE</strong></h2>
+
+        <div class="giro__prize" data-reveal="right">
+          <div class="giro__ticket" aria-hidden="true">
+            <img src="assets/img/ticket.webp" width="119" height="120" alt="" loading="lazy">
+          </div>
+          <div class="giro__texts">
+            <p class="giro__call">CONCORRA A<br class="br-m"> <strong>1 VALE-COMPRA</strong><br> DE R$<span class="big" data-count="200">200</span> PARA USAR NAS<br> LOJAS PARTICIPANTES.</p>
+            <p class="giro__rule">A cada <b>R$500</b> em uma<br class="br-m"> mesma<br class="br-d"> compra válida,<br class="br-m"> você recebe<br class="br-d"> <b>1 Giro da Sorte.</b></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRÊMIOS ============ -->
+    <section class="section prizes" id="premios" data-spy="premios" aria-labelledby="prizes-title">
+      <div class="bg prizes__bg" aria-hidden="true">
+        <div class="bg__stage prizes__stage">
+          <div class="prizes__zoom">
+            <picture>
+              <source media="(min-width: 768px)" srcset="assets/img/bg-premios.webp" width="3440" height="1080">
+              <img class="bg__img" src="assets/img/bg-premios-m.webp" width="501" height="1351" alt="" loading="lazy">
+            </picture>
+          </div>
+          <span class="neon-tube neon-tube--gv"></span>
+          <span class="neon-tube neon-tube--gh"></span>
+          <span class="neon-tube neon-tube--cv"></span>
+          <span class="neon-tube neon-tube--bh"></span>
+          <div class="prizes__spot"></div>
+          <span class="hotspot" data-prize="moto"></span>
+          <span class="hotspot" data-prize="bike"></span>
+          <span class="hotspot" data-prize="tv"></span>
+          <span class="hotspot" data-prize="ps5"></span>
+          <span class="hotspot" data-prize="iphone"></span>
+        </div>
+      </div>
+
+      <div class="container prizes__content">
+        <h2 class="title prizes__title" id="prizes-title" data-split data-reveal="words"><strong>PRÊMIOS</strong><br class="br-m"> PARA DAR<br> UMA NOVA<br class="br-m"> PARTIDA</h2>
+        <p class="prizes__desc" data-reveal>A sua compra pode levar você muito mais longe. Confira os prêmios da Arrancada da Sorte.</p>
+
+        <ul class="plates">
+          <li class="plate" data-prize="moto" data-d="49.6,69.4,9,30" data-m="73.9,77,18,7.5" data-reveal="left" style="--i:0">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/placa-d.svg"><img class="plate__bg" src="assets/img/placa-m.svg" width="259" height="29" alt=""></picture>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+            <span class="plate__txt">1 Moto Honda CG160 Start</span>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+          </li>
+          <li class="plate" data-prize="bike" data-d="61.3,70.1,7,27" data-m="92.8,77,12,7" data-reveal="left" style="--i:1">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/placa-d.svg"><img class="plate__bg" src="assets/img/placa-m.svg" width="259" height="29" alt=""></picture>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+            <span class="plate__txt">1 Bicicleta elétrica</span>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+          </li>
+          <li class="plate" data-prize="tv" data-d="64.2,47.2,7,17" data-m="21,74,24,7" data-reveal="left" style="--i:2">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/placa-d.svg"><img class="plate__bg" src="assets/img/placa-m.svg" width="259" height="29" alt=""></picture>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+            <span class="plate__txt">1 Smart TV 60”</span>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+          </li>
+          <li class="plate" data-prize="ps5" data-d="66.1,76.4,4.5,17" data-m="52.3,77,16,9.5" data-reveal="left" style="--i:3">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/placa-d.svg"><img class="plate__bg" src="assets/img/placa-m.svg" width="259" height="29" alt=""></picture>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+            <span class="plate__txt">1 PlayStation 5</span>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+          </li>
+          <li class="plate" data-prize="iphone" data-d="42.2,81.9,3,12" data-m="27.3,82,12,5.5" data-reveal="left" style="--i:4">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/placa-d.svg"><img class="plate__bg" src="assets/img/placa-m.svg" width="259" height="29" alt=""></picture>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+            <span class="plate__txt">1 iPhone 17 Pro 256GB</span>
+            <img class="plate__screw" src="assets/img/parafuso.svg" width="14" height="14" alt="">
+          </li>
+        </ul>
+
+        <div class="prizes__cta" data-reveal>
+          <a class="btn-cta" href="#" data-link="cadastro" data-magnetic data-center>Participe agora!</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LOJAS E MARCAS ============ -->
+    <section class="section stores" id="lojas" data-spy="premios" aria-label="Lojas participantes e marcas parceiras">
+      <div class="container stores__grid">
+        <div class="stores__col" data-reveal>
+          <h2 class="stores__title">CONSULTE<br class="br-m"> AS<br class="br-d"> <strong>LOJAS<br class="br-m"> PARTICIPANTES</strong></h2>
+          <p class="stores__desc">Encontre a loja Rede ANCORA mais próxima de você.</p>
+          <button class="btn-cta" type="button" data-modal-open="modal-lojas" data-magnetic data-center>Ver lojas participantes</button>
+          <a class="stores__link" href="#" data-link="regulamento">Clique aqui e leia<br class="br-m"> o regulamento completo</a>
+        </div>
+        <div class="stores__col" data-reveal style="--i:1">
+          <h2 class="stores__title">MARCAS<br> <strong>PARCEIRAS</strong></h2>
+          <p class="stores__desc">Confira as marcas patrocinadoras e apoiadoras dessa campanha.</p>
+          <button class="btn-cta" type="button" data-modal-open="modal-marcas" data-magnetic data-center>Ver marcas parceiras</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DÚVIDAS FREQUENTES ============ -->
+    <section class="section faq" id="duvidas" data-spy="duvidas" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 class="title faq__title" id="faq-title" data-split data-reveal="words"><strong>DÚVIDAS</strong><br> <span class="lt">FREQUENTES</span></h2>
+        <p class="faq__desc" data-reveal>Confira as respostas para as principais dúvidas sobre a promoção. Se precisar de ajuda, consulte o regulamento completo ou entre em contato pelo SAC.</p>
+
+        <div class="faq__list">
+          <div class="faq__item" data-reveal style="--i:0" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+                <span class="faq__qt">Quem pode participar?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+              <div class="faq__a-in"><p>Podem participar pessoas físicas, maiores de 18 anos, residentes e domiciliadas no Brasil, que realizarem compras válidas nas lojas participantes da Rede ANCORA durante o período da promoção, de 01/10/2026 a 31/12/2026. Confira todas as condições no regulamento completo.</p></div>
+            </div>
+          </div>
+          <div class="faq__item" data-reveal style="--i:1" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+                <span class="faq__qt">Como faço para participar?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+              <div class="faq__a-in"><p>Faça uma compra válida em uma das lojas participantes, cadastre-se no site da campanha aceitando o regulamento e cadastre sua compra informando os dados da nota fiscal, a chave de acesso e uma imagem legível do documento fiscal. Depois é só acompanhar seus Números da Sorte e os resultados aqui no site.</p></div>
+            </div>
+          </div>
+          <div class="faq__item" data-reveal style="--i:2" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+                <span class="faq__qt">A partir de quanto posso receber um Número da Sorte?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+              <div class="faq__a-in"><p>A cada R$100 em uma mesma compra válida, você recebe 1 Número da Sorte. Por exemplo: uma compra de R$350 gera 3 Números da Sorte.</p></div>
+            </div>
+          </div>
+          <div class="faq__item" data-reveal style="--i:3" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+                <span class="faq__qt">Posso somar o valor de compras diferentes?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+              <div class="faq__a-in"><p>Não. Valores de notas fiscais diferentes não são acumulados: os Números da Sorte e os Giros da Sorte são calculados sobre o valor de cada compra válida, individualmente.</p></div>
+            </div>
+          </div>
+          <div class="faq__item" data-reveal style="--i:4" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+                <span class="faq__qt">Como funciona o Giro da Sorte?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+              <div class="faq__a-in"><p>A cada R$500 em uma mesma compra válida, você recebe 1 Giro da Sorte. É só girar a roleta no site para concorrer, na hora, a 1 vale-compra de R$200 para usar nas lojas participantes.</p></div>
+            </div>
+          </div>
+          <div class="faq__item" data-reveal style="--i:5" data-center>
+            <h3 class="faq__h">
+              <button class="faq__q" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+                <span class="faq__qt">Quais são os prêmios?</span>
+                <span class="faq__icon"><picture><source media="(min-width: 768px)" srcset="assets/img/chevron-d.svg"><img class="faq__chev" src="assets/img/chevron-m.svg" width="32" height="20" alt=""></picture></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6">
+              <div class="faq__a-in"><p>Estão em jogo 1 Moto Honda CG160 Start, 1 Bicicleta elétrica, 1 Smart TV 60”, 1 PlayStation 5 e 1 iPhone 17 Pro 256GB, além dos vale-compras de R$200 do Giro da Sorte. Consulte o regulamento para conferir as datas das apurações.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GANHADORES ============ -->
+    <section class="section winners" id="ganhadores" data-spy="ganhadores" aria-labelledby="winners-title">
+      <div class="bg" aria-hidden="true">
+        <div class="bg__stage">
+          <picture>
+            <source media="(min-width: 768px)" srcset="assets/img/bg-ganhadores.webp" width="3440" height="1080">
+            <img class="bg__img" src="assets/img/bg-ganhadores-m.webp" width="501" height="1351" alt="" loading="lazy">
+          </picture>
+        </div>
+      </div>
+
+      <div class="container">
+        <h2 class="title winners__title" id="winners-title" data-split data-reveal="words"><span class="lt">CONFIRA OS</span><br> <span class="nw"><strong>GANHADORES</strong><span class="lt">!</span></span></h2>
+        <p class="winners__desc" data-reveal>Confira os participantes contemplados na Arrancada da Sorte e acompanhe as atualizações da promoção.</p>
+
+        <div class="winners__box">
+          <div class="winners__tabs" role="tablist" aria-label="Tipo de premiação" data-reveal="left">
+            <button class="winners__tab is-active" type="button" role="tab" id="tab-premios" aria-selected="true" aria-controls="winners-panel" data-tab="premios">PRÊMIOS</button>
+            <button class="winners__tab" type="button" role="tab" id="tab-giro" aria-selected="false" aria-controls="winners-panel" data-tab="giro" tabindex="-1">GIRO DA SORTE</button>
+          </div>
+
+          <div class="winners__panel" id="winners-panel" role="tabpanel" aria-labelledby="tab-premios" data-reveal style="--i:1">
+            <div class="winners__search">
+              <label class="search">
+                <span class="sr-only">Procurar ganhador</span>
+                <input class="search__input" type="search" placeholder="Procurar ganhador..." autocomplete="off" spellcheck="false">
+                <img class="search__icon" src="assets/img/search.svg" width="30" height="30" alt="">
+              </label>
+            </div>
+            <ul class="winners__list" aria-live="polite">
+              <li class="winner">
+                <picture><source media="(min-width: 768px)" srcset="assets/img/avatar-d.svg"><img class="winner__avatar" src="assets/img/avatar-m.svg" width="61" height="61" alt=""></picture>
+                <div class="winner__who"><p class="winner__name">Fulano da Silva</p><p class="winner__cpf">CPF: 123.***.***-00</p></div>
+                <div class="winner__prize"><p class="winner__label">Prêmio</p><p class="winner__item">Iphone 17 Pro 256GB</p></div>
+              </li>
+              <li class="winner">
+                <picture><source media="(min-width: 768px)" srcset="assets/img/avatar-d.svg"><img class="winner__avatar" src="assets/img/avatar-m.svg" width="61" height="61" alt=""></picture>
+                <div class="winner__who"><p class="winner__name">Ciclano dos Santos</p><p class="winner__cpf">CPF: 123.***.***-00</p></div>
+                <div class="winner__prize"><p class="winner__label">Prêmio</p><p class="winner__item">Playstation 5</p></div>
+              </li>
+              <li class="winner">
+                <picture><source media="(min-width: 768px)" srcset="assets/img/avatar-d.svg"><img class="winner__avatar" src="assets/img/avatar-m.svg" width="61" height="61" alt=""></picture>
+                <div class="winner__who"><p class="winner__name">José de Oliveira Pereira</p><p class="winner__cpf">CPF: 123.***.***-00</p></div>
+                <div class="winner__prize"><p class="winner__label">Prêmio</p><p class="winner__item">Smart TV 60”</p></div>
+              </li>
+              <li class="winner">
+                <picture><source media="(min-width: 768px)" srcset="assets/img/avatar-d.svg"><img class="winner__avatar" src="assets/img/avatar-m.svg" width="61" height="61" alt=""></picture>
+                <div class="winner__who"><p class="winner__name">Maria de Souza Lima</p><p class="winner__cpf">CPF: 123.***.***-00</p></div>
+                <div class="winner__prize"><p class="winner__label">Prêmio</p><p class="winner__item">Bicicleta Elétrica</p></div>
+              </li>
+            </ul>
+            <p class="winners__empty" hidden>Nenhum ganhador encontrado para essa busca.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand" data-reveal>
+        <a class="footer__logo" href="#inicio" aria-label="Rede ANCORA — voltar ao início">
+          <img src="assets/img/logo-rede-ancora.png" width="134" height="101" alt="Rede ANCORA" loading="lazy">
+        </a>
+        <p class="footer__about">A Rede ANCORA conecta você às lojas participantes e às melhores soluções em autopeças.</p>
+      </div>
+
+      <nav class="footer__menu" aria-label="Rodapé" data-reveal style="--i:1">
+        <ul class="footer__list">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#como-participar">Como participar</a></li>
+          <li><a href="#premios">Prêmios</a></li>
+          <li><a href="#duvidas">Dúvidas frequentes</a></li>
+          <li><a href="#ganhadores">Ganhadores</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer__inst" data-reveal style="--i:2">
+        <ul class="footer__list">
+          <li><a href="#" data-link="privacidade">POLÍTICA DE PRIVACIDADE</a></li>
+          <li><a href="#" data-link="termos">TERMOS DE USO</a></li>
+          <li><a href="#" data-link="regulamento">REGULAMENTO</a></li>
+        </ul>
+        <ul class="footer__social">
+          <li><a href="#" data-link="instagram" aria-label="Instagram da Rede ANCORA" target="_blank" rel="noopener"><picture><source media="(min-width: 768px)" srcset="assets/img/instagram-d.svg"><img src="assets/img/instagram-m.svg" width="29" height="29" alt="" loading="lazy"></picture></a></li>
+          <li><a href="#" data-link="facebook" aria-label="Facebook da Rede ANCORA" target="_blank" rel="noopener"><picture><source media="(min-width: 768px)" srcset="assets/img/facebook-d.svg"><img src="assets/img/facebook-m.svg" width="29" height="29" alt="" loading="lazy"></picture></a></li>
+          <li><a href="#" data-link="linkedin" aria-label="LinkedIn da Rede ANCORA" target="_blank" rel="noopener"><picture><source media="(min-width: 768px)" srcset="assets/img/linkedin-d.svg"><img src="assets/img/linkedin-m.svg" width="29" height="29" alt="" loading="lazy"></picture></a></li>
+        </ul>
+        <div class="footer__contacts">
+          <a class="footer__contact" href="mailto:marketing@redeancora.com.br">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/email-d.svg"><img class="footer__ic footer__ic--mail" src="assets/img/email-m.svg" width="17" height="13" alt="" loading="lazy"></picture>
+            <span>marketing@redeancora.com.br</span>
+          </a>
+          <a class="footer__contact" href="https://wa.me/5511944500492" target="_blank" rel="noopener">
+            <picture><source media="(min-width: 768px)" srcset="assets/img/whatsapp-d.svg"><img class="footer__ic footer__ic--wpp" src="assets/img/whatsapp-m.svg" width="17" height="17" alt="" loading="lazy"></picture>
+            <span>(11) 94450-0492</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer__legal" data-reveal style="--i:3">
+        <p class="footer__cert">Certificados de Autorização SPA/ME nº 04.052102/2026 e nº 05.052101/2026. Consulte os regulamentos completos, as lojas participantes e demais condições no site. Imagens meramente ilustrativas.</p>
+        <p class="footer__copy">© 2026 Rede ANCORA.<br> Todos os direitos reservados.</p>
+        <div class="footer__polgo">
+          <span class="footer__made">Copyright © Feito com ❤&#xFE0E;</span>
+          <img class="footer__polgo-logo" src="assets/img/polgo.svg" width="185" height="25" alt="Grupo Polgo" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="to-top" href="#inicio" aria-label="Voltar ao topo">
+    <svg class="to-top__ring" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24" pathLength="100"/></svg>
+    <span class="to-top__arrow" aria-hidden="true"></span>
+  </a>
+
+  <!-- ============ POPUP: LOJAS PARTICIPANTES ============ -->
+  <dialog class="modal" id="modal-lojas" aria-labelledby="modal-lojas-title">
+    <div class="modal__box">
+      <div class="modal__head">
+        <h2 class="modal__title" id="modal-lojas-title">LOJAS <strong>PARTICIPANTES</strong></h2>
+        <p class="modal__sub">Lojas onde suas compras participam da Arrancada da Sorte.</p>
+        <button class="modal__close" type="button" data-modal-close aria-label="Fechar"></button>
+      </div>
+      <div class="modal__filters">
+        <label class="search search--modal">
+          <span class="sr-only">Buscar loja</span>
+          <input class="search__input" type="search" placeholder="Buscar por nome ou CNPJ..." autocomplete="off" spellcheck="false" data-store-search>
+          <img class="search__icon" src="assets/img/search.svg" width="30" height="30" alt="">
+        </label>
+      </div>
+      <p class="modal__count" aria-live="polite" data-store-count></p>
+      <div class="modal__body">
+        <ul class="store-list" data-store-list></ul>
+        <div class="modal__empty" hidden data-store-empty>
+          <p>Nenhuma loja encontrada para essa busca.</p>
+          <button class="modal__reset" type="button" data-store-reset>Limpar filtros</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ============ POPUP: MARCAS PARCEIRAS ============ -->
+  <dialog class="modal" id="modal-marcas" aria-labelledby="modal-marcas-title">
+    <div class="modal__box">
+      <div class="modal__head">
+        <h2 class="modal__title" id="modal-marcas-title">MARCAS <strong>PARCEIRAS</strong></h2>
+        <p class="modal__sub">Confira as marcas patrocinadoras e apoiadoras dessa campanha.</p>
+        <button class="modal__close" type="button" data-modal-close aria-label="Fechar"></button>
+      </div>
+      <div class="modal__body">
+        <ul class="brand-grid" data-brand-list></ul>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>

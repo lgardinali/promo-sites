@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sempre Presente Fribal — Compre, cadastre e concorra a 8 motos e um carro 0km</title>
+<meta name="description" content="Na promoção Sempre Presente Fribal, a cada R$ 250,00 em compras você ganha 1 cupom e concorre a 8 motos BIS 125 ES 2027 e a um carro 0 km. Compre, cadastre e concorra.">
+<meta name="theme-color" content="#da3334">
+<meta name="format-detection" content="telephone=no">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Fribal">
+<meta property="og:title" content="Sempre Presente Fribal">
+<meta property="og:description" content="Compre, cadastre e concorra a 8 motos BIS 125 ES 2027 e a um carro 0 km.">
+<meta property="og:image" content="assets/img/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/icons/favicon-16.png" sizes="16x16" type="image/png">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=Poppins:wght@300;400;600;700;900&family=Signika:wght@700&display=swap">
+
+<link rel="preload" as="image" href="assets/img/personagens.webp" imagesrcset="assets/img/personagens.webp 900w, assets/img/personagens@2x.webp 1800w" imagesizes="(max-width: 900px) 92vw, 63vw" fetchpriority="high">
+
+<script>document.documentElement.classList.add("js");</script>
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<!-- barra de progresso de leitura -->
+<div class="progress" aria-hidden="true"><span class="progress__bar" data-progress-bar></span></div>
+
+<!-- fundo difuso animado -->
+<div class="blobs" aria-hidden="true">
+  <span class="blobs__item blobs__item--1"></span>
+  <span class="blobs__item blobs__item--2"></span>
+  <span class="blobs__item blobs__item--3"></span>
+  <span class="blobs__item blobs__item--4"></span>
+</div>
+
+<!-- ============================ MENU ============================ -->
+<header class="header" data-header>
+  <div class="header__inner">
+    <a class="brand" href="#home" data-scroll aria-label="Fribal 26 anos — início">
+      <img src="assets/img/logo-fribal-neg.png" width="178" height="37" alt="Fribal 26 anos">
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#home" data-scroll data-spy>Home</a></li>
+        <li><a class="nav__link" href="#como-participar" data-scroll data-spy>Como participar</a></li>
+        <li><a class="nav__link" href="#premios" data-scroll data-spy>Prêmios</a></li>
+        <li><a class="nav__link" href="#duvidas" data-scroll data-spy>Dúvidas frequentes</a></li>
+        <li><a class="nav__link" href="#ganhadores" data-scroll data-spy>Ganhadores</a></li>
+      </ul>
+    </nav>
+
+    <button class="btn-login" type="button" data-open-modal>
+      <img class="btn-login__icon" src="assets/svg/icon-user.svg" width="24" height="24" alt="" aria-hidden="true">
+      <span>Login/Cadastro</span>
+    </button>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu-mobile" aria-label="Abrir menu">
+      <span class="burger__bar"></span><span class="burger__bar"></span><span class="burger__bar"></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="menu-mobile" hidden>
+    <nav class="mobile-menu__nav" aria-label="Navegação principal (mobile)">
+      <button class="mobile-menu__login" type="button" data-open-modal>
+        <img src="assets/svg/icon-user-circle.svg" width="40" height="40" alt="" aria-hidden="true">
+        <span>Login/ cadastrar</span>
+      </button>
+      <a class="mobile-menu__link" href="#home" data-scroll>Home</a>
+      <a class="mobile-menu__link" href="#como-participar" data-scroll>Como participar</a>
+      <a class="mobile-menu__link" href="#premios" data-scroll>Prêmios</a>
+      <a class="mobile-menu__link" href="#duvidas" data-scroll>Dúvidas frequentes</a>
+      <a class="mobile-menu__link" href="#ganhadores" data-scroll>Ganhadores</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- ============================ KV / HOME ============================ -->
+<section class="kv" id="home" aria-labelledby="kv-titulo">
+  <div class="kv__stage">
+    <div class="kv__rings" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="kv__card">
+      <div class="kv__content">
+        <h1 class="kv-logo" id="kv-titulo" data-kv-logo>
+          <span class="sr-only">Sempre Presente Fribal 26 anos</span>
+          <img class="kv-logo__laco" src="assets/img/kv-laco.png" width="130" height="50" alt="" aria-hidden="true">
+          <img class="kv-logo__sempre" src="assets/img/kv-sempre.png" width="340" height="71" alt="" aria-hidden="true">
+          <img class="kv-logo__presente" src="assets/img/kv-presente.png" width="500" height="143" alt="" aria-hidden="true">
+          <img class="kv-logo__selo" src="assets/img/kv-selo.png" width="366" height="76" alt="" aria-hidden="true">
+        </h1>
+
+        <p class="kv__claim reveal" data-reveal="up">
+          COMPRE. CADASTRE.<br><strong>CONCORRA.</strong>
+        </p>
+
+        <button class="btn btn--cta kv__cta reveal" data-reveal="up" data-open-modal type="button">
+          <span>Cadastre-se</span>
+        </button>
+      </div>
+
+      <picture class="kv__photo" data-parallax="0.10">
+        <source type="image/webp" srcset="assets/img/personagens.webp 900w, assets/img/personagens@2x.webp 1800w" sizes="(max-width: 900px) 92vw, 63vw">
+        <img src="assets/img/personagens.png" width="900" height="593" alt="Três colaboradores da Fribal sorrindo, a do centro segurando um presente vermelho" fetchpriority="high" decoding="async">
+      </picture>
+    </div>
+
+  </div>
+
+  <div class="strip" aria-hidden="true">
+    <div class="strip__track">
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO PARTICIPAR / PRÊMIOS / GANHADORES / DÚVIDAS ============ -->
+<div class="warm">
+
+  <!-- ---------- Como participar + Prêmios ---------- -->
+  <section class="frame frame--participar" id="como-participar" aria-labelledby="t-participar" data-frame>
+    <h2 class="badge frame__badge" id="t-participar" data-frame-badge>Como participar</h2>
+
+    <ol class="steps" aria-label="Passo a passo da promoção">
+      <li class="step reveal" data-reveal="up" style="--i:0">
+        <span class="step__spiral" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="step__top">
+          <span class="step__icon"><img src="assets/svg/icon-step-1.svg" width="107" height="101" alt="" aria-hidden="true"></span>
+          <span class="step__label">Compre</span>
+        </span>
+        <span class="step__body">Compre produtos participantes da campanha “Sempre presente”.</span>
+      </li>
+      <li class="step reveal" data-reveal="up" style="--i:1">
+        <span class="step__spiral" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="step__top">
+          <span class="step__icon"><img src="assets/svg/icon-step-2.svg" width="107" height="101" alt="" aria-hidden="true"></span>
+          <span class="step__label">Cadastre</span>
+        </span>
+        <span class="step__body">Faça seu cadastro para ativar a participação na campanha.</span>
+      </li>
+      <li class="step reveal" data-reveal="up" style="--i:2">
+        <span class="step__spiral" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="step__top">
+          <span class="step__icon"><img src="assets/svg/icon-step-3.svg" width="107" height="101" alt="" aria-hidden="true"></span>
+          <span class="step__label">Pronto!</span>
+        </span>
+        <span class="step__body">Você já está concorrendo aos prêmios!</span>
+      </li>
+      <li class="step reveal" data-reveal="up" style="--i:3">
+        <span class="step__spiral" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="step__top">
+          <span class="step__icon"><img src="assets/svg/icon-step-4.svg" width="107" height="101" alt="" aria-hidden="true"></span>
+          <span class="step__label">Concorra!</span>
+        </span>
+        <span class="step__body">Guarde seu número da sorte e concorra.</span>
+      </li>
+    </ol>
+
+    <button class="btn btn--cta reveal" data-reveal="up" data-open-modal type="button"><span>Cadastre-se</span></button>
+
+    <!-- ---------- Prêmios ---------- -->
+    <div class="prize reveal" id="premios" data-reveal="scale" role="group" aria-label="Prêmios da promoção">
+      <div class="prize__oval" aria-hidden="true"></div>
+
+      <div class="seal">
+        <img class="seal__base" src="assets/svg/selo-cupom-base.svg" width="436" height="202" alt="" aria-hidden="true">
+        <span class="seal__box seal__box--left" aria-hidden="true"></span>
+        <span class="seal__box seal__box--right" aria-hidden="true"></span>
+        <img class="seal__eq" src="assets/svg/selo-cupom-eq.svg" width="51" height="51" alt="" aria-hidden="true">
+        <span class="seal__eq-sign" aria-hidden="true">=</span>
+        <img class="seal__faixa" src="assets/svg/selo-cupom-faixa.svg" width="236" height="45" alt="" aria-hidden="true">
+
+        <span class="seal__t seal__t--apartir">A partir de</span>
+        <span class="seal__t seal__t--rs">R$</span>
+        <span class="seal__t seal__t--valor" data-placeholder>250</span>
+        <span class="seal__t seal__t--cents">,00</span>
+        <span class="seal__t seal__t--compras">em compras</span>
+        <span class="seal__t seal__t--um">1</span>
+        <span class="seal__t seal__t--cupom">CUPOM</span>
+        <span class="seal__t seal__t--concorra">CONCORRA</span>
+      </div>
+
+      <p class="prize__sao">São</p>
+      <p class="prize__qtd" data-placeholder>8</p>
+      <p class="prize__motos">motos</p>
+      <p class="prize__semana">(2 por semana)</p>
+      <span class="prize__divider" aria-hidden="true"></span>
+      <p class="prize__modelo1" data-placeholder>BIS 125</p>
+      <p class="prize__modelo2" data-placeholder>ES 2027</p>
+
+      <p class="prize__plus" aria-hidden="true">+</p>
+      <p class="prize__um">Um</p>
+      <p class="prize__carro">CARRO</p>
+      <p class="prize__km">(0 KM)</p>
+
+      <picture class="prize__img prize__img--motos" data-float="1">
+        <source type="image/webp" srcset="assets/img/premio-motos.webp 520w, assets/img/premio-motos@2x.webp 1040w" sizes="56vw">
+        <img src="assets/img/premio-motos.png" width="520" height="195" alt="Oito motocicletas BIS 125 ES 2027 enfileiradas" loading="lazy" decoding="async">
+      </picture>
+      <picture class="prize__img prize__img--carro" data-float="2">
+        <source type="image/webp" srcset="assets/img/premio-carro.webp 500w, assets/img/premio-carro@2x.webp 779w" sizes="50vw">
+        <img src="assets/img/premio-carro.png" width="500" height="250" alt="Carro 0 km sorteado na promoção" loading="lazy" decoding="async">
+      </picture>
+    </div>
+
+    <button class="btn btn--cta reveal" data-reveal="up" data-open-modal type="button"><span>Cadastre-se</span></button>
+  </section>
+
+  <!-- ---------- Sorteios e ganhadores ---------- -->
+  <section class="winners" id="ganhadores" aria-labelledby="t-ganhadores">
+    <h2 class="badge" id="t-ganhadores">Sorteios e ganhadores</h2>
+
+    <!-- Dados de exemplo. Trocar data / nome / CPF / número da sorte conforme os sorteios ocorrem. -->
+    <ul class="winners__grid">
+      <li class="winner reveal" data-reveal="up" style="--i:0">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:1">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:2">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:3">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:4">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:5">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:6">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner reveal" data-reveal="up" style="--i:7">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 moto</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+      <li class="winner winner--car reveal" data-reveal="up" style="--i:8">
+        <div class="winner__card">
+          <p class="winner__date" data-placeholder>XX.XX.2026</p>
+          <p class="winner__prize">Sorteio de<br>1 carro</p>
+        </div>
+        <div class="winner__who">
+          <p class="winner__who-title">Ganhador</p>
+          <p class="winner__name" data-placeholder>João Victor Carvalho</p>
+          <p class="winner__cpf" data-placeholder>CPF: 320.XXX.XXX-66</p>
+          <p class="winner__luck" data-placeholder>Número da sorte: XXXXXXX</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ---------- Dúvidas frequentes ---------- -->
+  <section class="frame frame--faq" id="duvidas" aria-labelledby="t-duvidas" data-frame>
+    <h2 class="badge frame__badge" id="t-duvidas" data-frame-badge>Dúvidas frequentes</h2>
+
+    <div class="faq">
+      <div class="faq__list">
+        <div class="faq__item reveal is-open" data-reveal="up" style="--i:0">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="true" aria-controls="faq-a1" id="faq-q1">
+              <span class="faq__sign" aria-hidden="true"></span>
+              <span class="faq__text" data-placeholder>Lorem ipsum dolor sit amet consectetur adipiscing?</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="faq__a-inner"><p data-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" data-reveal="up" style="--i:1">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+              <span class="faq__sign" aria-hidden="true"></span>
+              <span class="faq__text" data-placeholder>Lorem ipsum dolor sit amet consectetur adipiscing?</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="faq__a-inner"><p data-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" data-reveal="up" style="--i:2">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+              <span class="faq__sign" aria-hidden="true"></span>
+              <span class="faq__text" data-placeholder>Lorem ipsum dolor sit amet consectetur adipiscing?</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="faq__a-inner"><p data-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" data-reveal="up" style="--i:3">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+              <span class="faq__sign" aria-hidden="true"></span>
+              <span class="faq__text" data-placeholder>Lorem ipsum dolor sit amet consectetur adipiscing?</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="faq__a-inner"><p data-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p></div>
+          </div>
+        </div>
+        <div class="faq__item reveal" data-reveal="up" style="--i:4">
+          <h3>
+            <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+              <span class="faq__sign" aria-hidden="true"></span>
+              <span class="faq__text" data-placeholder>Lorem ipsum dolor sit amet consectetur adipiscing?</span>
+            </button>
+          </h3>
+          <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="faq__a-inner"><p data-placeholder>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ribbon reveal" data-reveal="scale">
+        <picture class="ribbon__img" data-parallax="0.14">
+          <source type="image/webp" srcset="assets/img/laco-fita-tag.webp 1100w, assets/img/laco-fita-tag@2x.webp 2200w" sizes="(max-width: 900px) 100vw, 55vw">
+          <img src="assets/img/laco-fita-tag.png" width="1100" height="394" alt="Fita vermelha com a etiqueta da campanha Sempre Presente Fribal" loading="lazy" decoding="async">
+        </picture>
+        <div class="ribbon__actions">
+          <a class="btn btn--ghost" href="mailto:contato@lorem.com.br" data-placeholder>Enviar e-mail</a>
+          <a class="btn btn--ghost" href="#" data-placeholder>Conferir regulamento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================ LOJAS PARTICIPANTES ============================ -->
+<section class="stores" id="lojas" aria-labelledby="t-lojas">
+  <div class="notebook reveal" data-reveal="tilt">
+    <div class="notebook__rings" aria-hidden="true">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:0">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:1">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:2">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:3">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:4">
+      <img src="assets/svg/argola.svg" width="72" height="137" alt="" style="--i:5">
+    </div>
+    <div class="notebook__top"></div>
+    <div class="notebook__title">
+      <h2 class="badge badge--light" id="t-lojas">Lojas participantes</h2>
+    </div>
+    <div class="notebook__body">
+      <article class="store" style="--i:0">
+        <h3 class="store__city">Teresina - PI</h3>
+        <ul class="store__list">
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+        </ul>
+      </article>
+      <article class="store" style="--i:1">
+        <h3 class="store__city">São Luís - MA</h3>
+        <ul class="store__list">
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+        </ul>
+      </article>
+      <article class="store" style="--i:2">
+        <h3 class="store__city">Imperatriz - MA</h3>
+        <ul class="store__list">
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+          <li><p class="store__name" data-placeholder>Unidade XXXX</p><p class="store__addr" data-placeholder>Av. XXXX - XXXX</p></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ RODAPÉ ============================ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__cols">
+      <div class="footer__brand">
+        <a class="brand brand--footer" href="#home" data-scroll aria-label="Fribal 26 anos — início">
+          <img src="assets/img/logo-fribal-neg.png" width="178" height="37" alt="Fribal 26 anos">
+        </a>
+        <ul class="socials">
+          <li><a href="https://www.instagram.com/polgo.varejointeligente/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img src="assets/svg/social-instagram.svg" width="32" height="32" alt="" aria-hidden="true"></a></li>
+          <li><a href="#" aria-label="Facebook" data-placeholder><img src="assets/svg/social-facebook.svg" width="32" height="32" alt="" aria-hidden="true"></a></li>
+          <li><a href="#" aria-label="TikTok" data-placeholder><img src="assets/svg/social-tiktok.svg" width="32" height="32" alt="" aria-hidden="true"></a></li>
+          <li><a href="#" aria-label="WhatsApp" data-placeholder><img src="assets/svg/social-whatsapp.svg" width="32" height="32" alt="" aria-hidden="true"></a></li>
+        </ul>
+      </div>
+
+      <nav class="footer__col" aria-label="Sessões">
+        <h2 class="footer__title">Sessões</h2>
+        <ul>
+          <li><a href="#home" data-scroll>Home</a></li>
+          <li><a href="#como-participar" data-scroll>Como Participar</a></li>
+          <li><a href="#premios" data-scroll>Prêmios</a></li>
+          <li><a href="#duvidas" data-scroll>Dúvidas Frequentes</a></li>
+          <li><a href="#ganhadores" data-scroll>Ganhadores</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Informações legais">
+        <h2 class="footer__title">Legais</h2>
+        <ul>
+          <li><a href="#" data-placeholder>Política de Privacidade</a></li>
+          <li><a href="#" data-placeholder>Termos de Uso</a></li>
+          <li><a href="#" data-placeholder>Regulamento</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-label="Contato">
+        <h2 class="footer__title">Contato</h2>
+        <ul>
+          <li><a href="#" data-placeholder>Fale Conosco</a></li>
+          <li><a href="mailto:contato@lorem.com.br" data-placeholder>contato@lorem.com.br</a></li>
+          <li><a href="tel:08000000000" data-placeholder>0800 000 0000</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <hr class="footer__rule">
+
+    <p class="footer__legal" data-placeholder>Participação válida apenas no período de DD/MM/AAAA a DD/MM/AAAA. Consulte os termos de participação, datas dos sorteios e regulamentos completos no site. Imagens meramente ilustrativas. Premiação entregue via carteira digital no valor de R$ 00.000,00. CERTIFICADO DE AUTORIZAÇÃO SPA/ME Nº 00.000000/2025.</p>
+
+    <div class="footer__polgo">
+      <span>Copyright © Feito com ❤️</span>
+      <img src="assets/svg/logo-polgo.svg" width="200" height="28" alt="Polgo" loading="lazy">
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ MODAL DE CADASTRO ============================ -->
+<div class="modal" id="modal-cadastro" hidden>
+  <div class="modal__backdrop" data-close-modal></div>
+  <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+    <h2 class="sr-only" id="modal-titulo">Escolha como se cadastrar na promoção Sempre Presente Fribal</h2>
+
+    <button class="modal__close" type="button" data-close-modal aria-label="Fechar">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <div class="modal__rings" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="modal__hero">
+      <div class="kv-logo modal__logo" aria-hidden="true">
+        <img class="kv-logo__laco" src="assets/img/kv-laco.png" width="130" height="50" alt="">
+        <img class="kv-logo__sempre" src="assets/img/kv-sempre.png" width="340" height="71" alt="">
+        <img class="kv-logo__presente" src="assets/img/kv-presente.png" width="500" height="143" alt="">
+        <img class="kv-logo__selo" src="assets/img/kv-selo.png" width="366" height="76" alt="">
+      </div>
+      <picture class="modal__photo">
+        <source type="image/webp" srcset="assets/img/personagens.webp">
+        <img src="assets/img/personagens.png" width="900" height="593" alt="" aria-hidden="true" loading="lazy">
+      </picture>
+    </div>
+
+    <div class="modal__actions">
+      <a class="btn btn--cta btn--sm" href="#" data-placeholder><span>Cadastrar por aqui</span></a>
+      <a class="btn btn--cta btn--sm" href="#" data-placeholder><span>Cadastrar por WhatsApp</span></a>
+    </div>
+  </div>
+</div>
+
+<button class="to-top" type="button" data-to-top aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+</button>
+
+<script src="js/main.js" type="module"></script>
+</body>
+</html>

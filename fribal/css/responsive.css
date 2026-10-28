@@ -1,0 +1,284 @@
+/* ==========================================================================
+   Responsivo — do ultrawide (2560px+) ao mobile (360px)
+   Referências do Figma: DESKTOP 1920 · ULTRAWIDE 2560 · TABLET 1024 · MOBILE 360
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Ultrawide — o conteúdo permanece em 1400px e só o fundo se estende
+   -------------------------------------------------------------------------- */
+@media (min-width: 1921px) {
+  .kv, .warm, .stores { background-size: cover; }
+  .kv__rings { right: 10.5%; }
+}
+
+/* --------------------------------------------------------------------------
+   Até 1280px — o conteúdo passa a ser fluido
+   -------------------------------------------------------------------------- */
+@media (max-width: 1280px) {
+  .badge { font-size: clamp(20px, 2.4vw, 29.259px); border-width: 3px; }
+  .frame { --frame-pad-y: 72px; --frame-pad-x: clamp(24px, 4vw, 66px); }
+  .faq__list { padding-top: 150px; }
+}
+
+/* --------------------------------------------------------------------------
+   Tablet — a navegação quebra em duas linhas (Figma 34:1826)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1120px) {
+  .header__inner { gap: 16px; }
+  /* 3 itens na primeira linha, 2 na segunda — como no layout de tablet */
+  .nav__list { gap: 4px 20px; max-width: 360px; margin-inline: auto; }
+  .nav__link { font-size: 15px; }
+  .btn-login { padding: 12px 20px; font-size: 15px; }
+  .brand img { width: 150px; }
+}
+
+@media (max-width: 1023px) {
+  .warm { gap: 60px; padding-block: 60px; }
+  .frame--participar { gap: 60px; margin-bottom: 60px; }
+  .footer__cols { grid-template-columns: 240px repeat(3, 1fr); gap: 32px; }
+}
+
+/* --------------------------------------------------------------------------
+   Menu compacto — a partir daqui vale o hambúrguer
+   -------------------------------------------------------------------------- */
+@media (max-width: 860px) {
+  .nav, .btn-login { display: none; }
+  .burger { display: flex; }
+
+  .header__inner {
+    justify-content: space-between;
+    gap: 0;
+    padding-right: 24px;
+  }
+  .brand { padding: 9px 20px; }
+  .brand img { width: 160px; }
+}
+
+/* --------------------------------------------------------------------------
+   Abaixo de 900px — KV, prêmios e FAQ mudam de composição
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+
+  /* ---- KV ---- */
+  .kv { padding: 48px var(--pad-x) 120px; }
+
+  .kv__card {
+    flex-direction: column;
+    align-items: center;
+    aspect-ratio: auto;
+    min-height: 0;
+    padding: 48px 24px 0;
+    border-width: 6px;
+    border-radius: 40px;
+  }
+  .kv__content {
+    width: min(100%, 420px);
+    margin-left: 0;
+  }
+  .kv__claim {
+    margin-top: 26px;
+    font-size: clamp(17px, 4.8vw, 22px);
+  }
+  .kv__cta {
+    margin-top: 22px;
+    height: 48px;
+    padding-inline: 34px;
+    font-size: 18px;
+  }
+  .kv__photo {
+    position: relative;
+    left: auto; right: auto; bottom: auto;
+    width: min(100%, 460px);
+    margin-top: 24px;
+    aspect-ratio: 4096 / 2699;
+  }
+
+  .kv__rings {
+    right: auto;
+    left: 50%;
+    gap: 28px;
+    transform: translateX(-50%);
+  }
+  .kv__rings span { width: 22px; height: 42px; border-radius: 9px; }
+  .kv__rings span:nth-child(5) { margin-left: 0; }
+
+  .strip { height: 60px; border-top-left-radius: 48px; }
+
+  /* ---- Prêmios: a composição absoluta vira uma grade empilhada ---- */
+  .prize {
+    display: grid;
+    grid-template-columns: auto auto auto auto minmax(0, 1fr);
+    align-items: center;
+    justify-content: center;
+    gap: 4px 8px;
+    aspect-ratio: auto;
+    max-width: 520px;
+    padding: 26px clamp(14px, 4vw, 26px);
+  }
+  .prize__oval { border-width: 10px; border-radius: 40px; }
+
+  .prize p,
+  .prize__img,
+  .prize__divider {
+    position: static;
+    margin-top: 0;
+    transform: none;
+  }
+
+  /* o selo continua posicionado: é o bloco de contenção dos filhos absolutos */
+  .seal {
+    position: relative;
+    transform: none;
+    grid-area: 1 / 1 / 2 / 6;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 14px;
+    left: auto;
+    top: auto;
+  }
+
+  .prize__sao     { grid-area: 2 / 1 / 3 / 2; font-size: clamp(17px, 4.6vw, 24px); }
+  .prize__qtd     { grid-area: 2 / 2 / 3 / 3; font-size: clamp(28px, 8vw, 40px); }
+  .prize__motos   { grid-area: 2 / 3 / 3 / 4; font-size: clamp(17px, 4.6vw, 24px); }
+  .prize__semana  { grid-area: 3 / 1 / 4 / 4; font-size: clamp(9px, 2.4vw, 12px); font-weight: 300; }
+  .prize__divider { grid-area: 2 / 4 / 4 / 5; width: 2px; height: 72%; justify-self: center; }
+  .prize__modelo1 { grid-area: 2 / 5 / 3 / 6; font-size: clamp(15px, 4.2vw, 22px); justify-self: center; }
+  .prize__modelo2 { grid-area: 3 / 5 / 4 / 6; font-size: clamp(15px, 4.2vw, 22px); justify-self: center; }
+
+  .prize__img--motos { grid-area: 4 / 1 / 5 / 6; width: 100%; height: auto; margin-block: 8px; }
+
+  .prize__plus  { grid-area: 5 / 1 / 8 / 2; font-size: clamp(52px, 15vw, 80px); line-height: .8; justify-self: center; }
+  .prize__um    { grid-area: 5 / 2 / 6 / 6; font-size: clamp(20px, 5.4vw, 28px); justify-self: start; }
+  .prize__carro { grid-area: 6 / 2 / 7 / 6; font-size: clamp(32px, 9.5vw, 48px); justify-self: start; line-height: 1; }
+  .prize__km    { grid-area: 7 / 2 / 8 / 6; font-size: clamp(13px, 3.4vw, 18px); justify-self: start; font-weight: 300; }
+
+  .prize__img--carro { grid-area: 8 / 1 / 9 / 6; width: 100%; height: auto; margin-top: 8px; }
+
+  .prize__img:hover { transform: scale(1.04); }
+
+  /* ---- FAQ ---- */
+  .faq { flex-direction: column; gap: 32px; }
+  .faq__list { padding-top: 0; width: 100%; }
+  .faq__a-inner p { padding: 0 12px 0 24px; }
+
+  /* A fita é uma imagem larga em que o laço e a etiqueta ficam a ~67% da
+     largura. Empilhado, o enquadramento centraliza a etiqueta e mantém os
+     botões legíveis sobre ela. */
+  .ribbon {
+    width: 100%;
+    max-width: 380px;
+    margin-inline: auto;
+    aspect-ratio: 326 / 430;
+  }
+  .ribbon__img {
+    left: -15.4%;
+    top: 48.2%;
+    width: 389%;
+  }
+  .ribbon__actions { top: 75.6%; gap: 10px; }
+  .ribbon__actions .btn--ghost {
+    height: 28px;
+    padding-inline: 14px;
+    font-size: 10.5px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Abaixo de 640px os quatro passos ficam estreitos demais: viram 2 x 2,
+   como no layout mobile do Figma
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(2, minmax(0, 168.184px));
+    gap: 34px 16px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  :root { --scroll-offset: 78px; }
+
+  .warm { gap: 48px; padding-block: 48px; }
+  .frame { --frame-pad-y: 56px; --frame-pad-x: 16px; --frame-radius: 40px; }
+  .frame::before { border-width: 6px; }
+  .frame--participar { gap: 44px; margin-bottom: 48px; }
+  .badge { font-size: clamp(15px, 4.4vw, 22px); padding: 3px 14px; border-width: 3px; }
+
+
+
+  /* ganhadores em 2 colunas */
+  .winners { gap: 44px; }
+  .winners__grid { gap: 26px 14px; padding-inline: 0; }
+  .winner { width: calc(50% - 7px); max-width: 199px; }
+  .winner__date { font-size: 15px; padding: 4px 10px; }
+  .winner__prize { padding: 12px 10px; font-size: 15px; }
+  .winner--car .winner__prize { font-size: 17px; }
+  .winner__who-title { font-size: 16px; }
+
+  /* lojas em coluna, na ordem do layout mobile */
+  .stores { padding-block: 56px; }
+  .notebook__body { flex-direction: column; gap: 16px; padding: 16px; }
+  .notebook__top { border-radius: 32px 32px 0 0; }
+  .notebook__body { border-radius: 0 0 32px 32px; }
+  .notebook__title { padding: 18px 16px; }
+  .store { order: var(--order, 0); padding: 20px; gap: 20px; }
+  .store:nth-child(1) { --order: 3; }
+  .store:nth-child(2) { --order: 2; }
+  .store:nth-child(3) { --order: 1; }
+  .store__city { font-size: 22px; }
+  .store__list { gap: 18px; }
+
+  /* rodapé empilhado */
+  .footer { padding: 48px var(--pad-x) 32px; }
+  .footer__cols {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    justify-items: center;
+    text-align: center;
+  }
+  .footer__col { width: 100%; }
+  .footer__col ul { align-items: center; }
+  .footer__legal { text-align: center; }
+  .footer__polgo { flex-direction: column; gap: 14px; }
+
+  .to-top { width: 42px; height: 42px; }
+}
+
+/* --------------------------------------------------------------------------
+   Telas muito estreitas
+   -------------------------------------------------------------------------- */
+@media (max-width: 380px) {
+  .brand img { width: 132px; }
+  .brand { padding: 9px 14px; }
+  .header__inner { padding-right: 16px; }
+
+
+  .winner__date { font-size: 13px; }
+  .winner__prize { font-size: 13px; padding: 10px 6px; }
+  .winner--car .winner__prize { font-size: 15px; }
+  .winner__who { padding: 8px 10px; }
+  .winner__who-title { font-size: 14px; }
+  .winner__name, .winner__cpf { font-size: 10px; }
+
+  .faq__q { gap: 14px; height: 36px; }
+  .faq__sign { width: 38px; height: 38px; }
+  .faq__text { font-size: 13.5px; }
+  .faq__a-inner p { font-size: 14px; padding: 0 8px 0 16px; }
+}
+
+/* --------------------------------------------------------------------------
+   Ponteiro grosseiro (toque): sem estados de hover persistentes
+   -------------------------------------------------------------------------- */
+@media (hover: none) {
+  .step:hover,
+  .winner:hover,
+  .store:hover { transform: none; }
+  .step:hover .step__top,
+  .step:hover .step__body,
+  .step:hover .step__spiral,
+  .winner:hover .winner__card,
+  .winner:hover .winner__who { transform: none; }
+  .prize__img:hover { transform: translate(-50%, -50%); }
+}

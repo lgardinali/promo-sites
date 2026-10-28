@@ -1,0 +1,147 @@
+/* ==========================================================================
+   FESTIVAL 9 ANOS — AÇAÍ NO KILO
+   tokens.css — variáveis de marca, tipografia, medidas e curvas de movimento
+   Valores extraídos do Figma (ACAI NOKILO / DESKTOP 1920 · MOBILE 360)
+   ========================================================================== */
+
+:root {
+  /* ---------- Cores (Figma) ---------- */
+  --purple-900: #36053c;  /* rodapé, texto mais escuro            */
+  --purple-800: #570069;  /* fundo do KV e do corpo               */
+  --purple-700: #631174;  /* tint do padrão, círculos das etapas  */
+  --purple-600: #6b0b76;  /* accordion aberto                     */
+  --purple-500: #742a83;  /* barra do menu, texto de apoio        */
+  --purple-400: #801588;  /* sinal +/- do accordion               */
+  --purple-300: #a645b9;  /* borda da barra do menu               */
+
+  --cream:       #eae6db;
+  --cream-light: #fffcf3;
+  --off-white:   #f7f3f3;
+  --white:       #ffffff;
+
+  --yellow:       #f9e52e;
+  --orange:       #f58826;
+  --orange-light: #eea93d; /* borda do card do KV / tint laranja  */
+  --teal:         #44bea6;
+  --teal-light:   #84cfc5;
+  --grey:         #bcb8b0;
+
+  /* ---------- Tipografia ----------
+     Amsi Pro é a fonte da marca, nos dois pesos usados no Figma:
+     AmsiPro-SemiBold (600) para textos e AmsiPro-Ultra (800) para
+     títulos, números e botões. Luckiest Guy nos títulos em destaque. */
+  --font-body: "Amsi Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Luckiest Guy", "Amsi Pro", system-ui, sans-serif;
+  --font-ui: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --fw-semibold: 600;
+  --fw-ultra: 800;
+
+  /* Métricas reais dos arquivos (unitsPerEm 1000):
+     SemiBold cap 703 · asc 854 · desc -146
+     Ultra    cap 708 · asc 855 · desc -145
+     Com line-height:1, o topo da caixa fica --cap-offset acima da
+     maiúscula — é o que permite casar as coordenadas do Figma, que
+     são medidas a partir do cap-height (text-box-trim).             */
+  --cap-offset-ultra: 0.147;
+  --cap-offset-semi: 0.151;
+
+  /* Escala dos títulos: 41.528px / 56px no desktop (Figma) */
+  --fs-title: clamp(1.625rem, 0.72rem + 2.55vw, 2.5955rem);   /* 26 → 41.528 */
+  --fs-title-display: clamp(2.125rem, 0.86rem + 3.57vw, 3.5rem); /* 34 → 56  */
+  --fs-cta: clamp(1.125rem, 0.83rem + 0.84vw, 1.6549rem);     /* 18 → 26.478 */
+  --fs-card-label: clamp(1rem, 0.82rem + 0.51vw, 1.5rem);     /* 16 → 24     */
+  --fs-step-title: clamp(1.0625rem, 0.95rem + 0.32vw, 1.2814rem);
+  --fs-body: 1rem;
+  --fs-question: clamp(1.0625rem, 0.95rem + 0.37vw, 1.375rem); /* 17 → 22    */
+  --fs-small: 0.75rem;
+
+  /* ---------- Medidas ---------- */
+  --container: 1400px;
+  --container-footer: 1280px;
+  --gutter: clamp(1.25rem, 0.6rem + 2.2vw, 2.5rem);
+  --section-gap: clamp(2.5rem, 1rem + 5vw, 5rem);
+  --header-h: 70px;
+
+  --r-card: 35px;
+  --r-kv-card: 68px;
+  --r-pill: 999px;
+  --r-bar: 40px;
+  --r-cert: 14px;
+
+  --bd-card: 6.156px;
+  --bd-thin: 3px;
+
+  /* Sombras: derivadas da paleta, nunca preto puro */
+  --sh-soft: 0 10px 30px -12px rgb(28 2 32 / .45);
+  --sh-card: 0 18px 40px -20px rgb(28 2 32 / .55);
+  --sh-lift: 0 26px 54px -22px rgb(28 2 32 / .62);
+
+  /* ==========================================================
+     MOVIMENTO
+     Curvas geradas a partir dos presets de spring do Figma
+     (massa 1 · rigidez/amortecimento abaixo), convertidas para
+     a função linear() do CSS. Mantêm o "overshoot" real do
+     protótipo, com a duração que a gente define.
+     ========================================================== */
+
+  /* Gentle — rigidez 100 · amortecimento 15 (ζ 0.75) */
+  --ease-gentle: linear(0, 0.0405, 0.1382, 0.2647, 0.3997, 0.53, 0.6474, 0.748, 0.8304, 0.895, 0.9437, 0.9786, 1.0022, 1.0169, 1.0249, 1.0281, 1.028, 1.0258, 1.0225, 1.0187, 1.0149, 1.0114, 1.0083, 1.0058, 1.0037, 1.0021, 1);
+
+  /* Quick — rigidez 300 · amortecimento 20 (ζ 0.577) */
+  --ease-quick: linear(0, 0.0928, 0.3007, 0.5398, 0.7563, 0.923, 1.0324, 1.0902, 1.1083, 1.1003, 1.0787, 1.0528, 1.0288, 1.0101, 0.9975, 0.9907, 0.9883, 0.9889, 0.9912, 0.994, 0.9966, 0.9987, 1.0001, 1.001, 1.0013, 1.0012, 1);
+
+  /* Bouncy — rigidez 600 · amortecimento 15 (ζ 0.306) */
+  --ease-bouncy: linear(0, 0.2667, 0.7895, 1.211, 1.3636, 1.2776, 1.0887, 0.9303, 0.8682, 0.8953, 0.9632, 1.0227, 1.0477, 1.0394, 1.015, 0.9928, 0.9828, 0.9852, 0.9939, 1.0022, 1.0062, 1.0055, 1.0024, 0.9993, 0.9978, 0.9979, 1);
+
+  /* Slow — rigidez 80 · amortecimento 20 (ζ 1.118, sem overshoot) */
+  --ease-slow: linear(0, 0.076, 0.2231, 0.3766, 0.5125, 0.6244, 0.7132, 0.7822, 0.8351, 0.8755, 0.9061, 0.9292, 0.9467, 0.9598, 0.9698, 0.9772, 0.9829, 0.9871, 0.9903, 0.9927, 0.9945, 0.9959, 0.9969, 0.9977, 0.9982, 0.9987, 1);
+
+  /* Curva suave para loops (respiro, flutuação) */
+  --ease-inout: cubic-bezier(.45, 0, .55, 1);
+
+  /* Durações do Figma */
+  --t-quick: 300ms;
+  --t-slow: 600ms;
+  --t-xslow: 900ms;
+
+  /* Atalhos de transição */
+  --tr-quick: var(--t-quick) var(--ease-quick);
+  --tr-slow: var(--t-slow) var(--ease-slow);
+  --tr-bouncy: var(--t-quick) var(--ease-bouncy);
+
+  /* Deslocamento do parallax, controlado pelo JS */
+  --px: 0px;
+  --py: 0px;
+}
+
+/* Fallback para navegadores sem linear(): curvas cúbicas equivalentes */
+@supports not (transition-timing-function: linear(0, 1)) {
+  :root {
+    --ease-gentle: cubic-bezier(.34, 1.3, .64, 1);
+    --ease-quick:  cubic-bezier(.34, 1.56, .64, 1);
+    --ease-bouncy: cubic-bezier(.22, 1.9, .36, 1);
+    --ease-slow:   cubic-bezier(.22, .61, .36, 1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Amsi Pro — fonte oficial da marca.
+   WOFF2 primeiro (51 KB e 48 KB), OTF como reserva para navegadores antigos.
+   -------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("../assets/fonts/AmsiPro-SemiBold.woff2") format("woff2"),
+       url("../assets/fonts/AmsiPro-SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amsi Pro";
+  src: url("../assets/fonts/AmsiPro-Ultra.woff2") format("woff2"),
+       url("../assets/fonts/AmsiPro-Ultra.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

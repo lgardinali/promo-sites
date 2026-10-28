@@ -1,0 +1,325 @@
+/* ==========================================================================
+   Layout — seções, fundos, molduras e o palco do KV
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Barra de progresso de leitura
+   -------------------------------------------------------------------------- */
+.progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 120;
+  height: 3px;
+  pointer-events: none;
+}
+.progress__bar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, var(--c-red), var(--c-brown));
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+}
+
+/* --------------------------------------------------------------------------
+   Fundo difuso animado
+   Quatro elipses borradas em órbitas de durações diferentes. Ficam atrás de
+   tudo e nunca capturam ponteiro.
+   -------------------------------------------------------------------------- */
+.blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--c-cream);
+}
+.blobs__item {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+}
+.blobs__item--1 {
+  width: 46vmax; height: 46vmax;
+  top: -12vmax; left: -10vmax;
+  background: radial-gradient(circle at 50% 50%, rgba(225, 164, 102, .55), rgba(225, 164, 102, 0) 70%);
+  animation: blob-a 34s var(--ease-gentle) infinite;
+}
+.blobs__item--2 {
+  width: 38vmax; height: 38vmax;
+  top: 18%; right: -12vmax;
+  background: radial-gradient(circle at 50% 50%, rgba(245, 215, 177, .65), rgba(245, 215, 177, 0) 70%);
+  animation: blob-b 41s var(--ease-gentle) infinite;
+}
+.blobs__item--3 {
+  width: 42vmax; height: 42vmax;
+  bottom: -14vmax; left: 22%;
+  background: radial-gradient(circle at 50% 50%, rgba(209, 151, 91, .40), rgba(209, 151, 91, 0) 70%);
+  animation: blob-c 48s var(--ease-gentle) infinite;
+}
+.blobs__item--4 {
+  width: 26vmax; height: 26vmax;
+  top: 52%; left: 6%;
+  background: radial-gradient(circle at 50% 50%, rgba(218, 51, 52, .10), rgba(218, 51, 52, 0) 70%);
+  animation: blob-d 26s var(--ease-gentle) infinite;
+}
+
+@keyframes blob-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33%      { transform: translate3d(8vmax, 6vmax, 0) scale(1.12); }
+  66%      { transform: translate3d(-4vmax, 10vmax, 0) scale(.94); }
+}
+@keyframes blob-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40%      { transform: translate3d(-9vmax, 8vmax, 0) scale(1.18); }
+  75%      { transform: translate3d(-3vmax, -6vmax, 0) scale(.9); }
+}
+@keyframes blob-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(10vmax, -8vmax, 0) scale(1.1); }
+}
+@keyframes blob-d {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(6vmax, -10vmax, 0) scale(1.25); }
+}
+
+/* --------------------------------------------------------------------------
+   Seções de fundo padronado
+   -------------------------------------------------------------------------- */
+/* A primeira declaração é o fallback: navegadores sem image-set() ficam nela. */
+.kv,
+.stores {
+  position: relative;
+  background: var(--c-cream) center / cover no-repeat;
+  background-image: url("../assets/img/bg-pattern-light.jpg");
+  background-image: image-set(
+    url("../assets/img/bg-pattern-light.webp") type("image/webp"),
+    url("../assets/img/bg-pattern-light.jpg") type("image/jpeg")
+  );
+}
+.warm {
+  position: relative;
+  background: var(--c-cream) center top / cover no-repeat;
+  background-image: url("../assets/img/bg-pattern-warm.jpg");
+  background-image: image-set(
+    url("../assets/img/bg-pattern-warm.webp") type("image/webp"),
+    url("../assets/img/bg-pattern-warm.jpg") type("image/jpeg")
+  );
+}
+
+/* --------------------------------------------------------------------------
+   KV
+   -------------------------------------------------------------------------- */
+.kv {
+  padding: 80px var(--pad-x) 140px;
+  overflow: clip;
+}
+.kv__stage {
+  position: relative;
+  max-width: var(--w-page);
+  margin-inline: auto;
+}
+
+/* Argolas que escapam pelo topo do card. */
+.kv__rings {
+  position: absolute;
+  top: -23px;
+  right: 10.5%;
+  z-index: 2;
+  display: flex;
+  gap: 43px;
+  pointer-events: none;
+}
+.kv__rings span {
+  width: 30px;
+  height: 55px;
+  border-radius: 12px;
+  background: var(--c-brown);
+}
+.kv__rings span:nth-child(5) { margin-left: -3px; }
+
+.kv__card {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1400 / 674;
+  min-height: 420px;
+  overflow: clip;
+  border: 8px solid var(--c-brown);
+  border-radius: 57px;
+}
+
+.kv__content {
+  position: relative;
+  z-index: 2;
+  width: 35.72cqw;
+  margin-left: 4.29cqw;
+  text-align: center;
+}
+
+.kv__photo {
+  position: absolute;
+  left: 44.02%;
+  right: -6.65%;
+  bottom: -8px;
+  z-index: 1;
+  aspect-ratio: 4096 / 2699;
+}
+.kv__photo img { width: 100%; height: 100%; object-fit: contain; object-position: bottom; }
+
+/* Faixa marrom no rodapé do KV, em marquee lento. */
+.strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 80px;
+  overflow: clip;
+  border-top-left-radius: 77px;
+}
+.strip__track {
+  display: flex;
+  width: max-content;
+  height: 100%;
+  animation: marquee 60s linear infinite;
+}
+/* Espelhar as cópias pares faz as bordas coincidirem: o padrão emenda sem
+   costura visível e o ciclo passa a ser de duas imagens. */
+.strip__track span:nth-child(even) { transform: scaleX(-1); }
+/* Só a faixa do topo da arte aparece: a altura da caixa recorta os 80px de
+   cima da imagem de 519px. */
+.strip__track span {
+  flex: none;
+  width: 1952px;
+  height: 100%;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: 1952px 519px;
+  background-image: url("../assets/img/strip-brown.jpg");
+  background-image: image-set(
+    url("../assets/img/strip-brown.webp") type("image/webp"),
+    url("../assets/img/strip-brown.jpg") type("image/jpeg")
+  );
+}
+.strip:hover .strip__track { animation-play-state: paused; }
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-3904px, 0, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   Molduras com badge encaixado na borda
+   O anel é um pseudo-elemento mascarado: a máscara abre um vão apenas na
+   faixa superior, onde o badge se apoia.
+   -------------------------------------------------------------------------- */
+.frame {
+  --frame-gap: 160px;      /* metade do vão do badge, medido em js/main.js */
+  --frame-pad-y: 80px;
+  --frame-pad-x: 66px;
+  --frame-radius: 61px;
+  position: relative;
+  width: 100%;
+  max-width: var(--w-page);
+  margin-inline: auto;
+  padding: var(--frame-pad-y) var(--frame-pad-x);
+}
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border: 8px solid var(--c-brown);
+  border-radius: var(--frame-radius);
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(90deg, #000 calc(50% - var(--frame-gap)), transparent calc(50% - var(--frame-gap)),
+                            transparent calc(50% + var(--frame-gap)), #000 calc(50% + var(--frame-gap))),
+    linear-gradient(#000, #000);
+  mask-image:
+    linear-gradient(90deg, #000 calc(50% - var(--frame-gap)), transparent calc(50% - var(--frame-gap)),
+                            transparent calc(50% + var(--frame-gap)), #000 calc(50% + var(--frame-gap))),
+    linear-gradient(#000, #000);
+  -webkit-mask-size: 100% 14px, 100% calc(100% - 14px);
+  mask-size: 100% 14px, 100% calc(100% - 14px);
+  -webkit-mask-position: top left, bottom left;
+  mask-position: top left, bottom left;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+.frame__badge {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+.frame--participar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 80px;
+}
+
+.warm {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 80px var(--pad-x);
+}
+
+/* --------------------------------------------------------------------------
+   Sorteios e ganhadores
+   -------------------------------------------------------------------------- */
+.winners {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+  max-width: var(--w-page);
+  width: 100%;
+  margin-inline: auto;
+}
+.winners__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+  /* o recuo do layout deixa 5 cards por linha em 1400px, como no Figma */
+  padding-inline: 40px;
+}
+
+/* --------------------------------------------------------------------------
+   Lojas participantes
+   -------------------------------------------------------------------------- */
+.stores {
+  padding: 80px var(--pad-x);
+  overflow: clip;
+}
+
+/* --------------------------------------------------------------------------
+   Rodapé
+   -------------------------------------------------------------------------- */
+.footer {
+  background: var(--c-tan);
+  padding: 70px var(--pad-x) 40px;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: var(--w-footer);
+  margin-inline: auto;
+}
+.footer__cols {
+  display: grid;
+  grid-template-columns: 268px repeat(3, 1fr);
+  gap: 60px;
+  align-items: start;
+}

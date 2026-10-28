@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#570069">
+<title>Festival 9 Anos Açaí no Kilo — Promoção</title>
+<meta name="description" content="A cada R$25 em produtos Açaí no Kilo você ganha 1 número da sorte e 1 raspadinha. Concorra a um fim de semana em resort, iPhone 16, Smart TV, bicicleta e muito mais.">
+<meta name="format-detection" content="telephone=no">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="manifest" href="site.webmanifest">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Festival 9 Anos Açaí no Kilo">
+<meta property="og:description" content="O sabor que desperta felicidade! Participe e concorra a prêmios incríveis.">
+<meta property="og:image" content="assets/img/logo-campanha.webp">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/AmsiPro-Ultra.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/AmsiPro-SemiBold.woff2" crossorigin>
+<link rel="preload" as="image" href="assets/img/logo-campanha.webp">
+<link rel="preload" as="image" href="assets/img/kv-mulher.webp">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Luckiest+Guy&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/motion.css">
+</head>
+
+<body>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="scroll-progress" aria-hidden="true"><span data-progress></span></div>
+
+<!-- ============================================================ 1. MENU -->
+<header class="header" id="menu" data-header>
+  <div class="header__bar">
+    <a class="brand" href="#kv" aria-label="Açaí no Kilo — ir para o início">
+      <span class="brand__disc">
+        <img src="assets/svg/logo-marca.svg" alt="Açaí no Kilo" width="67" height="70" decoding="async">
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#kv">Home</a></li>
+        <li><a class="nav__link" href="#como-participar">Como participar</a></li>
+        <li><a class="nav__link" href="#premios">Prêmios</a></li>
+        <li><a class="nav__link" href="#duvidas">Dúvidas frequentes</a></li>
+        <li><a class="nav__link" href="#ganhadores">Ganhadores</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--login" href="#cadastro">
+      <img class="btn__icon" src="assets/svg/icon-user.svg" alt="" width="24" height="24" aria-hidden="true" decoding="async">
+      <span>Login/Cadastro</span>
+    </a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="drawer" id="drawer" hidden>
+    <nav aria-label="Navegação principal (mobile)">
+      <ul class="drawer__list">
+        <li><a class="drawer__link" href="#kv">Home</a></li>
+        <li><a class="drawer__link" href="#como-participar">Como participar</a></li>
+        <li><a class="drawer__link" href="#premios">Prêmios</a></li>
+        <li><a class="drawer__link" href="#duvidas">Dúvidas frequentes</a></li>
+        <li><a class="drawer__link" href="#ganhadores">Ganhadores</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--login drawer__cta" href="#cadastro">
+      <img class="btn__icon" src="assets/svg/icon-user.svg" alt="" width="24" height="24" aria-hidden="true">
+      <span>Login/Cadastro</span>
+    </a>
+  </div>
+</header>
+
+<main id="conteudo">
+
+  <!-- ========================================================== 2. KV -->
+  <section class="kv" id="kv" aria-labelledby="kv-claim">
+
+    <div class="kv__stage stage" data-kv>
+
+      <div class="kv__pattern pattern" aria-hidden="true" data-parallax="0.06"></div>
+
+      <div class="kv__card" aria-hidden="true" data-parallax="-0.03"></div>
+
+      <!-- Logo da campanha -->
+      <div class="kv__logo" data-reveal="zoom" data-reveal-delay="80" data-depth="10">
+        <img class="kv__logo-img" src="assets/img/logo-campanha.webp"
+             alt="Festival 9 Anos Açaí no Kilo" width="624" height="419" fetchpriority="high" decoding="async">
+      </div>
+
+      <!-- Claim -->
+      <p class="kv__claim claim" id="kv-claim" data-reveal="up" data-reveal-delay="220" data-depth="6">
+        <img class="claim__spark claim__spark--l" src="assets/svg/spark-left.svg" alt="" aria-hidden="true" width="54" height="88">
+        <span class="claim__text">
+          <span class="claim__line">O sabor que</span>
+          <span class="claim__line claim__line--display">desperta</span>
+          <span class="claim__line">felicidade!</span>
+        </span>
+        <img class="claim__spark claim__spark--r" src="assets/svg/spark-right.svg" alt="" aria-hidden="true" width="56" height="81">
+      </p>
+
+      <!-- Composição: mulher + potes -->
+      <div class="kv__mulher" data-reveal="up" data-reveal-delay="0" data-depth="18" aria-hidden="true">
+        <div class="kv__layer kv__folha-1"><img src="assets/img/kv-folha.webp" alt="" width="185" height="221" decoding="async"></div>
+        <div class="kv__layer kv__folha-2"><img src="assets/img/kv-folha.webp" alt="" width="185" height="221" decoding="async"></div>
+        <div class="kv__layer kv__glow"><img src="assets/img/kv-mulher.webp" alt="" width="455" height="619" fetchpriority="high" decoding="async"></div>
+        <div class="kv__layer kv__potes"><img src="assets/img/kv-potes.webp" alt="" width="542" height="370" decoding="async"></div>
+        <div class="kv__layer kv__pote-solo"><img src="assets/img/kv-pote-solo.webp" alt="" width="257" height="280" decoding="async"></div>
+      </div>
+
+      <!-- Composição: prêmios -->
+      <div class="kv__premios" data-reveal="up" data-reveal-delay="160" data-depth="30">
+        <div class="kv__layer kv__premios-card"><img src="assets/svg/kv-premios-card.svg" alt="" width="510" height="239" decoding="async"></div>
+        <div class="kv__layer kv__resort"><img src="assets/img/kv-resort.webp" alt="" width="480" height="300" decoding="async"></div>
+        <div class="kv__layer kv__premios-img"><img src="assets/img/kv-premios.webp" alt="Prêmios: iPhone, Smart TV, tablet, patinete elétrico, bicicleta, caixa de som e robô aspirador" width="720" height="468" decoding="async"></div>
+        <p class="kv__badge kv__badge--top"><span>Final de semana em</span><em>Resort!</em></p>
+        <p class="kv__badge kv__badge--bottom"><span>E muito outros</span><em>Prêmios!</em></p>
+      </div>
+
+      <!-- Mecânica — coordenadas absolutas do frame 204:659 do Figma -->
+      <div class="kv__strip strip" data-reveal="up" data-reveal-delay="320">
+        <div class="strip__item strip__item--1" data-reveal="pop" data-reveal-delay="380">
+          <span class="strip__icon strip__icon--cup" aria-hidden="true">
+            <img src="assets/icons/cup-g1.svg" alt="" class="cup cup--1">
+            <img src="assets/icons/cup-g2.svg" alt="" class="cup cup--2">
+            <img src="assets/icons/cup-g3.svg" alt="" class="cup cup--3">
+            <img src="assets/icons/cup-g4.svg" alt="" class="cup cup--4">
+          </span>
+          <span class="strip__copy">
+            <b class="strip__x strip__x--a">A cada</b>
+            <b class="strip__value"><i class="strip__x strip__x--rs">R$</i><span class="strip__x strip__x--num">25</span><i class="strip__x strip__x--dec">,00</i></b>
+            <b class="strip__x strip__x--em">em compras</b>
+          </span>
+        </div>
+
+        <span class="strip__sep strip__sep--arrow" aria-hidden="true">
+          <img src="assets/icons/arrow-curve.svg" alt="">
+        </span>
+
+        <div class="strip__item strip__item--2" data-reveal="pop" data-reveal-delay="440">
+          <span class="strip__icon strip__icon--ticket" aria-hidden="true">
+            <img src="assets/icons/ticket.svg" alt="">
+          </span>
+          <span class="strip__copy">
+            <b class="strip__x strip__x--kicker">Ganhe</b>
+            <span class="strip__row">
+              <b class="strip__x strip__x--one">1</b>
+              <span class="strip__lines">
+                <b class="strip__x strip__x--l1">número</b>
+                <b class="strip__x strip__x--l2">da sorte</b>
+              </span>
+            </span>
+          </span>
+        </div>
+
+        <span class="strip__sep strip__sep--plus" aria-hidden="true">
+          <img src="assets/icons/plus.svg" alt="">
+        </span>
+
+        <div class="strip__item strip__item--3" data-reveal="pop" data-reveal-delay="500">
+          <span class="strip__icon strip__icon--scratch" aria-hidden="true">
+            <img src="assets/icons/raspadinha.svg" alt="">
+          </span>
+          <span class="strip__copy">
+            <span class="strip__row">
+              <b class="strip__x strip__x--one">1</b>
+              <span class="strip__lines">
+                <b class="strip__x strip__x--l1">chance na</b>
+                <b class="strip__x strip__x--l2">raspinha</b>
+              </span>
+            </span>
+          </span>
+        </div>
+      </div>
+
+      <a class="btn btn--cta kv__cta" href="#cadastro" data-reveal="pop" data-reveal-delay="560">
+        <img class="btn__leaf" src="assets/svg/cta-leaf.svg" alt="" aria-hidden="true">
+        <span>Participe!</span>
+      </a>
+    </div>
+  </section>
+
+  <div class="corpo">
+
+    <!-- ======================================================== 3. COMO PARTICIPAR -->
+    <section class="section cp" id="como-participar" aria-labelledby="cp-title">
+      <img class="deco deco--cp-l" src="assets/svg/deco-cp-left.svg" alt="" aria-hidden="true" data-parallax="0.08">
+      <img class="deco deco--cp-r" src="assets/svg/deco-cp-right.svg" alt="" aria-hidden="true" data-parallax="-0.1">
+
+      <h2 class="title title--cp" id="cp-title" data-reveal="up">
+        <img class="title__spark title__spark--l" src="assets/svg/spark-left-yellow.svg" alt="" aria-hidden="true" width="54" height="88">
+        <span class="title__text">
+          <span class="title__line">Como</span>
+          <span class="title__line title__line--display">participar</span>
+        </span>
+        <img class="title__spark title__spark--r" src="assets/svg/spark-right-yellow.svg" alt="" aria-hidden="true" width="56" height="81">
+      </h2>
+
+      <div class="card cp__card" data-reveal="up" data-reveal-delay="120">
+        <img class="cp__leaf cp__leaf--l" src="assets/svg/leaf-orange-1.svg" alt="" aria-hidden="true">
+        <img class="cp__leaf cp__leaf--r" src="assets/svg/leaf-orange-2.svg" alt="" aria-hidden="true">
+
+        <ol class="steps">
+          <li class="step step--1" data-reveal="up" data-reveal-delay="200">
+            <div class="step__photo" aria-hidden="true">
+              <div class="step__clip">
+                <img class="step__img" src="assets/img/passo-1-nota.webp" alt="" width="222" height="559" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="step__col">
+              <span class="step__num"><b>1</b></span>
+              <h3 class="step__title">Comprou?</h3>
+              <p class="step__text">Compre a partir de <b>R$25</b> em produtos Açaí no Kilo e <b>guarde sua nota fiscal</b>.</p>
+            </div>
+          </li>
+          <li class="step__arrow" aria-hidden="true"><img src="assets/icons/arrow-curve-teal.svg" alt="" width="34" height="34"></li>
+          <li class="step step--2" data-reveal="up" data-reveal-delay="280">
+            <div class="step__photo" aria-hidden="true">
+              <div class="step__clip">
+                <img class="step__img" src="assets/img/passo-2-qrcode.webp" alt="" width="420" height="413" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="step__col">
+              <span class="step__num"><b>2</b></span>
+              <h3 class="step__title">Pegue sua nota</h3>
+              <p class="step__text"><b>Cadastre-se</b>, aponte a câmera para o <b>QR Code</b> da sua nota e complete o cadastro!</p>
+            </div>
+          </li>
+          <li class="step__arrow" aria-hidden="true"><img src="assets/icons/arrow-curve-teal.svg" alt="" width="34" height="34"></li>
+          <li class="step step--3" data-reveal="up" data-reveal-delay="360">
+            <div class="step__photo" aria-hidden="true">
+              <div class="step__clip">
+                <img class="step__img" src="assets/img/passo-3-torcer.webp" alt="" width="350" height="463" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <div class="step__col">
+              <span class="step__num"><b>3</b></span>
+              <h3 class="step__title">É só torcer!</h3>
+              <p class="step__text">Você já estará participando dos sorteios e da raspinha, <b>divirta-se!</b></p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <a class="btn btn--cta" href="#cadastro" data-reveal="pop" data-reveal-delay="420">
+        <img class="btn__leaf" src="assets/svg/cta-leaf.svg" alt="" aria-hidden="true">
+        <span>Cadastre-se!</span>
+      </a>
+    </section>
+
+    <!-- ======================================================== 4. PRÊMIOS -->
+    <section class="section pr" id="premios" aria-labelledby="pr-title">
+      <img class="deco deco--pr-1" src="assets/svg/deco-pr-1.svg" alt="" aria-hidden="true" data-parallax="0.09">
+      <img class="deco deco--pr-2" src="assets/svg/deco-pr-2.svg" alt="" aria-hidden="true" data-parallax="-0.07">
+      <img class="deco deco--pr-3" src="assets/svg/deco-pr-3.svg" alt="" aria-hidden="true" data-parallax="0.11">
+
+      <h2 class="title title--pr" id="pr-title" data-reveal="up">
+        <img class="title__spark title__spark--l" src="assets/svg/spark-left-yellow.svg" alt="" aria-hidden="true" width="54" height="88">
+        <span class="title__text">
+          <span class="title__line">Você concorre a</span>
+          <span class="title__line title__line--display">prêmios incríveis</span>
+        </span>
+        <img class="title__spark title__spark--r" src="assets/svg/spark-right-yellow.svg" alt="" aria-hidden="true" width="56" height="81">
+      </h2>
+
+      <div class="prizes">
+        <article class="prize prize--hero" data-reveal="up" data-reveal-delay="80">
+          <img class="prize__bg" src="assets/img/premio-resort.webp" alt="Resort em Salvador com piscina e coqueiros" width="1320" height="743" loading="lazy" decoding="async">
+          <p class="prize__label prize__label--hero">Fim de semana em resort em Salvador<br>Com acompanhante</p>
+        </article>
+
+        <div class="prizes__col">
+          <div class="prizes__row prizes__row--2">
+            <article class="prize" data-reveal="up" data-reveal-delay="140">
+              <span class="prize__media"><img class="prize__img prize__img--iphone" src="assets/img/premio-iphone.webp" alt="iPhone 16" width="242" height="683" loading="lazy" decoding="async"></span>
+              <p class="prize__label">iPhone 16</p>
+            </article>
+            <article class="prize" data-reveal="up" data-reveal-delay="200">
+              <span class="prize__media"><img class="prize__img prize__img--tv" src="assets/img/premio-tv.webp" alt="Smart TV de 40 polegadas" width="640" height="541" loading="lazy" decoding="async"></span>
+              <p class="prize__label">Smart TV 40”</p>
+            </article>
+          </div>
+          <div class="prizes__row prizes__row--3">
+            <article class="prize" data-reveal="up" data-reveal-delay="260">
+              <span class="prize__media"><img class="prize__img prize__img--patinete" src="assets/img/premio-patinete.webp" alt="Patinete elétrico" width="420" height="578" loading="lazy" decoding="async"></span>
+              <p class="prize__label">Patinete<br>Elétrico</p>
+            </article>
+            <article class="prize" data-reveal="up" data-reveal-delay="320">
+              <span class="prize__media"><img class="prize__img prize__img--tablet" src="assets/img/premio-tablet.webp" alt="Tablet" width="435" height="347" loading="lazy" decoding="async"></span>
+              <p class="prize__label">Tablet</p>
+            </article>
+            <article class="prize" data-reveal="up" data-reveal-delay="380">
+              <span class="prize__media"><img class="prize__img prize__img--bike" src="assets/img/premio-bike.webp" alt="Bicicleta" width="480" height="504" loading="lazy" decoding="async"></span>
+              <p class="prize__label">Bicicleta</p>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="prizes prizes--bottom">
+        <div class="prizes__row prizes__row--3">
+          <article class="prize" data-reveal="up" data-reveal-delay="80">
+            <span class="prize__media"><img class="prize__img prize__img--kindle" src="assets/img/premio-kindle.webp" alt="Kindle" width="237" height="300" loading="lazy" decoding="async"></span>
+            <p class="prize__label">Kindle</p>
+          </article>
+          <article class="prize" data-reveal="up" data-reveal-delay="140">
+            <span class="prize__media"><img class="prize__img prize__img--robo" src="assets/img/premio-robo.webp" alt="Robô aspirador" width="520" height="330" loading="lazy" decoding="async"></span>
+            <p class="prize__label">Robô<br>Aspirador</p>
+          </article>
+          <article class="prize" data-reveal="up" data-reveal-delay="200">
+            <span class="prize__media"><img class="prize__img prize__img--jbl" src="assets/img/premio-jbl.webp" alt="Caixa de som JBL" width="346" height="206" loading="lazy" decoding="async"></span>
+            <p class="prize__label">Caixa de som<br>JBL</p>
+          </article>
+        </div>
+
+        <article class="prize prize--vouchers" data-reveal="up" data-reveal-delay="260">
+          <div class="tickets stage" aria-hidden="true">
+            <span class="ticket ticket--1"><img src="assets/svg/ticket-d.svg" alt=""><span class="ticket__val"><i>R$</i><b>5</b></span></span>
+            <span class="ticket ticket--2"><img src="assets/svg/ticket-c.svg" alt=""><span class="ticket__val"><i>R$</i><b>9</b></span></span>
+            <span class="ticket ticket--3"><img src="assets/svg/ticket-b.svg" alt=""><span class="ticket__val"><i>R$</i><b>11</b></span></span>
+            <span class="ticket ticket--4"><img src="assets/svg/ticket-a.svg" alt=""><span class="ticket__val"><i>R$</i><b>7</b></span></span>
+          </div>
+          <p class="prize__label">Você também concorre a muitos vouchers na raspinha!</p>
+        </article>
+      </div>
+
+      <a class="btn btn--cta" href="#cadastro" data-reveal="pop" data-reveal-delay="320">
+        <img class="btn__leaf" src="assets/svg/cta-leaf.svg" alt="" aria-hidden="true">
+        <span>Cadastre-se!</span>
+      </a>
+    </section>
+  </div>
+
+  <!-- ========================================================== 5. DÚVIDAS -->
+  <section class="section faq" id="duvidas" aria-labelledby="faq-title">
+    <img class="deco deco--faq-l" src="assets/svg/deco-duvidas-left.svg" alt="" aria-hidden="true" data-parallax="0.07">
+    <img class="deco deco--faq-r" src="assets/svg/deco-duvidas-right.svg" alt="" aria-hidden="true" data-parallax="-0.09">
+
+    <h2 class="title title--faq" id="faq-title" data-reveal="up">
+      <img class="title__spark title__spark--l" src="assets/svg/spark-left-orange.svg" alt="" aria-hidden="true" width="54" height="88">
+      <span class="title__text">
+        <span class="title__line">Tire aqui suas</span>
+        <span class="title__line title__line--display">dúvidas</span>
+      </span>
+      <img class="title__spark title__spark--r" src="assets/svg/spark-right-orange.svg" alt="" aria-hidden="true" width="56" height="81">
+    </h2>
+
+    <div class="faq__grid" data-accordion>
+      <div class="faq__col">
+        <div class="ac" data-reveal="up" data-reveal-delay="60">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-1" id="ac-1-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-1" role="region" aria-labelledby="ac-1-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="120">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-2" id="ac-2-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-2" role="region" aria-labelledby="ac-2-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="180">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-3" id="ac-3-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-3" role="region" aria-labelledby="ac-3-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="240">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-4" id="ac-4-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-4" role="region" aria-labelledby="ac-4-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__col">
+        <div class="ac" data-reveal="up" data-reveal-delay="90">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-5" id="ac-5-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-5" role="region" aria-labelledby="ac-5-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="150">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-6" id="ac-6-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-6" role="region" aria-labelledby="ac-6-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="210">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-7" id="ac-7-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-7" role="region" aria-labelledby="ac-7-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+
+        <div class="ac" data-reveal="up" data-reveal-delay="270">
+          <h3 class="ac__head">
+            <button class="ac__btn" type="button" aria-expanded="false" aria-controls="ac-8" id="ac-8-btn">
+              <span class="ac__q">Lorem ipsum dolor sit amet?</span>
+              <span class="ac__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="ac__panel" id="ac-8" role="region" aria-labelledby="ac-8-btn">
+            <div class="ac__inner"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================== 6. GANHADORES -->
+  <section class="section win" id="ganhadores" aria-labelledby="win-title">
+    <div class="win__pattern pattern pattern--orange" aria-hidden="true" data-parallax="0.05"></div>
+
+    <h2 class="title title--win" id="win-title" data-reveal="up">
+      <img class="title__spark title__spark--l" src="assets/svg/spark-left-purple.svg" alt="" aria-hidden="true" width="54" height="88">
+      <span class="title__text">
+        <span class="title__line">Confira aqui os</span>
+        <span class="title__line title__line--display">ganhadores!</span>
+      </span>
+      <img class="title__spark title__spark--r" src="assets/svg/spark-right-purple.svg" alt="" aria-hidden="true" width="56" height="81">
+    </h2>
+
+    <div class="win__controls" data-reveal="up" data-reveal-delay="100">
+      <div class="tabs" role="tablist" aria-label="Tipo de sorteio">
+        <button class="tab is-active" role="tab" type="button" aria-selected="true" aria-controls="panel-sorteios" id="tab-sorteios">Ganhadores Sorteios</button>
+        <button class="tab" role="tab" type="button" aria-selected="false" aria-controls="panel-roleta" id="tab-roleta" tabindex="-1">Ganhadores Raspinha</button>
+      </div>
+
+      <div class="search">
+        <label class="sr-only" for="win-search">Procurar ganhador</label>
+        <input class="search__input" id="win-search" type="search" placeholder="Procurar Ganhador" autocomplete="off" data-win-search>
+        <img class="search__icon" src="assets/icons/search.svg" alt="" aria-hidden="true" width="24" height="24">
+      </div>
+    </div>
+
+    <div class="card win__card" data-reveal="up" data-reveal-delay="160">
+      <div class="win__scroll" data-win-scroll tabindex="0">
+        <ul class="win__list" role="tabpanel" id="panel-sorteios" aria-labelledby="tab-sorteios" data-win-list="sorteios"></ul>
+        <ul class="win__list" role="tabpanel" id="panel-roleta" aria-labelledby="tab-roleta" data-win-list="roleta" hidden></ul>
+        <p class="win__empty" data-win-empty hidden>Nenhum ganhador encontrado para esta busca.</p>
+      </div>
+      <div class="win__bar" aria-hidden="true"><span data-win-thumb></span></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================ 7. RODAPÉ -->
+<footer class="footer" id="rodape">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__brand" data-reveal="up">
+        <img class="footer__logo" src="assets/svg/logo-footer.svg" alt="Açaí no Kilo" width="117" height="123" loading="lazy">
+        <ul class="social">
+          <li><a class="social__link" href="https://www.instagram.com/polgo.varejointeligente/" target="_blank" rel="noopener" aria-label="Instagram"><img src="assets/icons/instagram.svg" alt="" width="32" height="32" loading="lazy"></a></li>
+          <li><a class="social__link" href="#" aria-label="Facebook"><img src="assets/icons/facebook.svg" alt="" width="32" height="32" loading="lazy"></a></li>
+          <li><a class="social__link" href="#" aria-label="TikTok"><img src="assets/icons/tiktok.svg" alt="" width="32" height="32" loading="lazy"></a></li>
+          <li><a class="social__link" href="#" aria-label="WhatsApp"><img src="assets/icons/whatsapp.svg" alt="" width="32" height="32" loading="lazy"></a></li>
+        </ul>
+      </div>
+
+      <nav class="footer__col" aria-labelledby="f-sessoes" data-reveal="up" data-reveal-delay="80">
+        <h2 class="footer__title" id="f-sessoes">Sessões</h2>
+        <ul class="footer__list">
+          <li><a href="#kv">Home</a></li>
+          <li><a href="#como-participar">Como Participar</a></li>
+          <li><a href="#premios">Prêmios</a></li>
+          <li><a href="#duvidas">Dúvidas Frequentes</a></li>
+          <li><a href="#ganhadores">Ganhadores</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer__col" aria-labelledby="f-legais" data-reveal="up" data-reveal-delay="140">
+        <h2 class="footer__title" id="f-legais">Legais</h2>
+        <ul class="footer__list">
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+          <li><a href="#">Regulamento</a></li>
+        </ul>
+      </nav>
+
+      <div class="cert" data-reveal="up" data-reveal-delay="200">
+        <p class="cert__kicker">Certificado de autorização</p>
+        <p class="cert__number">SPA/ME Nº 00.000000/2025</p>
+        <p class="cert__note">Consulte o regulamento completo.</p>
+      </div>
+    </div>
+
+    <hr class="footer__rule">
+
+    <p class="footer__legal">Participação válida apenas no período de DD/MM/AAAA a DD/MM/AAAA. Consulte os termos de participação, datas dos sorteios e regulamentos completos no site. Imagens meramente ilustrativas. Premiação entregue via carteira digital no valor de R$ 00.000,00.</p>
+
+    <div class="footer__bottom">
+      <p>Copyright © Todos os direitos reservados</p>
+      <p class="footer__by">
+        <span>Copyright © Feito com <span class="footer__heart">❤</span></span>
+        <img src="assets/svg/polgo.svg" alt="Grupo Polgo" width="200" height="28" loading="lazy">
+      </p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" type="button" aria-label="Voltar ao topo" data-to-top hidden>
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5l-7 7h4v7h6v-7h4z" fill="currentColor"/></svg>
+</button>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* ==========================================================================
+   Tokens — Sempre Presente Fribal
+   Valores extraídos do Figma (DddjoLErx7W0azoDgxZWnN).
+   ========================================================================== */
+
+:root {
+  /* ---------- Cores ---------- */
+  --c-red:        #da3334; /* vermelho Fribal: pill do logo, títulos de card    */
+  --c-red-cta:    #e61e29; /* botão CADASTRE-SE                                 */
+  --c-red-deep:   #b7181f; /* faixa "Lojas participantes"                       */
+  --c-red-dark:   #b3161f; /* estado :hover dos CTAs (derivado)                 */
+  --c-brown:      #a33f17; /* bordas, badges, base dos cards, accordion         */
+  --c-brown-alt:  #ac4617; /* números do selo de cupom                          */
+  --c-brown-text: #581a02; /* corpo das respostas do FAQ                        */
+  --c-tan:        #d1975b; /* fundo do menu e do rodapé                         */
+  --c-sand:       #e1a466; /* topo dos cards, borda dos cards de loja           */
+  --c-sand-soft:  #e8be8a; /* círculo "=" do selo                               */
+  --c-cream:      #fbf9f0; /* fundo da elipse de prêmios                        */
+  --c-cream-bd:   #f5d7b1; /* borda da elipse de prêmios                        */
+  --c-yellow:     #fcd922; /* CPF / número da sorte                             */
+  --c-peach:      #ba5718; /* "COMPRE. CADASTRE. CONCORRA."                     */
+  --c-gray:       #6e6e6e; /* "A partir de" / "em compras"                      */
+  --c-white:      #fff;
+
+  --shadow-card:  5px 10px 5px rgba(163, 63, 23, .10);
+  --shadow-lift:  8px 18px 26px rgba(163, 63, 23, .22);
+  --shadow-soft:  0 10px 5px rgba(163, 63, 23, .10);
+  --shadow-modal: 0 24px 60px rgba(88, 26, 2, .35);
+
+  /* ---------- Tipografia ---------- */
+  --f-display: "Poppins", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --f-brand:   "Signika", var(--f-display);
+  --f-body:    "Inter", var(--f-display);
+
+  /* ---------- Movimento ----------
+     Equivalentes CSS dos springs do Figma. As durações 300ms / 600ms são as
+     mesmas definidas no protótipo.                                          */
+  --dur-fast:    300ms;
+  --dur-slow:    600ms;
+  --dur-reveal:  700ms;
+  --ease-slow:   cubic-bezier(.33, 0, .15, 1);      /* Figma "Slow"          */
+  --ease-gentle: cubic-bezier(.25, .46, .45, .94);  /* Figma "Gentle"        */
+  --ease-quick:  cubic-bezier(.4, 0, .2, 1);        /* Figma "Quick"         */
+  --ease-bouncy: cubic-bezier(.34, 1.56, .64, 1);   /* Figma "Bouncy"        */
+
+  /* ---------- Layout ---------- */
+  --w-page:    1400px;  /* largura máxima do conteúdo (Figma)                */
+  --w-footer:  1280px;  /* largura máxima do rodapé (Figma)                  */
+  --h-header:  70px;    /* altura do menu                                    */
+  --h-header-sticky: 60px;
+  --pad-x:     clamp(16px, 4vw, 40px);
+
+  /* Deslocamento usado pelo scroll ancorado e pelo scroll-padding. */
+  --scroll-offset: 90px;
+}

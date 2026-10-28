@@ -1,0 +1,1362 @@
+/* =============================================================================
+   PERSIPISOS — Campanha "Você de carro 0km é na Persipisos"
+   HTML + CSS + JS puro, zero dependências.
+
+   Referências Figma:
+   · DESKTOP           node 36:376  (1920 × 5429)
+   · DESKTOP ULTRAWIDE node 27:137  (2560 — mesma composição, mais largura)
+   · MOBILE            node 1:488   (360 × 5699)
+
+   Sumário
+   01. Tokens
+   02. Reset / base
+   03. Utilitários e animações de entrada (scroll reveal)
+   04. Componentes compartilhados (CTA, pill, título de seção)
+   05. Header + navegação + drawer mobile
+   06. KV (hero)
+   07. Como participar
+   08. Prêmios
+   09. Dúvidas frequentes
+   10. Ganhadores
+   11. Rodapé
+   12. Utilidades flutuantes (progresso de scroll, voltar ao topo)
+   13. Responsivo
+   14. Preferências de movimento reduzido / impressão
+   ========================================================================== */
+
+/* ============================== 01. TOKENS ============================== */
+:root {
+  /* Cores — extraídas do Figma */
+  --c-dark:          #282828;  /* fundo de seções e menu            */
+  --c-kv:            #21252a;  /* fundo do KV                       */
+  --c-black:         #000;
+  --c-ink:           #1d1d1d;  /* texto sobre pill laranja          */
+  --c-white:         #fff;
+
+  --c-orange:        #f36c21;  /* CTA (default)                     */
+  --c-orange-hover:  #d04a00;  /* CTA (hover) — variante do Figma   */
+  --c-orange-bright: #fc7220;  /* botão login, borda topo do card   */
+  --c-orange-border: #da5d14;  /* bordas dos cards de etapa         */
+  --c-orange-light:  #ff7c33;  /* "0KM", fim do gradiente           */
+  --c-orange-deep:   #b73a00;  /* início do gradiente da barrinha   */
+  --c-orange-soft:   #ffc58c;  /* sombra lateral do card de período */
+  --c-orange-mid:    #fd942c;  /* início do gradiente do período    */
+  --c-orange-dark:   #d3510f;  /* fim do gradiente do período       */
+
+  --c-panel:         #464646;  /* corpo do accordion                */
+  --c-line:          #c9c9cb;  /* borda do accordion                */
+  --c-muted:         #a9c4dc;  /* placeholder da busca              */
+
+  /* Tipografia */
+  --font:      "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-alt:  "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Movimento — padrões "slow" do Figma (300ms / 600ms, ease-out) */
+  --t-fast:   300ms;
+  --t-slow:   600ms;
+  --ease-out: cubic-bezier(0, 0, 0.58, 1);            /* Ease out do Figma */
+  --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);         /* desaceleração suave */
+  --ease-back: cubic-bezier(0.34, 1.4, 0.64, 1);      /* leve overshoot */
+
+  /* Layout */
+  --container: 1280px;
+  --gutter: 40px;
+  --header-h: 70px;
+}
+
+/* ============================ 02. RESET / BASE ============================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--c-dark);
+  color: var(--c-white);
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.4;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/* `clip` corta o transbordo horizontal sem transformar o <body> em contêiner
+   de rolagem — evita efeitos colaterais em position: sticky/fixed. */
+@supports (overflow: clip) {
+  body { overflow-x: clip; }
+}
+
+img, svg, picture { display: block; max-width: 100%; }
+img { height: auto; }
+button { font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p { margin: 0; }
+hr { border: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--c-orange-bright);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection { background: var(--c-orange); color: var(--c-white); }
+
+/* Scrollbar discreta na identidade da campanha */
+@supports (scrollbar-color: red blue) {
+  html { scrollbar-color: var(--c-orange-border) var(--c-dark); scrollbar-width: thin; }
+}
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #1c1c1c; }
+::-webkit-scrollbar-thumb { background: var(--c-orange-border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-orange); }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed; top: 8px; left: 8px; z-index: 200;
+  transform: translateY(-200%);
+  padding: 12px 20px; border-radius: 10px;
+  background: var(--c-orange); color: var(--c-white); font-weight: 700;
+  transition: transform var(--t-fast) var(--ease-out);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* ==================== 03. SCROLL REVEAL (entrada gradual) ==================== */
+/* Estado inicial só é aplicado quando o JS confirma suporte (classe em <html>),
+   garantindo que o conteúdo apareça normalmente se o JS falhar.
+
+   A entrada usa ANIMAÇÃO, não `transition`, de propósito: `.js .reveal` tem
+   especificidade maior que a dos componentes, então uma `transition` aqui
+   sobrescreveria a transição de hover de cards, CTA, accordion etc., fazendo o
+   hover trocar de estado instantaneamente. Animação one-shot não colide com
+   transição de estado.                                                        */
+.js .reveal {
+  opacity: 0;
+  --reveal-anim: reveal-fade;
+}
+.js .reveal[data-reveal="up"]    { --reveal-anim: reveal-up; }
+.js .reveal[data-reveal="down"]  { --reveal-anim: reveal-down; }
+.js .reveal[data-reveal="left"]  { --reveal-anim: reveal-left; }
+.js .reveal[data-reveal="right"] { --reveal-anim: reveal-right; }
+.js .reveal[data-reveal="zoom"]  { --reveal-anim: reveal-zoom; }
+
+.js .reveal.is-visible {
+  animation: var(--reveal-anim) var(--t-slow) var(--ease-out) var(--reveal-delay, 0ms) both;
+}
+
+@keyframes reveal-fade  { from { opacity: 0; }                              to { opacity: 1; } }
+@keyframes reveal-up    { from { opacity: 0; transform: translateY(38px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-down  { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-left  { from { opacity: 0; transform: translateX(-46px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-right { from { opacity: 0; transform: translateX(46px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-zoom  { from { opacity: 0; transform: scale(0.9); }       to { opacity: 1; transform: none; } }
+
+/* ======================= 04. COMPONENTES COMPARTILHADOS ======================= */
+
+/* -------- CTA "CADASTRE-SE" -------------------------------------------------
+   Figma: default  bg #f36c21 · pad 17.632/52.895 · radius 528.947 · 26.447px
+          hover    bg #d04a00 · escala 1.098 (58.077/52.895)
+   -------------------------------------------------------------------------- */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 17.632px 52.895px;
+  border-radius: 528.947px;
+  background: var(--c-orange);
+  box-shadow: 0 9px 11.8px rgba(0, 0, 0, 0.42);
+  color: var(--c-white);
+  font-size: clamp(20px, 1rem + 1.1vw, 26.447px);
+  font-weight: 700;
+  line-height: 31.207px;
+  letter-spacing: -1.5603px;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color var(--t-fast) var(--ease-out),
+    box-shadow var(--t-fast) var(--ease-out),
+    scale var(--t-fast) var(--ease-out);
+}
+.cta__label { position: relative; z-index: 2; }
+
+/* Brilho que atravessa o botão no hover */
+.cta::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -60%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.38), transparent);
+  transform: skewX(-18deg);
+  opacity: 0;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .cta:hover {
+    background: var(--c-orange-hover);
+    box-shadow: 0 9.882px 12.956px rgba(0, 0, 0, 0.42);
+    scale: 1.098;
+  }
+  .cta:hover::after { animation: cta-shine 700ms var(--ease-out); }
+}
+.cta:focus-visible { background: var(--c-orange-hover); scale: 1.098; }
+.cta:active { scale: 1.03; transition-duration: 90ms; }
+
+@keyframes cta-shine {
+  from { left: -60%; opacity: 0; }
+  20%  { opacity: 1; }
+  to   { left: 115%; opacity: 0; }
+}
+
+/* -------- Pill laranja (PRÊMIO LOJISTA / PRÊMIO CLIENTE) -------- */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.504px 11.916px;
+  border-radius: 225.108px;
+  background: var(--c-orange);
+  color: var(--c-ink);
+  font-size: clamp(8px, 0.286rem + 0.52vw, 11.255px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0.3025em;
+  text-indent: 0.3025em;  /* compensa o tracking na última letra */
+  white-space: nowrap;
+}
+
+/* -------- Título de seção (72px desktop → 39.332px mobile) -------- */
+.section-title {
+  font-size: clamp(39.332px, 1.659rem + 3.551vw, 72px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* ================== 05. HEADER / NAVEGAÇÃO / DRAWER MOBILE ================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-h);
+  background: var(--c-dark);
+  transition: box-shadow var(--t-fast) var(--ease-out), background-color var(--t-fast) var(--ease-out);
+}
+.header.is-stuck {
+  background: rgba(40, 40, 40, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  height: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.header__logo { flex-shrink: 0; display: block; }
+.header__logo img {
+  width: 144px;
+  height: 51.278px;
+  object-fit: contain;
+  transition: scale var(--t-fast) var(--ease-out), filter var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .header__logo:hover img {
+    scale: 1.05;
+    filter: drop-shadow(0 4px 14px rgba(252, 114, 32, 0.55));
+  }
+}
+
+.nav { flex: 1; min-width: 0; }
+.nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 5px 30px;
+}
+.nav__link {
+  position: relative;
+  display: inline-block;
+  padding-block: 4px;
+  font-size: 16px;
+  white-space: nowrap;
+  transition: color var(--t-fast) var(--ease-out);
+}
+/* Sublinhado que cresce a partir do centro */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c-orange-bright);
+  transform: translateX(-50%);
+  transition: width var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .nav__link:hover { color: var(--c-orange-bright); }
+  .nav__link:hover::after { width: 100%; }
+}
+.nav__link.is-active { color: var(--c-orange-bright); }
+.nav__link.is-active::after { width: 100%; }
+
+/* -------- Botão Login/Cadastro -------- */
+.btn-login {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 30px;
+  border-radius: 10px;
+  background: var(--c-orange-bright);
+  color: var(--c-white);
+  font-size: 16px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background-color var(--t-fast) var(--ease-out),
+    box-shadow var(--t-fast) var(--ease-out),
+    translate var(--t-fast) var(--ease-out);
+}
+.btn-login__icon { width: 24px; height: 24px; flex-shrink: 0; }
+@media (hover: hover) {
+  .btn-login:hover {
+    background: var(--c-orange-light);
+    translate: 0 -2px;
+    box-shadow: 0 8px 20px rgba(252, 114, 32, 0.4);
+  }
+}
+.btn-login:active { translate: 0 0; }
+
+/* -------- Hambúrguer (mobile) -------- */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 4.37px;
+  width: 24.583px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  width: 100%;
+  height: 3.278px;
+  border-radius: 3.278px;
+  background: var(--c-orange-border);
+  transition: translate var(--t-fast) var(--ease-out), rotate var(--t-fast) var(--ease-out), opacity var(--t-fast) var(--ease-out);
+}
+.burger[aria-expanded="true"] span:nth-child(1) { translate: 0 7.65px; rotate: 45deg; }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { translate: 0 -7.65px; rotate: -45deg; }
+
+/* -------- Drawer mobile -------- */
+.drawer { position: fixed; inset: 0; z-index: 150; }
+.drawer[hidden] { display: none; }
+
+.drawer__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.66);
+  opacity: 0;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  transition: opacity var(--t-fast) var(--ease-out);
+}
+.drawer__panel {
+  position: absolute;
+  inset-block: 0;
+  right: 0;
+  width: min(330px, 86vw);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 84px 28px 32px;
+  background: var(--c-dark);
+  border-left: 2px solid var(--c-orange-border);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+  translate: 100% 0;
+  transition: translate var(--t-slow) var(--ease-soft);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.drawer.is-open .drawer__backdrop { opacity: 1; }
+.drawer.is-open .drawer__panel { translate: 0 0; }
+
+.drawer__close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.drawer__close span {
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  width: 26px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--c-orange-border);
+}
+.drawer__close span:nth-child(1) { rotate: 45deg; }
+.drawer__close span:nth-child(2) { rotate: -45deg; }
+
+.drawer__list { display: flex; flex-direction: column; }
+.drawer__list a {
+  display: block;
+  padding: 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 17px;
+  transition: color var(--t-fast) var(--ease-out), padding-left var(--t-fast) var(--ease-out);
+}
+.drawer__list a:hover,
+.drawer__list a:focus-visible { color: var(--c-orange-bright); padding-left: 8px; }
+
+.drawer__cta { justify-content: center; margin-top: 22px; }
+
+/* Entrada escalonada dos itens do drawer */
+.drawer.is-open .drawer__list li,
+.drawer.is-open .drawer__cta {
+  animation: drawer-in var(--t-slow) var(--ease-soft) both;
+  animation-delay: calc(80ms + var(--i, 0) * 55ms);
+}
+@keyframes drawer-in {
+  from { opacity: 0; translate: 24px 0; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+/* ================================= 06. KV ================================= */
+/*  Sistema de escala:
+    · --u é o tamanho de UM pixel da prancheta do Figma na viewport atual.
+      Como `min()` só compara valores do mesmo tipo, a razão é expressa como
+      comprimento (min(1px, 100vw/1920)) e não como número puro.
+    · Cada elemento declara --x/--y/--w/--h em unidades da prancheta;
+      a regra genérica .kv__item multiplica esses números por --u.
+    · Acima de 1920px --u trava em 1px → a composição mantém as medidas
+      exatas do Figma e apenas o fundo se estende (comportamento ultrawide).  */
+.kv {
+  --u: min(1px, 100vw / 1920);
+  position: relative;
+  height: calc(1132 * var(--u));
+  background: var(--c-kv);
+  overflow: hidden;
+  isolation: isolate;
+}
+.kv__picture { display: contents; }
+
+.kv__bg {
+  position: absolute;
+  top: calc(50% + 0.47 * var(--u));
+  left: calc(50% + 277.38 * var(--u));
+  width: calc(4937.883 * var(--u));
+  height: calc(1132 * var(--u));
+  max-width: none;
+  translate: -50% -50%;
+  object-fit: cover;
+  z-index: 0;
+}
+/* Degradê da base da hero.
+   Era um PNG exportado, trocado por gradiente CSS por dois motivos:
+   · o export subia até alfa 0.965 e a ÚLTIMA LINHA caía para 0.125, abrindo uma
+     fresta translúcida na base por onde a imagem de fundo vazava;
+   · sendo raster, `object-fit: cover` podia recortar justamente a faixa opaca.
+   Ancorado em `bottom: 0`, encosta na base da hero em qualquer viewport, e vai
+   de 0% no topo a 100% embaixo. A cor é a mesma do fundo da hero (--c-kv). */
+.kv__fade {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: calc(364 * var(--u));
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(33, 37, 42, 0) 0%, var(--c-kv) 100%);
+}
+
+.kv__stage { position: absolute; inset: 0; z-index: 2; }
+
+.kv__item {
+  position: absolute;
+  left: calc(50% + var(--x) * var(--u));
+  top: calc(var(--y) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+  translate: -50% -50%;
+  object-fit: contain;
+  max-width: none;
+}
+
+/* Posições — prancheta DESKTOP 1920 × 1132 (centro vertical = 566) */
+.kv__titulo          { --x: -556.5; --y: 310.34; --w: 650;  --h: 306; z-index: 3; }
+.kv__condicoes       { --x:  536.5; --y: 275.48; --w: 615;  --h: 261.285; z-index: 3; }
+.kv__badge--lojista  { --x: -270.5; --y: 798.34; --w: 625;  --h: 315; z-index: 3; }
+.kv__badge--cliente  { --x:  316.5; --y: 798.34; --w: 625;  --h: 315; z-index: 3; }
+
+.kv__cta {
+  position: absolute;
+  left: 50%;
+  top: calc(989.47 * var(--u));
+  translate: -50% -50%;
+  z-index: 4;
+  /* Mantém o rótulo legível quando a composição encolhe */
+  padding: max(11px, calc(17.632 * var(--u))) max(30px, calc(52.895 * var(--u)));
+  font-size: max(15px, calc(26.447 * var(--u)));
+  line-height: 1.18;
+}
+
+/* Animações contínuas do KV — encadeadas com a animação de entrada, já que as
+   duas controlam `transform`. A de loop entra depois (delay) e, por vir por
+   último na lista, prevalece a partir daí. */
+.js .kv__titulo.is-visible {
+  animation:
+    var(--reveal-anim) var(--t-slow) var(--ease-out) var(--reveal-delay, 0ms) both,
+    kv-breathe 7s var(--ease-out) 600ms infinite;
+}
+.js .kv__condicoes.is-visible {
+  animation:
+    var(--reveal-anim) var(--t-slow) var(--ease-out) var(--reveal-delay, 0ms) both,
+    kv-float 6s ease-in-out 800ms infinite;
+}
+.js .kv__badge.is-visible {
+  animation:
+    var(--reveal-anim) var(--t-slow) var(--ease-out) var(--reveal-delay, 0ms) both,
+    kv-float 5.4s ease-in-out 900ms infinite;
+}
+.js .kv__badge--cliente.is-visible {
+  animation-delay: var(--reveal-delay, 0ms), 1600ms;
+}
+
+/* Sem JS as peças ficam estáticas nas posições do Figma. */
+
+/* Escala 1 → 1.083: proporção exata entre as variantes do componente LOGO
+   no Figma (650×306 → 704×331). */
+@keyframes kv-breathe {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.083); }
+}
+@keyframes kv-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-13px); }
+}
+
+@media (hover: hover) {
+  .kv__badge, .kv__condicoes { transition: filter var(--t-fast) var(--ease-out); }
+  .kv__badge:hover, .kv__condicoes:hover {
+    filter: drop-shadow(0 12px 28px rgba(252, 114, 32, 0.5));
+  }
+}
+
+/* ========================= 07. COMO PARTICIPAR ========================= */
+.steps {
+  position: relative;
+  padding: 80px var(--gutter);
+  background: var(--c-dark);
+  overflow: hidden;
+  isolation: isolate;
+}
+.steps__picture { display: contents; }
+.steps__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+.steps__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 78px;
+}
+.steps__title-2 { color: inherit; }
+
+/* Grade escalonada — replica os insets do Figma (cards 2 e 4 descem 14.18%) */
+.steps__cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.548%;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1215.884px;
+  /* Espaço para os cards deslocados. Padding em % resolve pela LARGURA:
+     45.9px ÷ 1215.884px = 3.775% — equivale ao deslocamento do Figma. */
+  padding-bottom: 3.775%;
+}
+.step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20.029px;
+  padding: 17.673px 11.782px 11.782px 16.495px;
+  border: 2.356px solid var(--c-orange-border);
+  border-radius: 17.673px;
+  background: rgba(0, 0, 0, 0.44);
+  /* Mesma cadência do hover dos prêmios: 600ms ease-out, sem overshoot. */
+  transition:
+    background var(--t-slow) var(--ease-out),
+    translate var(--t-slow) var(--ease-out),
+    box-shadow var(--t-slow) var(--ease-out),
+    border-color var(--t-slow) var(--ease-out);
+}
+/* Deslocamento vertical proporcional (14.18% de 324 ÷ altura do card) */
+.steps__cards .step:nth-child(2n) { translate: 0 16.52%; }
+
+.step__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 55.375px;
+  height: 55.375px;
+  border: 2.356px solid var(--c-orange-border);
+  border-radius: 50%;
+  font-size: clamp(23.195px, 1.252rem + 0.879vw, 31.28px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  transition:
+    background-color var(--t-slow) var(--ease-out),
+    color var(--t-slow) var(--ease-out),
+    scale var(--t-slow) var(--ease-out);
+}
+.step__title {
+  font-size: clamp(15.463px, 0.835rem + 0.586vw, 20.853px);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+.step__text {
+  max-width: 250.953px;
+  font-size: clamp(12.231px, 0.66rem + 0.464vw, 16.495px);
+  font-weight: 400;
+  line-height: 1.264;
+  letter-spacing: -0.05em;
+}
+
+/* Hover — variante documentada no Figma (fundo vira gradiente) + leve elevação */
+@media (hover: hover) {
+  .step:hover {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.44) 0%, rgba(102, 102, 102, 0.44) 100%);
+    border-color: var(--c-orange-light);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.38);
+    translate: 0 -6px;
+  }
+  .steps__cards .step:nth-child(2n):hover { translate: 0 calc(16.52% - 6px); }
+  .step:hover .step__num {
+    background: var(--c-orange-border);
+    color: var(--c-white);
+    scale: 1.05;
+  }
+}
+.step:focus-within {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.44) 0%, rgba(102, 102, 102, 0.44) 100%);
+  border-color: var(--c-orange-light);
+}
+
+/* ============================== 08. PRÊMIOS ============================== */
+.prizes {
+  padding: 80px var(--gutter);
+  background: var(--c-dark);
+}
+.prizes__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 67px;
+}
+
+.prizes__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(1436.5px, 100%);
+}
+.prize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.prize__media { width: 100%; }
+.prize__img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 718.263 / 478.842;
+  object-fit: contain;
+  transition: scale var(--t-slow) var(--ease-out), filter var(--t-slow) var(--ease-out);
+}
+.prize.is-visible .prize__img { animation: prize-float 6.5s ease-in-out infinite; }
+.prize:nth-child(2).is-visible .prize__img { animation-delay: 900ms; }
+@keyframes prize-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-16px); }
+}
+
+.prize__card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15.025px;
+  width: 72.37%;
+  margin-top: -15.45%;   /* sobreposição de 111px sobre a imagem (Figma) */
+  padding: 34.558px 15.025px;
+  border-radius: 22.538px;
+  background: linear-gradient(180deg, var(--c-dark) 0%, var(--c-black) 100%);
+  box-shadow: 0 -4.508px 0 0 var(--c-orange-bright);
+  text-align: center;
+  transition: box-shadow var(--t-fast) var(--ease-out), translate var(--t-fast) var(--ease-out);
+}
+.prize__name {
+  font-size: clamp(22.787px, 1.01rem + 1.843vw, 39.738px);
+  font-weight: 700;
+  /* O Figma recorta a caixa de texto na altura das maiúsculas (40.568px
+     para uma fonte de 39.738px); o line-height abaixo reproduz isso. */
+  line-height: 1.02;
+}
+.prize__km {
+  color: var(--c-orange-light);
+  font-size: clamp(21.979px, 0.974rem + 1.777vw, 38.33px);
+  font-weight: 800;
+  line-height: 0.8;
+}
+.prize__bar {
+  width: 81.451px;
+  height: 4.791px;
+  border-radius: 35.934px;
+  background: linear-gradient(90deg, var(--c-orange-deep) 0%, var(--c-orange-light) 100%);
+  transition: width var(--t-fast) var(--ease-out);
+}
+
+/* O card de prêmio é rigorosamente proporcional no Figma. Medindo tudo em
+   `cqw` sobre o bloco .prize (718.263px no desktop) o card se mantém fiel em
+   qualquer viewport — e o nome nunca quebra linha.
+   Obs.: o contêiner precisa ser o ANCESTRAL (.prize); `cqw` usado no próprio
+   elemento com `container-type` resolveria contra a viewport.               */
+@supports (container-type: inline-size) {
+  .prize { container-type: inline-size; }
+
+  .prize__card {
+    gap: 2.0919cqw;
+    padding: 4.8113cqw 2.0919cqw;
+    border-radius: 3.1378cqw;
+    box-shadow: 0 -0.6276cqw 0 0 var(--c-orange-bright);
+  }
+  .prize__card .pill {
+    padding: 1.0447cqw 1.6590cqw;
+    font-size: 1.5670cqw;
+  }
+  .prize__name { font-size: 5.5324cqw; white-space: nowrap; }
+  .prize__km   { font-size: 5.3363cqw; }
+  .prize__bar  { width: 11.3401cqw; height: 0.6670cqw; }
+
+  @media (hover: hover) {
+    .prize:hover .prize__card {
+      box-shadow: 0 -0.6276cqw 0 0 var(--c-orange-light), 0 24px 46px rgba(0, 0, 0, 0.5);
+    }
+    .prize:hover .prize__bar { width: 19.5cqw; }
+  }
+}
+
+@media (hover: hover) {
+  .prize:hover .prize__img { scale: 1.06; filter: drop-shadow(0 22px 42px rgba(252, 114, 32, 0.4)); }
+  .prize:hover .prize__card { translate: 0 -6px; box-shadow: 0 -4.508px 0 0 var(--c-orange-light), 0 24px 46px rgba(0, 0, 0, 0.5); }
+  .prize:hover .prize__bar { width: 140px; }
+}
+
+/* -------- Card de período -------- */
+.period {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(950px, 100%);
+  padding: 25px 10px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, var(--c-orange-mid) 0%, var(--c-orange-dark) 100%);
+  box-shadow: -3px 0 0 0 var(--c-orange-soft);
+  color: var(--c-white);
+  text-align: center;
+}
+.period__label {
+  font-size: clamp(8px, 0.314rem + 0.341vw, 9.397px);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: 0.3025em;
+  text-indent: 0.3025em;
+}
+.period__dates {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.28em;
+  font-size: clamp(22.095px, 1.11rem + 1.2vw, 33.176px);
+  font-weight: 700;
+  line-height: 1.18;
+}
+.period__dates em {
+  font-size: clamp(9.324px, 0.467rem + 0.508vw, 14px);
+  font-weight: 600;
+  font-style: normal;
+}
+.period__text {
+  max-width: 876px;
+  font-size: clamp(11.696px, 0.588rem + 0.638vw, 17.562px);
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+.prizes__legal {
+  max-width: 768px;
+  font-size: clamp(10px, 0.55rem + 0.22vw, 12px);
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ======================== 09. DÚVIDAS FREQUENTES ======================== */
+.faq {
+  position: relative;
+  padding: 80px var(--gutter);
+  background: var(--c-white);
+  color: var(--c-dark);
+  overflow: hidden;
+}
+.faq__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.faq__title { color: var(--c-dark); text-shadow: none; }
+
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.faq__item {
+  border: 1px solid var(--c-line);
+  border-radius: 30px;
+  overflow: hidden;
+  transition: box-shadow var(--t-fast) var(--ease-out), border-color var(--t-fast) var(--ease-out);
+}
+.faq__item[hidden] { display: none; }
+.faq__item.is-open { box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14); border-color: var(--c-orange-bright); }
+@media (hover: hover) {
+  .faq__item:hover { box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12); border-color: var(--c-orange-bright); }
+}
+
+.faq__heading { margin: 0; font-size: inherit; font-weight: inherit; }
+.faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  padding: 25px 30px;
+  border: 0;
+  background: var(--c-dark);
+  color: var(--c-white);
+  font-family: var(--font-alt);
+  font-size: clamp(14px, 0.75rem + 0.6vw, 20px);
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--t-fast) var(--ease-out), padding-left var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .faq__trigger:hover { background: #333; padding-left: 38px; }
+}
+.faq__item.is-open .faq__trigger { background: #1f1f1f; }
+
+.faq__question { flex: 1; min-width: 0; }
+
+.faq__icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 28.42px;
+  color: var(--c-orange-bright);
+  /* Fechado = seta para baixo (o vetor do Figma aponta para cima) */
+  transform: scaleY(-1);
+  transition: transform var(--t-fast) var(--ease-out), color var(--t-fast) var(--ease-out);
+}
+.faq__icon svg { width: 28.42px; height: 14.21px; }
+.faq__item.is-open .faq__icon { transform: scaleY(1); color: var(--c-orange-light); }
+
+/* Abertura/fechamento animado sem depender de altura fixa */
+.faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  background: var(--c-panel);
+  transition: grid-template-rows var(--t-fast) var(--ease-out);
+}
+.faq__item.is-open .faq__panel { grid-template-rows: 1fr; }
+.faq__answer {
+  overflow: hidden;
+  min-height: 0;
+  color: var(--c-white);
+  font-family: var(--font-alt);
+  font-size: clamp(14px, 0.8rem + 0.25vw, 16px);
+  line-height: 1.216;
+}
+.faq__answer p { padding: 30px; }
+
+.faq__empty {
+  width: 100%;
+  padding: 24px;
+  border: 1px dashed var(--c-line);
+  border-radius: 20px;
+  color: #6b6b6b;
+  text-align: center;
+}
+.faq__empty[hidden] { display: none; }
+
+/* -------- Campo de busca -------- */
+.faq__search {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px 18px 26px;
+  border: 2px solid var(--c-dark);
+  border-radius: 88px;
+  background: var(--c-dark);
+  transition: border-color var(--t-fast) var(--ease-out), box-shadow var(--t-fast) var(--ease-out);
+}
+.faq__search:focus-within {
+  border-color: var(--c-orange-bright);
+  box-shadow: 0 0 0 4px rgba(252, 114, 32, 0.2);
+}
+.faq__search-icon {
+  flex-shrink: 0;
+  width: 29.917px;
+  height: 29.917px;
+  /* No Figma o ícone é #282828 sobre fundo #282828 (invisível).
+     Alinhado ao placeholder para ficar perceptível. */
+  color: var(--c-muted);
+  transition: color var(--t-fast) var(--ease-out);
+}
+.faq__search:focus-within .faq__search-icon { color: var(--c-orange-bright); }
+
+.faq__search-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: var(--c-white);
+  font-family: var(--font);
+  font-size: 16px;
+}
+.faq__search-input::placeholder { color: var(--c-muted); opacity: 1; }
+.faq__search-input:focus { outline: none; }
+.faq__search-input::-webkit-search-cancel-button { filter: invert(1) opacity(0.6); cursor: pointer; }
+
+/* ============================ 10. GANHADORES ============================ */
+.winners {
+  position: relative;
+  padding: 114px var(--gutter) 80px;
+  background: #1b1b1b;
+  overflow: hidden;
+  isolation: isolate;
+}
+.winners__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+.winners__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 58px;
+}
+.winners__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 50.176px;
+  width: 100%;
+  max-width: 996px;
+}
+.winner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12.544px;
+  padding: 28.851px 12.544px;
+  border-radius: 18.816px;
+  background: linear-gradient(180deg, var(--c-dark) 0%, var(--c-black) 100%);
+  box-shadow: 0 -3.763px 0 0 var(--c-orange-bright);
+  text-align: center;
+  transition: box-shadow var(--t-fast) var(--ease-out), translate var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .winner:hover {
+    translate: 0 -6px;
+    box-shadow: 0 -3.763px 0 0 var(--c-orange-light), 0 22px 44px rgba(0, 0, 0, 0.55);
+  }
+}
+.winner__title {
+  font-size: clamp(24.312px, 1.303rem + 0.963vw, 33.176px);
+  font-weight: 700;
+  line-height: 1.18;
+}
+.winner__name {
+  color: var(--c-orange-light);
+  font-size: clamp(12.87px, 0.666rem + 0.51vw, 17.562px);
+  font-weight: 700;
+  line-height: 1.6;
+}
+.winner__draw {
+  font-size: clamp(12.87px, 0.666rem + 0.51vw, 17.562px);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ============================== 11. RODAPÉ ============================== */
+.footer {
+  padding: 70px var(--gutter) 40px;
+  background: var(--c-dark);
+  overflow: hidden;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 60px;
+  width: 100%;
+}
+.footer__brand { display: flex; flex-direction: column; gap: 26px; align-items: flex-start; }
+.footer__logo { width: 224px; height: 80px; object-fit: contain; }
+
+.social { display: flex; gap: 29px; }
+.social__link {
+  display: block;
+  width: 32px;
+  height: 32px;
+  color: var(--c-white);
+  transition: color var(--t-fast) var(--ease-out), translate var(--t-fast) var(--ease-back), scale var(--t-fast) var(--ease-back);
+}
+.social__link svg { width: 32px; height: 32px; }
+@media (hover: hover) {
+  .social__link:hover { color: var(--c-orange-bright); translate: 0 -4px; scale: 1.12; }
+}
+
+.footer__nav { display: flex; flex-direction: column; gap: 12px; }
+.footer__heading {
+  font-size: clamp(14.187px, 0.78rem + 0.14vw, 16px);
+  font-weight: 700;
+}
+.footer__nav ul { display: flex; flex-direction: column; gap: 12px; }
+.footer__nav a {
+  display: inline-block;
+  font-size: clamp(13.3px, 0.74rem + 0.13vw, 15px);
+  transition: color var(--t-fast) var(--ease-out), translate var(--t-fast) var(--ease-out);
+}
+@media (hover: hover) {
+  .footer__nav a:hover { color: var(--c-orange-bright); translate: 5px 0; }
+}
+.footer__phone { font-family: var(--font-alt); }
+
+.footer__rule { width: 100%; height: 1px; background: rgba(255, 255, 255, 0.85); }
+
+.footer__legal {
+  width: 100%;
+  font-size: clamp(10.64px, 0.6rem + 0.1vw, 12px);
+  line-height: 1.45;
+}
+
+.footer__credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  width: 100%;
+  font-size: clamp(10.64px, 0.6rem + 0.1vw, 12px);
+}
+.footer__heart { color: var(--c-orange); display: inline-block; animation: heartbeat 2.4s var(--ease-out) infinite; }
+@keyframes heartbeat {
+  0%, 70%, 100% { transform: scale(1); }
+  35%           { transform: scale(1.25); }
+}
+.footer__polgo { width: 199.802px; height: 27.569px; object-fit: contain; }
+
+/* ====================== 12. UTILIDADES FLUTUANTES ====================== */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 120;
+  height: 3px;
+  background: transparent;
+  pointer-events: none;
+}
+.scroll-progress__bar {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--c-orange-deep), var(--c-orange-light));
+}
+
+.to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--c-orange);
+  color: var(--c-white);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  opacity: 0;
+  translate: 0 20px;
+  pointer-events: none;
+  transition: opacity var(--t-fast) var(--ease-out), translate var(--t-fast) var(--ease-out), background-color var(--t-fast) var(--ease-out);
+}
+.to-top svg { width: 20px; height: 10px; }
+.to-top.is-visible { opacity: 1; translate: 0 0; pointer-events: auto; }
+.to-top:hover { background: var(--c-orange-hover); }
+
+/* ============================= 13. RESPONSIVO ============================= */
+
+/* ---------- ≤ 1280px: reduz o respiro lateral ---------- */
+@media (max-width: 1280px) {
+  :root { --gutter: 28px; }
+  .steps__inner { gap: 56px; }
+  .prizes__inner { gap: 48px; }
+}
+
+/* ---------- ≤ 1023px: composição MOBILE do Figma (prancheta 360 × 929) ---------- */
+@media (max-width: 1023.98px) {
+
+  :root { --header-h: 54.628px; --gutter: 21.851px; }
+
+  /* --- Header --- */
+  .header__inner { justify-content: space-between; gap: 16px; }
+  .header__logo img { width: 110px; height: 39px; }
+  .nav, .header > .header__inner > .btn-login { display: none; }
+  .burger { display: flex; }
+
+  /* --- KV mobile --- */
+  .kv {
+    --u: min(100vw / 360, 1.25px);
+    height: calc(929 * var(--u));
+  }
+  .kv__bg {
+    position: absolute;
+    inset: 0;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    translate: none;
+    object-fit: cover;
+    object-position: center;
+  }
+  /* Mesma ancoragem na base; no Figma mobile o degradê tem 360 de altura
+     (topo em 569.37 numa hero de 929 = encostado embaixo). */
+  .kv__fade { height: calc(360 * var(--u)); }
+
+  /* Posições — prancheta MOBILE 360 × 929 */
+  .kv__titulo         { --x:   -0.06; --y: 133.37; --w: 307.98; --h: 144.988; }
+  .kv__condicoes      { --x:    7.5;  --y: 286.87; --w: 321;    --h: 137; }
+  .kv__badge--lojista { --x:  -76.5;  --y: 564.37; --w: 237;    --h: 120; }
+  .kv__badge--cliente { --x:   64.5;  --y: 639.37; --w: 237;    --h: 120; }
+
+  .kv__cta {
+    top: calc(751 * var(--u));
+    padding: max(12px, calc(17.632 * var(--u))) max(34px, calc(52.895 * var(--u)));
+    font-size: max(16px, calc(26.447 * var(--u)));
+  }
+
+  /* --- Como participar (empilhado) --- */
+  .steps { padding: 65px var(--gutter) 43.702px; }
+  .steps__inner { gap: 39px; }
+  .steps__title { display: flex; flex-direction: column; line-height: 1; }
+  .steps__title-2 { color: var(--c-orange-border); }
+  .section-title { text-shadow: 1.093px 1.093px 2.185px rgba(0, 0, 0, 0.5); }
+
+  .steps__cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    max-width: 640px;
+    padding-bottom: 0;
+  }
+  .steps__cards .step:nth-child(2n) { translate: 0 0; }
+  @media (hover: hover) {
+    .steps__cards .step:nth-child(2n):hover { translate: 0 -6px; }
+  }
+  .step {
+    gap: 14.852px;
+    padding: 13.105px 8.737px 8.737px 12.231px;
+    border-width: 1.747px;
+    border-radius: 13.105px;
+  }
+  .step__num { width: 41.062px; height: 41.062px; border-width: 1.747px; }
+  .step__title { letter-spacing: 0.05em; }
+  .step__text { max-width: 100%; letter-spacing: -0.05em; }
+
+  /* --- Prêmios (empilhado) --- */
+  .prizes { padding: 43.702px var(--gutter); }
+  .prizes__inner { gap: 31px; }
+  /* No Figma mobile o bloco de prêmios sangra além do padding da seção
+     (353.566px numa coluna de 316.3px). */
+  .prizes__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 40px;
+    width: min(353.566px, calc(100vw - 12px));
+  }
+  .prize__card { width: 84.31%; margin-top: -13.59%; gap: 8.616px; padding: 19.817px 8.616px; border-radius: 12.924px; }
+  .prize__bar { width: 46.706px; height: 2.747px; }
+
+  /* Razões do mobile do Figma (bloco .prize = 353.566px, card = 298.095px) */
+  @supports (container-type: inline-size) {
+    .prize__card {
+      gap: 2.4369cqw;
+      padding: 5.6046cqw 2.4369cqw;
+      border-radius: 3.6553cqw;
+      box-shadow: 0 -0.7312cqw 0 0 var(--c-orange-bright);
+    }
+    .prize__card .pill { padding: 1.2170cqw 1.9325cqw; font-size: 1.8254cqw; }
+    .prize__name { font-size: 6.4449cqw; }
+    .prize__km   { font-size: 6.2164cqw; }
+    .prize__bar  { width: 13.2101cqw; height: 0.7770cqw; }
+    @media (hover: hover) {
+      .prize:hover .prize__card {
+        box-shadow: 0 -0.7312cqw 0 0 var(--c-orange-light), 0 18px 34px rgba(0, 0, 0, 0.5);
+      }
+      .prize:hover .prize__bar { width: 22cqw; }
+    }
+  }
+
+  .period { width: min(340px, 100%); gap: 9.324px; padding: 16.65px 6.66px; border-radius: 9.99px; box-shadow: -1.998px 0 0 0 var(--c-orange-soft); }
+
+  /* --- Dúvidas --- */
+  .faq { padding: 43.702px var(--gutter); }
+  .faq__inner { gap: 16.388px; }
+  .faq__title { display: flex; flex-direction: column; }
+  .faq__list { gap: 12px; }
+  .faq__item { border-radius: 16px; }
+  .faq__trigger { gap: 12px; padding: 16px 18px; }
+  @media (hover: hover) { .faq__trigger:hover { padding-left: 24px; } }
+  .faq__icon { width: 18px; }
+  .faq__icon svg { width: 18px; height: 9px; }
+  .faq__answer p { padding: 18px; }
+  .faq__search { gap: 12px; padding: 14px 16px; }
+  .faq__search-icon { width: 22px; height: 22px; }
+  .faq__search-input { font-size: 15px; }
+
+  /* --- Ganhadores --- */
+  .winners { padding: 43.702px var(--gutter); }
+  .winners__inner { gap: 42px; }
+  .winners__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 42px;
+    max-width: 340px;
+  }
+  .winner { gap: 9.193px; padding: 21.143px 9.193px; border-radius: 13.789px; box-shadow: 0 -2.758px 0 0 var(--c-orange-bright); }
+  @media (hover: hover) {
+    .winner:hover { box-shadow: 0 -2.758px 0 0 var(--c-orange-light), 0 18px 34px rgba(0, 0, 0, 0.55); }
+  }
+
+  /* --- Rodapé --- */
+  .footer { padding: 62.069px 35.468px 35.468px; }
+  .footer__inner { gap: 26.601px; align-items: stretch; }
+  .footer__cols { grid-template-columns: minmax(0, 1fr); gap: 53.202px; }
+  .footer__logo { width: 190px; height: 68px; }
+  .social { gap: 25.714px; }
+  .social__link, .social__link svg { width: 28.378px; height: 28.378px; }
+  .footer__credit { flex-direction: column; gap: 7.98px; }
+  .footer__polgo { width: 177.164px; height: 24.446px; }
+
+  .to-top { right: 16px; bottom: 16px; width: 44px; height: 44px; }
+}
+
+/* ---------- ≤ 640px: uma coluna nas etapas ---------- */
+@media (max-width: 640px) {
+  .steps__cards { grid-template-columns: minmax(0, 1fr); gap: 26px; max-width: 286px; }
+}
+
+/* ---------- ≥ 1920px (ultrawide): composição trava, fundo se estende ---------- */
+@media (min-width: 1920px) {
+  .kv { --u: 1px; }
+}
+
+/* ============ 14. MOVIMENTO REDUZIDO / IMPRESSÃO ============ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .js .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+@media print {
+  .header, .drawer, .to-top, .scroll-progress { display: none !important; }
+  body { background: #fff; color: #000; }
+  .faq__panel { grid-template-rows: 1fr !important; }
+}

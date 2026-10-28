@@ -1,0 +1,237 @@
+/* ==========================================================================
+   FESTIVAL 9 ANOS — AÇAÍ NO KILO · motion.css
+   --------------------------------------------------------------------------
+   1. Entradas com o scroll (reveal)
+   2. Parallax (scroll + ponteiro)
+   3. Loops de respiro / flutuação  — derivados das variantes do Figma
+   4. Gaveta do menu
+   5. prefers-reduced-motion
+   ========================================================================== */
+
+/* ============================================================ 1. REVEAL */
+[data-reveal] {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity var(--t-slow) linear,
+    transform var(--t-slow) var(--ease-slow);
+}
+[data-reveal="up"]   { transform: translate3d(0, 38px, 0); }
+[data-reveal="zoom"] { transform: scale(.93); }
+[data-reveal="pop"]  {
+  transform: translate3d(0, 16px, 0) scale(.86);
+  transition:
+    opacity var(--t-quick) linear,
+    transform var(--t-quick) var(--ease-bouncy);
+}
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+/* Depois de entrar, libera o will-change e devolve o transform aos loops */
+[data-reveal].is-done { will-change: auto; transition: none; }
+
+/* A faixa da mecânica nasce apagada e “acende”, como a variante do Figma */
+.strip__item[data-reveal] { opacity: .35; transform: translate3d(0, 10px, 0) scale(.94); }
+.strip__item[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ============================================================ 2. PARALLAX */
+
+/* Elementos com deslocamento vertical no scroll.
+   --pty vem do JS · --flip espelha o desenho sem brigar com o transform.  */
+.deco,
+.win__pattern {
+  --flip: 1;
+  transform: translate3d(0, var(--pty, 0px), 0) scaleX(var(--flip));
+  transition: transform 80ms linear;
+}
+
+/* KV: padrão e card acompanham scroll + ponteiro */
+.kv__pattern,
+.kv__card {
+  transform: translate3d(var(--mx, 0px), calc(var(--pty, 0px) + var(--my, 0px)), 0);
+  transition: transform var(--t-slow) var(--ease-slow);
+}
+
+/* KV: camadas de profundidade seguem o ponteiro com atraso suave.
+   O transform é único e combina reveal (--rv-*) com o ponteiro (--m*).   */
+.kv__stage [data-depth] {
+  --rv-y: 0px;
+  --rv-s: 1;
+  transform: translate3d(var(--mx, 0px), calc(var(--rv-y) + var(--my, 0px)), 0) scale(var(--rv-s));
+  transition:
+    transform var(--t-slow) var(--ease-slow),
+    opacity var(--t-slow) linear;
+}
+.kv__stage [data-depth][data-reveal]:not(.is-in) { --rv-y: 44px; --rv-s: .955; opacity: 0; }
+.kv__stage [data-depth][data-reveal].is-in { opacity: 1; }
+
+/* ============================================================ 3. LOOPS
+   Amplitudes lidas das variantes “Default → Variant2” dos componentes
+   MULHER KV, PREMIOS e Logo Campanha no Figma.                          */
+
+/* Logo da campanha: respiro (zoom em loop) */
+@keyframes breathe {
+  from { scale: 1; }
+  to   { scale: var(--amp, 1.045); }
+}
+.kv__logo-img {
+  animation: breathe 6s var(--ease-inout) infinite alternate;
+  transform-origin: 50% 50%;
+}
+
+/* Folhas: balanço lento, como uma brisa */
+@keyframes sway {
+  from { rotate: var(--from); }
+  to   { rotate: var(--to); }
+}
+.kv__folha-1 { --from: 2.35deg;  --to: 16deg; animation: sway 9s  var(--ease-inout) infinite alternate; transform-origin: 70% 80%; }
+.kv__folha-2 { --from: 55.62deg; --to: 74deg; animation: sway 11s var(--ease-inout) infinite alternate; transform-origin: 30% 80%; }
+
+/* Pote solto: flutua e gira um pouco */
+@keyframes floatSpin {
+  from { transform: translate3d(0, 0, 0); rotate: 34.6deg; }
+  to   { transform: translate3d(0, -14px, 0); rotate: 40.2deg; }
+}
+.kv__pote-solo { animation: floatSpin 7s var(--ease-inout) infinite alternate; }
+
+/* Composição de prêmios: cada camada respira em tempo próprio */
+@keyframes cardTilt {
+  from { rotate: -2.84deg; }
+  to   { rotate: -4.9deg; }
+}
+.kv__premios-card { animation: cardTilt 9s var(--ease-inout) infinite alternate; }
+
+@keyframes resortBreathe {
+  from { transform: none; rotate: -10.11deg; }
+  to   { transform: scale(1.075) translate3d(0, -6px, 0); rotate: -7.6deg; }
+}
+.kv__resort { animation: resortBreathe 8s var(--ease-inout) infinite alternate; transform-origin: 50% 60%; }
+
+@keyframes premiosBreathe {
+  from { transform: none; }
+  to   { transform: scale(1.05) translate3d(0, -14px, 0); }
+}
+.kv__premios-img { animation: premiosBreathe 7.5s var(--ease-inout) infinite alternate; transform-origin: 50% 60%; }
+
+.kv__badge--top    { animation: breathe 5s   var(--ease-inout) infinite alternate; --amp: 1.05; }
+.kv__badge--bottom { animation: breathe 6.5s var(--ease-inout) infinite alternate; --amp: 1.025; }
+
+/* Raspadinhas: a arte balança em volta do ângulo do Figma (±1.4°), com
+   ciclos longos e defasados por delay negativo — cada bilhete começa em
+   um ponto diferente do ciclo, sem esperar nem repetir o vizinho. A
+   amplitude é simétrica: o ângulo do desenho é o ponto médio, então a
+   média do movimento continua igual ao Figma.                          */
+@keyframes ticketSway {
+  from { rotate: calc(var(--rot) - 1.4deg); }
+  to   { rotate: calc(var(--rot) + 1.4deg); }
+}
+
+/* Prêmios: flutuação discreta e contínua nas imagens */
+@keyframes floatY {
+  from { translate: 0 0; }
+  to   { translate: 0 -8px; }
+}
+.prize__img--iphone   { animation: floatY 5.4s var(--ease-inout) infinite alternate; }
+.prize__img--tv       { animation: floatY 6.2s var(--ease-inout) infinite alternate .4s; }
+.prize__img--patinete { animation: floatY 5.8s var(--ease-inout) infinite alternate .2s; }
+.prize__img--tablet   { animation: floatY 6.6s var(--ease-inout) infinite alternate .6s; }
+.prize__img--bike     { animation: floatY 6s   var(--ease-inout) infinite alternate .8s; }
+.prize__img--kindle   { animation: floatY 5.6s var(--ease-inout) infinite alternate .1s; }
+.prize__img--robo     { animation: floatY 6.4s var(--ease-inout) infinite alternate .5s; }
+.prize__img--jbl      { animation: floatY 5.9s var(--ease-inout) infinite alternate .7s; }
+
+/* Folhas laranja do card “Como participar” */
+@keyframes leafBreath {
+  from { transform: scaleX(var(--flip, 1)) rotate(0deg); }
+  to   { transform: scaleX(var(--flip, 1)) rotate(-4deg); }
+}
+/* Pivô no centro: é a referência com que o Figma posiciona as folhas
+   (o giro estático de -87.79deg da direita não desloca a caixa).    */
+.cp__leaf--l { --flip: -1; animation: leafBreath 10s var(--ease-inout) infinite alternate; transform-origin: 50% 50%; }
+.cp__leaf--r { animation: leafBreath 12s var(--ease-inout) infinite alternate .8s; transform-origin: 50% 50%; }
+
+/* Coração do rodapé */
+@keyframes heartbeat {
+  0%, 100% { scale: 1; }
+  14%      { scale: 1.28; }
+  28%      { scale: 1; }
+  42%      { scale: 1.2; }
+  56%      { scale: 1; }
+}
+.footer__heart { animation: heartbeat 2.6s var(--ease-inout) infinite; }
+
+/* Brilho que percorre o CTA ao passar o mouse */
+.btn--cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / .42) 50%, transparent 62%);
+  translate: -110% 0;
+  pointer-events: none;
+}
+.btn--cta:hover::after { animation: sheen 700ms var(--ease-slow) forwards; }
+@keyframes sheen {
+  from { translate: -110% 0; }
+  to   { translate: 110% 0; }
+}
+
+/* Ícone do topo pulsa de leve para chamar atenção */
+@keyframes nudgeUp {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -3px; }
+}
+.to-top svg { animation: nudgeUp 2.4s var(--ease-inout) infinite; }
+
+/* ============================================================ 4. GAVETA */
+@keyframes drawerIn {
+  from { opacity: 0; transform: translate3d(0, -14px, 0) scaleY(.92); }
+  to   { opacity: 1; transform: none; }
+}
+.drawer.is-open { animation: drawerIn var(--t-slow) var(--ease-slow) both; }
+.drawer.is-open .drawer__link,
+.drawer.is-open .drawer__cta {
+  animation: drawerItem var(--t-slow) var(--ease-slow) both;
+  animation-delay: calc(var(--i, 0) * 45ms + 90ms);
+}
+@keyframes drawerItem {
+  from { opacity: 0; transform: translate3d(-14px, 0, 0); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Troca de aba dos ganhadores */
+@keyframes listIn {
+  from { opacity: 0; transform: translate3d(0, 14px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+.win__list.is-switching .win__row {
+  animation: listIn var(--t-slow) var(--ease-slow) both;
+  animation-delay: calc(var(--i, 0) * 35ms);
+}
+
+/* ============================================================ 5. ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  [data-reveal="up"],
+  [data-reveal="zoom"],
+  [data-reveal="pop"],
+  .strip__item[data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+  .kv__stage [data-depth] { --rv-y: 0px; --rv-s: 1; transform: none; opacity: 1; }
+  .btn--cta::after { display: none; }
+}

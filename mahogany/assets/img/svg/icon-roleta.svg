@@ -1,0 +1,42 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Roleta">
+<path id="Vector" d="M21.9993 40.3337C32.1246 40.3337 40.3327 32.1255 40.3327 22.0003C40.3327 11.8751 32.1246 3.66699 21.9993 3.66699C11.8741 3.66699 3.66602 11.8751 3.66602 22.0003C3.66602 32.1255 11.8741 40.3337 21.9993 40.3337Z" stroke="white" stroke-width="2.38333"/>
+<path id="Vector_2" d="M20.3875 18.104L15.4375 6.1598C17.5182 5.2974 19.7485 4.85352 22.0008 4.85352C24.2532 4.85352 26.4835 5.2974 28.5642 6.1598L23.6142 18.104C22.5811 17.6762 21.4205 17.6762 20.3875 18.104Z" fill="white" fill-opacity="0.35"/>
+<g id="Vector_3">
+<path d="M20.3875 18.1043L15.4375 6.16016Z" fill="black"/>
+<path d="M20.3875 18.1043L15.4375 6.16016" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<g id="Vector_4">
+<path d="M23.6133 18.1042L28.5633 6.16Z" fill="black"/>
+<path d="M23.6133 18.1042L28.5633 6.16" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<path id="Vector_5" d="M25.8965 20.3865L37.8407 15.4365C38.703 17.5172 39.1469 19.7475 39.1469 21.9999C39.1469 24.2522 38.703 26.4825 37.8407 28.5632L25.8965 23.6132C26.3243 22.5802 26.3243 21.4195 25.8965 20.3865Z" fill="white" fill-opacity="0.35"/>
+<g id="Vector_6">
+<path d="M25.8965 20.3865L37.8407 15.4365Z" fill="black"/>
+<path d="M25.8965 20.3865L37.8407 15.4365" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<g id="Vector_7">
+<path d="M25.8965 23.6133L37.8407 28.5633Z" fill="black"/>
+<path d="M25.8965 23.6133L37.8407 28.5633" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<path id="Vector_8" d="M23.6142 25.8955L28.5642 37.8397C26.4835 38.7021 24.2532 39.146 22.0008 39.146C19.7485 39.146 17.5182 38.7021 15.4375 37.8397L20.3875 25.8955C21.4205 26.3233 22.5811 26.3233 23.6142 25.8955Z" fill="white" fill-opacity="0.35"/>
+<g id="Vector_9">
+<path d="M23.6133 25.8955L28.5633 37.8397Z" fill="black"/>
+<path d="M23.6133 25.8955L28.5633 37.8397" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<g id="Vector_10">
+<path d="M20.3875 25.8955L15.4375 37.8397Z" fill="black"/>
+<path d="M20.3875 25.8955L15.4375 37.8397" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<path id="Vector_11" d="M18.1042 23.6133L6.16 28.5633C5.2976 26.4826 4.85372 24.2524 4.85372 22C4.85372 19.7476 5.2976 17.5174 6.16 15.4367L18.1042 20.3867C17.6764 21.4197 17.6764 22.5803 18.1042 23.6133Z" fill="white" fill-opacity="0.35"/>
+<g id="Vector_12">
+<path d="M18.1042 23.6133L6.16 28.5633Z" fill="black"/>
+<path d="M18.1042 23.6133L6.16 28.5633" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<g id="Vector_13">
+<path d="M18.1042 20.3867L6.16 15.4367Z" fill="black"/>
+<path d="M18.1042 20.3867L6.16 15.4367" stroke="white" stroke-width="1.65" stroke-linecap="round"/>
+</g>
+<path id="Vector_14" d="M22 26.2167C24.3288 26.2167 26.2167 24.3288 26.2167 22C26.2167 19.6712 24.3288 17.7833 22 17.7833C19.6712 17.7833 17.7833 19.6712 17.7833 22C17.7833 24.3288 19.6712 26.2167 22 26.2167Z" fill="white"/>
+</g>
+</svg>

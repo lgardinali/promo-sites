@@ -1,0 +1,85 @@
+/*
+ * Conteúdo editável da página.
+ * Troque os placeholders abaixo quando o cliente enviar os dados finais.
+ */
+window.SITE = {
+  links: {
+    cadastro: '#',
+    login: '#',
+    regulamento: '#',
+    privacidade: '#',
+    termos: '#',
+    instagram: '#',
+    facebook: '#',
+    linkedin: '#',
+  },
+
+  // Somente nome e CNPJ (fonte: lista_associados_redeAncora_PROD.xlsx), em ordem alfabética.
+  lojas: [
+    { nome: '1100 MOTOR PECAS LTDA', cnpj: '21.873.831/0001-48' },
+    { nome: 'AR COMERCIO DE PECAS PRODUTOS E SERVICOS LTDA', cnpj: '42.814.517/0001-64' },
+    { nome: 'AUTO BITTS LTDA', cnpj: '16.622.862/0001-96' },
+    { nome: 'AUTO BITTS LTDA', cnpj: '16.622.862/0004-39' },
+    { nome: 'AUTO BITTS LTDA - FILIAL', cnpj: '16.622.862/0003-58' },
+    { nome: 'AUTO BITTS LTDA - PLANALTO', cnpj: '16.622.862/0005-10' },
+    { nome: 'AUTO PECAS ESTRADA REAL LTDA - ME', cnpj: '14.475.041/0001-49' },
+    { nome: 'AUTO PECAS ESTRADA REAL LTDA - ME', cnpj: '14.475.041/0002-20' },
+    { nome: 'AUTO PECAS LINEA LTDA - ME', cnpj: '12.385.432/0001-47' },
+    { nome: 'AUTO PECAS MAX LTDA EPP', cnpj: '00.452.917/0001-27' },
+    { nome: 'AUTO PECAS PRATA DIESEL LTDA', cnpj: '25.989.609/0001-66' },
+    { nome: 'AUTO PECAS TREVO LTDA', cnpj: '06.301.975/0004-89' },
+    { nome: 'BHM DIESEL LIMITADA', cnpj: '00.210.027/0001-09' },
+    { nome: 'DIESEL SETE PECAS LTDA - SETE LAGOAS', cnpj: '64.435.670/0001-13' },
+    { nome: 'GERWAL AUTO PECAS LTDA', cnpj: '41.684.788/0001-80' },
+    { nome: 'GTA DISTRIBUIDORA DE AUTOPEÇAS', cnpj: '63.164.794/0001-49' },
+    { nome: 'HS AUTOPECAS LTDA', cnpj: '22.142.067/0001-01' },
+    { nome: 'HS AUTOPECAS LTDA', cnpj: '22.142.067/0002-84' },
+    { nome: 'HS AUTOPECAS LTDA', cnpj: '22.142.067/0003-65' },
+    { nome: 'HS AUTOPECAS LTDA', cnpj: '22.142.067/0004-46' },
+    { nome: 'HS AUTOPECAS LTDA', cnpj: '22.142.067/0005-27' },
+    { nome: 'INOVA AUTO PECAS LTDA', cnpj: '21.528.450/0001-21' },
+    { nome: 'IRMAOS CRUZ AUTOPECAS LTDA', cnpj: '38.584.322/0001-06' },
+    { nome: 'LCAR PECAS LTDA', cnpj: '10.996.600/0001-05' },
+    { nome: 'LUCIO AUTO PECAS LTDA', cnpj: '03.916.185/0001-77' },
+    { nome: 'MUNDIAL PECAS SIMOES LTDA', cnpj: '21.532.270/0001-13' },
+    { nome: 'PC AUTO PECAS LTDA', cnpj: '35.833.285/0001-26' },
+    { nome: 'PEIXOTO AUTO PECAS E SERVICOS LTDA - EPP', cnpj: '12.866.807/0001-90' },
+    { nome: 'PREMIUM DISTRIBUIDORA DE AUTO PECAS LTDA', cnpj: '08.387.584/0001-01' },
+    { nome: 'PREMIUM DISTRIBUIDORA DE AUTO PECAS LTDA', cnpj: '08.387.584/0004-54' },
+    { nome: 'RODAG DISTRIBUIDORA DE AUTO', cnpj: '02.779.154/0001-59' },
+    { nome: 'SP IMPORTS LTDA', cnpj: '02.567.330/0001-99' },
+    { nome: 'VEICULAR DISTRIBUIDORA DE', cnpj: '06.301.975/0001-36' },
+    { nome: 'VEICULAR DISTRIBUIDORA DE', cnpj: '06.301.975/0002-17' },
+    { nome: 'VEICULAR DISTRIBUIDORA DE', cnpj: '06.301.975/0003-06' },
+  ],
+
+  marcas: [
+    { nome: 'Marca 01', logo: '', url: '' },
+    { nome: 'Marca 02', logo: '', url: '' },
+    { nome: 'Marca 03', logo: '', url: '' },
+    { nome: 'Marca 04', logo: '', url: '' },
+    { nome: 'Marca 05', logo: '', url: '' },
+    { nome: 'Marca 06', logo: '', url: '' },
+    { nome: 'Marca 07', logo: '', url: '' },
+    { nome: 'Marca 08', logo: '', url: '' },
+    { nome: 'Marca 09', logo: '', url: '' },
+    { nome: 'Marca 10', logo: '', url: '' },
+    { nome: 'Marca 11', logo: '', url: '' },
+    { nome: 'Marca 12', logo: '', url: '' },
+  ],
+
+  ganhadores: {
+    premios: [
+      { nome: 'Fulano da Silva', cpf: '123.***.***-00', premio: 'Iphone 17 Pro 256GB' },
+      { nome: 'Ciclano dos Santos', cpf: '123.***.***-00', premio: 'Playstation 5' },
+      { nome: 'José de Oliveira Pereira', cpf: '123.***.***-00', premio: 'Smart TV 60”' },
+      { nome: 'Maria de Souza Lima', cpf: '123.***.***-00', premio: 'Bicicleta Elétrica' },
+    ],
+    giro: [
+      { nome: 'Beltrano de Tal', cpf: '123.***.***-00', premio: 'Vale-compra R$200' },
+      { nome: 'Fulana de Souza', cpf: '123.***.***-00', premio: 'Vale-compra R$200' },
+      { nome: 'João da Silva', cpf: '123.***.***-00', premio: 'Vale-compra R$200' },
+      { nome: 'Ana dos Santos', cpf: '123.***.***-00', premio: 'Vale-compra R$200' },
+    ],
+  },
+};

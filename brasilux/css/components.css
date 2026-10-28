@@ -1,0 +1,696 @@
+/* ==========================================================================
+   Componentes reutilizaveis.
+   Cada bloco replica um componente do Figma e suas variantes de hover.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Botao "Link" (54:1410)
+   Default -> V2 (hover) -> V3 (pressionado)
+   -------------------------------------------------------------------------- */
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10.6px 20px;
+  border: 1.5px solid var(--lime-border);
+  border-radius: 999px;
+  /* A cor de base e solida e nunca muda. O gradiente dos estados entra numa
+     camada propria (::before) que faz cross-fade por opacidade — trocar
+     `background` direto zeraria o `background-color` para transparente e,
+     na volta, deixaria o lime translucido sobre o fundo escuro por alguns
+     quadros (a "piscada"). Alem disso `background-image` nao e interpolavel
+     em transicao: trocaria de uma vez, enquanto `opacity` e. */
+  background-color: var(--lime);
+  color: var(--lime-ink);
+  font-weight: 700;
+  font-size: clamp(1.0625rem, 1.35vw, 1.327rem);
+  line-height: 1.5;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  filter: drop-shadow(var(--glow-lime-soft));
+  transition:
+    filter var(--dur-fast) var(--ease-slow),
+    transform var(--dur-fast) var(--ease-bouncy);
+}
+
+/* Camada do gradiente dos estados (variantes 2 e 3 do Figma). */
+.btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--lime-hover), #fff);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-slow);
+  pointer-events: none;
+}
+
+/* O icone identifica o publico do botao (consumidor / pintor). */
+.btn__icon {
+  flex: none;
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+
+/* Reflexo que atravessa o botao no hover, em mao unica.
+   A transicao vive so na regra de :hover — ao sair, o navegador volta para
+   esta regra, que nao tem transicao nenhuma, entao o reflexo salta de uma vez
+   para a posicao de partida (fora da area visivel, cortada pelo overflow) em
+   vez de varrer o botao de volta da direita para a esquerda. */
+.btn::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 -60%;
+  width: 45%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-18deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Variante 2 do Figma: o degrade varre a largura toda, do lime esverdeado ao
+   branco, e o brilho passa de 10px para 25px. */
+.btn:hover,
+.btn:focus-visible {
+  filter: drop-shadow(var(--glow-lime-strong));
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+  opacity: 1;
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: skewX(-18deg) translateX(420%);
+  transition: transform var(--dur-slow) var(--ease-slow);
+}
+
+/* Variante 3: mesmo degrade, clareado, com o brilho forte mantido. */
+.btn:active {
+  filter: drop-shadow(var(--glow-lime-strong));
+  transform: translateY(0) scale(0.955);
+  transition-duration: 120ms;
+}
+
+.btn:active::before {
+  background: linear-gradient(90deg, var(--lime-active), #fff);
+  opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Logo do menu (84:500) — o elemento "bouncy"
+   Os cartoes coloridos abrem em leque: 8.88deg -> 23.15deg e 5.16 -> 10.86.
+   -------------------------------------------------------------------------- */
+
+.logo {
+  --logo-w: 181px;
+  --logo-r: calc(var(--logo-w) * 0.0552); /* raio de 10px sobre 181 */
+  position: relative;
+  flex: none;
+  width: var(--logo-w);
+  aspect-ratio: 181 / 70;
+  /* A pilha nasce colada no topo da barra. Sem isto ela seria centralizada
+     verticalmente e, sempre que a logo encolhe (telas menores), descolaria
+     do topo do menu. */
+  align-self: flex-start;
+  z-index: 3;
+}
+
+/* Os cartoes sao mais altos que a barra do menu: como no Figma, a pilha
+   escapa por baixo do cabecalho e se apoia sobre o KV. */
+.logo__card {
+  position: absolute;
+  display: block;
+  width: 99.84%;
+  border-radius: var(--logo-r);
+  transition: transform var(--dur-slow) var(--ease-bouncy);
+  will-change: transform;
+}
+
+.logo__card--yellow {
+  top: -34.83%;
+  left: 0.96%;
+  height: 177.52%;
+  background: #ffd900;
+  transform: rotate(8.88deg);
+}
+
+.logo__card--green {
+  top: -23.74%;
+  left: 0.35%;
+  height: 166.27%;
+  background: #00a15c;
+  transform: rotate(5.16deg);
+}
+
+.logo__card--white {
+  top: 0;
+  left: -0.08%;
+  height: 142.92%;
+  background: #fff;
+  border-radius: 0 0 var(--logo-r) var(--logo-r);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.logo__card--white img {
+  position: absolute;
+  top: 7%;
+  left: 3.87%;
+  width: 92.26%;
+  transition: top var(--dur-slow) var(--ease-bouncy), left var(--dur-slow) var(--ease-bouncy),
+    width var(--dur-slow) var(--ease-bouncy);
+}
+
+/* Variante 84:501: o leque abre. */
+.logo:hover .logo__card--yellow,
+.logo:focus-visible .logo__card--yellow {
+  transform: rotate(23.15deg);
+}
+
+.logo:hover .logo__card--green,
+.logo:focus-visible .logo__card--green {
+  transform: rotate(10.86deg);
+}
+
+.logo:hover .logo__card--white img,
+.logo:focus-visible .logo__card--white img {
+  top: 5.08%;
+  left: 1.82%;
+  width: 96.36%;
+}
+
+/* --------------------------------------------------------------------------
+   Botao Login/Cadastro (38:1659)
+   -------------------------------------------------------------------------- */
+
+.btn-login {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  flex: none;
+  position: relative;
+  padding: 12px 30px;
+  border-radius: 10px;
+  /* Mesma logica do `.btn`: base solida fixa e o gradiente numa camada que
+     entra e sai por opacidade. */
+  background-color: var(--lime);
+  color: var(--lime-ink);
+  font-weight: 700;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  transition:
+    box-shadow var(--dur-fast) var(--ease-slow),
+    transform var(--dur-fast) var(--ease-bouncy);
+}
+
+.btn-login::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--lime-hover), #fff);
+  opacity: 0;
+  transition: opacity var(--dur-fast) var(--ease-slow);
+  pointer-events: none;
+}
+
+.btn-login > * {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-login img {
+  width: 24px;
+  height: 24px;
+}
+
+.btn-login:hover,
+.btn-login:focus-visible {
+  box-shadow: var(--glow-lime-strong);
+  transform: scale(1.03);
+}
+
+.btn-login:hover::before,
+.btn-login:focus-visible::before {
+  opacity: 1;
+}
+
+.btn-login:active {
+  transform: scale(0.97);
+}
+
+/* --------------------------------------------------------------------------
+   Hamburguer (50:1356) -> X
+   -------------------------------------------------------------------------- */
+
+.burger {
+  display: none;
+  flex: none;
+  /* Empurra o botao para a direita da barra: no mobile o nav sai do fluxo
+     (vira painel fixo) e sem isto o icone encostaria na logo. */
+  margin-left: auto;
+  width: 34px;
+  height: 26px;
+  padding: 3px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 3.3px;
+  border-radius: 2px;
+  background: var(--lime-2);
+  transition:
+    transform var(--dur-fast) var(--ease-slow),
+    opacity 160ms linear,
+    top var(--dur-fast) var(--ease-slow);
+}
+
+.burger span:nth-child(1) { top: 3px; }
+.burger span:nth-child(2) { top: 11px; }
+.burger span:nth-child(3) { top: 19px; }
+
+.burger[aria-expanded="true"] span:nth-child(1) {
+  top: 11px;
+  transform: rotate(45deg);
+}
+
+.burger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0.2);
+}
+
+.burger[aria-expanded="true"] span:nth-child(3) {
+  top: 11px;
+  transform: rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   Campo de busca (47:903)
+   -------------------------------------------------------------------------- */
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding: 16px 20px 16px 26px;
+  border: 2px solid var(--border-navy);
+  border-radius: 88px;
+  background: var(--surface);
+  transition:
+    border-color var(--dur-fast) var(--ease-slow),
+    box-shadow var(--dur-fast) var(--ease-slow);
+}
+
+.search:focus-within {
+  border-color: var(--lime);
+  box-shadow: 0 0 0 4px rgba(188, 255, 0, 0.12);
+}
+
+.search__icon {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  opacity: 0.85;
+}
+
+.search__input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.search__input::placeholder {
+  color: var(--text-muted);
+}
+
+.search__input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.search__clear {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: background var(--dur-fast) var(--ease-slow), color var(--dur-fast) var(--ease-slow);
+}
+
+.search__clear:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Carrossel de premios (47:732 + itens da secao COMPONENTES)
+   O posicionamento de cada item e escrito por js/carousel.js em variaveis
+   CSS; aqui ficam apenas a aparencia e a curva de transicao.
+   -------------------------------------------------------------------------- */
+
+.carousel {
+  /* Tudo dentro do carrossel deriva da largura do item, mantendo a mesma
+     proporcao entre badge, titulos e arte que o componente do Figma. */
+  --item-w: clamp(250px, 38vw, 460px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 2vw, 28px);
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin: clamp(32px, 5vw, 56px) auto 0;
+  padding-inline: var(--gutter);
+  /* Espaco reservado para os indicadores, para nao caírem sobre a arte. */
+  padding-bottom: 42px;
+}
+
+/* Halo que acompanha o item central, na mesma linguagem do brilho do KV. */
+.carousel__halo {
+  position: absolute;
+  top: 46%;
+  left: 50%;
+  z-index: 0;
+  width: min(760px, 70vw);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle closest-side, rgba(31, 115, 240, 0.34), rgba(1, 102, 181, 0));
+  pointer-events: none;
+  animation: halo-breathe 6.5s var(--ease-inout) infinite alternate;
+}
+
+@keyframes halo-breathe {
+  from { transform: scale(0.92); opacity: 0.7; }
+  to   { transform: scale(1.08); opacity: 1; }
+}
+
+.carousel__viewport {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  height: calc(var(--item-w) * 1.15);
+  perspective: 1600px;
+  /* Corta so na horizontal: no eixo vertical o brilho do badge precisa
+     escapar da caixa sem ser decepado. */
+  overflow-x: clip;
+  overflow-y: visible;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.carousel__viewport.is-dragging {
+  cursor: grabbing;
+}
+
+.carousel__track {
+  position: relative;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+/* --- item --- */
+
+.prize {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: var(--item-w);
+  height: 100%;
+  margin-left: calc(var(--item-w) / -2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(var(--item-w) * 0.0365);
+  text-align: center;
+  transform: translate3d(var(--x, 0), 0, 0) scale(var(--s, 1)) rotateY(var(--ry, 0deg));
+  opacity: var(--o, 1);
+  filter: blur(var(--b, 0px));
+  z-index: var(--z, 1);
+  transition:
+    transform var(--dur-slow) var(--ease-slow),
+    opacity var(--dur-slow) var(--ease-slow),
+    filter var(--dur-slow) var(--ease-slow);
+  will-change: transform, opacity;
+}
+
+/* Durante o arraste o item acompanha o dedo sem amortecimento. */
+.carousel__track.is-dragging .prize {
+  transition: none;
+}
+
+.prize[aria-hidden="true"] {
+  pointer-events: none;
+}
+
+.prize:not(.is-active) {
+  cursor: pointer;
+}
+
+.prize__badge {
+  display: grid;
+  place-items: center;
+  width: clamp(38px, calc(var(--item-w) * 0.1304), 60px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  color: var(--lime-ink);
+  font-weight: 700;
+  font-size: clamp(1rem, calc(var(--item-w) * 0.0554), 1.593rem);
+  background: radial-gradient(
+    circle at 50% 50%,
+    #fff 0%, #eeffbf 25%, #deff80 50%, #d5ff60 62.5%,
+    #cdff40 75%, #c4ff20 87.5%, #c0ff10 93.75%, var(--lime) 100%
+  );
+  filter: drop-shadow(0 0 11.94px rgba(188, 255, 0, 0.5));
+  transition: filter var(--dur-fast) var(--ease-slow), background var(--dur-fast) var(--ease-slow);
+}
+
+.prize.is-active .prize__badge {
+  animation: badge-pulse 3.4s var(--ease-inout) infinite alternate;
+}
+
+@keyframes badge-pulse {
+  from { filter: drop-shadow(0 0 8px rgba(188, 255, 0, 0.4)); }
+  to   { filter: drop-shadow(0 0 18px rgba(188, 255, 0, 0.85)); }
+}
+
+/* Variante 54:1389 do Figma: nucleo branco cresce e o brilho dobra. */
+.prize.is-active:hover .prize__badge {
+  animation: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    #fff 67.3%, #eeffbf 75.5%, #deff80 83.7%, #d5ff60 87.7%,
+    #cdff40 91.8%, #c4ff20 95.9%, #c0ff10 98%, var(--lime) 100%
+  );
+  filter: drop-shadow(0 0 20px rgba(188, 255, 0, 0.9));
+}
+
+.prize__title {
+  font-weight: 600;
+  font-size: clamp(1.05rem, calc(var(--item-w) * 0.0626), 1.8rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.prize__sub {
+  color: var(--text-dim);
+  font-size: clamp(0.85rem, calc(var(--item-w) * 0.047), 1.35rem);
+  line-height: 1.2;
+}
+
+.prize__media {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  margin-top: 4px;
+}
+
+/* A arte e ancorada no topo da caixa e dimensionada pela altura: o produto
+   ocupa o quadro e o reflexo longo do estudio escorre para fora por baixo
+   em vez de ser cortado. `--bleed` diz quanto de arte existe alem da caixa.
+   `left/right: 0` com `margin-inline: auto` centraliza sem transform, para
+   nao brigar com o `scale` de enquadramento. */
+.prize__media img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  width: auto;
+  max-width: none;
+  height: calc(100% * var(--bleed, 1));
+  transform: scale(var(--scale, 1));
+  transform-origin: 50% 0;
+  transition: transform var(--dur-fast) var(--ease-slow);
+}
+
+/* Variante 54:1389: a arte cresce 1.113x no hover do item central. */
+.prize.is-active:hover .prize__media img {
+  transform: scale(calc(var(--scale, 1) * 1.113));
+}
+
+/* --- setas --- */
+
+.carousel__arrow {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: clamp(36px, 3.6vw, 45px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition:
+    transform var(--dur-fast) var(--ease-bouncy),
+    box-shadow var(--dur-fast) var(--ease-slow);
+}
+
+.carousel__arrow img {
+  width: 100%;
+  height: 100%;
+  transition: filter var(--dur-fast) var(--ease-slow);
+}
+
+.carousel__arrow--prev img {
+  transform: rotate(180deg);
+}
+
+.carousel__arrow:hover,
+.carousel__arrow:focus-visible {
+  transform: scale(1.12);
+  box-shadow: 0 0 22px rgba(188, 255, 0, 0.45);
+}
+
+.carousel__arrow:hover img {
+  filter: brightness(1.25);
+}
+
+.carousel__arrow:active {
+  transform: scale(0.94);
+}
+
+/* --- indicadores --- */
+
+.carousel__dots {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  translate: -50%;
+  display: flex;
+  gap: 10px;
+}
+
+.carousel__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.28);
+  transition:
+    width var(--dur-fast) var(--ease-slow),
+    background var(--dur-fast) var(--ease-slow);
+}
+
+.carousel__dot[aria-current="true"] {
+  width: 26px;
+  background: var(--lime);
+}
+
+.carousel__dot:hover {
+  background: rgba(188, 255, 0, 0.6);
+}
+
+/* --------------------------------------------------------------------------
+   Icones sociais (36:1120)
+   -------------------------------------------------------------------------- */
+
+.social {
+  display: flex;
+  gap: 29px;
+}
+
+.social__link {
+  display: block;
+  width: 32px;
+  height: 32px;
+  transition: transform var(--dur-fast) var(--ease-bouncy), filter var(--dur-fast) var(--ease-slow);
+}
+
+.social__link img {
+  width: 100%;
+  height: 100%;
+}
+
+.social__link:hover,
+.social__link:focus-visible {
+  transform: scale(1.18) rotate(-6deg);
+  filter: drop-shadow(0 4px 10px rgba(0, 88, 34, 0.35));
+}
+
+/* --------------------------------------------------------------------------
+   Voltar ao topo
+   -------------------------------------------------------------------------- */
+
+.to-top {
+  position: fixed;
+  right: clamp(16px, 3vw, 32px);
+  bottom: clamp(16px, 3vw, 32px);
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: var(--glow-lime-soft);
+  opacity: 0;
+  transform: translateY(14px) scale(0.85);
+  pointer-events: none;
+  transition:
+    opacity var(--dur-fast) var(--ease-slow),
+    transform var(--dur-fast) var(--ease-bouncy),
+    box-shadow var(--dur-fast) var(--ease-slow);
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.to-top span {
+  width: 11px;
+  height: 11px;
+  margin-top: 4px;
+  border-top: 2.5px solid var(--lime-ink);
+  border-left: 2.5px solid var(--lime-ink);
+  transform: rotate(45deg);
+}
+
+.to-top:hover {
+  box-shadow: var(--glow-lime-strong);
+  transform: translateY(-3px);
+}

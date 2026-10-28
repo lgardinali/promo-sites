@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pintou Presente Brasilux — Promoção</title>
+<meta name="description" content="A cada R$ 300 em compras de produtos Brasilux você garante um número da sorte para concorrer a motos 0km, Smart TV, frigobar e muito mais.">
+<meta name="theme-color" content="#021539">
+
+<link rel="preload" href="assets/fonts/sora-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/kv/kv-bg.jpg" as="image">
+
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/sections.css">
+
+<script>
+  /* Marca a pagina antes da primeira pintura para que os elementos de
+     reveal ja nasçam escondidos, sem piscar. js/motion.js remove a classe
+     se o GSAP nao carregar ou se o usuario pedir menos movimento. */
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("has-motion");
+  }
+</script>
+</head>
+
+<body>
+<!-- Fundo animado compartilhado por todas as seções escuras -->
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+<a class="skip-link" href="#home">Pular para o conteúdo</a>
+
+<!-- ======================================================================
+     MENU
+     ====================================================================== -->
+<header class="header" id="header">
+  <div class="header__inner container">
+
+    <a class="logo" href="#home" aria-label="Brasilux — início">
+      <span class="logo__card logo__card--yellow" aria-hidden="true"></span>
+      <span class="logo__card logo__card--green" aria-hidden="true"></span>
+      <span class="logo__card logo__card--white">
+        <img src="assets/brand/brasilux-logo.png" alt="Brasilux — parceira de quem transforma" width="303" height="156">
+      </span>
+    </a>
+
+    <!-- O botao de login vive dentro do nav: no desktop e reposicionado a
+         direita, no mobile entra naturalmente no painel, logo abaixo dos
+         links e na mesma ordem de tabulacao. -->
+    <nav class="nav" id="nav" aria-label="Navegação principal">
+      <ul class="nav__list" id="nav-list"></ul>
+
+      <a class="btn-login" href="#">
+        <img src="assets/icons/user.svg" alt="" width="24" height="24" aria-hidden="true">
+        <span>Login/Cadastro</span>
+      </a>
+    </nav>
+
+    <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+  <!-- ====================================================================
+       KV
+       ==================================================================== -->
+  <section class="kv" id="home" aria-label="Promoção Pintou Presente Brasilux">
+    <img class="kv__bg" src="assets/kv/kv-bg.jpg" alt="" width="2400" height="875" fetchpriority="high" data-parallax="-0.08">
+
+    <div class="kv__stage">
+
+      <!-- data-clamp="no-up": o selo encosta na borda de cima do frame, então
+           o parallax só pode empurrá-lo para baixo, nunca para fora. -->
+      <div class="kv__selo" data-kv-in="selo" data-mouse="8" data-clamp="no-up">
+        <img src="assets/kv/selo.png" alt="Brasilux 33 anos" width="133" height="201">
+      </div>
+
+      <div class="kv__logo" data-kv-in="logo" data-parallax="0.16" data-mouse="10">
+        <img src="assets/kv/logo-campanha.png"
+             alt="Promoção Pintou Presente Brasilux — no aniversário da Brasilux tem presente pra você"
+             width="888" height="540">
+      </div>
+
+      <div class="kv__box" data-kv-in="box" data-mouse="6">
+        <p class="kv__box-main">A cada <b>R$ 300</b> em compras de produtos <b>Brasilux</b> você garante um número da sorte para concorrer.</p>
+        <p class="kv__box-sub"><b>O vendedor tambem pode ganhar!</b> Concorrendo a vouchers semanais de <b>R$ 2 mil</b> e, ao final, um prêmio de <b>R$ 5 mil</b>. E a loja, <b>R$ 3 mil</b> em produtos Brasilux.</p>
+      </div>
+
+      <!-- A base da Renata fica rente à borda de baixo do frame: travada para
+           o parallax não revelar o corte da imagem. -->
+      <div class="kv__renata" data-kv-in="renata" data-parallax="0.05" data-mouse="7" data-clamp="no-up">
+        <img src="assets/kv/renata.png" alt="" width="513" height="1039">
+      </div>
+
+      <div class="kv__produto" data-kv-in="produto" data-parallax="0.09" data-mouse="14">
+        <img src="assets/kv/produto.png" alt="" width="397" height="328">
+      </div>
+
+      <div class="kv__actions" data-kv-in="cta">
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/consumidor.svg" alt="" width="20" height="19" aria-hidden="true">
+          <span>Sou consumidor</span>
+        </a>
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/pintor.svg" alt="" width="20" height="20" aria-hidden="true">
+          <span>Sou pintor</span>
+        </a>
+      </div>
+
+      <!-- Prêmios em dois planos, para o parallax manter um na frente do
+           outro. Cada brilho vive dentro do plano da sua arte, então
+           acompanha o movimento em vez de deslizar por cima dela. -->
+      <div class="kv__premios" data-kv-in="produtos" data-parallax="-0.07" data-mouse="12">
+        <img src="assets/kv/produtos.png" alt="Prêmios: frigobar, smart TV, caixa de som e smartphone" width="809" height="730">
+        <span class="glow glow--jbl" aria-hidden="true"></span>
+        <span class="glow glow--flash" aria-hidden="true"></span>
+      </div>
+
+      <div class="kv__motos" data-kv-in="motos" data-parallax="-0.12" data-mouse="16">
+        <img src="assets/premios/motos.png" alt="Motos Honda CG160 Titan 0km" width="995" height="946">
+        <span class="glow glow--farol-1" aria-hidden="true"></span>
+        <span class="glow glow--farol-2" aria-hidden="true"></span>
+      </div>
+
+    </div>
+
+    <!-- Sem data-reveal: e nota legal, nao precisa de efeito de entrada, e
+         assim tambem nao herda o deslocamento de 34px que o reveal usa antes
+         de revelar — o `overflow:hidden` da secao chegava a cortar esse
+         deslocamento por uma fracao de segundo durante a animacao. -->
+    <p class="kv__legal" id="kv-legal"></p>
+
+    <a class="kv__scroll" href="#como-participar" aria-label="Ir para Como participar">
+      <span class="kv__scroll-text">Role</span>
+      <span class="kv__scroll-arrow" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ====================================================================
+       COMO PARTICIPAR
+       ==================================================================== -->
+  <section class="section section--steps" id="como-participar" aria-labelledby="steps-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="display" id="steps-title" data-reveal="mask">
+          <span class="mask-line"><span>Como</span></span>
+          <span class="mask-line is-accent"><span>Participar</span></span>
+        </h2>
+        <p class="section__sub" data-reveal="up" data-reveal-delay="0.12">Três passos e pronto.</p>
+      </div>
+
+      <ul class="steps" id="steps"></ul>
+
+      <div class="section__cta" data-reveal="up">
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/consumidor.svg" alt="" width="20" height="19" aria-hidden="true">
+          <span>Sou consumidor</span>
+        </a>
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/pintor.svg" alt="" width="20" height="20" aria-hidden="true">
+          <span>Sou pintor</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       PRÊMIOS
+       ==================================================================== -->
+  <section class="section section--prizes" id="premios" aria-labelledby="prizes-title">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="display" id="prizes-title" data-reveal="mask">
+          <span class="mask-line"><span>Prêmios</span></span>
+          <span class="mask-line is-accent"><span>de verdade</span></span>
+        </h2>
+        <p class="section__sub" data-reveal="up" data-reveal-delay="0.12">Quanto mais você compra, mais números da sorte acumula e mais chances tem de ganhar.</p>
+      </div>
+    </div>
+
+    <div class="carousel" id="carousel" role="group" aria-roledescription="carrossel" aria-label="Prêmios da promoção" data-reveal="up">
+      <span class="carousel__halo" aria-hidden="true"></span>
+
+      <button class="carousel__arrow carousel__arrow--prev" type="button" aria-label="Prêmio anterior">
+        <img src="assets/icons/arrow-circle.svg" alt="" width="45" height="45">
+      </button>
+
+      <div class="carousel__viewport">
+        <ul class="carousel__track" id="carousel-track"></ul>
+      </div>
+
+      <button class="carousel__arrow carousel__arrow--next" type="button" aria-label="Próximo prêmio">
+        <img src="assets/icons/arrow-circle.svg" alt="" width="45" height="45">
+      </button>
+
+      <div class="carousel__dots" id="carousel-dots"></div>
+      <p class="sr-only" id="carousel-live" aria-live="polite"></p>
+    </div>
+
+    <div class="container">
+      <div class="section__cta" data-reveal="up">
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/consumidor.svg" alt="" width="20" height="19" aria-hidden="true">
+          <span>Sou consumidor</span>
+        </a>
+        <a class="btn btn--icon" href="#">
+          <img class="btn__icon" src="assets/icons/pintor.svg" alt="" width="20" height="20" aria-hidden="true">
+          <span>Sou pintor</span>
+        </a>
+      </div>
+
+      <h3 class="seller__title" data-reveal="up">O <em>vendedor</em> também concorre a:</h3>
+      <ul class="seller" id="seller"></ul>
+
+      <p class="prizes__legal" id="prizes-legal" data-reveal="up"></p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       DÚVIDAS FREQUENTES
+       ==================================================================== -->
+  <section class="section section--faq" id="duvidas" aria-labelledby="faq-title">
+
+    <div class="container">
+      <div class="section__head">
+        <h2 class="display" id="faq-title" data-reveal="mask">
+          <span class="mask-line"><span>Duvidas</span></span>
+          <span class="mask-line is-accent"><span>Frequentes</span></span>
+        </h2>
+        <p class="section__sub" data-reveal="up" data-reveal-delay="0.12">Tire suas dúvidas sobre a promoção</p>
+      </div>
+
+      <div class="search" data-reveal="up">
+        <img class="search__icon" src="assets/icons/search.svg" alt="" width="30" height="30" aria-hidden="true">
+        <input class="search__input" id="faq-search" type="search" placeholder="Buscar dúvida"
+               aria-label="Buscar dúvida" autocomplete="off">
+        <button class="search__clear" id="faq-clear" type="button" aria-label="Limpar busca" hidden>&times;</button>
+      </div>
+
+      <ul class="faq" id="faq"></ul>
+      <p class="faq__empty" id="faq-empty" hidden>Nenhuma dúvida encontrada para essa busca.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       GANHADORES
+       ==================================================================== -->
+  <section class="section section--winners" id="ganhadores" aria-labelledby="winners-title">
+
+    <div class="container">
+      <div class="section__head">
+        <h2 class="display is-accent" id="winners-title" data-reveal="mask">
+          <span class="mask-line"><span>Ganhadores</span></span>
+        </h2>
+      </div>
+
+      <div class="winners__layout">
+
+        <div class="winners__list">
+          <div class="search" data-reveal="up">
+            <img class="search__icon" src="assets/icons/search.svg" alt="" width="30" height="30" aria-hidden="true">
+            <input class="search__input" id="winners-search" type="search" placeholder="Buscar ganhador"
+                   aria-label="Buscar ganhador" autocomplete="off">
+            <button class="search__clear" id="winners-clear" type="button" aria-label="Limpar busca" hidden>&times;</button>
+          </div>
+
+          <div class="winners__filter" id="winners-filter" hidden>
+            <span>Filtrando por <b id="winners-filter-state"></b></span>
+            <button class="winners__filter-clear" id="winners-filter-clear" type="button">Ver todos os estados</button>
+          </div>
+
+          <div class="timeline" id="timeline">
+            <span class="timeline__rail" aria-hidden="true"><i id="timeline-progress"></i></span>
+            <ul class="timeline__list" id="winners"></ul>
+          </div>
+
+          <p class="winners__empty" id="winners-empty" hidden>Nenhum ganhador encontrado.</p>
+        </div>
+
+        <div class="winners__map" data-reveal="up">
+          <div class="map" id="brazil-map" role="group"
+               aria-label="Mapa do Brasil — clique em um estado para filtrar os ganhadores"></div>
+
+          <p class="map__caption">
+            <strong id="map-total"></strong>
+            Clique sobre o estado para saber a quantidade de ganhadores.
+          </p>
+
+          <div class="map__legend" aria-hidden="true">
+            <span id="map-legend-min">0</span>
+            <span class="map__legend-bar"></span>
+            <span id="map-legend-max">0</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ======================================================================
+     RODAPÉ
+     ====================================================================== -->
+<footer class="footer" id="rodape">
+  <div class="container">
+    <div class="footer__top">
+
+      <div class="footer__brand">
+        <img class="footer__logo" src="assets/brand/brasilux-logo.png" alt="Brasilux" width="303" height="156">
+        <ul class="social" id="social"></ul>
+      </div>
+
+      <div class="footer__cols" id="footer-cols"></div>
+    </div>
+
+    <hr class="footer__rule">
+    <p class="footer__legal" id="footer-legal"></p>
+
+    <div class="footer__credits">
+      <span>Copyright © Feito com ❤️</span>
+      <img src="assets/brand/grupo-polgo.svg" alt="Grupo Polgo" width="200" height="28">
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="to-top" type="button" aria-label="Voltar ao topo">
+  <span aria-hidden="true"></span>
+</button>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="vendor/lenis.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/render.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/faq.js"></script>
+<script src="js/winners.js"></script>
+<script src="js/motion.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+  /* Rede de seguranca: se motion.js nao chegou a rodar (erro de rede ou de
+     parse), a classe some e o conteudo escondido pelo reveal reaparece. */
+  if (!window.Motion) document.documentElement.classList.remove("has-motion");
+</script>
+</body>
+</html>

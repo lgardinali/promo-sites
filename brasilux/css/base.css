@@ -1,0 +1,459 @@
+/* ==========================================================================
+   Pintou Presente Brasilux — base
+   Tokens, reset e utilitarios compartilhados por todas as secoes.
+   ========================================================================== */
+
+:root {
+  /* --- Cores da marca (extraidas do Figma) --- */
+  --lime: #bcff00;
+  --lime-2: #bffc03;
+  --lime-ink: #005822;
+
+  /* Botao "Link" (54:1410): contorno, e o inicio do degrade em cada estado. */
+  --lime-border: #ebffb3;
+  --lime-hover: #dcff78;
+  --lime-active: #f4ffd3;
+
+  --navy-950: #021539;
+  --navy-900: #022458;
+  --navy-700: #044ebe;
+
+  /* Fundo dos cards: o mesmo #022458 a 70%, para o fundo animado aparecer
+     por tras. Usado nos premios, na busca, no acordeao e nos ganhadores. */
+  --surface: rgba(2, 36, 88, 0.7);
+  --border-navy: #0d4497;
+  --border-blue: #1f73f0;
+
+  --teal: #00b5a0;
+  --blue-deep: #0166b5;
+
+  --text: #ffffff;
+  --text-soft: #e6e6e6;
+  --text-dim: #dfdfdf;
+  --text-muted: #a9c4dc;
+
+  --ink: #3d3d3d;
+  --ink-soft: #464444;
+  --rule-light: #424242;
+
+  /* --- Movimento ---
+     Conversao das molas nativas do Figma usadas no prototipo.
+     "Slow"   (stiffness 80, damping 20)  -> assenta sem estourar
+     "Bouncy" (stiffness 600, damping 15) -> overshoot visivel  */
+  --ease-slow: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 300ms;
+  --dur-slow: 600ms;
+
+  /* --- Layout --- */
+  --header-h: 70px;
+  --container: 1280px;
+  --gutter: clamp(20px, 5vw, 40px);
+  --section-pad: clamp(56px, 8vw, 80px);
+
+  /* --- Brilhos reaproveitados --- */
+  --glow-lime-soft: 0 0 10px rgba(188, 255, 0, 0.2);
+  --glow-lime-strong: 0 0 25px rgba(188, 255, 0, 0.6);
+}
+
+/* ==========================================================================
+   Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* `clip` corta o transbordo lateral sem criar um contexto de rolagem —
+     `hidden` aqui quebraria o scroll suave e os elementos fixos. */
+  overflow-x: clip;
+}
+
+/* O Lenis assume o scroll suave; sem ele o smooth nativo cobre as ancoras. */
+html.lenis {
+  scroll-behavior: auto;
+}
+
+body {
+  /* Bloco de referencia do fundo animado, que se estende pela pagina toda. */
+  position: relative;
+  min-height: 100vh;
+  background: var(--navy-950);
+  color: var(--text);
+  font-family: "Sora", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+body.is-locked {
+  overflow: hidden;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+/* Os atributos width/height do HTML existem para reservar espaco e evitar
+   CLS; sem este `auto` eles virariam altura fixa e distorceriam a imagem
+   sempre que o CSS definir a largura. */
+img {
+  height: auto;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  /* Sem isso o padding padrao do navegador (1px 6px) achata o conteudo:
+     era o que deixava os icones das setas do carrossel ovalados. */
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
+}
+
+/* Selecao de texto na cor da campanha, com o mesmo verde escuro que o site
+   usa sobre o lime — em branco o contraste ficaria ilegivel. */
+::selection {
+  background: var(--lime);
+  color: var(--lime-ink);
+}
+
+/* ==========================================================================
+   Acessibilidade
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--lime);
+  color: var(--lime-ink);
+  font-weight: 700;
+  transform: translateY(-200%);
+  transition: transform var(--dur-fast) var(--ease-slow);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--section-pad);
+  isolation: isolate;
+}
+
+/* 30px é o ritmo vertical do Figma entre título, subtítulo e o bloco
+   seguinte de cada seção. */
+.section__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Tipografia
+   ========================================================================== */
+
+.display {
+  font-weight: 800;
+  font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.display span {
+  display: block;
+}
+
+.display .is-accent,
+.display.is-accent {
+  color: var(--lime);
+}
+
+.section__sub {
+  max-width: 62ch;
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.3vw, 1.1875rem);
+}
+
+/* Mascara usada pelo reveal de titulo: a linha sobe de dentro do recorte.
+   O recorte so existe enquanto a animacao roda — depois vira `visible`, senao
+   ele corta a sombra do texto e a lateral das letras (o titulo usa
+   letter-spacing negativo, entao o ultimo glifo encosta na borda). */
+.mask-line {
+  display: block;
+  padding: 0.08em 0.14em;
+  margin: -0.08em -0.14em;
+}
+
+html.has-motion [data-reveal="mask"] .mask-line {
+  overflow: hidden;
+}
+
+html.has-motion [data-reveal="mask"].is-revealed .mask-line {
+  overflow: visible;
+}
+
+/* ==========================================================================
+   Fundo animado (aurora)
+
+   Um unico plano fixo atras de todas as secoes escuras, no lugar de um blob
+   por secao. Cada luz e um `radial-gradient` com queda suave — o mesmo visual
+   das elipses borradas do Figma, mas sem `filter: blur()`, que e de longe o
+   efeito mais caro de compor e o principal responsavel pela queda de fps
+   (especialmente no Firefox, que nao o acelera tao bem quanto o Chromium).
+
+   Como o plano e `fixed` e so `transform` e animado, o navegador rasteriza
+   cada luz uma vez e depois so as move na GPU: custo praticamente zero por
+   quadro, e nada acontece durante o scroll.
+   ========================================================================== */
+
+/* `absolute` sobre o corpo inteiro, e nao `fixed`: as luzes ficam paradas no
+   documento e quem passa por elas e o leitor, em vez de o fundo acompanhar a
+   tela. Por isso as posicoes verticais sao % da altura total da pagina. */
+.aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Altura fixada por js/main.js em vez de acompanhar o conteudo. As luzes
+     tem altura em % deste plano; se ele seguisse a pagina, animar a altura de
+     uma duvida no acordeao redimensionaria os quatro gradientes a cada quadro
+     — que e caro de rasterizar e travava a abertura. */
+  height: var(--aurora-h, 100%);
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--navy-950);
+}
+
+/* Cada luz e a soma de tres elipses descentralizadas: a uniao nao tem eixo de
+   simetria, entao ao girar ela se deforma como uma mancha, sem nunca revelar
+   um contorno de circulo. Os centros ficam proximos e as opacidades baixas de
+   proposito — afastados demais, os tres lobulos aparecem separados e o fundo
+   fica empelotado em vez de difuso. `closest-side` garante que cada elipse
+   chegue a opacidade 0 dentro da propria caixa. */
+.aurora i {
+  position: absolute;
+  display: block;
+  background:
+    radial-gradient(closest-side ellipse at 44% 48%, var(--c1), transparent),
+    radial-gradient(closest-side ellipse at 58% 56%, var(--c2), transparent),
+    radial-gradient(closest-side ellipse at 50% 40%, var(--c3), transparent);
+}
+
+/* O grao mora dentro do proprio fundo, e nao numa camada fixa por cima da
+   pagina: o banding que ele corrige esta nos gradientes daqui, e assim o
+   navegador nao precisa recompor a tela inteira a cada quadro de scroll. */
+.aurora::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Sete luzes distribuidas ao longo da pagina, so em azuis. As duracoes sao
+   primas entre si, entao as manchas nunca voltam a se alinhar do mesmo jeito. */
+/* Quatro manchas largas em vez de muitas pequenas: cada uma cobre quase a
+   largura da tela e um terco da altura da pagina, entao o fundo le como uma
+   luz continua e nao como um aglomerado de bolhas. Cada altura e maior que o
+   passo ate a seguinte, garantindo sobreposicao de ponta a ponta. */
+.aurora i:nth-child(1) {
+  top: -6%;
+  left: -20%;
+  width: 96vw;
+  height: 32%;
+  --c1: rgba(1, 102, 181, 0.55);
+  --c2: rgba(4, 78, 190, 0.4);
+  --c3: rgba(31, 115, 240, 0.22);
+  animation: aurora-drift-a 13s var(--ease-inout) infinite alternate;
+}
+
+.aurora i:nth-child(2) {
+  top: 20%;
+  right: -24%;
+  width: 92vw;
+  height: 32%;
+  --c1: rgba(4, 78, 190, 0.5);
+  --c2: rgba(1, 102, 181, 0.4);
+  --c3: rgba(31, 115, 240, 0.2);
+  animation: aurora-drift-b 16s var(--ease-inout) infinite alternate;
+}
+
+.aurora i:nth-child(3) {
+  top: 45%;
+  left: -16%;
+  width: 94vw;
+  height: 32%;
+  --c1: rgba(31, 115, 240, 0.26);
+  --c2: rgba(1, 102, 181, 0.5);
+  --c3: rgba(4, 78, 190, 0.32);
+  animation: aurora-drift-c 15s var(--ease-inout) infinite alternate;
+}
+
+.aurora i:nth-child(4) {
+  top: 70%;
+  right: -20%;
+  width: 98vw;
+  height: 34%;
+  --c1: rgba(1, 102, 181, 0.52);
+  --c2: rgba(4, 78, 190, 0.38);
+  --c3: rgba(31, 115, 240, 0.22);
+  animation: aurora-drift-a 18s var(--ease-inout) infinite alternate-reverse;
+}
+
+/* A rotacao e o que da o aspecto organico: girando uma mancha assimetrica,
+   ela parece mudar de forma sem nenhum repaint — so transform. Com manchas
+   grandes, um giro pequeno ja basta; girar demais viraria varredura. */
+@keyframes aurora-drift-a {
+  from { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); }
+  to   { transform: translate3d(6%, -5%, 0) rotate(16deg) scale(1.14); }
+}
+
+@keyframes aurora-drift-b {
+  from { transform: translate3d(0, 0, 0) rotate(8deg) scale(1.1); }
+  to   { transform: translate3d(-7%, 6%, 0) rotate(-14deg) scale(0.94); }
+}
+
+@keyframes aurora-drift-c {
+  from { transform: translate3d(0, 0, 0) rotate(-10deg) scale(0.96); }
+  to   { transform: translate3d(5%, 7%, 0) rotate(13deg) scale(1.16); }
+}
+
+/* ==========================================================================
+   Reveal (controlado por js/motion.js)
+   Estado inicial so e aplicado quando o JS assume, para que a pagina
+   continue legivel se o script falhar.
+   ========================================================================== */
+
+html.has-motion [data-reveal] {
+  opacity: 0;
+}
+
+html.has-motion [data-reveal="up"] {
+  transform: translate3d(0, 34px, 0);
+}
+
+html.has-motion [data-reveal="left"] {
+  transform: translate3d(-30px, 0, 0);
+}
+
+/* Ao terminar a entrada, motion.js marca o elemento e limpa os estilos
+   inline. Sem esta regra o estado inicial acima voltaria a valer e o
+   elemento saltaria de volta — e passaria a ocupar o lugar errado. */
+html.has-motion [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+html.has-motion .mask-line > span {
+  display: block;
+  transform: translate3d(0, 110%, 0);
+}
+
+html.has-motion [data-reveal].is-revealed .mask-line > span {
+  transform: none;
+}
+
+/* ==========================================================================
+   Movimento reduzido
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .aurora i {
+    animation: none;
+  }
+}

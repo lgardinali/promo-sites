@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="470" height="53" viewBox="0 0 470 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Fundo placa" clip-path="url(#clip0_0_58)">
+<path id="Vector" d="M0 0H470L446 53H0V0Z" fill="url(#paint0_linear_0_58)"/>
+<g id="Vector_2">
+<path d="M0 0.5H469Z" fill="black"/>
+<path d="M0 0.5H469" stroke="#EEEEEE"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_58" x1="0" y1="0" x2="0" y2="53" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D9D9D9"/>
+<stop offset="0.5" stop-color="#B0B0B0"/>
+<stop offset="1" stop-color="#8F8F8F"/>
+</linearGradient>
+<clipPath id="clip0_0_58">
+<rect width="470" height="53" fill="white"/>
+</clipPath>
+</defs>
+</svg>

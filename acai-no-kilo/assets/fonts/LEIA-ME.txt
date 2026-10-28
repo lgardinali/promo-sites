@@ -1,0 +1,27 @@
+AMSI PRO — fonte oficial da campanha
+====================================
+
+Os dois pesos usados no Figma estao nesta pasta:
+
+  AmsiPro-SemiBold.woff2 / .otf   ->  font-weight 600
+  AmsiPro-Ultra.woff2    / .otf   ->  font-weight 800
+
+Os WOFF2 foram gerados a partir dos OTF originais (155 KB -> 51 KB e
+145 KB -> 48 KB). O navegador carrega o WOFF2; o OTF fica como reserva
+para navegadores antigos. As regras @font-face estao em css/tokens.css.
+
+Metricas lidas dos arquivos (unitsPerEm 1000):
+
+  SemiBold   cap-height 703   ascender 854   descender -146
+  Ultra      cap-height 708   ascender 855   descender -145
+
+O cap-height importa porque as coordenadas de texto do Figma sao
+medidas a partir do topo da maiuscula (text-box-trim). Com
+line-height:1 o topo da caixa fica 0,147em acima disso na Ultra e
+0,151em na SemiBold — os tokens --cap-offset-ultra e --cap-offset-semi
+guardam esses valores, usados para posicionar a faixa da mecanica do KV
+exatamente como no desenho.
+
+A Luckiest Guy dos titulos em destaque e a Inter (busca e credito do
+rodape) sao gratuitas e vem do Google Fonts no index.html — as mesmas
+do arquivo original.

@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Base — reset, tipografia, acessibilidade e utilitários de animação
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--scroll-offset);
+}
+
+body, h1, h2, h3, h4, p, ul, ol, li, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+body {
+  min-height: 100svh;
+  background: var(--c-cream);
+  color: var(--c-brown-text);
+  font-family: var(--f-display);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, picture, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 { font-weight: 700; line-height: 1.271; }
+
+hr { border: 0; }
+
+/* Signika é variável: o Figma usa GRAD 0 (padrão). */
+.badge, .store__city { font-variation-settings: "GRAD" 0; }
+
+/* --------------------------------------------------------------------------
+   Acessibilidade
+   -------------------------------------------------------------------------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  top: 8px; left: 8px;
+  z-index: 200;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--c-red);
+  color: var(--c-white);
+  font-weight: 700;
+  transform: translateY(-160%);
+  transition: transform var(--dur-fast) var(--ease-bouncy);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+:focus-visible {
+  outline: 3px solid var(--c-yellow);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Reveal on scroll
+   Cada variante começa deslocada e volta ao estado neutro em .is-in.
+   O índice --i escalona os itens de uma mesma lista.
+   -------------------------------------------------------------------------- */
+
+.js .reveal {
+  --i: 0;
+  opacity: 0;
+  transition:
+    opacity var(--dur-reveal) var(--ease-slow),
+    transform var(--dur-reveal) var(--ease-slow);
+  transition-delay: calc(var(--i) * 80ms);
+}
+.js .reveal[data-reveal="up"]    { transform: translate3d(0, 34px, 0); }
+.js .reveal[data-reveal="scale"] { transform: scale(.94); }
+.js .reveal[data-reveal="tilt"]  { transform: perspective(1200px) rotateX(-7deg) translate3d(0, 40px, 0); transform-origin: top center; }
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+/* O bloco de prêmios e o "caderno" chegam com overshoot, como no Figma. */
+.js .reveal[data-reveal="scale"],
+.js .reveal[data-reveal="tilt"] {
+  transition-timing-function: var(--ease-bouncy);
+  transition-duration: var(--dur-slow);
+}
+
+/* --------------------------------------------------------------------------
+   Preferência por menos movimento
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* --------------------------------------------------------------------------
+   Parallax
+   O deslocamento vem do loop de scroll em js/parallax.js. Usa a propriedade
+   `translate` para não conflitar com o `transform` de posicionamento.
+   -------------------------------------------------------------------------- */
+[data-parallax] { translate: 0 var(--parallax, 0px); }
