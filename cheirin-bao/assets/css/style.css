@@ -1158,6 +1158,41 @@ html.from-banner .page-banner [data-reveal] { opacity: 1; transform: none; trans
 .site-footer__social { display: flex; justify-content: center; }
 .site-footer__social .social-link { width: 40px; }
 
+/* Texto legal + assinatura Polgo. No tablet/mobile o conteúdo é "achatado"
+   (display: contents) e estes dois vão para depois do Instagram via order. */
+.site-footer__legal,
+.site-footer__credit { order: 1; }
+.site-footer__legal {
+  max-width: 780px;
+  color: rgba(255, 255, 255, .75);
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+}
+.site-footer__legal span { display: block; }
+.site-footer__credit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+}
+.site-footer__made {
+  color: var(--branco);
+  font: 400 12px/1.2 "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  white-space: nowrap;
+}
+.site-footer__heart { display: inline-block; transform: translate3d(0, 0, 0); }
+.site-footer__polgo { width: 200px; height: auto; }
+@keyframes heartbeat {
+  0%, 60%, 100% { transform: scale3d(1, 1, 1); }
+  15% { transform: scale3d(1.25, 1.25, 1); }
+  30% { transform: scale3d(1, 1, 1); }
+  45% { transform: scale3d(1.16, 1.16, 1); }
+}
+@media (hover: hover) {
+  .site-footer__credit:hover .site-footer__heart { animation: heartbeat 1.2s ease-in-out infinite; }
+}
+
 @media (min-width: 768px) {
   .site-footer { padding: 48px 40px; }
   .site-footer__inner { gap: 24px; }
@@ -1167,6 +1202,9 @@ html.from-banner .page-banner [data-reveal] { opacity: 1; transform: none; trans
   .site-footer__links .nav-link { font-size: 20px; }
   .site-footer__docs, .site-footer__docs .nav-link { font-size: 16px; }
   .site-footer__social .social-link { width: 48px; }
+  .site-footer__legal .site-footer__legal-b,
+  .site-footer__legal .site-footer__legal-c { display: inline; }
+  .site-footer__credit { flex-direction: row; }
 }
 @media (min-width: 1280px) {
   .site-footer { padding: calc(44 * var(--u)) 40px; }
