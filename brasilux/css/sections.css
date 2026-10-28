@@ -1270,7 +1270,13 @@ html.has-motion .draw__dot {
     border-width: 0.183cqw;
     border-radius: 5.486cqw;
   }
-  .kv__renata   { top: 75.92%; left: 17.77%; width: 57.86%; }
+  /* Ancorada pela base, como no desktop. O `top: 75.92%` antigo era o CENTRO
+     da imagem (a regra base tinha `translate: -50% -50%`); desde que a base
+     passou a ancorar por `bottom`, manter esse `top` empurrava a Renata meia
+     altura para baixo, por cima dos botoes e do texto legal. Aqui a base dela
+     fica rente ao rodape do palco, sem folga — no touch nao ha parallax de
+     mouse, e o scroll so a empurra para baixo. */
+  .kv__renata   { top: auto; bottom: 0; left: 17.77%; width: 57.86%; }
   .kv__produto  { top: 84.47%; left: 27.01%; width: 40.69%; }
 
   /* No mobile os dois botões ficam centralizados, não alinhados à esquerda. */
