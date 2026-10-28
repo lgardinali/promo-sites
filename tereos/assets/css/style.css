@@ -951,8 +951,14 @@ img::selection { background: rgba(254, 208, 68, .35); }
   .kv__sub { font-size: calc(var(--u) * 35.7); }
   .kv__cta { padding-left: calc(var(--u) * 40); }
   .kv__media { flex: 1 1 0; min-width: 0; height: 100%; }
-  .kv__woman-clip { height: calc(var(--u) * 645); }
-  .kv__woman { left: calc(50% - var(--u) * 261); bottom: 0; width: calc(var(--u) * 522); height: calc(var(--u) * 554); }
+  /* Recorta em cima, embaixo e à direita como no layout, mas deixa folga à esquerda:
+     a moça encosta na borda da metade direita e o parallax não pode cortar o braço. */
+  .kv__woman-clip {
+    height: calc(var(--u) * 645);
+    overflow: visible;
+    clip-path: inset(0 0 0 calc(var(--u) * -64));
+  }
+  .kv__woman { left: calc(50% - var(--u) * 250); bottom: 0; width: calc(var(--u) * 521.51); height: calc(var(--u) * 554.03); }
   .kv__legal { top: calc(100% - var(--u) * 36); width: calc(var(--u) * 780); font-size: calc(var(--u) * 12); }
 }
 
@@ -1740,9 +1746,68 @@ img::selection { background: rgba(254, 208, 68, .35); }
   gap: calc(var(--u) * 8);
 }
 .ftr__copy { font-size: calc(var(--u) * 12); color: var(--cream); }
+.ftr__polgo { display: block; transition: transform var(--d2) var(--ease-slow); }
 .ftr__polgo img {
   width: calc(var(--u) * 199.802);
   height: auto;
+}
+
+/* Assinatura: o coração "bate" a cada ~5s (batida dupla, como um surdo) e acende em amarelo;
+   logo em seguida o Grupo Polgo acena junto. No hover o coração segue o ritmo do samba. */
+.ftr__heart {
+  position: relative;
+  display: inline-block;
+  transform-origin: 50% 60%;
+  animation: heartbeat 4.8s var(--ease-in-out) infinite;
+}
+.ftr__heart-in {
+  position: relative;
+  display: inline-block;
+  transform-origin: 50% 60%;
+}
+.ftr__heart-in::after {
+  content: "\2764\FE0E";
+  position: absolute;
+  inset: 0;
+  color: var(--yellow);
+  opacity: 0;
+  animation: heartglow 4.8s var(--ease-out) infinite;
+}
+.ftr__polgo img { animation: polgoNod 4.8s var(--ease-in-out) infinite; }
+.ftr__heart,
+.ftr__heart-in::after,
+.ftr__polgo img { animation-play-state: paused; }
+.ftr__sign.is-live .ftr__heart,
+.ftr__sign.is-live .ftr__heart-in::after,
+.ftr__sign.is-live .ftr__polgo img { animation-play-state: running; }
+
+@media (hover: hover) {
+  .ftr__sign:hover .ftr__heart-in { animation: heartbeatFast .86s var(--ease-in-out) infinite; }
+  .ftr__sign:hover .ftr__heart-in::after { animation: none; opacity: 1; }
+  .ftr__sign:hover .ftr__polgo { transform: translate3d(0, -2px, 0) rotate(.02deg); }
+}
+
+@keyframes heartbeat {
+  0%, 16%, 100% { transform: scale3d(1, 1, 1); }
+  3% { transform: scale3d(1.32, 1.32, 1); }
+  6.5% { transform: scale3d(1, 1, 1); }
+  10% { transform: scale3d(1.18, 1.18, 1); }
+}
+@keyframes heartbeatFast {
+  0%, 60%, 100% { transform: scale3d(1, 1, 1); }
+  14% { transform: scale3d(1.28, 1.28, 1); }
+  28% { transform: scale3d(1, 1, 1); }
+  42% { transform: scale3d(1.16, 1.16, 1); }
+}
+@keyframes heartglow {
+  0%, 22%, 100% { opacity: 0; }
+  3% { opacity: 1; }
+  12% { opacity: .85; }
+}
+@keyframes polgoNod {
+  0%, 7%, 20%, 100% { transform: translate3d(0, 0, 0) rotate(.02deg); }
+  11% { transform: translate3d(0, -3px, 0) rotate(.02deg); }
+  15% { transform: translate3d(0, .5px, 0) rotate(.02deg); }
 }
 
 @media (min-width: 640px) {

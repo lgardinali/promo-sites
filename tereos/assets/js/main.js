@@ -41,6 +41,8 @@
 
   function measure() {
     view.w = doc.clientWidth;
+    // largura útil sem a barra de rolagem: no <head> a barra ainda pode não existir
+    if (doc.style.getPropertyValue('--vw') !== view.w + 'px') doc.style.setProperty('--vw', view.w + 'px');
     view.vw = window.innerWidth;
     view.h = window.innerHeight;
     view.u = calcU(view.vw, view.w);
@@ -314,7 +316,7 @@
   /* ---------------------------------------------------------------------------
      Camadas vivas (GPU ligada enquanto visível) + estado dos loops CSS
      ------------------------------------------------------------------------ */
-  const liveEls = $$('[data-live], [data-fx], .ticket--soon');
+  const liveEls = $$('[data-live], [data-fx], .ticket--soon, [data-sign]');
   const liveSet = new WeakSet();
   const lo = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
