@@ -1,5 +1,5 @@
 /* =============================================================================
-   Guarani 50 anos · "Juntou, trocou, sambou!" — interações (v2)
+   Guarani 50 anos · "Juntou, trocou, sambou!" — interações (v3)
    JS nativo, zero dependências.
 
    Diretrizes de fluidez aplicadas:
@@ -7,7 +7,7 @@
    - translate3d + rotate(0.02deg) (exceto blocos de texto), posições com subpixel (.toFixed(3)).
    - Suavização do ponteiro em dois estágios, normalizada pelo tempo do frame.
    - Um único requestAnimationFrame para a cena; leituras de layout só em resize/load.
-   - Transition para estados (hover/reveal/troca de tema), rAF para movimento contínuo —
+   - Transition para estados (hover/reveal/foco), rAF para movimento contínuo —
      nunca no mesmo elemento.
    - prefers-reduced-motion: loop desligado e tudo na posição final.
    ========================================================================== */
@@ -437,105 +437,6 @@
   }
 
   /* ---------------------------------------------------------------------------
-     Como participar: tema muda a cada 7 s e ao passar o mouse num passo.
-     Cada troca: 1) fundo novo (rápido) → 2) pessoa entra deslizando (ease-out) → 3) frase.
-     O sequenciamento fica no CSS (transições com atraso); aqui só se troca o estado.
-     ------------------------------------------------------------------------ */
-  const cp = (() => {
-    const root = $('[data-cp]');
-    if (!root) return null;
-    const bgs = $$('[data-cp-bg]', root);
-    const people = $$('[data-cp-person]', root);
-    const phrases = $$('[data-cp-phrase]', root);
-    const steps = $$('[data-cp-step]', root);
-    const list = $('[data-cp-steps]', root);
-    const CYCLE = 7000;
-    let index = 0;
-    let timer = 0;
-    let leaveT = 0;
-    let visible = false;
-    let hovering = false;
-    let focused = false;
-
-    const imgsOf = (i) => [bgs[i] && $('img', bgs[i]), people[i] && $('img', people[i])].filter(Boolean);
-    const ready = (i) => Promise.race([
-      Promise.all(imgsOf(i).map((img) => {
-        img.loading = 'eager';
-        return img.complete ? Promise.resolve() : (img.decode ? img.decode().catch(() => {}) : Promise.resolve());
-      })),
-      new Promise((r) => setTimeout(r, 1200)),
-    ]);
-
-    function apply(i) {
-      const prev = index;
-      index = i;
-      clearTimeout(leaveT);
-      bgs.forEach((b, j) => {
-        b.classList.toggle('is-active', j === i);
-        b.classList.toggle('is-leaving', j === prev && prev !== i);
-      });
-      // o fundo anterior fica por baixo até o novo terminar de aparecer
-      leaveT = setTimeout(() => bgs.forEach((b) => b.classList.remove('is-leaving')), 450);
-      people.forEach((p, j) => { p.classList.toggle('is-active', j === i); p.setAttribute('aria-hidden', String(j !== i)); });
-      phrases.forEach((p, j) => { p.classList.toggle('is-active', j === i); p.setAttribute('aria-hidden', String(j !== i)); });
-      steps.forEach((s, j) => {
-        s.classList.toggle('is-active', j === i);
-        if (j === i) s.setAttribute('aria-current', 'step'); else s.removeAttribute('aria-current');
-      });
-    }
-
-    // as imagens de todos os temas já são aquecidas quando a seção se aproxima
-    function go(i) {
-      i = (i + steps.length) % steps.length;
-      if (i !== index) apply(i);
-    }
-
-    const paused = () => !visible || hovering || focused || document.hidden;
-
-    function schedule() {
-      clearTimeout(timer);
-      const isPaused = paused();
-      root.classList.toggle('is-paused', isPaused && visible);
-      root.classList.remove('is-cycling');
-      if (isPaused) return;
-      void root.offsetWidth; // reinicia a barra de progresso do passo ativo
-      root.classList.add('is-cycling');
-      timer = setTimeout(() => { go(index + 1); schedule(); }, CYCLE);
-    }
-
-    steps.forEach((s, i) => {
-      s.addEventListener('mouseenter', () => { if (fine) go(i); });
-      s.addEventListener('focus', () => go(i));
-      s.addEventListener('click', () => { go(i); schedule(); });
-    });
-    list.addEventListener('mouseenter', () => { if (!fine) return; hovering = true; schedule(); });
-    list.addEventListener('mouseleave', () => { hovering = false; schedule(); });
-    list.addEventListener('focusin', () => { focused = true; schedule(); });
-    list.addEventListener('focusout', (e) => { if (!list.contains(e.relatedTarget)) { focused = false; schedule(); } });
-    document.addEventListener('visibilitychange', schedule);
-
-    let warmed = false;
-    new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        if (en.isIntersecting && !warmed) {
-          warmed = true;
-          // aquece as imagens de todos os temas para as trocas serem instantâneas
-          steps.forEach((_, i) => ready(i));
-        }
-      });
-    }, { rootMargin: '60% 0px 60% 0px' }).observe(root);
-    new IntersectionObserver((entries) => {
-      entries.forEach((en) => {
-        visible = en.isIntersecting;
-        root.classList.toggle('is-visible', visible);
-        schedule();
-      });
-    }, { threshold: 0.25 }).observe(root);
-
-    return { go, schedule };
-  })();
-
-  /* ---------------------------------------------------------------------------
      "Hover" por rolagem no touch: o item no centro da tela fica ativo
      ------------------------------------------------------------------------ */
   let focusIO = null;
@@ -552,7 +453,7 @@
     focusIO = new IntersectionObserver((entries) => {
       entries.forEach((en) => {
         const el = en.target;
-        const key = el.matches('[data-carousel]') ? el : el.closest('.cards__track') || el;
+        const key = el.matches('[data-carousel]') ? el : el.closest('.cards__track, .steps, .prods') || el;
         const list = focusGroups.get(key) || [];
         const i = list.indexOf(el);
         if (i > -1) list.splice(i, 1);
@@ -572,7 +473,7 @@
   }
 
   /* ---------------------------------------------------------------------------
-     Carrosséis no mobile (scroll-snap nativo + paginação): Prêmios, Produtos, Ganhadores
+     Carrosséis no mobile (scroll-snap nativo + paginação): Prêmios e Ganhadores
      ------------------------------------------------------------------------ */
   const sliders = carousels.map((track) => {
     const cards = Array.from(track.children);
@@ -750,7 +651,6 @@
     fine = mqFine.matches;
     if (reduce) { resetScene(); revealEls.forEach((el) => el.classList.add('is-in')); ready(); }
     setupTouchFocus();
-    if (cp) cp.schedule();
     ticker.wake();
   };
   (mqReduce.addEventListener ? mqReduce.addEventListener('change', onPref) : mqReduce.addListener(onPref));

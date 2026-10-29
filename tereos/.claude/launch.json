@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tereos-v3",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/Polgo/AppData/Local/Temp/claude/C--Users-Polgo-Documents-Promo-Sites-promo-sites-tereos/b88d00ea-3c9a-40e8-8e95-d06f55958ee7/scratchpad/tools/serve.js", "C:/Users/Polgo/Documents/Promo Sites/promo-sites/tereos", "5181"],
+      "port": 5181
+    }
+  ]
+}

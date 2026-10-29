@@ -18,7 +18,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Guarani 50 anos">
   <meta property="og:title" content="Juntou, trocou, sambou! | Promoção Guarani 50 anos">
-  <meta property="og:description" content="Junte selos, troque por brindes exclusivos e concorra a ingressos para a Sapucaí. É mais caipirinha no samba!">
+  <meta property="og:description" content="Junte selos, troque por brindes exclusivos e concorra a ingressos para o Camarote MAR na Sapucaí!">
   <meta property="og:url" content="https://www.exemplo.com.br/">
   <meta property="og:image" content="https://www.exemplo.com.br/assets/og/og-image.jpg">
   <meta property="og:image:type" content="image/jpeg">
@@ -41,9 +41,11 @@
     })();
   </script>
 
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/aconchego.woff2" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&amp;display=swap">
+  <!-- Inter só nos números (passos, selos, datas) e no copyright: subconjunto mínimo de caracteres -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&amp;text=0123456789%2F%3F%C2%A9%20CopyrightFeitocm&amp;display=swap">
 
   <link rel="preload" as="image" type="image/webp"
         imagesrcset="assets/img/brindes-1000.webp 1000w, assets/img/brindes-2000.webp 2000w, assets/img/brindes-4096.webp 4096w"
@@ -190,157 +192,95 @@
     </section>
 
     <!-- ===================== COMO PARTICIPAR ===================== -->
-    <section class="cp" id="como-participar" data-section data-cp aria-labelledby="ttl-como">
-      <div class="cp__bgs" aria-hidden="true">
-        <div class="cp__bg is-active" data-cp-bg>
-          <div class="cp__bg-par" data-live data-scroll="0.06" data-scroll-max="16">
-            <div class="cp__bg-zoom">
-              <picture>
-                <source media="(max-width: 639px)" srcset="assets/img/cp-bgv-samba-1000.webp 1000w, assets/img/cp-bgv-samba-1600.webp 1600w, assets/img/cp-bgv-samba-2607.webp 2607w" sizes="190vw">
-                <source media="(max-width: 1023px)" srcset="assets/img/cp-bgv-samba-1000.webp 1000w, assets/img/cp-bgv-samba-1600.webp 1600w, assets/img/cp-bgv-samba-2607.webp 2607w" sizes="113vw">
-                <img class="cp__bg-img" src="assets/img/cp-bg-samba-2560.webp" srcset="assets/img/cp-bg-samba-1600.webp 1600w, assets/img/cp-bg-samba-2560.webp 2560w, assets/img/cp-bg-samba-4096.webp 4096w"
-                     sizes="(max-width: 1439px) 240vw, 142vw" alt="" width="4096" height="1312" loading="lazy" decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-        <div class="cp__bg" data-cp-bg>
-          <div class="cp__bg-par" data-live data-scroll="0.06" data-scroll-max="16">
-            <div class="cp__bg-zoom">
-              <picture>
-                <source media="(max-width: 639px)" srcset="assets/img/cp-bgv-galera-1000.webp 1000w, assets/img/cp-bgv-galera-1600.webp 1600w, assets/img/cp-bgv-galera-2607.webp 2607w" sizes="190vw">
-                <source media="(max-width: 1023px)" srcset="assets/img/cp-bgv-praia-1000.webp 1000w, assets/img/cp-bgv-praia-1600.webp 1600w, assets/img/cp-bgv-praia-2607.webp 2607w" sizes="113vw">
-                <img class="cp__bg-img" src="assets/img/cp-bg-galera-2560.webp" srcset="assets/img/cp-bg-galera-1600.webp 1600w, assets/img/cp-bg-galera-2560.webp 2560w, assets/img/cp-bg-galera-4096.webp 4096w"
-                     sizes="(max-width: 1439px) 240vw, 142vw" alt="" width="4096" height="1312" loading="lazy" decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-        <div class="cp__bg" data-cp-bg>
-          <div class="cp__bg-par" data-live data-scroll="0.06" data-scroll-max="16">
-            <div class="cp__bg-zoom">
-              <picture>
-                <source media="(max-width: 639px)" srcset="assets/img/cp-bgv-praia-1000.webp 1000w, assets/img/cp-bgv-praia-1600.webp 1600w, assets/img/cp-bgv-praia-2607.webp 2607w" sizes="190vw">
-                <source media="(max-width: 1023px)" srcset="assets/img/cp-bgv-praia-1000.webp 1000w, assets/img/cp-bgv-praia-1600.webp 1600w, assets/img/cp-bgv-praia-2607.webp 2607w" sizes="113vw">
-                <img class="cp__bg-img" src="assets/img/cp-bg-mate-2560.webp" srcset="assets/img/cp-bg-mate-1600.webp 1600w, assets/img/cp-bg-mate-2560.webp 2560w, assets/img/cp-bg-mate-4096.webp 4096w"
-                     sizes="(max-width: 1439px) 240vw, 142vw" alt="" width="4096" height="1312" loading="lazy" decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-        <div class="cp__bg" data-cp-bg>
-          <div class="cp__bg-par" data-live data-scroll="0.06" data-scroll-max="16">
-            <div class="cp__bg-zoom">
-              <picture>
-                <source media="(max-width: 639px)" srcset="assets/img/cp-bgv-carnaval-1000.webp 1000w, assets/img/cp-bgv-carnaval-1600.webp 1600w, assets/img/cp-bgv-carnaval-2607.webp 2607w" sizes="190vw">
-                <source media="(max-width: 1023px)" srcset="assets/img/cp-bgv-carnaval-1000.webp 1000w, assets/img/cp-bgv-carnaval-1600.webp 1600w, assets/img/cp-bgv-carnaval-2607.webp 2607w" sizes="113vw">
-                <img class="cp__bg-img" src="assets/img/cp-bg-carnaval-2560.webp" srcset="assets/img/cp-bg-carnaval-1600.webp 1600w, assets/img/cp-bg-carnaval-2560.webp 2560w, assets/img/cp-bg-carnaval-4096.webp 4096w"
-                     sizes="(max-width: 1439px) 240vw, 142vw" alt="" width="4096" height="1312" loading="lazy" decoding="async">
-              </picture>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="cp__in">
-        <div class="cp__aside">
-          <div class="ttl ttl--green ttl--tall" data-reveal="left">
+    <section class="plain plain--cp" id="como-participar" data-section aria-labelledby="ttl-como">
+      <div class="split split--sticky">
+        <div class="split__aside">
+          <div class="ttl ttl--green" data-reveal="left">
               <h2 class="ttl__h" id="ttl-como"><span class="ttl__a">Como</span> <span class="ttl__b c-yellow">participar?</span></h2>
             </div>
-          <ol class="cp__steps" data-cp-steps>
-              <li class="cpstep lift lift--flat is-active" data-cp-step tabindex="0" data-reveal style="--i:1" aria-current="step">
+          <div class="dsc">
+            <div class="dsc__box dsc__box--selo" data-reveal="left" style="--i:1">
+              <p class="dsc__hl">1 kg comprado = 1 selo acumulado!</p>
+              <p>Quanto mais Açúcar Guarani, mais selos para trocar por prêmios.</p>
+            </div>
+            <div class="dsc__cta" data-reveal style="--i:2">
+              <a class="btn btn--orange" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="split__main">
+          <ol class="steps">
+              <li class="step lift lift--flat" data-reveal style="--i:0" data-focus>
                 <span class="lift__layer" aria-hidden="true"></span>
-                <div class="lift__face cpstep__face">
-                  <div class="cpstep__icon" aria-hidden="true">
-                    <img class="cpstep__icon-img" src="assets/icons/passo-carrinho.svg" alt="" width="60" height="60">
-                    <span class="cpstep__num">1</span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-carrinho.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">1</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--lg c-red">COMPRE</span>
+                      <span class="step__l step__l--lg c-green">AÇÚCAR GUARANI</span>
+                    </h3>
                   </div>
-                  <div class="cpstep__txt">
-                    <h3 class="cpstep__t">COMPRE AÇÚCAR GUARANI</h3>
-                    <div class="cpstep__d"><p>Compre e cadastre seu cupom fiscal.</p></div>
-                  </div>
-                  <span class="cpstep__bar" aria-hidden="true"></span>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt"><p>Compre a partir de 1 kg de produtos Guarani participantes no mesmo cupom fiscal.</p></div>
                 </div>
               </li>
-              <li class="cpstep lift lift--flat" data-cp-step tabindex="0" data-reveal style="--i:2">
+              <li class="step lift lift--flat" data-reveal style="--i:1" data-focus>
                 <span class="lift__layer" aria-hidden="true"></span>
-                <div class="lift__face cpstep__face">
-                  <div class="cpstep__icon" aria-hidden="true">
-                    <img class="cpstep__icon-img" src="assets/icons/passo-selos.svg" alt="" width="60" height="60">
-                    <span class="cpstep__num">2</span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-selos.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">2</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">JUNTE</span>
+                      <span class="step__l step__l--xl c-red">SELOS</span>
+                    </h3>
                   </div>
-                  <div class="cpstep__txt">
-                    <h3 class="cpstep__t">JUNTE SELOS</h3>
-                    <div class="cpstep__d"><p>A cada 1 kg de Açúcar Guarani, você ganha 1 selo.</p><p class="cpstep__ex">Ex.: 5 kg = 5 selos.</p></div>
-                  </div>
-                  <span class="cpstep__bar" aria-hidden="true"></span>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt"><p>A cada 1 kg de Açúcar Guarani, você ganha 1 selo.</p><p class="step__ex">Ex.: 5 kg = 5 selos.</p></div>
                 </div>
               </li>
-              <li class="cpstep lift lift--flat" data-cp-step tabindex="0" data-reveal style="--i:3">
+              <li class="step lift lift--flat" data-reveal style="--i:2" data-focus>
                 <span class="lift__layer" aria-hidden="true"></span>
-                <div class="lift__face cpstep__face">
-                  <div class="cpstep__icon" aria-hidden="true">
-                    <img class="cpstep__icon-img" src="assets/icons/passo-presente.svg" alt="" width="60" height="60">
-                    <span class="cpstep__num">3</span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-presente.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">3</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">TROQUE POR</span>
+                      <span class="step__l step__l--xl c-red">PRÊMIOS</span>
+                    </h3>
                   </div>
-                  <div class="cpstep__txt">
-                    <h3 class="cpstep__t">TROQUE POR PRÊMIOS</h3>
-                    <div class="cpstep__d"><p>Troque seus selos por brindes exclusivos.</p></div>
-                  </div>
-                  <span class="cpstep__bar" aria-hidden="true"></span>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt"><p>Junte seus selos e troque por prêmios. Quanto mais quilos, mais selos!</p></div>
                 </div>
               </li>
-              <li class="cpstep lift lift--flat" data-cp-step tabindex="0" data-reveal style="--i:4">
+              <li class="step lift lift--flat" data-reveal style="--i:3" data-focus>
                 <span class="lift__layer" aria-hidden="true"></span>
-                <div class="lift__face cpstep__face">
-                  <div class="cpstep__icon" aria-hidden="true">
-                    <img class="cpstep__icon-img" src="assets/icons/passo-ingressos.svg" alt="" width="60" height="60">
-                    <img class="cpstep__tickets" src="assets/img/ingressos-487.webp" alt="" width="487" height="343">
-                    <span class="cpstep__num">4</span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon step__icon--tickets" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-ingressos.svg" alt="" width="107" height="107" loading="lazy">
+                      <img class="step__tickets" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                      <span class="step__num">4</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">CONCORRA A</span>
+                      <span class="step__l step__l--xs c-green">INGRESSOS PARA O</span>
+                      <span class="step__l step__l--cam c-red">CAMAROTE MAR NA SAPUCAÍ</span>
+                    </h3>
                   </div>
-                  <div class="cpstep__txt">
-                    <h3 class="cpstep__t">CONCORRA AO CAMAROTE</h3>
-                    <div class="cpstep__d"><p>Cada cupom a partir de 1 kg vale 1 número da sorte para concorrer a ingressos para o Camarote MAR na Sapucaí.</p></div>
-                  </div>
-                  <span class="cpstep__bar" aria-hidden="true"></span>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt"><p>Cada cupom fiscal cadastrado vale 1 número da sorte para concorrer a ingressos para o Camarote MAR na Sapucaí.</p></div>
                 </div>
               </li>
           </ol>
-          <div class="cp__cta" data-reveal style="--i:5">
-            <a class="btn btn--orange" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
-          </div>
-        </div>
-
-        <div class="cp__scene" data-scene>
-            <div class="cp__person cp__person--samba is-active" data-cp-person>
-              <div class="cp__person-par" data-live data-depth-x="12" data-depth-y="6" data-depth-y-min="0">
-                <img class="cp__person-img" src="assets/img/cp-p-samba-1600.webp" srcset="assets/img/cp-p-samba-1000.webp 1000w, assets/img/cp-p-samba-1600.webp 1600w, assets/img/cp-p-samba-2903.webp 2903w"
-                     sizes="(min-width: 1920px) 873px, (min-width: 1440px) 45.5vw, (min-width: 1024px) 74vw, (min-width: 640px) 74vw, 101vw" alt="Mulher sorrindo e dançando com uma caipirinha na mão em uma roda de samba" width="2903" height="3084" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="cp__person cp__person--galera" data-cp-person aria-hidden="true">
-              <div class="cp__person-par" data-live data-depth-x="12" data-depth-y="6" data-depth-y-min="0">
-                <img class="cp__person-img" src="assets/img/cp-p-galera-2400.webp" srcset="assets/img/cp-p-galera-1400.webp 1400w, assets/img/cp-p-galera-2400.webp 2400w, assets/img/cp-p-galera-4096.webp 4096w"
-                     sizes="(min-width: 1920px) 1875px, (min-width: 1440px) 97.7vw, (min-width: 1024px) 159vw, (min-width: 640px) 154vw, 216vw" alt="Homem sorridente de cabelos longos na praia brindando com uma caipirinha, com uma bola de vôlei sobre a mesa" width="4096" height="2025" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="cp__person cp__person--mate" data-cp-person aria-hidden="true">
-              <div class="cp__person-par" data-live data-depth-x="12" data-depth-y="6" data-depth-y-min="0">
-                <img class="cp__person-img" src="assets/img/cp-p-mate-1800.webp" srcset="assets/img/cp-p-mate-1000.webp 1000w, assets/img/cp-p-mate-1800.webp 1800w, assets/img/cp-p-mate-4096.webp 4096w"
-                     sizes="(min-width: 1920px) 1331px, (min-width: 1440px) 69.4vw, (min-width: 1024px) 113vw, (min-width: 640px) 110vw, 154vw" alt="Vendedor de mate de chapéu de palha oferecendo um copo de mate na praia" width="4096" height="2852" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="cp__person cp__person--carnaval" data-cp-person aria-hidden="true">
-              <div class="cp__person-par" data-live data-depth-x="12" data-depth-y="6" data-depth-y-min="0">
-                <img class="cp__person-img" src="assets/img/cp-p-carnaval-2000.webp" srcset="assets/img/cp-p-carnaval-1100.webp 1100w, assets/img/cp-p-carnaval-2000.webp 2000w, assets/img/cp-p-carnaval-4096.webp 4096w"
-                     sizes="(min-width: 1920px) 1489px, (min-width: 1440px) 77.6vw, (min-width: 1024px) 126vw, (min-width: 640px) 123vw, 172vw" alt="Casal fantasiado sorrindo com sacolés na mão em um bloco de carnaval" width="4096" height="2550" loading="lazy" decoding="async">
-              </div>
-            </div>
-
-            <p class="cp__phrase cp__phrase--samba is-active" data-cp-phrase>É <span class="c-lime">mais</span> caipirinha<br>no samba.</p>
-            <p class="cp__phrase cp__phrase--galera" data-cp-phrase aria-hidden="true">É <span class="c-lime">mais</span> caipirinha<br>com a galera.</p>
-            <p class="cp__phrase cp__phrase--mate" data-cp-phrase aria-hidden="true">É <span class="c-lime">mais</span> mate<br>na praia.</p>
-            <p class="cp__phrase cp__phrase--carnaval" data-cp-phrase aria-hidden="true">É <span class="c-lime">mais</span> sacolé<br>no carnaval.</p>
         </div>
       </div>
     </section>
@@ -377,6 +317,26 @@
                   <span class="lift__layer" aria-hidden="true"></span>
                   <div class="lift__face pcard__face">
                     <div class="pcard__img">
+                      <div class="pcard__photo pcard__photo--voucher">
+                        <img src="assets/img/premio-voucher-700.webp" srcset="assets/img/premio-voucher-700.webp 700w, assets/img/premio-voucher-1400.webp 1400w"
+                             sizes="(min-width: 1024px) 360px, 420px" alt="Voucher delivery de R$ 50" width="1400" height="700" loading="lazy" decoding="async">
+                      </div>
+                    </div>
+                    <div class="pcard__txt">
+                      <h3 class="pcard__name">Voucher Delivery</h3>
+                      <p class="pcard__desc">R$ 50 para pedir o que você mais gosta.</p>
+                    </div>
+                    <span class="pcard__selo" aria-label="3 selos">
+                      <img class="pcard__selo-anel" src="assets/icons/selo-premio-anel.svg" alt="" width="120" height="120" loading="lazy">
+                      <img class="pcard__selo-centro" src="assets/icons/selo-premio-centro.svg" alt="" width="86" height="86" loading="lazy">
+                      <b aria-hidden="true">3</b><small aria-hidden="true">SELOS</small>
+                    </span>
+                  </div>
+                </article>
+                <article class="pcard lift lift--flat" data-reveal style="--i:1" data-focus>
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <div class="lift__face pcard__face">
+                    <div class="pcard__img">
                       <div class="pcard__photo pcard__photo--cooler">
                         <img src="assets/img/premio-cooler-500.webp" srcset="assets/img/premio-cooler-500.webp 500w, assets/img/premio-cooler-999.webp 999w"
                              sizes="(min-width: 1024px) 360px, 420px" alt="Cooler Guarani laranja com ilustração de praia" width="999" height="1280" loading="lazy" decoding="async">
@@ -393,7 +353,7 @@
                     </span>
                   </div>
                 </article>
-                <article class="pcard lift lift--flat" data-reveal style="--i:1" data-focus>
+                <article class="pcard lift lift--flat" data-reveal style="--i:2" data-focus>
                   <span class="lift__layer" aria-hidden="true"></span>
                   <div class="lift__face pcard__face">
                     <div class="pcard__img">
@@ -413,26 +373,6 @@
                     </span>
                   </div>
                 </article>
-                <article class="pcard lift lift--flat" data-reveal style="--i:2" data-focus>
-                  <span class="lift__layer" aria-hidden="true"></span>
-                  <div class="lift__face pcard__face">
-                    <div class="pcard__img">
-                      <div class="pcard__photo pcard__photo--voucher">
-                        <img src="assets/img/premio-voucher-700.webp" srcset="assets/img/premio-voucher-700.webp 700w, assets/img/premio-voucher-1400.webp 1400w"
-                             sizes="(min-width: 1024px) 360px, 420px" alt="Voucher delivery de R$ 50" width="1400" height="700" loading="lazy" decoding="async">
-                      </div>
-                    </div>
-                    <div class="pcard__txt">
-                      <h3 class="pcard__name">Voucher Delivery</h3>
-                      <p class="pcard__desc">R$ 50 para pedir o que você mais gosta.</p>
-                    </div>
-                    <span class="pcard__selo" aria-label="3 selos">
-                      <img class="pcard__selo-anel" src="assets/icons/selo-premio-anel.svg" alt="" width="120" height="120" loading="lazy">
-                      <img class="pcard__selo-centro" src="assets/icons/selo-premio-centro.svg" alt="" width="86" height="86" loading="lazy">
-                      <b aria-hidden="true">3</b><small aria-hidden="true">SELOS</small>
-                    </span>
-                  </div>
-                </article>
                 <article class="pcard lift lift--flat" data-reveal style="--i:3" data-focus>
                   <span class="lift__layer" aria-hidden="true"></span>
                   <div class="lift__face pcard__face">
@@ -444,7 +384,7 @@
                     </div>
                     <div class="pcard__txt">
                       <h3 class="pcard__name">Camarote MAR na Sapucaí</h3>
-                      <p class="pcard__desc">Concorra a 1 par de ingressos com seus números da sorte.</p>
+                      <p class="pcard__desc">Um dos principais camarotes All Inclusive do Carnaval da Sapucaí.</p>
                     </div>
                     <span class="pcard__sorteio"><span class="trim">SORTEIO</span><span class="trim">PAR DE INGRESSOS</span></span>
                   </div>
@@ -467,75 +407,85 @@
       <div class="split split--sticky">
         <div class="split__aside">
           <div class="ttl ttl--green ttl--tall" data-reveal="left">
-              <h2 class="ttl__h" id="ttl-produtos"><span class="ttl__a">Confira os</span> <span class="ttl__b c-yellow">Produtos!</span></h2>
+              <h2 class="ttl__h" id="ttl-produtos"><span class="ttl__b c-yellow">Produtos</span> <span class="ttl__a">participantes</span></h2>
             </div>
           <div class="dsc__cta dsc__cta--up" data-reveal style="--i:1">
             <a class="btn btn--orange" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
           </div>
         </div>
         <div class="split__main">
-          <div class="cards">
-            <div class="cards__track cards__track--products" data-carousel tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Produtos participantes">
-                <article class="prod lift lift--flat" data-reveal style="--i:0" data-focus>
-                  <span class="lift__layer" aria-hidden="true"></span>
-                  <div class="lift__face prod__face">
-                    <div class="prod__img prod__img--refinado">
+          <div class="prods-wrap">
+            <div class="prods">
+              <article class="prod" data-reveal style="--i:0" data-focus>
+                <div class="prod__in">
+                  <div class="prod__pack">
+                    <img class="prod__halo" src="assets/icons/produto-halo-refinado.svg" alt="" width="306" height="252" loading="lazy">
+                    <span class="prod__shadow" aria-hidden="true"><img src="assets/icons/produto-sombra.svg" alt="" width="206" height="30" loading="lazy"></span>
+                    <div class="prod__img">
                       <img src="assets/img/produto-refinado-500.webp" srcset="assets/img/produto-refinado-500.webp 500w, assets/img/produto-refinado-1000.webp 1000w"
-                           sizes="260px" alt="Embalagem de Açúcar Refinado Guarani 1 kg" width="1000" height="1369" loading="lazy" decoding="async">
-                    </div>
-                    <div class="prod__txt">
-                      <h3 class="prod__name">Açúcar Refinado</h3>
-                      <p class="prod__detail">Guarani · Pacote 1 kg</p>
+                           sizes="(min-width: 1920px) 260px, (min-width: 1440px) 13.4vw, (min-width: 1024px) 18vw, (min-width: 640px) 36vw, 34vw"
+                           alt="Embalagem de Açúcar Refinado Guarani" width="1000" height="1369" loading="lazy" decoding="async">
                     </div>
                   </div>
-                </article>
-                <article class="prod lift lift--flat" data-reveal style="--i:1" data-focus>
-                  <span class="lift__layer" aria-hidden="true"></span>
-                  <div class="lift__face prod__face">
-                    <div class="prod__img prod__img--cristal">
+                  <div class="prod__txt">
+                    <h3 class="prod__name">Açúcar Refinado Guarani</h3>
+                    <p class="prod__detail">Pacote 1kg ou 5kg</p>
+                  </div>
+                </div>
+              </article>
+              <article class="prod" data-reveal style="--i:1" data-focus>
+                <div class="prod__in">
+                  <div class="prod__pack">
+                    <img class="prod__halo" src="assets/icons/produto-halo-cristal.svg" alt="" width="306" height="252" loading="lazy">
+                    <span class="prod__shadow" aria-hidden="true"><img src="assets/icons/produto-sombra.svg" alt="" width="206" height="30" loading="lazy"></span>
+                    <div class="prod__img">
                       <img src="assets/img/produto-cristal-500.webp" srcset="assets/img/produto-cristal-500.webp 500w, assets/img/produto-cristal-1000.webp 1000w"
-                           sizes="260px" alt="Embalagem de Açúcar Cristal Guarani 1 kg" width="1000" height="1369" loading="lazy" decoding="async">
-                    </div>
-                    <div class="prod__txt">
-                      <h3 class="prod__name">Açúcar Cristal</h3>
-                      <p class="prod__detail">Guarani · Pacote 1 kg</p>
+                           sizes="(min-width: 1920px) 260px, (min-width: 1440px) 13.4vw, (min-width: 1024px) 18vw, (min-width: 640px) 36vw, 34vw"
+                           alt="Embalagem de Açúcar Cristal Guarani" width="1000" height="1369" loading="lazy" decoding="async">
                     </div>
                   </div>
-                </article>
-                <article class="prod lift lift--flat" data-reveal style="--i:2" data-focus>
-                  <span class="lift__layer" aria-hidden="true"></span>
-                  <div class="lift__face prod__face">
-                    <div class="prod__img prod__img--demerara">
+                  <div class="prod__txt">
+                    <h3 class="prod__name">Açúcar Cristal Guarani</h3>
+                    <p class="prod__detail">Pacote 1kg, 2kg ou 5kg</p>
+                  </div>
+                </div>
+              </article>
+              <article class="prod" data-reveal style="--i:2" data-focus>
+                <div class="prod__in">
+                  <div class="prod__pack">
+                    <img class="prod__halo" src="assets/icons/produto-halo-demerara.svg" alt="" width="306" height="252" loading="lazy">
+                    <span class="prod__shadow" aria-hidden="true"><img src="assets/icons/produto-sombra.svg" alt="" width="206" height="30" loading="lazy"></span>
+                    <div class="prod__img prod__img--crop">
                       <img src="assets/img/produto-demerara-560.webp" srcset="assets/img/produto-demerara-560.webp 560w, assets/img/produto-demerara-1120.webp 1120w"
-                           sizes="260px" alt="Embalagem de Açúcar Demerara Guarani 1 kg" width="1120" height="1337" loading="lazy" decoding="async">
-                    </div>
-                    <div class="prod__txt">
-                      <h3 class="prod__name">Açúcar Demerara</h3>
-                      <p class="prod__detail">Guarani · Pacote 1 kg</p>
+                           sizes="(min-width: 1920px) 260px, (min-width: 1440px) 13.4vw, (min-width: 1024px) 18vw, (min-width: 640px) 36vw, 34vw"
+                           alt="Embalagem de Açúcar Natural Demerara Guarani" width="1120" height="1337" loading="lazy" decoding="async">
                     </div>
                   </div>
-                </article>
-                <article class="prod lift lift--flat" data-reveal style="--i:3" data-focus>
-                  <span class="lift__layer" aria-hidden="true"></span>
-                  <div class="lift__face prod__face">
-                    <div class="prod__img prod__img--organico">
+                  <div class="prod__txt">
+                    <h3 class="prod__name">Açúcar Natural Demerara Guarani</h3>
+                    <p class="prod__detail">Pacote 1kg, 2,1kg ou 5kg</p>
+                  </div>
+                </div>
+              </article>
+              <article class="prod" data-reveal style="--i:3" data-focus>
+                <div class="prod__in">
+                  <div class="prod__pack">
+                    <img class="prod__halo" src="assets/icons/produto-halo-organico.svg" alt="" width="306" height="252" loading="lazy">
+                    <span class="prod__shadow" aria-hidden="true"><img src="assets/icons/produto-sombra.svg" alt="" width="206" height="30" loading="lazy"></span>
+                    <div class="prod__img prod__img--crop">
                       <img src="assets/img/produto-organico-560.webp" srcset="assets/img/produto-organico-560.webp 560w, assets/img/produto-organico-1120.webp 1120w"
-                           sizes="260px" alt="Embalagem de Açúcar Orgânico Guarani 1 kg" width="1120" height="1338" loading="lazy" decoding="async">
-                    </div>
-                    <div class="prod__txt">
-                      <h3 class="prod__name">Açúcar Orgânico</h3>
-                      <p class="prod__detail">Guarani · Pacote 1 kg</p>
+                           sizes="(min-width: 1920px) 260px, (min-width: 1440px) 13.4vw, (min-width: 1024px) 18vw, (min-width: 640px) 36vw, 34vw"
+                           alt="Embalagem de Açúcar Cristal Orgânico Guarani" width="1120" height="1338" loading="lazy" decoding="async">
                     </div>
                   </div>
-                </article>
+                  <div class="prod__txt">
+                    <h3 class="prod__name">Açúcar Cristal Orgânico Guarani</h3>
+                    <p class="prod__detail">Pacote 1kg</p>
+                  </div>
+                </div>
+              </article>
             </div>
-            <div class="dots" data-dots aria-label="Escolher produto">
-                <button class="dot is-active" type="button" aria-label="Item 1" aria-current="true"></button>
-                <button class="dot" type="button" aria-label="Item 2"></button>
-                <button class="dot" type="button" aria-label="Item 3"></button>
-                <button class="dot" type="button" aria-label="Item 4"></button>
-              </div>
-            <div class="note" data-reveal style="--i:2">
+            <div class="note note--prods" data-reveal style="--i:2">
               <p>Confira as condições completas de participação no regulamento.</p>
               <a class="note__link" href="#">
                 <span>Ver regulamento</span>
