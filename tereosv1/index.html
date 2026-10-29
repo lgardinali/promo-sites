@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Juntou, trocou, sambou! | Promoção Guarani 50 anos</title>
+  <meta name="description" content="Compre açúcar Guarani, junte selos, troque por prêmios e concorra a ingressos para o camarote na Sapucaí. Promoção Guarani 50 anos – Deixando o Rio mais doce.">
+  <meta name="theme-color" content="#36672f">
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph / redes sociais (trocar og:url e og:image pela URL absoluta do domínio final) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Guarani 50 anos">
+  <meta property="og:title" content="Juntou, trocou, sambou! | Promoção Guarani 50 anos">
+  <meta property="og:description" content="Junte selos, troque por prêmios e concorra a ingressos para o camarote na Sapucaí. É mais caipirinha no samba!">
+  <meta property="og:url" content="https://www.exemplo.com.br/">
+  <meta property="og:image" content="https://www.exemplo.com.br/assets/og/og-image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Promoção Guarani 50 anos: Juntou, trocou, sambou!">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Juntou, trocou, sambou! | Promoção Guarani 50 anos">
+  <meta name="twitter:description" content="Junte selos, troque por prêmios e concorra a ingressos para o camarote na Sapucaí.">
+  <meta name="twitter:image" content="https://www.exemplo.com.br/assets/og/og-image.jpg">
+
+  <!-- Largura útil sem a barra de rolagem: base da escala fluida (--u) antes do primeiro paint -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.className += ' js';
+      function setVw() { d.style.setProperty('--vw', d.clientWidth + 'px'); }
+      setVw();
+      addEventListener('resize', setVw, { passive: true });
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&amp;display=swap">
+
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="assets/img/kv-bg-1600.webp 1600w, assets/img/kv-bg-2560.webp 2560w, assets/img/kv-bg-4096.webp 4096w"
+        imagesizes="(max-width: 639px) 640vw, (max-width: 1023px) 442vw, (max-width: 1439px) 173vw, 118vw">
+  <link rel="preload" as="image" type="image/webp"
+        imagesrcset="assets/img/mulher-1000.webp 1000w, assets/img/mulher-1600.webp 1600w, assets/img/mulher-2903.webp 2903w"
+        imagesizes="(min-width: 1920px) 725px, (min-width: 1440px) 38vw, (min-width: 1024px) 49vw, (min-width: 640px) 67vw, 102vw">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===================== MENU ===================== -->
+  <header class="hdr" data-hdr>
+    <div class="hdr__bar">
+      <button class="hdr__menu" type="button" aria-expanded="false" aria-controls="menu" data-menu-open>
+        <img src="assets/icons/menu.svg" alt="" width="24" height="24">
+        <span>Menu</span>
+      </button>
+
+      <nav class="hdr__nav" aria-label="Principal">
+        <ul class="nav">
+          <li><a class="nav__link" href="#home" data-nav>Home</a></li>
+          <li><a class="nav__link" href="#como-participar" data-nav>Como participar</a></li>
+          <li><a class="nav__link" href="#premios" data-nav>Prêmios</a></li>
+          <li><a class="nav__link" href="#duvidas" data-nav>Dúvidas frequentes</a></li>
+          <li><a class="nav__link" href="#ganhadores" data-nav>Ganhadores</a></li>
+        </ul>
+      </nav>
+
+      <a class="login" href="#" data-login>
+        <span class="login__wipe" aria-hidden="true"></span>
+        <img class="login__icon" src="assets/icons/user.svg" alt="" width="24" height="24">
+        <span class="login__label">Login/Cadastro</span>
+      </a>
+
+      <span class="hdr__flower" aria-hidden="true" data-fx="spin">
+        <img src="assets/img/fundo-flor-tile-231.webp" alt="" width="231" height="230">
+      </span>
+    </div>
+  </header>
+
+  <!-- Menu mobile / tablet -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu>
+    <div class="menu__deco" aria-hidden="true">
+      <img class="menu__flor" src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948">
+      <img class="menu__arcos" src="assets/img/fundo-arcos-1600.webp" alt="" width="1600" height="1481">
+      <img class="menu__tri" src="assets/img/fundo-tri-claro-1215.webp" alt="" width="1215" height="1185">
+    </div>
+    <div class="menu__top">
+      <button class="menu__close" type="button" data-menu-close>
+        <span class="menu__x" aria-hidden="true"></span>
+        <span>Fechar</span>
+      </button>
+      <a class="login" href="#">
+        <span class="login__wipe" aria-hidden="true"></span>
+        <img class="login__icon" src="assets/icons/user.svg" alt="" width="24" height="24">
+        <span class="login__label">Login/Cadastro</span>
+      </a>
+    </div>
+    <nav class="menu__nav" aria-label="Menu">
+      <ul>
+        <li style="--i:0"><a href="#home" data-nav>Home</a></li>
+        <li style="--i:1"><a href="#como-participar" data-nav>Como participar</a></li>
+        <li style="--i:2"><a href="#premios" data-nav>Prêmios</a></li>
+        <li style="--i:3"><a href="#duvidas" data-nav>Dúvidas frequentes</a></li>
+        <li style="--i:4"><a href="#ganhadores" data-nav>Ganhadores</a></li>
+      </ul>
+    </nav>
+    <div class="menu__cta" style="--i:5">
+      <a class="btn btn--yellow" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+    </div>
+  </div>
+
+  <main id="conteudo">
+    <!-- ===================== KV / HOME ===================== -->
+    <section class="sec sec--green kv" id="home" data-section>
+      <div class="deco deco--flor" aria-hidden="true" data-fx="flor"><img src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948"></div>
+      <div class="deco deco--arcos-kv" aria-hidden="true" data-fx="drift">
+        <img src="assets/img/fundo-arcos-1600.webp" srcset="assets/img/fundo-arcos-1600.webp 1600w, assets/img/fundo-arcos-4096.webp 4096w"
+             sizes="(min-width: 1920px) 774px, (min-width: 1440px) 41vw, (min-width: 1024px) 54vw, (min-width: 640px) 61vw, 80vw" alt="" width="1600" height="1481">
+      </div>
+      <div class="deco deco--tri" aria-hidden="true" data-fx="drift"><img src="assets/img/fundo-tri-claro-1215.webp" alt="" width="1215" height="1185"></div>
+
+      <div class="kv__frame" data-scene>
+        <div class="kv__bg" aria-hidden="true">
+          <div class="kv__bg-par" data-live data-depth-x="-10" data-depth-y="-6" data-scroll="0.05" data-scroll-max="12">
+            <div class="kv__bg-zoom" data-live>
+              <img class="kv__bg-img"
+                   src="assets/img/kv-bg-2560.webp"
+                   srcset="assets/img/kv-bg-1600.webp 1600w, assets/img/kv-bg-2560.webp 2560w, assets/img/kv-bg-4096.webp 4096w"
+                   sizes="(max-width: 639px) 640vw, (max-width: 1023px) 442vw, (max-width: 1439px) 173vw, 118vw"
+                   alt="" width="4096" height="1313" fetchpriority="high" decoding="async">
+            </div>
+          </div>
+          <div class="kv__grad"></div>
+        </div>
+
+        <div class="kv__inner">
+          <div class="kv__copy">
+            <div class="kv__top">
+              <div class="kv__row">
+                <div class="kv__logo lift lift--flat" data-intro="down" style="--i:1">
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <span class="lift__face kv__logo-face">
+                    <img class="kv__logo-img"
+                         src="assets/img/logo-50-480.webp"
+                         srcset="assets/img/logo-50-480.webp 480w, assets/img/logo-50-960.webp 960w, assets/img/logo-50-3150.webp 3150w"
+                         sizes="(min-width: 1920px) 193px, (min-width: 1440px) 10.1vw, (min-width: 1024px) 13.5vw, (min-width: 640px) 21.4vw, 30.7vw"
+                         alt="Guarani 50 anos – Deixando o Rio mais doce" width="480" height="296">
+                  </span>
+                </div>
+                <p class="kv__tag" data-intro="left" style="--i:3"><span class="trim">PROMOÇÃO</span></p>
+              </div>
+              <div class="kv__block kv__block--orange" data-intro="left" style="--i:2">
+                <h1 class="kv__title">
+                  <span class="kv__t1">Juntou, trocou,</span>
+                  <span class="kv__t2">sambou!</span>
+                </h1>
+              </div>
+            </div>
+            <div class="kv__bottom">
+              <div class="kv__block kv__block--olive" data-intro="left" style="--i:4">
+                <p class="kv__sub">É <span class="c-lime">mais</span> caipirinha<br>no samba.</p>
+              </div>
+              <div class="kv__cta" data-intro="up" style="--i:6">
+                <a class="btn btn--yellow" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="kv__media">
+            <div class="kv__woman-clip">
+              <div class="kv__woman" data-intro="woman" style="--i:2">
+                <div class="kv__woman-par" data-live data-depth-x="16" data-depth-y="8" data-depth-y-min="0" data-scroll="0.07" data-scroll-max="26">
+                  <div class="kv__woman-float" data-live>
+                    <img class="kv__woman-img"
+                         src="assets/img/mulher-1600.webp"
+                         srcset="assets/img/mulher-1000.webp 1000w, assets/img/mulher-1600.webp 1600w, assets/img/mulher-2903.webp 2903w"
+                         sizes="(min-width: 1920px) 725px, (min-width: 1440px) 38vw, (min-width: 1024px) 49vw, (min-width: 640px) 67vw, 102vw"
+                         alt="Mulher sorrindo e dançando com uma caipirinha na mão em uma roda de samba" width="2903" height="3084" fetchpriority="high" decoding="async">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="kv__legal">Participação válida apenas no período de xx/xx/2026 a xx/xx/202x. Consulte os termos de participação, datas dos sorteios e regulamentos completos no site. Imagens meramente ilustrativas. CERTIFICADO DE AUTORIZAÇÃO SPA/ME Nº 00.000000/2026</p>
+    </section>
+
+    <!-- ===================== COMO PARTICIPAR ===================== -->
+    <section class="sec sec--yellow" id="como-participar" data-section aria-labelledby="ttl-como">
+      <div class="deco deco--flor" aria-hidden="true" data-fx="flor"><img src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948" loading="lazy"></div>
+      <div class="deco deco--arcos deco--arcos-como" aria-hidden="true" data-fx="drift">
+        <img src="assets/img/fundo-arcos-1600.webp" srcset="assets/img/fundo-arcos-1600.webp 1600w, assets/img/fundo-arcos-4096.webp 4096w"
+             sizes="(min-width: 1920px) 774px, (min-width: 1440px) 41vw, (min-width: 1024px) 54vw, (min-width: 640px) 72vw, 94vw" alt="" width="1600" height="1481" loading="lazy">
+      </div>
+      <div class="deco deco--tri" aria-hidden="true" data-fx="drift"><img src="assets/img/fundo-tri-escuro-1081.webp" alt="" width="1081" height="1052" loading="lazy"></div>
+
+      <div class="panel">
+        <span class="panel__flower" aria-hidden="true" data-fx="spin"><img src="assets/img/fundo-flor-tile-231.webp" alt="" width="231" height="230" loading="lazy"></span>
+        <div class="split split--sticky">
+          <div class="split__aside">
+            <div class="ttl ttl--green" data-reveal="left">
+              <h2 class="ttl__h" id="ttl-como"><span class="ttl__a">Como</span> <span class="ttl__b c-yellow">participar.</span></h2>
+            </div>
+            <div class="dsc">
+              <div class="dsc__box" data-reveal="left" style="--i:1">
+                <p>Cada 1 kg de produtos Guarani vale 1 selo para trocar por prêmios. E cada cupom fiscal a partir de 1 kg vale 1 número da sorte para concorrer à Sapucaí!</p>
+              </div>
+              <div class="dsc__cta" data-reveal style="--i:2">
+                <a class="btn btn--orange" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="split__main">
+            <ol class="steps">
+              <li class="step lift lift--flat" data-reveal style="--i:0" data-focus>
+                <span class="lift__layer" aria-hidden="true"></span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-carrinho.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">1</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--lg c-red">COMPRE</span>
+                      <span class="step__l step__l--lg c-green">AÇÚCAR GUARANI</span>
+                    </h3>
+                  </div>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt">
+                    <p>Compre a partir de 1 kg de produtos Guarani participantes no mesmo cupom fiscal.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="step lift lift--flat" data-reveal style="--i:1" data-focus>
+                <span class="lift__layer" aria-hidden="true"></span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-selos.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">2</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">JUNTE</span>
+                      <span class="step__l step__l--xl c-red">SELOS</span>
+                    </h3>
+                  </div>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt">
+                    <p>Cada 1 kg vale 1 selo e cada cupom, 1 número da sorte.</p>
+                    <p class="step__ex">Ex.: 5 kg = 5 selos + 1 número.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="step lift lift--flat" data-reveal style="--i:2" data-focus>
+                <span class="lift__layer" aria-hidden="true"></span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-presente.svg" alt="" width="107" height="107" loading="lazy">
+                      <span class="step__num">3</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">TROQUE POR</span>
+                      <span class="step__l step__l--xl c-red">PRÊMIOS</span>
+                    </h3>
+                  </div>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt">
+                    <p>Junte seus selos e troque por prêmios. Quanto mais quilos, mais selos!</p>
+                  </div>
+                </div>
+              </li>
+              <li class="step lift lift--flat" data-reveal style="--i:3" data-focus>
+                <span class="lift__layer" aria-hidden="true"></span>
+                <div class="lift__face step__face">
+                  <div class="step__head">
+                    <div class="step__icon step__icon--tickets" aria-hidden="true">
+                      <img class="step__icon-img" src="assets/icons/passo-ingressos.svg" alt="" width="107" height="107" loading="lazy">
+                      <img class="step__tickets" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                      <span class="step__num">4</span>
+                    </div>
+                    <h3 class="step__ttl">
+                      <span class="step__l step__l--md c-green">CONCORRA A</span>
+                      <span class="step__l step__l--xs c-green">INGRESSOS PARA CURTIR O</span>
+                      <span class="step__l step__l--cam c-red">CAMAROTE NA SAPUCAÍ</span>
+                    </h3>
+                  </div>
+                  <span class="step__div" aria-hidden="true"></span>
+                  <div class="step__txt">
+                    <p>Cada número da sorte concorre a ingressos. Quanto mais cupons, mais chances!</p>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRÊMIOS ===================== -->
+    <section class="sec sec--green" id="premios" data-section aria-labelledby="ttl-premios">
+      <div class="deco deco--flor" aria-hidden="true" data-fx="flor"><img src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948" loading="lazy"></div>
+      <div class="deco deco--arcos deco--arcos-full" aria-hidden="true" data-fx="drift">
+        <img src="assets/img/fundo-arcos-1600.webp" srcset="assets/img/fundo-arcos-1600.webp 1600w, assets/img/fundo-arcos-4096.webp 4096w"
+             sizes="(min-width: 1920px) 774px, (min-width: 1440px) 41vw, (min-width: 1024px) 54vw, (min-width: 640px) 72vw, 80vw" alt="" width="1600" height="1481" loading="lazy">
+      </div>
+      <div class="deco deco--tri" aria-hidden="true" data-fx="drift"><img src="assets/img/fundo-tri-claro-1215.webp" alt="" width="1215" height="1185" loading="lazy"></div>
+
+      <div class="panel">
+        <span class="panel__flower" aria-hidden="true" data-fx="spin"><img src="assets/img/fundo-flor-tile-231.webp" alt="" width="231" height="230" loading="lazy"></span>
+        <div class="split">
+          <div class="split__aside">
+            <div class="ttl ttl--orange" data-reveal="left">
+              <h2 class="ttl__h" id="ttl-premios"><span class="ttl__a">Confira os</span> <span class="ttl__b c-yellow">Prêmios!</span></h2>
+            </div>
+            <div class="dsc">
+              <div class="dsc__box" data-reveal="left" style="--i:1">
+                <p>Troque seus selos (1 a cada kg) por cooler, guarda-sol e voucher delivery. E concorra a ingressos para a Sapucaí com seus números da sorte (1 por cupom)!</p>
+              </div>
+              <div class="dsc__cta" data-reveal style="--i:2">
+                <a class="btn btn--green" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="split__main">
+            <figure class="prize" data-scene>
+              <div class="prize__stage">
+                <div class="prize__img-wrap" data-reveal="zoom">
+                  <div class="prize__par" data-live data-depth-x="10" data-depth-y="8">
+                    <div class="prize__float" data-live>
+                      <img class="prize__img"
+                           src="assets/img/premios-2000.webp"
+                           srcset="assets/img/premios-1000.webp 1000w, assets/img/premios-2000.webp 2000w, assets/img/premios-4096.webp 4096w"
+                           sizes="(min-width: 1920px) 970px, (min-width: 1440px) 51vw, (min-width: 1024px) 56vw, (min-width: 640px) 79vw, 99vw"
+                           alt="Prêmios: cooler Guarani, guarda-sol Guarani, voucher delivery de R$ 50 e par de ingressos para o Camarote Mar na Sapucaí"
+                           width="2000" height="1557" loading="lazy" decoding="async">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="lbl lbl--cooler" data-reveal="pop" style="--i:2">
+                  <div class="lbl__par" data-live data-text data-depth-x="22" data-depth-y="16">
+                    <div class="lbl__in" data-focus>
+                      <div class="lbl__bob" data-live>
+                        <span class="lbl__badge"><img class="lbl__ring" src="assets/icons/selo-anel.svg" alt="" width="62" height="62" loading="lazy"><img class="lbl__core" src="assets/icons/selo-miolo.svg" alt="" width="54" height="54" loading="lazy"><b class="trim">6</b><small class="trim">SELOS</small></span>
+                        <span class="lbl__pill"><span class="trim">COOLER</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lbl lbl--sol" data-reveal="pop" style="--i:3">
+                  <div class="lbl__par" data-live data-text data-depth-x="18" data-depth-y="14">
+                    <div class="lbl__in" data-focus>
+                      <div class="lbl__bob" data-live>
+                        <span class="lbl__badge"><img class="lbl__ring" src="assets/icons/selo-anel.svg" alt="" width="62" height="62" loading="lazy"><img class="lbl__core" src="assets/icons/selo-miolo.svg" alt="" width="54" height="54" loading="lazy"><b class="trim">10</b><small class="trim">SELOS</small></span>
+                        <span class="lbl__pill"><span class="trim">GUARDA-SOL</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lbl lbl--sorteio" data-reveal="pop" style="--i:4">
+                  <div class="lbl__par" data-live data-text data-depth-x="26" data-depth-y="18">
+                    <div class="lbl__in" data-focus>
+                      <div class="lbl__bob" data-live>
+                        <span class="lbl__box"><span class="trim lbl__box-a">SORTEIO</span><span class="trim lbl__box-b">PAR DE INGRESSOS</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="lbl lbl--voucher" data-reveal="pop" style="--i:5">
+                  <div class="lbl__par" data-live data-text data-depth-x="20" data-depth-y="12">
+                    <div class="lbl__in" data-focus>
+                      <div class="lbl__bob" data-live>
+                        <span class="lbl__badge"><img class="lbl__ring" src="assets/icons/selo-anel.svg" alt="" width="62" height="62" loading="lazy"><img class="lbl__core" src="assets/icons/selo-miolo.svg" alt="" width="54" height="54" loading="lazy"><b class="trim">3</b><small class="trim">SELOS</small></span>
+                        <span class="lbl__pill"><span class="trim">VOUCHER<br>DELIVERY</span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DÚVIDAS FREQUENTES ===================== -->
+    <section class="sec sec--yellow" id="duvidas" data-section aria-labelledby="ttl-duvidas">
+      <div class="deco deco--flor" aria-hidden="true" data-fx="flor"><img src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948" loading="lazy"></div>
+      <div class="deco deco--arcos deco--arcos-full" aria-hidden="true" data-fx="drift">
+        <img src="assets/img/fundo-arcos-1600.webp" srcset="assets/img/fundo-arcos-1600.webp 1600w, assets/img/fundo-arcos-4096.webp 4096w"
+             sizes="(min-width: 1920px) 774px, (min-width: 1440px) 41vw, (min-width: 1024px) 54vw, (min-width: 640px) 72vw, 80vw" alt="" width="1600" height="1481" loading="lazy">
+      </div>
+      <div class="deco deco--tri" aria-hidden="true" data-fx="drift"><img src="assets/img/fundo-tri-escuro-1081.webp" alt="" width="1081" height="1052" loading="lazy"></div>
+
+      <div class="panel">
+        <span class="panel__flower" aria-hidden="true" data-fx="spin"><img src="assets/img/fundo-flor-tile-231.webp" alt="" width="231" height="230" loading="lazy"></span>
+        <div class="split split--sticky">
+          <div class="split__aside">
+            <div class="ttl ttl--orange" data-reveal="left">
+              <h2 class="ttl__h ttl__h--inv" id="ttl-duvidas"><span class="ttl__b c-yellow">Dúvidas</span> <span class="ttl__a">frequentes</span></h2>
+            </div>
+            <div class="dsc">
+              <div class="dsc__box" data-reveal="left" style="--i:1">
+                <p>Ficou com alguma dúvida? Aqui você encontra as respostas sobre selos, trocas e os sorteios da Sapucaí.</p>
+              </div>
+              <div class="dsc__cta" data-reveal style="--i:2">
+                <a class="btn btn--green" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="split__main">
+            <div class="faq" data-faq>
+              <div class="faq__col">
+                <div class="faq__item is-open" data-reveal style="--i:0">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q1" aria-expanded="true" aria-controls="faq-a1"><span class="faq__q">Lorem ipsum dolor sit amet?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:1">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><span class="faq__q">Consectetur adipiscing elit sed do?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:2">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><span class="faq__q">Eiusmod tempor incididunt ut labore?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:3">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><span class="faq__q">Ut enim ad minim veniam, quis nostrud exercitation ullamco?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:4">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><span class="faq__q">Duis aute irure dolor in reprehenderit?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:5">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><span class="faq__q">Excepteur sint occaecat cupidatat?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+              </div>
+              <div class="faq__col">
+                <div class="faq__item" data-reveal style="--i:1">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><span class="faq__q">Sunt in culpa qui officia deserunt?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:2">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8"><span class="faq__q">Mollit anim id est laborum?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:3">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9"><span class="faq__q">Sed ut perspiciatis unde omnis?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:4">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10"><span class="faq__q">Nemo enim ipsam voluptatem quia voluptas sit aspernatur?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:5">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q11" aria-expanded="false" aria-controls="faq-a11"><span class="faq__q">Neque porro quisquam est qui dolorem?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+                <div class="faq__item" data-reveal style="--i:6">
+                  <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q12" aria-expanded="false" aria-controls="faq-a12"><span class="faq__q">Quis autem vel eum iure reprehenderit?</span><span class="faq__icon" aria-hidden="true"><img class="faq__icon-open" src="assets/icons/faq-abrir.svg" alt="" width="36" height="36"><img class="faq__icon-close" src="assets/icons/faq-fechar.svg" alt="" width="36" height="36"></span></button></h3>
+                  <div class="faq__a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div class="faq__a-in"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GANHADORES ===================== -->
+    <section class="sec sec--orange" id="ganhadores" data-section aria-labelledby="ttl-ganhadores">
+      <div class="deco deco--flor" aria-hidden="true" data-fx="flor"><img src="assets/img/fundo-flor-2949.webp" alt="" width="2949" height="2948" loading="lazy"></div>
+      <div class="deco deco--tri" aria-hidden="true" data-fx="drift"><img src="assets/img/fundo-tri-claro-1215.webp" alt="" width="1215" height="1185" loading="lazy"></div>
+
+      <div class="panel">
+        <span class="panel__flower" aria-hidden="true" data-fx="spin"><img src="assets/img/fundo-flor-tile-231.webp" alt="" width="231" height="230" loading="lazy"></span>
+        <div class="split">
+          <div class="split__aside">
+            <div class="ttl ttl--green" data-reveal="left">
+              <h2 class="ttl__h" id="ttl-ganhadores"><span class="ttl__a">Confira os</span> <span class="ttl__b c-yellow">Ganhadores!</span></h2>
+            </div>
+            <div class="dsc">
+              <div class="dsc__box" data-reveal="left" style="--i:1">
+                <p>A cada sorteio, novos ganhadores garantem um par de ingressos para o camarote na Sapucaí. O próximo pode ser você!</p>
+              </div>
+              <div class="dsc__cta" data-reveal style="--i:2">
+                <a class="btn btn--orange" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="split__main">
+            <div class="win">
+              <div class="win__track" data-carousel tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Ganhadores dos sorteios">
+                <article class="ticket lift lift--flat" data-reveal style="--i:0" data-focus aria-label="1º sorteio, 05/12/2026: Aline Souza">
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <div class="lift__face ticket__face">
+                    <div class="ticket__top">
+                      <div class="ticket__draw">
+                        <p class="ticket__n">1º SORTEIO</p>
+                        <p class="ticket__date">05/12/2026</p>
+                      </div>
+                      <img class="ticket__img" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                    </div>
+                    <div class="ticket__cut" aria-hidden="true">
+                      <img class="ticket__dash" src="assets/icons/picote.svg" alt="" width="252" height="2" loading="lazy">
+                      <img class="ticket__ring ticket__ring--l" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__ring ticket__ring--r" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__notch ticket__notch--l" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                      <img class="ticket__notch ticket__notch--r" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                    </div>
+                    <div class="ticket__body">
+                      <div class="ticket__avatar" aria-hidden="true"><span>AS</span></div>
+                      <div class="ticket__who">
+                        <h3 class="ticket__name">Aline Souza</h3>
+                        <p class="ticket__cpf">CPF ***.482.917-**</p>
+                      </div>
+                      <p class="ticket__meta"><img src="assets/icons/local.svg" alt="" width="18" height="18" loading="lazy">São Paulo – SP</p>
+                      <span class="ticket__div" aria-hidden="true"></span>
+                      <p class="ticket__prize">Ganhou 1 par de ingressos para o camarote na Sapucaí</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ticket lift lift--flat" data-reveal style="--i:1" data-focus aria-label="2º sorteio, 19/12/2026: Rafael Oliveira">
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <div class="lift__face ticket__face">
+                    <div class="ticket__top">
+                      <div class="ticket__draw">
+                        <p class="ticket__n">2º SORTEIO</p>
+                        <p class="ticket__date">19/12/2026</p>
+                      </div>
+                      <img class="ticket__img" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                    </div>
+                    <div class="ticket__cut" aria-hidden="true">
+                      <img class="ticket__dash" src="assets/icons/picote.svg" alt="" width="252" height="2" loading="lazy">
+                      <img class="ticket__ring ticket__ring--l" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__ring ticket__ring--r" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__notch ticket__notch--l" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                      <img class="ticket__notch ticket__notch--r" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                    </div>
+                    <div class="ticket__body">
+                      <div class="ticket__avatar" aria-hidden="true"><span>RO</span></div>
+                      <div class="ticket__who">
+                        <h3 class="ticket__name">Rafael Oliveira</h3>
+                        <p class="ticket__cpf">CPF ***.315.640-**</p>
+                      </div>
+                      <p class="ticket__meta"><img src="assets/icons/local.svg" alt="" width="18" height="18" loading="lazy">Rio de Janeiro – RJ</p>
+                      <span class="ticket__div" aria-hidden="true"></span>
+                      <p class="ticket__prize">Ganhou 1 par de ingressos para o camarote na Sapucaí</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ticket ticket--soon lift lift--flat" data-reveal style="--i:2" data-focus aria-label="3º sorteio, 09/01/2027: em breve">
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <div class="lift__face ticket__face">
+                    <div class="ticket__top">
+                      <div class="ticket__draw">
+                        <p class="ticket__n">3º SORTEIO</p>
+                        <p class="ticket__date">09/01/2027</p>
+                      </div>
+                      <img class="ticket__img" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                    </div>
+                    <div class="ticket__cut" aria-hidden="true">
+                      <img class="ticket__dash" src="assets/icons/picote.svg" alt="" width="252" height="2" loading="lazy">
+                      <img class="ticket__ring ticket__ring--l" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__ring ticket__ring--r" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__notch ticket__notch--l" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                      <img class="ticket__notch ticket__notch--r" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                    </div>
+                    <div class="ticket__body">
+                      <div class="ticket__avatar" aria-hidden="true"><span>?</span></div>
+                      <div class="ticket__who">
+                        <h3 class="ticket__name">Em breve</h3>
+                      </div>
+                      <p class="ticket__meta ticket__meta--soon"><img src="assets/icons/calendario.svg" alt="" width="18" height="18" loading="lazy">Aguardando sorteio</p>
+                      <span class="ticket__div" aria-hidden="true"></span>
+                      <p class="ticket__prize">O próximo par de ingressos pode ser seu!</p>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="ticket ticket--soon lift lift--flat" data-reveal style="--i:3" data-focus aria-label="4º sorteio, 23/01/2027: em breve">
+                  <span class="lift__layer" aria-hidden="true"></span>
+                  <div class="lift__face ticket__face">
+                    <div class="ticket__top">
+                      <div class="ticket__draw">
+                        <p class="ticket__n">4º SORTEIO</p>
+                        <p class="ticket__date">23/01/2027</p>
+                      </div>
+                      <img class="ticket__img" src="assets/img/ingressos-487.webp" alt="" width="487" height="343" loading="lazy">
+                    </div>
+                    <div class="ticket__cut" aria-hidden="true">
+                      <img class="ticket__dash" src="assets/icons/picote.svg" alt="" width="252" height="2" loading="lazy">
+                      <img class="ticket__ring ticket__ring--l" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__ring ticket__ring--r" src="assets/icons/recorte-contorno.svg" alt="" width="26" height="26" loading="lazy">
+                      <img class="ticket__notch ticket__notch--l" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                      <img class="ticket__notch ticket__notch--r" src="assets/icons/recorte.svg" alt="" width="22" height="22" loading="lazy">
+                    </div>
+                    <div class="ticket__body">
+                      <div class="ticket__avatar" aria-hidden="true"><span>?</span></div>
+                      <div class="ticket__who">
+                        <h3 class="ticket__name">Em breve</h3>
+                      </div>
+                      <p class="ticket__meta ticket__meta--soon"><img src="assets/icons/calendario.svg" alt="" width="18" height="18" loading="lazy">Aguardando sorteio</p>
+                      <span class="ticket__div" aria-hidden="true"></span>
+                      <p class="ticket__prize">O próximo par de ingressos pode ser seu!</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="win__dots" data-dots aria-label="Escolher ganhador">
+                <button class="win__dot is-active" type="button" aria-label="1º sorteio" aria-current="true"></button>
+                <button class="win__dot" type="button" aria-label="2º sorteio"></button>
+                <button class="win__dot" type="button" aria-label="3º sorteio"></button>
+                <button class="win__dot" type="button" aria-label="4º sorteio"></button>
+              </div>
+
+              <div class="win__note" data-reveal style="--i:2">
+                <p>Novos ganhadores são divulgados após cada sorteio.</p>
+                <a class="win__link" href="#">
+                  <span>Ver datas no regulamento</span>
+                  <img src="assets/icons/seta.svg" alt="" width="18" height="18" loading="lazy">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="ftr">
+    <div class="ftr__in">
+      <div class="ftr__main">
+        <div class="ftr__brand">
+          <a class="ftr__logo" href="#home" data-nav aria-label="Guarani 50 anos – voltar ao topo">
+            <img src="assets/img/logo-50-480.webp"
+                 srcset="assets/img/logo-50-480.webp 480w, assets/img/logo-50-960.webp 960w, assets/img/logo-50-3150.webp 3150w"
+                 sizes="(min-width: 1920px) 193px, (min-width: 1440px) 10.1vw, (min-width: 1024px) 14.3vw, (min-width: 640px) 25.2vw, 39.5vw"
+                 alt="Guarani 50 anos – Deixando o Rio mais doce" width="480" height="296" loading="lazy">
+          </a>
+        </div>
+        <nav class="ftr__nav" aria-label="Rodapé">
+          <ul class="nav">
+            <li><a class="nav__link" href="#home" data-nav>Home</a></li>
+            <li><a class="nav__link" href="#como-participar" data-nav>Como participar</a></li>
+            <li><a class="nav__link" href="#premios" data-nav>Prêmios</a></li>
+            <li><a class="nav__link" href="#duvidas" data-nav>Dúvidas frequentes</a></li>
+            <li><a class="nav__link" href="#ganhadores" data-nav>Ganhadores</a></li>
+          </ul>
+        </nav>
+        <div class="ftr__action">
+          <a class="btn btn--orange btn--on-green" href="#"><span class="btn__layer" aria-hidden="true"></span><span class="btn__face">Participe agora</span></a>
+        </div>
+      </div>
+      <p class="ftr__legal">Participação válida apenas no período de xx/xx/2026 a xx/xx/202x. Consulte os termos de participação, datas dos sorteios e regulamentos completos no site. Imagens meramente ilustrativas. CERTIFICADO DE AUTORIZAÇÃO SPA/ME Nº 00.000000/2026</p>
+      <div class="ftr__sign" data-sign>
+        <p class="ftr__copy">Copyright © Feito com <span class="ftr__heart" role="img" aria-label="amor"><span class="ftr__heart-in" aria-hidden="true">&#x2764;&#xFE0E;</span></span></p>
+        <span class="ftr__polgo">
+          <img src="assets/icons/grupo-polgo.svg" alt="Grupo Polgo" width="200" height="28" loading="lazy">
+        </span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
