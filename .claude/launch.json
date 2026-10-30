@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "promo-sites",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/Polgo/AppData/Local/Temp/claude/C--Users-Polgo-Documents-Promo-Sites-promo-sites/87211706-9d56-44d6-b110-985397d7bfb0/scratchpad/tools/serve.js", "C:/Users/Polgo/Documents/Promo Sites/promo-sites", "5173"],
+      "port": 5173
+    }
+  ]
+}
