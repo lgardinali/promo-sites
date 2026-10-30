@@ -1972,8 +1972,11 @@ img::selection { background: rgba(254, 208, 68, .35); }
 .ftr__nav .nav {
   justify-content: center;
   column-gap: calc(var(--u) * 20);
-  row-gap: calc(var(--u) * 4);
+  row-gap: calc(var(--u) * 12);
 }
+/* a área de toque (padding) dos links não entra no layout: linhas de 18 como no Figma */
+.ftr__nav .nav > li { display: flex; }
+.ftr__nav .nav__link { margin-block: calc(var(--u) * -4); line-height: calc(var(--u) * 18); }
 .ftr__legal {
   max-width: calc(var(--u) * 780);
   font-size: max(11px, calc(var(--u) * 12));
@@ -2036,7 +2039,7 @@ img::selection { background: rgba(254, 208, 68, .35); }
   .ftr__main { gap: calc(var(--u) * 28); }
   .ftr__guarani { width: calc(var(--u) * 220); }
   .ftr__50 { width: calc(var(--u) * 193); }
-  .ftr__nav .nav { column-gap: calc(var(--u) * 30); }
+  .ftr__nav .nav { column-gap: calc(var(--u) * 30); row-gap: calc(var(--u) * 4); }
   .ftr__sign { flex-direction: row; gap: calc(var(--u) * 9); }
 }
 @media (min-width: 1024px) {
