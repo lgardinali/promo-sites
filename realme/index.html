@@ -129,6 +129,8 @@
     </div>
   </div>
 
+  <!-- .page corta na vertical o deslocamento do parallax das seções (não aumenta a rolagem) -->
+  <div class="page">
   <main id="conteudo">
     <!-- ===================== HOME (KV) + COMO PARTICIPAR ===================== -->
     <section class="s-home" id="home" data-section>
@@ -257,9 +259,11 @@
 
     <!-- ===================== PRÊMIOS ===================== -->
     <section class="s-premios sec sec--dark" id="premios" data-section data-stack>
-      <div class="sec__confete" data-scroll="0.08" data-scroll-max="50" data-live aria-hidden="true">
-        <img src="assets/img/confete-1983.webp" srcset="assets/img/confete-1000.webp 1000w, assets/img/confete-1983.webp 1983w"
-             sizes="(min-width: 1440px) 1983px, 104vw" alt="" width="1983" height="1144" loading="lazy" decoding="async">
+      <div class="sec__deco" aria-hidden="true">
+        <div class="sec__confete" data-scroll="0.08" data-scroll-max="50" data-live>
+          <img src="assets/img/confete-1983.webp" srcset="assets/img/confete-1000.webp 1000w, assets/img/confete-1983.webp 1983w"
+               sizes="(min-width: 1440px) 1983px, 104vw" alt="" width="1983" height="1144" loading="lazy" decoding="async">
+        </div>
       </div>
 
       <div class="wrap sec__in">
@@ -530,6 +534,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
   <!-- ===================== POPUP · LOJAS E QUIOSQUES OFICIAIS ===================== -->
   <div class="lojas" id="lojas" data-lojas>

@@ -703,7 +703,7 @@ html.js:not(.is-ready) .nav { transform: translate3d(0, -140%, 0); opacity: 0; }
 .s-home {
   position: relative;
   isolation: isolate;
-  overflow: clip;
+  overflow-x: clip;
   background: var(--gray);
   padding-bottom: calc(var(--u) * 64);
 }
@@ -1229,14 +1229,39 @@ html.is-ready .como__brush { clip-path: inset(0 0 0 0); transition: clip-path 14
 /* =============================================================================
    Seções seguintes (topo arredondado que sobrepõe a anterior)
    ========================================================================== */
+.page { overflow: clip; }
 .sec {
   position: relative;
   isolation: isolate;
-  overflow: clip;
+  overflow-x: clip;
   margin-top: calc(var(--u) * var(--R) * -1);
   padding: calc(var(--u) * var(--sp)) 0;
   border-top: 2px solid var(--line-d);
   border-radius: calc(var(--u) * var(--R)) calc(var(--u) * var(--R)) 0 0;
+}
+/* Parallax entre seções: a seguinte entra atrasada (até 2,4 × o raio) e se aproxima.
+   O fundo de cada seção continua por baixo da próxima para a fresta nunca mostrar outra cor. */
+.s-home::after,
+.s-premios::after,
+.s-faq::after,
+.s-win::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: calc(var(--u) * var(--R) * 2.6);
+  background: inherit;
+  pointer-events: none;
+}
+.sec__deco {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
 }
 .sec--dark { background: var(--black); color: #fff; }
 .sec--ink { background: var(--ink); color: #fff; }

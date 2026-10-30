@@ -348,9 +348,10 @@
     last: '',
   }));
 
-  // Seções com topo arredondado: entram um pouco adiantadas (cobrindo só o respiro da
-  // seção anterior) e desaceleram até a posição do layout quando o topo chega ao alto da tela.
-  // Deslocamento máximo = 80% do raio → nunca abre fresta nem cobre conteúdo da vizinha.
+  // Seções com topo arredondado: entram atrasadas (afastadas da anterior) e se aproximam até
+  // encaixar na posição do layout quando o topo chega perto do alto da tela. O deslocamento é
+  // sempre para baixo (nunca cobre a vizinha); a fresta que se abre é preenchida pela extensão
+  // do fundo da seção anterior (::after no CSS, 2,6 × o raio).
   const stacks = $$('[data-stack]').map((el) => ({ el, top: 0, d: 0, last: '' }));
   const stackOf = (el) => stacks.find((s) => s.el === el.closest('[data-stack]')) || null;
 
@@ -444,15 +445,15 @@
     const amp = view.amp;
     const vh = view.h;
 
-    // Seções em camadas
-    const L = view.R * 0.8 * u;
+    // Seções em camadas: atraso máximo = 2,4 × o raio do topo (≈ 96px no desktop)
+    const L = view.R * 2.4 * u;
     for (let i = 0; i < stacks.length; i++) {
       const S = stacks[i];
       const start = S.top - vh;
-      const end = Math.min(S.top, view.maxY);
+      const end = Math.min(S.top - vh * 0.12, view.maxY);
       const t = end > start ? clamp((sScroll - start) / (end - start), 0, 1) : 1;
       const e = t * t * (3 - 2 * t);
-      S.d = -L * (1 - e);
+      S.d = L * (1 - e);
       if (!liveSet.has(S.el) && S.last) continue;
       setT(S, `translate3d(0, ${S.d.toFixed(3)}px, 0)`);
     }
