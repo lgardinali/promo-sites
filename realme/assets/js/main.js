@@ -28,6 +28,7 @@
      Medidas (somente em resize / load / mudança de altura do documento)
      ------------------------------------------------------------------------ */
   const view = { w: 0, vw: 0, h: 0, u: 1, amp: 1, R: 40, maxY: 0, mode: 'desk' };
+  let glitter = null; // brilho dourado (definido mais abaixo)
 
   // Mesma fórmula do CSS (--u): 1px de design em px reais para o modo atual
   function calcMode(vw, w) {
@@ -58,6 +59,7 @@
     view.maxY = Math.max(0, docTop(footer) + footer.offsetHeight - view.h);
     sections.forEach((sec) => secBox.set(sec, { top: docTop(sec), h: sec.offsetHeight }));
     stacks.forEach((s) => { s.top = docTop(s.el); });
+    if (glitter) glitter.measure();
     ticker.wake();
   }
 
@@ -682,6 +684,7 @@
     if (!bar.classList.contains('is-hidden')) bar.removeAttribute('inert');
     doc.classList.remove('is-locked');
     scroller.lock(false);
+    ticker.wake();
     if (restoreFocus && opener) opener.focus({ preventScroll: true });
   }
   if (menu) {
@@ -865,6 +868,7 @@
       if (!bar.classList.contains('is-hidden')) bar.removeAttribute('inert');
       doc.classList.remove('is-locked');
       scroller.lock(false);
+      ticker.wake();
       closeT = setTimeout(() => root.setAttribute('inert', ''), 600);
       if (lojasOpener && lojasOpener.focus) lojasOpener.focus({ preventScroll: true });
     }
@@ -922,6 +926,204 @@
   })();
 
   /* ---------------------------------------------------------------------------
+     Brilho dourado: pontinhos de glitter que cintilam e confetes pequenos que giram,
+     caindo devagar, sumindo e reaparecendo. Só aparecem sobre os fundos pretos
+     (KV, Prêmios, Ganhadores e rodapé) e ficam levemente para trás na rolagem.
+     Um canvas fixo, desenhado no mesmo frame da cena; para fora das áreas escuras,
+     com o popup/menu abertos e com "reduzir movimento". Ajuste fino em GLITTER.
+     ------------------------------------------------------------------------ */
+  const GLITTER = {
+    enabled: true,
+    density: 1,      // multiplica a quantidade (1 ≈ 44 partículas numa tela 1920×1080)
+    glints: 0.6,     // proporção de pontos de glitter (o resto são confetes)
+    speed: 1,        // velocidade de queda
+  };
+  glitter = (() => {
+    if (!GLITTER.enabled) return null;
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return null;
+    canvas.className = 'glitter';
+    canvas.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(canvas);
+
+    const COLORS = [[255, 201, 21], [255, 214, 102], [255, 236, 179], [226, 172, 52]];
+    const FILL = COLORS.map((c) => `rgb(${c.join(',')})`);
+    const LIGHT = 'rgb(255, 248, 227)';
+    // brilho redondo pré-desenhado (drawImage é bem mais leve que shadowBlur)
+    const sprites = COLORS.map(([r, g, b]) => {
+      const c = document.createElement('canvas');
+      c.width = c.height = 64;
+      const x = c.getContext('2d');
+      const gr = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+      gr.addColorStop(0, 'rgba(255, 252, 240, 1)');
+      gr.addColorStop(0.22, `rgba(${r}, ${g}, ${b}, 1)`);
+      gr.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, .32)`);
+      gr.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+      x.fillStyle = gr;
+      x.fillRect(0, 0, 64, 64);
+      return c;
+    });
+
+    const regions = [$('.kv'), document.getElementById('premios'), document.getElementById('ganhadores'), footer]
+      .filter(Boolean)
+      .map((el) => ({ el, stack: stackOf(el), top: 0, h: 0, rad: 0 }));
+    const parts = [];
+    let W = 0;
+    let H = 0;
+    let dpr = 1;
+    let lastSy = window.scrollY;
+    let drawn = false;
+    const rnd = (a, b) => a + Math.random() * (b - a);
+
+    function spawn(p, initial) {
+      const u = view.u;
+      p.kind = Math.random() < GLITTER.glints ? 0 : 1; // 0 = glitter · 1 = confete
+      p.c = (Math.random() * COLORS.length) | 0;
+      p.x = rnd(0, W);
+      // reaparece em qualquer altura (some e volta), não só no topo
+      p.y = initial ? rnd(-0.05, 1) * H : rnd(-0.08, 0.75) * H;
+      p.vy = rnd(9, 24) * u * GLITTER.speed;
+      p.amp = rnd(4, 14) * u;
+      p.fq = rnd(0.2, 0.55);
+      p.ph = rnd(0, 6.283);
+      p.depth = rnd(0.18, 0.55);
+      p.life = rnd(5, 11);
+      p.age = initial ? rnd(0, p.life) : 0;
+      if (p.kind === 0) {
+        p.a = rnd(0.65, 1);
+        p.r = rnd(1, 2.3) * u;
+        p.tw = rnd(1.1, 3);
+        p.tph = rnd(0, 6.283);
+      } else {
+        p.a = rnd(0.55, 0.9);
+        p.w = rnd(2.2, 3.8) * u;
+        p.h = p.w * rnd(1.4, 2.1);
+        p.rot = rnd(0, 6.283);
+        p.vr = rnd(-1.4, 1.4);
+        p.flip = rnd(0, 6.283);
+        p.vf = rnd(2, 4.6);
+      }
+    }
+
+    function measureG() {
+      W = view.w;
+      H = view.h;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      regions.forEach((r) => {
+        r.top = docTop(r.el);
+        r.h = r.el.offsetHeight;
+        r.rad = r.stack ? view.R * view.u : 0;
+      });
+      const n = Math.round(clamp((W * H) / 42000, 14, 44) * GLITTER.density);
+      while (parts.length < n) { const p = {}; spawn(p, true); parts.push(p); }
+      parts.length = n;
+      drawn = false;
+    }
+
+    const active = () => !reduce && !lojasOpen && !menuOpen && !document.hidden && doc.classList.contains('is-ready');
+
+    function draw(p) {
+      const t = p.age;
+      const fade = Math.min(1, t / 1.2, (p.life - t) / 1.6);
+      if (fade <= 0) return;
+      const x = p.x + Math.sin(t * p.fq * 6.283 + p.ph) * p.amp;
+      const y = p.y;
+      if (p.kind === 0) {
+        // cintila em picos curtos; no pico, uma estrelinha de 4 pontas
+        const s = Math.max(0, Math.sin(t * p.tw + p.tph));
+        const tw = 0.4 + 0.6 * s * s * s;
+        const a = p.a * fade * tw;
+        const d = p.r * 7;
+        ctx.globalCompositeOperation = 'lighter'; // soma luz: brilha mais sobre o preto e as fotos
+        ctx.globalAlpha = a;
+        ctx.drawImage(sprites[p.c], x - d / 2, y - d / 2, d, d);
+        ctx.globalCompositeOperation = 'source-over';
+        if (tw > 0.84) {
+          const k = (tw - 0.84) / 0.16;
+          const L = p.r * 5 * k;
+          ctx.globalAlpha = a * k * 0.85;
+          ctx.strokeStyle = LIGHT;
+          ctx.lineWidth = Math.max(0.5, p.r * 0.4);
+          ctx.beginPath();
+          ctx.moveTo(x - L, y); ctx.lineTo(x + L, y);
+          ctx.moveTo(x, y - L); ctx.lineTo(x, y + L);
+          ctx.stroke();
+        }
+      } else {
+        // lâmina girando: o "giro" achata a altura e ela clareia quando fica de frente
+        const f = Math.cos(p.flip + t * p.vf);
+        const shine = Math.abs(f);
+        const ang = p.rot + t * p.vr;
+        const cs = Math.cos(ang) * dpr;
+        const sn = Math.sin(ang) * dpr;
+        const sy = Math.max(0.12, shine);
+        ctx.setTransform(cs, sn, -sn * sy, cs * sy, x * dpr, y * dpr);
+        ctx.globalAlpha = p.a * fade * (0.45 + 0.55 * shine);
+        ctx.fillStyle = FILL[p.c];
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        if (shine > 0.8) {
+          ctx.globalAlpha = p.a * fade * (shine - 0.8) * 4;
+          ctx.fillStyle = LIGHT;
+          ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        }
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+    }
+
+    function tick(dt) {
+      const sy = window.scrollY;
+      const ds = sy - lastSy;
+      lastSy = sy;
+      if (!active()) {
+        if (drawn) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, canvas.width, canvas.height); drawn = false; }
+        return false;
+      }
+      // áreas escuras visíveis agora (posição do layout + parallax das seções)
+      const vis = [];
+      for (let i = 0; i < regions.length; i++) {
+        const r = regions[i];
+        const top = r.top - sy + (r.stack ? r.stack.d : 0);
+        if (top + r.h > 0 && top < H) vis.push(r, top);
+      }
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+      drawn = false;
+      if (!vis.length) return false;
+
+      const s = Math.min(dt, 64) / 1000;
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        p.age += s;
+        p.y += p.vy * s - ds * p.depth; // fica um pouco para trás na rolagem (profundidade)
+        if (p.age >= p.life || p.y > H + 30 || p.y < -H * 0.5) spawn(p, false);
+      }
+      ctx.save();
+      ctx.beginPath();
+      for (let i = 0; i < vis.length; i += 2) {
+        const r = vis[i];
+        const top = vis[i + 1];
+        if (r.rad && ctx.roundRect) ctx.roundRect(0, top, W, r.h, [r.rad, r.rad, 0, 0]);
+        else ctx.rect(0, top, W, r.h);
+      }
+      ctx.clip();
+      for (let i = 0; i < parts.length; i++) draw(parts[i]);
+      ctx.restore();
+      ctx.globalAlpha = 1;
+      drawn = true;
+      return true;
+    }
+
+    ticker.add(tick);
+    document.addEventListener('visibilitychange', () => ticker.wake());
+    return { measure: measureG };
+  })();
+
+  /* ---------------------------------------------------------------------------
      Teclado: Esc fecha o que estiver aberto; Tab fica preso no diálogo
      ------------------------------------------------------------------------ */
   document.addEventListener('keydown', (e) => {
@@ -942,6 +1144,7 @@
   function ready() {
     if (doc.classList.contains('is-ready')) return;
     doc.classList.add('is-ready');
+    ticker.wake();
     setTimeout(() => doc.classList.add('is-settled'), reduce ? 0 : 2400);
   }
   if (reduce) ready();

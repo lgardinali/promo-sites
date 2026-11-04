@@ -713,15 +713,136 @@ html.js:not(.is-ready) .nav { transform: translate3d(0, -140%, 0); opacity: 0; }
   inset: 0;
   pointer-events: none;
 }
-.home-bg__confete {
+
+/* ---------- Confetes: 6 recortes da imagem, cada um flutuando no seu ritmo ----------
+   Moldura centralizada (--fw × --fh) e posição de cada recorte (--x, --y, --w, --h)
+   exatamente como em cada breakpoint do Figma. O parallax (rolagem/mouse) fica na
+   moldura; a flutuação, na imagem — camadas diferentes, sem disputa de transform. */
+.confs {
   position: absolute;
-  top: calc(var(--u) * -12);
+  top: 0;
   left: 50%;
-  width: 100%;
-  height: calc(var(--u) * 405.11);
-  margin-left: -50%;
+  width: calc(var(--u) * var(--fw));
+  height: calc(var(--u) * var(--fh));
+  margin-left: calc(var(--u) * var(--fw) / -2);
+  pointer-events: none;
 }
-.home-bg__confete img { width: 100%; height: 100%; object-fit: cover; }
+.confs--premios { top: -2px; } /* o contorno de 2px da seção conta no Figma */
+.cf {
+  position: absolute;
+  left: calc(var(--u) * var(--x));
+  top: calc(var(--u) * var(--y));
+  width: calc(var(--u) * var(--w));
+  height: calc(var(--u) * var(--h));
+}
+.cf img {
+  width: 100%;
+  height: 100%;
+  animation: cf-float var(--dur) var(--ease-in-out) var(--del) infinite;
+  animation-play-state: paused;
+}
+.confs.is-live .cf img { animation-play-state: running; will-change: transform; }
+@keyframes cf-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(.02deg); }
+  33% { transform: translate3d(calc(var(--u) * var(--fx) * var(--amp)), calc(var(--u) * var(--fy) * var(--amp) * -1), 0) rotate(var(--fr)); }
+  66% { transform: translate3d(calc(var(--u) * var(--fx) * var(--amp) * -.6), calc(var(--u) * var(--fy) * var(--amp) * -.45), 0) rotate(calc(var(--fr) * -.6)); }
+}
+/* ritmo de cada recorte (deslocamento em px de design, rotação, duração, defasagem) */
+.cf--1 { --fx: 5; --fy: 12; --fr: 1.6deg; --dur: 9s; --del: -1.2s; }
+.cf--2 { --fx: -6; --fy: 9; --fr: -1.3deg; --dur: 8s; --del: -3.4s; }
+.cf--3 { --fx: 4; --fy: 11; --fr: 2deg; --dur: 10.5s; --del: -5.1s; }
+.cf--4 { --fx: -5; --fy: 14; --fr: -1.6deg; --dur: 11.5s; --del: -2.2s; }
+.cf--5 { --fx: 6; --fy: 10; --fr: 1.3deg; --dur: 8.6s; --del: -6.3s; }
+.cf--6 { --fx: -4; --fy: 13; --fr: 1.8deg; --dur: 9.8s; --del: -4.4s; }
+
+/* mobile 390 */
+.confs--home { --fw: 346; --fh: 612; }
+.confs--premios { --fw: 346; --fh: 1387; }
+.cf--1 { --w: 70.73; --h: 144.26; }
+.cf--2 { --w: 138.12; --h: 56.47; }
+.cf--3 { --w: 89.83; --h: 119.01; }
+.cf--4 { --w: 160.75; --h: 215.6; }
+.cf--5 { --w: 124.17; --h: 93.24; }
+.cf--6 { --w: 199.99; --h: 148.23; }
+.confs--home .cf--1 { --x: 0; --y: 0; }
+.confs--home .cf--2 { --x: 104.04; --y: 0; }
+.confs--home .cf--3 { --x: 256.38; --y: 0; }
+.confs--home .cf--4 { --x: 185.46; --y: 230.35; }
+.confs--home .cf--5 { --x: 222.04; --y: 519.22; }
+.confs--home .cf--6 { --x: 0; --y: 464.41; }
+.confs--premios .cf--1 { --x: 0; --y: 0; }
+.confs--premios .cf--2 { --x: 104.04; --y: 0; }
+.confs--premios .cf--3 { --x: 256.38; --y: 0; }
+.confs--premios .cf--4 { --x: 185.46; --y: 618.35; }
+.confs--premios .cf--5 { --x: 222.04; --y: 1294.22; }
+.confs--premios .cf--6 { --x: 0; --y: 1239.41; }
+.confs--premios { margin-top: calc(var(--u) * 17.69); }
+
+/* tablet 768 */
+@media (min-width: 640px) {
+  .confs--home { --fw: 738; --fh: 1099; }
+  .confs--premios { --fw: 738; --fh: 1658; margin-top: calc(var(--u) * 19.89); }
+  .cf--1 { --w: 96.77; --h: 197.38; }
+  .cf--2 { --w: 188.98; --h: 77.26; }
+  .cf--3 { --w: 122.91; --h: 162.82; }
+  .cf--4 { --w: 219.94; --h: 294.99; }
+  .cf--5 { --w: 169.89; --h: 127.57; }
+  .cf--6 { --w: 273.62; --h: 202.81; }
+  .confs--home .cf--2,
+  .confs--premios .cf--2 { --x: 274.73; }
+  .confs--home .cf--3,
+  .confs--premios .cf--3 { --x: 615.53; }
+  .confs--home .cf--4,
+  .confs--premios .cf--4 { --x: 518.5; }
+  .confs--home .cf--5,
+  .confs--premios .cf--5 { --x: 568.55; }
+  .confs--home .cf--4 { --y: 445.8; }
+  .confs--home .cf--5 { --y: 971.68; }
+  .confs--home .cf--6 { --y: 896.68; }
+  .confs--premios .cf--4 { --y: 724.8; }
+  .confs--premios .cf--5 { --y: 1530.68; }
+  .confs--premios .cf--6 { --y: 1455.68; }
+}
+/* intermediária 1080 */
+@media (min-width: 1024px) {
+  .confs--home { --fw: 1042.44; --fh: 665.49; }
+  .confs--premios { --fw: 1042; --fh: 1052; margin-top: calc(var(--u) * .22); }
+  .confs--home .cf--2,
+  .confs--premios .cf--2 { --x: 426.73; }
+  .confs--home .cf--3,
+  .confs--premios .cf--3 { --x: 919.53; }
+  .confs--home .cf--4,
+  .confs--premios .cf--4 { --x: 822.5; }
+  .confs--home .cf--5,
+  .confs--premios .cf--5 { --x: 872.55; }
+  .confs--home .cf--4 { --y: 228.8; }
+  .confs--home .cf--5 { --y: 537.68; }
+  .confs--home .cf--6 { --y: 462.68; }
+  .confs--premios .cf--4 { --y: 421.8; }
+  .confs--premios .cf--5 { --y: 924.68; }
+  .confs--premios .cf--6 { --y: 849.68; }
+}
+/* desktop 1920 / ultrawide 2560 (moldura do mesmo tamanho, centralizada) */
+@media (min-width: 1440px) {
+  .confs--home { --fw: 1474; --fh: 748; }
+  .confs--premios { --fw: 1792; --fh: 1013; margin-top: 0; }
+  .cf--1 { --w: 136.83; --h: 279.09; }
+  .cf--2 { --w: 267.21; --h: 109.24; }
+  .cf--3 { --w: 173.79; --h: 230.23; }
+  .cf--4 { --w: 310.99; --h: 417.11; }
+  .cf--5 { --w: 240.22; --h: 180.38; }
+  .cf--6 { --w: 386.9; --h: 286.77; }
+  .confs--home .cf--2 { --x: 603.39; }
+  .confs--home .cf--3 { --x: 1300.21; }
+  .confs--home .cf--4 { --x: 1163.01; --y: 226.52; }
+  .confs--home .cf--5 { --x: 1233.78; --y: 567.28; }
+  .confs--home .cf--6 { --y: 461.23; }
+  .confs--premios .cf--2 { --x: 762.39; }
+  .confs--premios .cf--3 { --x: 1618.21; }
+  .confs--premios .cf--4 { --x: 1481.01; --y: 359.52; }
+  .confs--premios .cf--5 { --x: 1551.78; --y: 832.28; }
+  .confs--premios .cf--6 { --y: 726.23; }
+}
 
 /* ---------- KV ---------- */
 .kv {
@@ -884,7 +1005,6 @@ html.js:not(.is-ready) .nav { transform: translate3d(0, -140%, 0); opacity: 0; }
 }
 
 @media (min-width: 640px) {
-  .home-bg__confete { height: calc(var(--u) * 576.16); }
   .kv { padding: calc(var(--u) * 132) 0 calc(var(--u) * 82.55); }
   .kv__grid {
     grid-template-areas: "logo" "title" "ctas" "palco";
@@ -906,7 +1026,6 @@ html.js:not(.is-ready) .nav { transform: translate3d(0, -140%, 0); opacity: 0; }
   .ktag--brindes { left: calc(var(--u) * 653.79); top: calc(var(--u) * 428.45); }
 }
 @media (min-width: 1024px) {
-  .home-bg__confete { width: max(calc(var(--u) * 1080), 100%); height: calc(var(--u) * 623.25); margin-left: calc(max(calc(var(--u) * 1080), 100%) / -2); }
   .kv { padding: calc(var(--u) * 144) 0 calc(var(--u) * 166.44); }
   .kv__grid {
     padding-inline: calc(var(--u) * 40);
@@ -939,7 +1058,6 @@ html.js:not(.is-ready) .nav { transform: translate3d(0, -140%, 0); opacity: 0; }
   .ktag--brindes { left: calc(var(--u) * 482.79); top: calc(var(--u) * 503.05); }
 }
 @media (min-width: 1440px) {
-  .home-bg__confete { width: calc(var(--u) * 1920); height: calc(var(--u) * 1107.66); margin-left: calc(var(--u) * -960); }
   .kv { padding: calc(var(--u) * 166) 0 calc(var(--u) * 143.37); }
   .kv__grid {
     padding-inline: 0;
@@ -1286,27 +1404,6 @@ html.is-ready .como__brush { clip-path: inset(0 0 0 0); transition: clip-path 14
 .sec__head--win { width: min(100%, calc(var(--u) * 640)); }
 .sec__note { font-size: calc(var(--u) * 13); line-height: 1.5; color: var(--t3); text-align: center; }
 @media (min-width: 640px) { .sec__note { font-size: calc(var(--u) * 14); } }
-.sec__confete {
-  position: absolute;
-  z-index: 0;
-  top: calc(var(--u) * -2);
-  left: 50%;
-  width: calc(100% + var(--u) * 12);
-  height: calc(var(--u) * 370.79);
-  margin-left: calc((100% + var(--u) * 12) / -2);
-  opacity: .55;
-  pointer-events: none;
-}
-.sec__confete img { width: 100%; height: 100%; object-fit: cover; }
-@media (min-width: 640px) {
-  .sec__confete { width: max(calc(var(--u) * 791.04), 100%); height: calc(var(--u) * 456.35); margin-left: calc(max(calc(var(--u) * 791.04), 100%) / -2); }
-}
-@media (min-width: 1024px) {
-  .sec__confete { width: max(calc(var(--u) * 1112.4), 100%); height: calc(var(--u) * 641.75); margin-left: calc(max(calc(var(--u) * 1112.4), 100%) / -2); }
-}
-@media (min-width: 1440px) {
-  .sec__confete { width: calc(var(--u) * 1983); height: calc(var(--u) * 1144); margin-left: calc(var(--u) * -991.5); }
-}
 
 /* =============================================================================
    Prêmios
@@ -2225,6 +2322,21 @@ html.is-ready .como__brush { clip-path: inset(0 0 0 0); transition: clip-path 14
 }
 
 /* =============================================================================
+   Brilho dourado (canvas fixo desenhado no JS; só aparece sobre os fundos pretos)
+   ========================================================================== */
+.glitter {
+  position: fixed;
+  z-index: 50; /* acima das seções, abaixo da barra (60), do menu e do popup */
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1800ms var(--ease-out);
+}
+html.is-ready .glitter { opacity: 1; }
+@media print { .glitter { display: none; } }
+
+/* =============================================================================
    Movimento reduzido: tudo na posição final, sem loops
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
@@ -2238,5 +2350,6 @@ html.is-ready .como__brush { clip-path: inset(0 0 0 0); transition: clip-path 14
   }
   html.js [data-reveal] { opacity: 1; transform: none; }
   html.js .como__brush { clip-path: none; }
-  .glow { display: none; }
+  .glow,
+  .glitter { display: none; }
 }
