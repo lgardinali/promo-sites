@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Cerâmicas Colecionáveis Frescatto · Alexandra Martinez</title>
+  <meta name="description" content="As Cerâmicas Colecionáveis Frescatto estão de volta. Compre na Peixaria Frescatto, junte fishcoins e leve para casa as 7 peças artesanais criadas por Alexandra Martinez, em 3 cores.">
+  <meta name="theme-color" content="#a69f8a">
+  <meta name="color-scheme" content="light">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Open Graph (trocar og:url e og:image pela URL absoluta do domínio final) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Frescatto">
+  <meta property="og:title" content="Cerâmicas Colecionáveis Frescatto · Alexandra Martinez">
+  <meta property="og:description" content="Compre na Peixaria Frescatto, junte fishcoins e leve o talento de Alexandra Martinez para sua casa: 7 peças exclusivas de cerâmica em 3 cores.">
+  <meta property="og:url" content="https://www.exemplo.com.br/frescatto-ceramicas/">
+  <meta property="og:image" content="https://www.exemplo.com.br/frescatto-ceramicas/assets/og/og-ceramicas.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Cerâmicas Colecionáveis Frescatto: peças artesanais de Alexandra Martinez">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cerâmicas Colecionáveis Frescatto">
+  <meta name="twitter:description" content="7 peças exclusivas de cerâmica em 3 cores, criadas por Alexandra Martinez.">
+  <meta name="twitter:image" content="https://www.exemplo.com.br/frescatto-ceramicas/assets/og/og-ceramicas.jpg">
+
+  <!-- Largura útil sem a barra de rolagem: base da escala fluida (--u) antes do primeiro paint -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.className += ' js';
+      function setVw() { d.style.setProperty('--vw', d.clientWidth + 'px'); }
+      setVw();
+      addEventListener('resize', setVw, { passive: true });
+    })();
+  </script>
+
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fira-sans-700-italic.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/fira-sans-400.woff2" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="assets/img/textura-bege.webp" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" fetchpriority="high"
+        imagesrcset="assets/img/composicao-hero-720.webp 720w, assets/img/composicao-hero-1032.webp 1032w, assets/img/composicao-hero-1720.webp 1720w"
+        imagesizes="(min-width: 1024px) min(860px, 52.5vw), 90vw">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- Ícones -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-seta" viewBox="0 0 72 72">
+      <circle class="i-seta__bg" cx="36" cy="36" r="36"/>
+      <path class="i-seta__ch" d="M43.5 22L28.5 36L43.5 50" fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-tri" viewBox="0 0 44 22"><path d="M0 0H44L22 22L0 0Z" fill="currentColor"/></symbol>
+  </svg>
+
+  <!-- ============================ MENU ============================ -->
+  <header class="hdr" data-hdr>
+    <div class="hdr__bar">
+      <div class="hdr__in wrap">
+        <a class="hdr__logo" href="#home" aria-label="Fishing Frescatto · voltar ao início">
+          <img src="assets/img/logo-fishing.svg" width="160" height="90" alt="">
+        </a>
+        <nav class="nav" aria-label="Principal">
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#home" data-nav><span>Home</span></a></li>
+            <li><a class="nav__link" href="#como-participar" data-nav><span>Como participar</span></a></li>
+            <li><a class="nav__link" href="#colecionaveis" data-nav><span>Colecionáveis</span></a></li>
+            <li><a class="nav__link" href="#duvidas" data-nav><span>Dúvidas frequentes</span></a></li>
+            <!-- TODO: link do regulamento -->
+            <li><a class="nav__link" href="#" target="_blank" rel="noopener"><span>Regulamento</span></a></li>
+          </ul>
+        </nav>
+        <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu" data-menu-open>
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile / tablet -->
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-menu>
+    <div class="menu__bg" aria-hidden="true"><img src="assets/img/textura-bege.webp" alt="" width="2400" height="1600" decoding="async"></div>
+    <nav class="menu__nav" aria-label="Menu principal">
+      <ul class="menu__list">
+        <li style="--i:0"><a class="menu__link" href="#home" data-nav>Home</a></li>
+        <li style="--i:1"><a class="menu__link" href="#como-participar" data-nav>Como participar</a></li>
+        <li style="--i:2"><a class="menu__link" href="#colecionaveis" data-nav>Colecionáveis</a></li>
+        <li style="--i:3"><a class="menu__link" href="#duvidas" data-nav>Dúvidas frequentes</a></li>
+        <li style="--i:4"><a class="menu__link" href="#" target="_blank" rel="noopener">Regulamento</a></li>
+      </ul>
+      <!-- TODO: link de cadastro (todas as ocorrências de data-cta) -->
+      <a class="btn menu__cta" href="#" data-cta style="--i:5"><span class="btn__t">Cadastre-se</span></a>
+    </nav>
+    <img class="menu__sign" src="assets/img/assinatura-alexandra.svg" width="224" height="176" alt="" aria-hidden="true">
+  </div>
+
+  <main id="conteudo">
+
+    <!-- ============================ KV ============================ -->
+    <section class="kv" id="home" data-section aria-labelledby="kv-title">
+      <div class="kv__bg" aria-hidden="true">
+        <img class="kv__tex" src="assets/img/textura-bege.webp" width="2400" height="1600" alt="" decoding="async" fetchpriority="high">
+      </div>
+      <div class="kv__in wrap">
+        <h1 class="kv__title" id="kv-title">
+          <span class="ttl" data-live>
+            <span class="line"><span class="line__in intro intro--1"><b><i>Colecionáveis</i></b></span></span>
+            <span class="line"><span class="line__in intro intro--2">Frescatto</span></span>
+          </span>
+        </h1>
+        <p class="kv__sub intro intro--3">Para surpreender e colecionar<br class="bd"> bons momentos.</p>
+        <span class="kv__line intro intro--line" aria-hidden="true"></span>
+
+        <div class="kv__comp intro intro--comp">
+          <div class="kv__depth" data-depth="18" data-live>
+            <div class="kv__float">
+              <img src="assets/img/composicao-hero-1032.webp"
+                   srcset="assets/img/composicao-hero-720.webp 720w, assets/img/composicao-hero-1032.webp 1032w, assets/img/composicao-hero-1720.webp 1720w"
+                   sizes="(min-width: 1024px) min(860px, 52.5vw), 90vw"
+                   width="860" height="590" fetchpriority="high" decoding="async"
+                   alt="Coleção de cerâmicas Frescatto na cor areia: prato ralador, petisqueira, azeiteiro, saleiro, molheira, prato raso e porta-guardanapo">
+            </div>
+          </div>
+        </div>
+
+        <div class="kv__chamada intro intro--4">
+          <p class="kv__c1">As Cerâmicas Colecionáveis<br class="bd"> Frescatto estão de volta.</p>
+          <p class="kv__c2"><em>Compre</em> em nossa Peixaria, <em>junte</em> fishcoins<br class="bd"> e leve o talento de Alexandra Martinez<br class="bd"> para sua casa.</p>
+        </div>
+        <a class="btn kv__btn intro intro--5" href="#" data-cta><span class="btn__t">Quero participar</span></a>
+      </div>
+    </section>
+
+    <!-- ============================ ARTISTA ============================ -->
+    <section class="art" id="artista" data-section aria-labelledby="art-title">
+      <div class="art__bg" aria-hidden="true">
+        <span class="art__fill"></span>
+        <div class="art__brush wipe" data-reveal>
+          <div class="wipe__in"><img src="assets/img/pincelada-faixa.webp" width="3840" height="1360" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="art__in wrap">
+        <div class="art__txt">
+          <h2 class="art__title" id="art-title" data-reveal>
+            <span class="ttl" data-live>Uma mesa perfeita tem o sabor<br class="bd"> Frescatto e o talento<br class="bd"> <i>Alexandra Martinez.</i></span>
+          </h2>
+          <div class="art__p" data-reveal style="--rd:120ms">
+            <p>Acreditamos que é na mesa que os grandes momentos da vida são eternizados em histórias, momentos e lembranças.</p>
+            <p>Para você colecionar esses encontros com muito bom gosto, convidamos a artesã Alexandra Martinez para criar uma linha exclusiva de peças para nossos clientes.</p>
+            <p>Em Ourinhos, no interior de São Paulo, Alexandra Martinez transforma terra e água em matéria-prima para criar peças artesanais únicas, feitas com muito afeto para surpreender você.</p>
+          </div>
+        </div>
+        <div class="art__fig">
+          <div class="art__photo" data-reveal>
+            <img src="assets/img/alexandra-760.webp"
+                 srcset="assets/img/alexandra-760.webp 760w, assets/img/alexandra-1450.webp 1450w"
+                 sizes="(min-width: 1024px) min(801px, 49vw), 99vw"
+                 width="801" height="662" loading="lazy" decoding="async"
+                 alt="A artesã Alexandra Martinez, sorrindo">
+          </div>
+          <div class="art__sign wipe" data-reveal style="--rd:400ms">
+            <div class="wipe__in"><img src="assets/img/assinatura-alexandra.svg" width="224" height="176" alt="Assinatura de Alexandra Martinez, cerâmica com afeto" loading="lazy"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ COLEÇÃO · TEMPO · COMO PARTICIPAR ============================ -->
+    <section class="col" id="colecao" data-section aria-label="A coleção">
+      <div class="col__bg" aria-hidden="true">
+        <img src="assets/img/textura-cimento.webp" width="2400" height="1800" alt="" loading="lazy" decoding="async">
+      </div>
+
+      <ul class="atelie wrap" aria-label="O ateliê de Alexandra Martinez">
+        <li class="atelie__it" data-reveal data-focus style="--rd:0ms"><img src="assets/img/atelie-1-360.webp" srcset="assets/img/atelie-1-360.webp 360w, assets/img/atelie-1-700.webp 700w" sizes="(min-width: 1024px) min(332px, 20.3vw), (min-width: 640px) 20.9vw, 42.7vw" width="332" height="332" loading="lazy" decoding="async" alt="Peças de cerâmica crua secando nas prateleiras do ateliê"></li>
+        <li class="atelie__it" data-reveal data-focus style="--rd:90ms"><img src="assets/img/atelie-2-360.webp" srcset="assets/img/atelie-2-360.webp 360w, assets/img/atelie-2-700.webp 700w" sizes="(min-width: 1024px) min(332px, 20.3vw), (min-width: 640px) 20.9vw, 42.7vw" width="332" height="332" loading="lazy" decoding="async" alt="Placa de argila com a assinatura de Alexandra Martinez e o selo Frescatto"></li>
+        <li class="atelie__it" data-reveal data-focus style="--rd:180ms"><img src="assets/img/atelie-3-360.webp" srcset="assets/img/atelie-3-360.webp 360w, assets/img/atelie-3-700.webp 700w" sizes="(min-width: 1024px) min(332px, 20.3vw), (min-width: 640px) 20.9vw, 42.7vw" width="332" height="332" loading="lazy" decoding="async" alt="Pratos raladores enfileirados no ateliê"></li>
+        <li class="atelie__it" data-reveal data-focus style="--rd:270ms"><img src="assets/img/atelie-4-360.webp" srcset="assets/img/atelie-4-360.webp 360w, assets/img/atelie-4-700.webp 700w" sizes="(min-width: 1024px) min(332px, 20.3vw), (min-width: 640px) 20.9vw, 42.7vw" width="332" height="332" loading="lazy" decoding="async" alt="Alexandra Martinez trabalhando em sua bancada"></li>
+      </ul>
+
+      <div class="tempo wrap">
+        <div class="tempo__txt">
+          <!-- fundo claro desfocado atrás dos textos (acompanha o tamanho do bloco) para a leitura sobre o cimento -->
+          <div class="tempo__textos" data-reveal>
+            <h2 class="tempo__title" data-reveal><span class="ttl" data-live>Tempo que transforma<br> barro em obra de arte.</span></h2>
+            <p class="tempo__frase wipe" data-reveal style="--rd:200ms">
+              <!-- traço de 0,75 em cada layout (como no Figma): um arquivo por modo, para o traço não afinar ao reduzir -->
+              <span class="wipe__in"><picture>
+                <source media="(max-width: 639px)" srcset="assets/img/frase-o-mar-m.svg" width="318" height="32">
+                <source media="(max-width: 1023px)" srcset="assets/img/frase-o-mar-t.svg" width="619" height="63">
+                <img src="assets/img/frase-o-mar.svg" width="808" height="82" alt="O mar nos ensina a confiar no tempo" loading="lazy">
+              </picture></span>
+            </p>
+            <p class="tempo__p" data-reveal style="--rd:120ms">Do encontro entre Frescatto e Alexandra Martinez nasce<br class="bd"> uma coleção de 7 peças exclusivas de cerâmica em 3 cores<br class="bd"> para quem ama surpreender e para descobrir a beleza de<br class="bd"> colecionar bons momentos.</p>
+          </div>
+          <div class="tempo__comp" data-reveal>
+            <div class="tempo__depth" data-depth="14" data-live>
+              <div class="tempo__float">
+                <img src="assets/img/composicao-tempo-700.webp"
+                     srcset="assets/img/composicao-tempo-700.webp 700w, assets/img/composicao-tempo-1376.webp 1376w"
+                     sizes="(min-width: 1024px) min(640px, 39vw), 90vw"
+                     width="640" height="473" loading="lazy" decoding="async"
+                     alt="Peças da coleção nas cores oceano e coral: porta-guardanapo, petisqueira, prato ralador, saleiro, azeiteiro e prato raso">
+              </div>
+            </div>
+          </div>
+          <div class="tempo__btn" data-reveal><a class="btn" href="#colecionaveis"><span class="btn__t">Quero colecionar</span></a></div>
+        </div>
+      </div>
+
+      <div class="como wrap" id="como-participar" data-section>
+        <h2 class="como__title" data-reveal><span class="ttl" data-live><b>Como</b> participar?</span></h2>
+        <ol class="steps">
+          <li class="step" data-reveal data-focus style="--rd:0ms">
+            <span class="step__n" aria-hidden="true"><span class="step__d" data-n="01">01</span></span>
+            <div class="step__body">
+              <h3 class="step__t">Compre na Peixaria Moema</h3>
+              <p class="step__x">A cada <b>R$&nbsp;70,00</b> em compra você ganha um Fishcoin.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal data-focus style="--rd:90ms">
+            <span class="step__n" aria-hidden="true"><span class="step__d" data-n="02">02</span></span>
+            <div class="step__body">
+              <h3 class="step__t">Acumule pontos</h3>
+              <p class="step__x">Seus pontos ficam disponíveis para você acompanhar na plataforma.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal data-focus style="--rd:180ms">
+            <span class="step__n" aria-hidden="true"><span class="step__d" data-n="03">03</span></span>
+            <div class="step__body">
+              <h3 class="step__t">Resgate seus prêmios</h3>
+              <p class="step__x">Troque seus fishcoins pelos produtos disponíveis e receba seu prêmio.</p>
+            </div>
+          </li>
+          <li class="step" data-reveal data-focus style="--rd:270ms">
+            <span class="step__n" aria-hidden="true"><span class="step__d" data-n="04">04</span></span>
+            <div class="step__body">
+              <h3 class="step__t">Retire os brindes</h3>
+              <p class="step__x">Após solicitar o resgate, você poderá retirar o brinde na Peixaria Frescatto Moema.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============================ FOTOS DE AMBIENTE ============================ -->
+    <section class="amb" aria-label="As peças à mesa" data-live>
+      <figure class="amb__it" data-focus><div class="amb__par"><img src="assets/img/ambiente-coral-500.webp" srcset="assets/img/ambiente-coral-500.webp 500w, assets/img/ambiente-coral-1000.webp 1000w" sizes="(min-width: 1024px) max(25vw, min(548px, 33.5vw)), (min-width: 640px) 28.5vw, max(50vw, min(55.8vw, 285px))" width="480" height="736" loading="lazy" decoding="async" alt="Petisqueira e porta-guardanapo coral servindo salada de camarão"></div></figure>
+      <figure class="amb__it" data-focus><div class="amb__par"><img src="assets/img/ambiente-ralador-500.webp" srcset="assets/img/ambiente-ralador-500.webp 500w, assets/img/ambiente-ralador-1000.webp 1000w" sizes="(min-width: 1024px) max(25vw, min(548px, 33.5vw)), (min-width: 640px) 28.5vw, max(50vw, min(55.8vw, 285px))" width="480" height="736" loading="lazy" decoding="async" alt="Tomate sendo ralado no prato ralador areia"></div></figure>
+      <figure class="amb__it" data-focus><div class="amb__par"><img src="assets/img/ambiente-oceano-500.webp" srcset="assets/img/ambiente-oceano-500.webp 500w, assets/img/ambiente-oceano-1000.webp 1000w" sizes="(min-width: 1024px) max(25vw, min(548px, 33.5vw)), (min-width: 640px) 28.5vw, max(50vw, min(55.8vw, 285px))" width="480" height="736" loading="lazy" decoding="async" alt="Salmão servido no prato raso oceano, com saleiro e molheira oceano"></div></figure>
+      <figure class="amb__it" data-focus><div class="amb__par"><img src="assets/img/ambiente-areia-500.webp" srcset="assets/img/ambiente-areia-500.webp 500w, assets/img/ambiente-areia-1000.webp 1000w" sizes="(min-width: 1024px) max(25vw, min(548px, 33.5vw)), (min-width: 640px) 28.5vw, max(50vw, min(55.8vw, 285px))" width="480" height="736" loading="lazy" decoding="async" alt="Petisqueira areia com polvo e torradas, com azeiteiro e saleiro areia"></div></figure>
+    </section>
+
+    <!-- ============================ 7 PEÇAS · 3 CORES ============================ -->
+    <section class="pecas" id="colecionaveis" data-section aria-labelledby="pecas-title">
+      <div class="pecas__in wrap">
+        <div class="car" data-car role="region" aria-roledescription="carrossel" aria-label="Coleção: 7 peças em 3 cores">
+          <div class="car__head">
+            <h2 class="car__title" id="pecas-title" data-reveal><span class="ttl" data-live><b>7 peças. 3 cores.</b><br> <i>Milhares de bons momentos.</i></span></h2>
+            <span class="car__line" data-reveal aria-hidden="true"></span>
+          </div>
+
+          <div class="car__peca" data-reveal>
+            <h3 class="car__name" aria-live="polite"><span class="car__pn" data-car-piece>Petisqueira</span> <span class="car__cn" data-car-color>Oceano</span></h3>
+            <!-- todas as descrições na mesma célula: a altura não muda ao trocar de peça -->
+            <div class="car__descs">
+              <p class="car__desc" data-desc="prato-ralador">O mar tem a força para extrair o melhor de nossas vidas. E extrair o melhor dos sabores e aromas foi a inspiração para o nosso <b>Prato Ralador</b>.</p>
+              <p class="car__desc" data-desc="saleiro">A água salgada do mar lava a nossa alma. Essa energia purificadora inspirou as formas do <b>Saleiro</b> em nossa coleção. Sempre aberto para temperar os melhores momentos da sua vida.</p>
+              <p class="car__desc is-on" data-desc="petisqueira">Assim como o mar acolhe diferentes formas de vida, a mesa reúne diferentes sabores. Inspirada nessa diversidade, nossa <b>Petisqueira</b> é um convite para servir combinações surpreendentes à mesa.</p>
+              <p class="car__desc" data-desc="porta-guardanapo">O movimento das águas cria ondas e formas que surpreendem o olhar. Essas ondas escorrem para a sua mesa com o nosso <b>Porta-Guardanapo</b>, que leva a beleza das formas orgânicas para encontros especiais.</p>
+              <p class="car__desc" data-desc="azeiteiro">As águas seguem seu curso levando movimento e vida por onde passam. Essa fluidez inspirou as formas do nosso <b>Azeiteiro</b>, feito para espalhar sabor e dar o toque final às suas receitas.</p>
+              <p class="car__desc" data-desc="prato-raso">O encontro entre o mar e a areia cria contornos únicos na natureza. Com essa inspiração, nosso <b>Prato Raso</b> leva a beleza dessas formas para a sua mesa, valorizando o preparo das suas receitas favoritas.</p>
+              <p class="car__desc" data-desc="molheira">O mar é um convite à descoberta e ao encontro. Nossa <b>Molheira</b> tem inspiração nas formas delicadas da natureza, que convidam a experimentar novos sabores e dar um toque único a cada encontro.</p>
+            </div>
+          </div>
+
+          <div class="car__stage" data-reveal>
+            <button class="car__arrow car__arrow--prev" type="button" aria-label="Peça anterior" data-car-prev>
+              <svg viewBox="0 0 72 72" aria-hidden="true"><use href="#i-seta"/></svg>
+            </button>
+            <div class="car__slide" data-live>
+              <div class="car__float">
+                <img class="car__img is-on" src="assets/img/peca-petisqueira-oceano-m.webp"
+                     srcset="assets/img/peca-petisqueira-oceano-m.webp 600w, assets/img/peca-petisqueira-oceano-g.webp 1100w"
+                     sizes="(min-width: 1024px) min(529px, 32.3vw), (min-width: 640px) 67.8vw, 63.8vw"
+                     width="1100" height="770" decoding="async" draggable="false" alt="Petisqueira Oceano">
+              </div>
+              <span class="car__timer" aria-hidden="true"><span></span></span>
+            </div>
+            <button class="car__arrow car__arrow--next" type="button" aria-label="Próxima peça" data-car-next>
+              <svg viewBox="0 0 72 72" aria-hidden="true"><use href="#i-seta"/></svg>
+            </button>
+          </div>
+
+          <div class="car__cores" role="radiogroup" aria-label="Cor da peça" data-reveal>
+            <button class="cor is-on" type="button" role="radio" aria-checked="true" data-cor="oceano" style="--c:#0d3966">
+              <span class="cor__sw" aria-hidden="true"></span>
+              <span class="cor__tx"><span class="cor__n">Oceano</span><span class="cor__d">Azul intenso, inspirado na imensidão do mar e suas águas profundas.</span></span>
+            </button>
+            <button class="cor" type="button" role="radio" aria-checked="false" tabindex="-1" data-cor="coral" style="--c:#82232f">
+              <span class="cor__sw" aria-hidden="true"></span>
+              <span class="cor__tx"><span class="cor__n">Coral</span><span class="cor__d">Vermelho vibrante, inspirado na diversidade da vida marinha.</span></span>
+            </button>
+            <button class="cor" type="button" role="radio" aria-checked="false" tabindex="-1" data-cor="areia" style="--c:#e3d8cb">
+              <span class="cor__sw" aria-hidden="true"></span>
+              <span class="cor__tx"><span class="cor__n">Areia</span><span class="cor__d">Branco sofisticado, inspirado nas formas naturais e paisagens à beira-mar.</span></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="pecas__btn" data-reveal><a class="btn" href="#" data-cta><span class="btn__t">Cadastre-se</span></a></div>
+      </div>
+    </section>
+
+    <!-- ============================ DÚVIDAS FREQUENTES ============================ -->
+    <section class="faq" id="duvidas" data-section aria-labelledby="faq-title">
+      <div class="faq__bg" aria-hidden="true">
+        <span class="faq__fill"></span>
+        <div class="faq__brush wipe" data-reveal>
+          <div class="wipe__in"><img src="assets/img/pincelada-faq.webp" width="3840" height="1400" alt="" loading="lazy" decoding="async"></div>
+        </div>
+      </div>
+      <div class="faq__in wrap">
+        <h2 class="faq__title" id="faq-title" data-reveal><span class="ttl" data-live><b>Dúvidas</b> frequentes</span></h2>
+        <!-- Respostas: substituir o texto provisório de cada item -->
+        <div class="faq__list" data-faq>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Como participar da campanha?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Preciso me cadastrar antes de comprar?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Todas as compras são válidas?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Qual é o período da campanha?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Como funciona o acúmulo de fishcoins?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a5" role="region" aria-labelledby="faq-q5"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Compras com desconto geram fishcoins?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a6" role="region" aria-labelledby="faq-q6"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Existe limite de fishcoin por CPF?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a7" role="region" aria-labelledby="faq-q7"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Em quanto tempo os fishcoins aparecem?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a8" role="region" aria-labelledby="faq-q8"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Onde retiro o meu brinde?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a9" role="region" aria-labelledby="faq-q9"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Qual é o prazo para retirar o meu brinde?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a10" role="region" aria-labelledby="faq-q10"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q11" aria-expanded="false" aria-controls="faq-a11"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Os brindes podem acabar ou mudar?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a11" role="region" aria-labelledby="faq-q11"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q12" aria-expanded="false" aria-controls="faq-a12"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">O que acontece se o brinde escolhido acabar?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a12" role="region" aria-labelledby="faq-q12"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q13" aria-expanded="false" aria-controls="faq-a13"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Esqueci de informar meu CPF na compra.<br class="bd"> Posso pedir os pontos depois?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a13" role="region" aria-labelledby="faq-q13"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q14" aria-expanded="false" aria-controls="faq-a14"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">E se o CPF for digitado errado no caixa?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a14" role="region" aria-labelledby="faq-q14"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q15" aria-expanded="false" aria-controls="faq-a15"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Cancelamentos ou devoluções afetam meus pontos?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a15" role="region" aria-labelledby="faq-q15"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q16" aria-expanded="false" aria-controls="faq-a16"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Quem pode participar da campanha?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a16" role="region" aria-labelledby="faq-q16"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q17" aria-expanded="false" aria-controls="faq-a17"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Posso transferir meus pontos para outra pessoa?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a17" role="region" aria-labelledby="faq-q17"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q18" aria-expanded="false" aria-controls="faq-a18"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Posso trocar meus pontos por dinheiro?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a18" role="region" aria-labelledby="faq-q18"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q19" aria-expanded="false" aria-controls="faq-a19"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Como acompanhar meus pontos?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a19" role="region" aria-labelledby="faq-q19"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+          <div class="faq__item" data-reveal>
+            <h3 class="faq__h"><button class="faq__btn" type="button" id="faq-q20" aria-expanded="false" aria-controls="faq-a20"><svg class="faq__chev faq__chev--l" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg><span class="faq__q">Qual é o canal de atendimento (SAC)?</span><svg class="faq__chev" viewBox="0 0 44 22" aria-hidden="true"><use href="#i-tri"/></svg></button></h3>
+            <div class="faq__a" id="faq-a20" role="region" aria-labelledby="faq-q20"><div class="faq__a-in"><p>Escreva aqui a resposta desta pergunta. O texto quebra automaticamente e o card cresce junto.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================ RODAPÉ ============================ -->
+  <footer class="ftr">
+    <div class="ftr__in wrap">
+      <div class="ftr__logos" data-reveal>
+        <img class="ftr__logo ftr__logo--fishing" src="assets/img/logo-fishing-escuro.svg" width="259" height="148" alt="Fishing Frescatto" loading="lazy">
+        <img class="ftr__logo ftr__logo--1944" src="assets/img/logo-frescatto-1944.svg" width="252" height="140" alt="Frescatto desde 1944" loading="lazy">
+      </div>
+      <span class="ftr__div" aria-hidden="true"></span>
+      <p class="ftr__legal" data-reveal>Resgates poderão ser realizados até 30 de Janeiro de 2026 ou até durarem os estoques. Consulte os termos de participação e o regulamento completo no site. Imagens ilustrativas.<br><br><b>SAC: <a href="mailto:info@frescatto.com">info@frescatto.com</a></b></p>
+    </div>
+    <div class="ftr__credits">
+      <p class="ftr__copy">Copyright © Feito com <span class="ftr__heart" aria-label="amor"><svg viewBox="0 0 24 22" aria-hidden="true"><path d="M12 21.3 10.5 20C5.3 15.3 2 12.3 2 8.6 2 5.6 4.4 3.2 7.4 3.2c1.7 0 3.4.8 4.6 2.1 1.2-1.3 2.9-2.1 4.6-2.1 3 0 5.4 2.4 5.4 5.4 0 3.7-3.3 6.7-8.5 11.4L12 21.3Z" fill="currentColor"/></svg></span></p>
+      <img class="ftr__polgo" src="assets/img/grupo-polgo.svg" width="200" height="28" alt="Grupo Polgo" loading="lazy">
+    </div>
+  </footer>
+
+  <button class="totop" type="button" aria-label="Voltar ao topo" data-totop>
+    <svg viewBox="0 0 72 72" aria-hidden="true"><use href="#i-seta"/></svg>
+  </button>
+</body>
+</html>

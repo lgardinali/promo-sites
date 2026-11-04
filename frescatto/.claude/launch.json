@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ceramicas",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:/Users/Polgo/AppData/Local/Temp/claude/0b3fd85ec26457ac/3732301a-04ac-47d0-910c-1fe4dd9b7427/scratchpad/tools/serve.js", "C:/Users/Polgo/Documents/Promo Sites/promo-sites/frescatto-ceramicas", "5180"],
+      "port": 5180
+    }
+  ]
+}
