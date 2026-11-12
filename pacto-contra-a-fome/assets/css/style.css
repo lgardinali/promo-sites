@@ -1081,7 +1081,10 @@ em { font-style: normal; }
   50% { transform: translate3d(calc(-8 * var(--amp) * var(--u)), calc(10 * var(--amp) * var(--u)), 0) rotate(0.02deg); }
 }
 
-/* Raios: cada traço "pulsa" a partir da ponta voltada para o carro / número */
+/* Raios: cada traço "pulsa" a partir da ponta voltada para o carro / número.
+   overflow visible = sem "Clip content" (como no Figma): o traço pode crescer
+   além da própria caixa sem ser cortado. */
+.raios { overflow: visible; }
 .raios .r { transform-box: fill-box; }
 .raios--hero .r1, .raios--step .r1, .raios--esq .r1 { transform-origin: 100% 50%; }
 .raios--hero .r2, .raios--hero .r3,
