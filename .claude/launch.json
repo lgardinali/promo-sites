@@ -4,7 +4,7 @@
     {
       "name": "promo-sites",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["C:/Users/Polgo/AppData/Local/Temp/claude/C--Users-Polgo-Documents-Promo-Sites-promo-sites/87211706-9d56-44d6-b110-985397d7bfb0/scratchpad/tools/serve.js", "C:/Users/Polgo/Documents/Promo Sites/promo-sites", "5173"],
+      "runtimeArgs": ["C:/Users/Polgo/AppData/Local/Temp/claude/a505cedc674e15c5/8bde15c7-487b-4693-92be-d89e43eb91c8/scratchpad/tools/serve.js", "C:/Users/Polgo/Documents/Promo Sites/promo-sites", "5173"],
       "port": 5173
     }
   ]
