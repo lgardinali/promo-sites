@@ -164,9 +164,9 @@
 
     --como-gap: 48; --como-content-gap: 56;
     --step-gap: 24.468; --num: 97.87; --raio-w: 47.712; --raio-h: 51.529;
-    --num-pl1: 64.356; --num-pl: 47.712; --num-pt: 25.691;
+    --num-pl1: 52.605; --num-pl: 47.712; --num-pt: 25.691;
     --step-fs: 34.25; --step-lh: 39.148; --step-em: 39.148; --step-em-lh: 39.148;
-    --txt-pt1: 5.987; --txt-pt2: 18.351; --txt-pt3: 22.45;
+    --txt-pt1: 4.894; --txt-pt2: 18.351; --txt-pt3: 22.45;
 
     --g-circ: 163.41; --g-circ-l: -42.2; --g-circ-b: 19.89;
     --g-anel: 104.585; --g-anel-l: -50.8; --g-anel-b: 176.3;
@@ -213,7 +213,9 @@ html {
   scroll-padding-top: calc((var(--logo-h) + var(--hdr-py) * 2) * var(--u));
 }
 html.no-js { scroll-behavior: smooth; }
-body {
+/* "html body" (e não só "body"): no polgo.lps o preflight do Tailwind aplica
+   "body { line-height: inherit }" e anularia a entrelinha do layout. */
+html body {
   margin: 0;
   background: var(--creme);
   color: var(--grafite);
@@ -228,6 +230,9 @@ body {
 h1, h2, h3, p, ul, ol, figure { margin: 0; }
 ul, ol { padding: 0; list-style: none; }
 img, svg, picture { display: block; max-width: none; }
+/* No polgo.lps o core aplica "img { will-change: transform }" e o Tailwind "img { max-width: 100% }":
+   anula os dois aqui (a camada de GPU só liga por visibilidade, via .is-live). */
+html img { max-width: none; will-change: auto; }
 a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: transparent; }
 button { font: inherit; color: inherit; -webkit-tap-highlight-color: transparent; }
 em { font-style: normal; }
@@ -244,7 +249,9 @@ em { font-style: normal; }
 }
 .skip-link:focus-visible { transform: translate3d(0, 0, 0); }
 
-.container {
+/* Classe própria (não ".container"): no polgo.lps o core e o Tailwind já definem
+   .container com outra largura máxima e outro respiro lateral. */
+.pacto-container {
   width: 100%;
   max-width: calc((1280 + var(--gut) * 2) * var(--u));
   margin-inline: auto;
@@ -707,6 +714,7 @@ em { font-style: normal; }
   font-size: calc(var(--step-em) * var(--u));
   line-height: calc(var(--step-em-lh) * var(--u));
 }
+.step--1 .step__txt em { line-height: calc(var(--step-lh) * var(--u)); } /* "R$50." usa a entrelinha do passo */
 
 /* Grafismos */
 .graf { position: absolute; pointer-events: none; }
