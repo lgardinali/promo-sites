@@ -66,7 +66,7 @@
   --bg-w: 706.949; --bg-h: 684.088; --bg-dx: 7.01; --bg-dy: 56.59;
 
   --sobre-gap: 32; --sobre-content-gap: 40; --sobre-text-gap: 28; --intro-gap: 16;
-  --frentes-gap: 28; --frente-gap: 8; --frente-h: 22; --frente-h-lh: 26; --frente-p: 16; --frente-p-lh: 24;
+  --lead: 20; --lead-lh: 24;
   --simbolo: 140; --simbolo-pt: 0;
 
   --faq-gap: 32; --faq-head-gap: 10; --dash-w: 20; --dash-h: 4; --faq-list-gap: 10;
@@ -123,7 +123,7 @@
     --bg-w: 1413.898; --bg-h: 1368.177; --bg-dx: 14.02; --bg-dy: 71.19;
 
     --sobre-gap: 40; --sobre-content-gap: 48; --sobre-text-gap: 32; --intro-gap: 16;
-    --frentes-gap: 24; --frente-gap: 12; --frente-h: 20; --frente-h-lh: 24; --frente-p: 16; --frente-p-lh: 24;
+    --lead: 26; --lead-lh: 30;
     --simbolo: 180;
 
     --faq-gap: 40; --faq-head-gap: 12; --dash-w: 24; --dash-h: 5; --faq-list-gap: 12;
@@ -179,7 +179,7 @@
     --bg-w: 1966.8; --bg-h: 1903.2; --bg-dx: 19.5; --bg-dy: 96.13;
 
     --sobre-gap: 48; --sobre-content-gap: 40; --sobre-text-gap: 40; --intro-gap: 24;
-    --frentes-gap: 40; --frente-gap: 16; --frente-h: 28; --frente-h-lh: 32; --frente-p: 20; --frente-p-lh: 30;
+    --lead: 28; --lead-lh: 32;
     --simbolo: 240; --simbolo-pt: 56;
 
     --faq-gap: 48; --faq-head-gap: 16; --dash-w: 32; --dash-h: 6; --faq-list-gap: 12;
@@ -641,6 +641,13 @@ em { font-style: normal; }
   line-height: calc(var(--legend-lh) * var(--u));
   color: var(--grafite);
 }
+/* Texto legal: 3 parágrafos com uma linha de respiro entre eles */
+.hero__legal { display: flex; flex-direction: column; gap: calc(var(--legend-lh) * var(--u)); }
+.hero__legal strong { font-weight: 800; color: var(--vermelho); }
+@media (min-width: 1180px) {
+  /* Coluna de 500px (Figma): descrição e texto legal não alcançam os raios do carro */
+  .hero__desc, .hero__legal { max-width: calc(500 * var(--u)); }
+}
 .partners__label { white-space: nowrap; }
 .partners__logo { height: calc(var(--pl-h) * var(--u)); color: var(--grafite); }
 .partners__logos { display: flex; align-items: center; gap: calc(var(--logos-gap) * var(--u)); height: calc(var(--pl-h) * var(--u)); }
@@ -810,41 +817,18 @@ em { font-style: normal; }
 .sobre__content { display: flex; flex-direction: column; align-items: center; gap: calc(var(--sobre-content-gap) * var(--u)); }
 .sobre__text { display: flex; flex-direction: column; gap: calc(var(--sobre-text-gap) * var(--u)); width: 100%; }
 .sobre__intro { display: flex; flex-direction: column; gap: calc(var(--intro-gap) * var(--u)); }
-.frentes { display: flex; flex-direction: column; gap: calc(var(--frentes-gap) * var(--u)); }
-.frente { display: flex; flex-direction: column; gap: calc(var(--frente-gap) * var(--u)); }
-.frente__title {
-  position: relative;
-  align-self: flex-start;
+.sobre__lead {
   font-weight: 800;
-  font-size: calc(var(--frente-h) * var(--u));
-  line-height: calc(var(--frente-h-lh) * var(--u));
-  white-space: nowrap;
+  font-size: calc(var(--lead) * var(--u));
+  line-height: calc(var(--lead-lh) * var(--u));
 }
-.frente__title::after {
-  content: "";
-  position: absolute; left: 0; bottom: calc(-5 * var(--u));
-  width: calc(40 * var(--u)); height: 3px; border-radius: 2px;
-  background: var(--amarelo);
-  transform: scale3d(0, 1, 1);
-  transform-origin: 0 50%;
-  transition: transform var(--dur-2) var(--ease-slow);
-}
-.frente__num { transition: color var(--dur-1) var(--ease-slow); }
-.frente__desc { font-size: calc(var(--frente-p) * var(--u)); line-height: calc(var(--frente-p-lh) * var(--u)); }
 .sobre__icon { position: relative; flex-shrink: 0; width: calc(var(--simbolo) * var(--u)); height: calc(var(--simbolo) * var(--u)); }
 .sobre__simbolo { width: 100%; height: 100%; }
 
-@media (min-width: 720px) {
-  .frentes { flex-direction: row; }
-  .frente { flex: 1 1 0; min-width: 0; }
-}
 @media (min-width: 1180px) {
   .sobre__content { flex-direction: row; align-items: flex-start; }
   .sobre__text { flex: 1 1 0; min-width: 0; }
-  .sobre__lead { max-width: calc(790 * var(--u)); }
-  .frentes { flex-wrap: wrap; gap: calc(32 * var(--u)) calc(40 * var(--u)); }
-  .frente { flex: 0 0 auto; }
-  .frente__desc { white-space: nowrap; }
+  .sobre__intro > p { max-width: calc(790 * var(--u)); }
   .sobre__icon { padding-top: calc(var(--simbolo-pt) * var(--u)); box-sizing: content-box; }
   .sobre__icon .layer { top: calc(var(--simbolo-pt) * var(--u)); }
 }
@@ -1142,13 +1126,6 @@ em { font-style: normal; }
   .premio__car:hover .raios--dir { transform: translate3d(calc(8 * var(--u)), calc(-4 * var(--u)), 0); }
 }
 
-/* Sobre — frentes */
-.frente.is-active .frente__num { color: var(--amarelo); }
-.frente.is-active .frente__title::after { transform: scale3d(1, 1, 1); }
-@media (hover: hover) and (pointer: fine) {
-  .frente:hover .frente__num { color: var(--amarelo); }
-  .frente:hover .frente__title::after { transform: scale3d(1, 1, 1); }
-}
 
 /* ---------- Revelação ao rolar (só com JS ativo) ---------- */
 .js :where([data-reveal]:not([data-reveal="mask"], [data-reveal="chars"])),
