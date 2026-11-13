@@ -74,7 +74,8 @@ html {
 }
 html.is-locked { overflow: hidden; }
 
-body {
+/* html body / html img: vencem o preflight do Tailwind e o core/ na versão de produção (polgo.lps) */
+html body {
   margin: 0;
   min-width: 320px;
   overflow-x: clip;
@@ -87,7 +88,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-img { display: block; max-width: none; }
+html img { display: block; max-width: none; will-change: auto; }
 a { color: inherit; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
 p, h1, h2, h3, figure, ul, ol, dl, dd { margin: 0; }
@@ -1047,6 +1048,8 @@ html.js [data-pop].is-done > .rede { transition: transform var(--d1) var(--ease-
 .win .acc__q { font-size: calc(var(--u) * 15); font-weight: 700; line-height: 1.5; }
 .win .pm { --pm-w: calc(var(--u) * 10); --pm-t: calc(var(--u) * 3); width: calc(var(--u) * 10); height: calc(var(--u) * 23); }
 .win__dl { display: flex; flex-direction: column; gap: calc(var(--u) * 4); padding-top: calc(var(--u) * 4); font-size: calc(var(--u) * 15); line-height: 1.5; }
+/* aviso quando ainda não há ganhadores (versão de produção, dados da API) */
+.win__vazio { padding: calc(var(--u) * 10) 0 calc(var(--u) * 6); font-size: calc(var(--u) * 15); font-weight: 500; line-height: 1.5; text-align: center; }
 .win__dl dt { display: inline; font-weight: 700; }
 .win__dl dd { display: inline; }
 
@@ -1057,6 +1060,7 @@ html.js [data-pop].is-done > .rede { transition: transform var(--d1) var(--ease-
   .win .acc__btn::after { height: calc(var(--u) * 14); }
   .win .acc__q { font-size: calc(var(--u) * 19); line-height: 1.4; }
   .win .pm { --pm-w: calc(var(--u) * 15); --pm-t: calc(var(--u) * 4.2); width: calc(var(--u) * 18); height: calc(var(--u) * 32); }
+  .win__vazio { padding: calc(var(--u) * 14) 0 calc(var(--u) * 8); font-size: calc(var(--u) * 18); }
   .win__dl { gap: calc(var(--u) * 6); padding-top: calc(var(--u) * 6); font-size: calc(var(--u) * 18); }
 }
 @media (min-width: 960px) { .painel { width: calc(var(--u) * 760); } }
@@ -1226,7 +1230,7 @@ html.js [data-pop].is-done > .rede { transition: transform var(--d1) var(--ease-
 @media (min-width: 1280px) { .ftr__in { width: calc(var(--u) * 1280); } }
 
 /* ---------- Voltar ao topo ---------- */
-.totop {
+button.totop {
   position: fixed;
   z-index: 30;
   right: calc(var(--u) * 16);

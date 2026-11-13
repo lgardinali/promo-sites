@@ -109,11 +109,16 @@
     let trackpadUntil = 0;
     let locked = false;
 
+    // "instant": a versão de produção tem html { scroll-behavior: smooth } no core
+    function jump(y) {
+      try { window.scrollTo({ top: y, left: 0, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); }
+    }
+
     const easeInOut = (p) => (p < 0.5 ? 8 * p * p * p * p : 1 - Math.pow(-2 * p + 2, 4) / 2);
 
     function write(y) {
       lastWritten = y;
-      window.scrollTo(0, y);
+      jump(y);
     }
 
     function canScrollInside(el, dy) {
@@ -476,12 +481,13 @@
        rolagem é compensada no mesmo frame: a pergunta clicada não sai do lugar
      ------------------------------------------------------------------------ */
   $$('[data-acc]').forEach((root) => {
-    const items = $$('.acc__item', root);
+    // itens consultados a cada clique: na produção as listas são renderizadas pelo Vue/API
+    const items = () => $$('.acc__item', root);
     const setOpen = (item, open) => {
       item.classList.toggle('is-open', open);
       $('.acc__btn', item).setAttribute('aria-expanded', String(open));
     };
-    items.forEach((it) => setOpen(it, it.classList.contains('is-open')));
+    items().forEach((it) => setOpen(it, it.classList.contains('is-open')));
 
     let t = 0;
     root.addEventListener('click', (e) => {
@@ -492,7 +498,7 @@
       const ib = item.getBoundingClientRect();
       const topLimit = view.hh * view.u;
       let shift = 0;
-      items.forEach((it) => {
+      items().forEach((it) => {
         if (it === item || !it.classList.contains('is-open')) return;
         const r = it.getBoundingClientRect();
         const above = r.top < ib.top;
@@ -506,7 +512,7 @@
           setOpen(it, false);
         }
       });
-      if (shift) { scroller.cancel(); window.scrollBy(0, shift); }
+      if (shift) { scroller.cancel(); try { window.scrollBy({ top: shift, behavior: 'instant' }); } catch (err) { window.scrollBy(0, shift); } }
       setOpen(item, open);
       clearTimeout(t);
       t = setTimeout(measure, 700);
