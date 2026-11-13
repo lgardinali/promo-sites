@@ -57,7 +57,10 @@
     view.vw = window.innerWidth;
     view.h = window.innerHeight;
     Object.assign(view, calcMode(view.vw, view.w));
-    view.maxY = Math.max(0, docTop(footer) + footer.offsetHeight - view.h);
+    // scrollHeight real (igual à produção): imagens carregando ou a FAQ aberta mudam a altura,
+    // e só o rodapé podia deixar maxY curto e a roda suavizada parar antes do fim da página
+    const rootScroll = document.scrollingElement || doc;
+    view.maxY = Math.max(0, rootScroll.scrollHeight - view.h);
     sections.forEach((sec) => secTop.set(sec, docTop(sec)));
     ambs.forEach((a) => { a.top = docTop(a.it); a.h = a.it.offsetHeight; });
     ticker.wake();
@@ -839,8 +842,10 @@
     setupTouchFocus();
     ticker.wake();
   };
-  (mqReduce.addEventListener ? mqReduce.addEventListener('change', onPref) : mqReduce.addListener(onPref));
-  (mqFine.addEventListener ? mqFine.addEventListener('change', onPref) : mqFine.addListener(onPref));
+  if (mqReduce.addEventListener) mqReduce.addEventListener('change', onPref);
+  else mqReduce.addListener(onPref);
+  if (mqFine.addEventListener) mqFine.addEventListener('change', onPref);
+  else mqFine.addListener(onPref);
 
   measure();
   lastMode = view.mode;

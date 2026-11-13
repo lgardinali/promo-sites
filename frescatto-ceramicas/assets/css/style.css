@@ -1105,3 +1105,34 @@ html.is-locked .totop { opacity: 0; visibility: hidden; }
   html.js:not(.is-ready) .intro,
   html.js:not(.is-ready) .line__in { opacity: 1 !important; transform: none !important; }
 }
+
+/* =============================================================================
+   Ajustes da versão de produção (polgo.lps · branch frescatto.hlp.polgo.online)
+   Lá eles ficam como <style scoped> nos componentes Vue; aqui, no mesmo arquivo.
+   ========================================================================== */
+
+/* Hero.vue: o itálico + negrito de "Colecionáveis" extrapolava a máscara .line (overflow: hidden) */
+.kv__title .line {
+  padding: .06em .38em .22em;
+  margin: -.06em -.38em -.22em;
+}
+
+/* Duvidas.vue: respostas em creme, 14 · 18 · 30, entrando com fade de 420ms */
+.faq__body {
+  margin: 0;
+  padding: 0 calc(var(--u) * 16) calc(var(--u) * 14);
+  font-size: calc(var(--u) * 14);
+  line-height: 1.35;
+  color: var(--cream);
+  opacity: 0;
+  transform: translate3d(0, calc(var(--u) * -6), 0);
+  transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out);
+}
+.faq__body a { text-decoration: none; }
+.faq__item.is-open .faq__body { opacity: 1; transform: none; transition-delay: 90ms; }
+@media (min-width: 640px) {
+  .faq__body { padding: 0 calc(var(--u) * 24) calc(var(--u) * 18); font-size: calc(var(--u) * 18); }
+}
+@media (min-width: 1024px) {
+  .faq__body { padding: 0 calc(var(--u) * 38) calc(var(--u) * 24); font-size: calc(var(--u) * 30); text-align: center; }
+}
