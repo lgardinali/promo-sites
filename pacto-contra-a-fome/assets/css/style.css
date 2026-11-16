@@ -71,7 +71,7 @@
 
   --faq-gap: 32; --faq-head-gap: 10; --dash-w: 20; --dash-h: 4; --faq-list-gap: 10;
   --card-px: 44; --card-py: 14; --card-r: 24; --q: 14; --q-lh: 20;
-  --arrow-r: 18; --arrow-off: 2; --open-gap: 6; --open-pb: 18; --a: 13; --a-lh: 20;
+  --arrow-r: 18; --arrow-off: 2; --open-gap: 6; --open-pb: 18; --a: 13; --a-lh: 20; --a-px: 24; --a-gap: 8;
 
   --venc-gap: 28; --venc-titles-gap: 12; --sub: 16; --sub-lh: 24;
   --fields-gap: 12; --field-px: 24; --field-py: 16; --field-r: 28; --field: 18; --field-lh: 24;
@@ -128,7 +128,7 @@
 
     --faq-gap: 40; --faq-head-gap: 12; --dash-w: 24; --dash-h: 5; --faq-list-gap: 12;
     --card-px: 64; --card-py: 16; --card-r: 27; --q: 16; --q-lh: 22;
-    --arrow-r: 40; --arrow-off: 3; --open-gap: 8; --open-pb: 20; --a: 15; --a-lh: 22;
+    --arrow-r: 40; --arrow-off: 3; --open-gap: 8; --open-pb: 20; --a: 15; --a-lh: 22; --a-px: 64; --a-gap: 10;
 
     --venc-gap: 32; --venc-titles-gap: 16; --sub: 18; --sub-lh: 28;
     --fields-gap: 16; --field-px: 32; --field-py: 18; --field-r: 33; --field: 22; --field-lh: 30;
@@ -184,7 +184,7 @@
 
     --faq-gap: 48; --faq-head-gap: 16; --dash-w: 32; --dash-h: 6; --faq-list-gap: 12;
     --card-px: 80; --card-py: 18; --card-r: 30; --q: 18; --q-lh: 24;
-    --arrow-r: 52; --arrow-off: 3; --open-gap: 8; --open-pb: 24; --a: 16; --a-lh: 24;
+    --arrow-r: 52; --arrow-off: 3; --open-gap: 8; --open-pb: 24; --a: 16; --a-lh: 24; --a-px: 80; --a-gap: 12;
 
     --venc-gap: 40; --venc-titles-gap: 24; --sub: 20; --sub-lh: 30;
     --fields-gap: 24; --field-px: 40; --field-py: 20; --field-r: 36; --field: 24; --field-lh: 32;
@@ -875,7 +875,7 @@ em { font-style: normal; }
   transition: padding-bottom var(--dur-2) var(--ease-slow);
 }
 .faq__q-inner { position: relative; display: block; }
-.faq__q-text { display: block; }
+.faq__q-text { display: block; text-transform: uppercase; } /* texto do cliente em frase normal; o design pede caixa alta */
 .faq__arrow {
   position: absolute;
   right: calc((var(--arrow-r) - var(--card-px)) * var(--u));
@@ -889,19 +889,42 @@ em { font-style: normal; }
 .faq__arrow svg { width: 100%; height: 100%; }
 .faq__a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur-2) var(--ease-slow); }
 .faq__a-in { overflow: hidden; min-height: 0; }
-.faq__a p {
-  padding: 0 calc(var(--card-px) * var(--u)) calc(var(--open-pb) * var(--u));
+/* Resposta: um ou mais parágrafos, com listas (ul/ol) e links. Em produção entra via v-html. */
+.faq__body {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--a-gap) * var(--u));
+  padding: 0 calc(var(--a-px) * var(--u)) calc(var(--open-pb) * var(--u));
   font-weight: 400;
   font-size: calc(var(--a) * var(--u));
   line-height: calc(var(--a-lh) * var(--u));
   text-align: center;
+  overflow-wrap: anywhere;
   opacity: 0;
   transform: translate3d(0, calc(-8 * var(--u)), 0);
   transition: opacity var(--dur-1) var(--ease-slow), transform var(--dur-2) var(--ease-slow);
 }
+/* Listas: bloco centralizado, itens alinhados à esquerda */
+.faq__body ul, .faq__body ol {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-left: 1.5em;
+  text-align: left;
+}
+.faq__body ul { list-style: disc; }
+.faq__body ol { list-style: decimal; }
+.faq__body li + li { margin-top: 0.4em; }
+.faq__body a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--dur-1) var(--ease-slow);
+}
+@media (hover: hover) and (pointer: fine) { .faq__body a:hover { color: var(--amarelo-claro); } }
 .faq__item.is-open .faq__q { padding-bottom: calc(var(--open-gap) * var(--u)); }
 .faq__item.is-open .faq__a { grid-template-rows: 1fr; }
-.faq__item.is-open .faq__a p { opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 120ms, 60ms; }
+.faq__item.is-open .faq__body { opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 120ms, 60ms; }
 .faq__item.is-open .faq__arrow { transform: translate3d(0, 0, 0) rotate(180deg); }
 @media (hover: hover) and (pointer: fine) {
   .faq__item:hover { background-color: var(--laranja-escuro); }
