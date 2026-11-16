@@ -965,6 +965,30 @@ main + .footer { margin-top: -1px; }
   transform: translate3d(0, -8px, 0);
   transition: opacity var(--t-300) var(--ease-out), transform var(--t-300) var(--ease-out);
 }
+/* Respostas com parágrafos, listas e links (texto do cliente). Classe + elemento para vencer o
+   reset do Tailwind na branch (p/ul sem margem, listas sem marcador, links sem sublinhado). */
+.faq-item__answer > * { margin: 0; }
+.faq-item__answer > * + * { margin-top: 0.75em; }
+.faq-item__answer ul,
+.faq-item__answer ol { padding-left: 1.4em; }
+.faq-item__answer ul { list-style: disc; }
+.faq-item__answer ol { list-style: decimal; }
+.faq-item__answer li + li { margin-top: 0.3em; }
+.faq-item__answer a {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(255, 255, 255, 0.7);
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+/* telefone/WhatsApp não quebra no hífen */
+.faq-item__answer a[href^="https://wa.me"],
+.faq-item__answer a[href^="tel:"] { white-space: nowrap; }
+@media (hover: hover) {
+  .faq-item__answer a:hover { text-decoration-thickness: 2px; text-decoration-color: var(--branco); }
+}
 .faq-item.is-open .faq-item__panel { grid-template-rows: 1fr; }
 .faq-item.is-open .faq-item__answer { opacity: 1; transform: translate3d(0, 0, 0); transition-delay: 60ms; }
 .faq-item.is-open .faq-item__icon { transform: translate3d(0, 0, 0) rotate(180deg); }

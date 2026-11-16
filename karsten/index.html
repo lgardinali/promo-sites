@@ -28,9 +28,9 @@
   <link rel="preload" href="assets/fonts/lora-bolditalic-latin.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- ?v= força o navegador a buscar CSS/JS novos após cada alteração (atualize junto com a branch) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261116">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116-2">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="assets/js/main.js?v=20261116" defer></script>
+  <script src="assets/js/main.js?v=20261116-2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -235,18 +235,27 @@
         </h2>
 
         <div class="faq__list" data-stagger="70">
+          <!-- Textos gerados a partir do lp.duvidas da branch testekarsten (theme/config/data.js) -->
           <div class="faq-item" data-reveal data-center>
             <div class="faq-item__card">
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
                 <button class="faq-item__btn" type="button" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                  <span class="faq-item__q">Quem pode participar?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a1" role="region" aria-labelledby="faq-q1">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">
+                    <p>Podem participar pessoas físicas que:</p>
+                    <ul>
+                      <li>Tenham 18 anos ou mais</li>
+                      <li>Residam no Brasil e tenham CPF</li>
+                      <li>Façam uma compra de produtos Karsten em uma loja própria ou multimarcas participante durante o período da promoção</li>
+                    </ul>
+                    <p>Não podem participar funcionários, sócios ou administradores da Karsten, das lojas participantes, da empresa responsável pela plataforma e das agências envolvidas, nem parentes próximos dessas pessoas.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -257,13 +266,22 @@
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
                 <button class="faq-item__btn" type="button" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                  <span class="faq-item__q">Como faço para participar?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a2" role="region" aria-labelledby="faq-q2">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">
+                    <p>É simples:</p>
+                    <ol>
+                      <li>Compre produtos Karsten em uma loja participante (física ou e-commerce) entre 17/11/2026 e 25/12/2026</li>
+                      <li>Guarde a nota fiscal ou cupom da compra</li>
+                      <li>Acesse o site da promoção, cadastre seus dados e envie uma foto legível do comprovante</li>
+                      <li>Pronto! Você recebe seus Números da Sorte após a validação da compra</li>
+                    </ol>
+                    <p>Você pode cadastrar as notas fiscais até 27/12/2026, mesmo que a compra tenha sido feita antes dessa data (desde que dentro do período de 17/11 a 25/12).</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -274,13 +292,21 @@
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
                 <button class="faq-item__btn" type="button" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                  <span class="faq-item__q">Quantos Números da Sorte eu ganho por compra?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a3" role="region" aria-labelledby="faq-q3">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">
+                    <p>A cada R$ 699,00 em produtos Karsten em uma mesma nota fiscal, você ganha 1 Número da Sorte. Não há limite de compras ou de números acumulados: quanto mais você compra, mais números recebe.</p>
+                    <p>Alguns pontos importantes:</p>
+                    <ul>
+                      <li>Só valem múltiplos inteiros de R$ 699,00 (uma compra de R$ 1.398,00 gera 2 números; o valor restante abaixo de R$ 699,00 não conta)</li>
+                      <li>Frete, juros, vale-presente, cashback e compras corporativas não entram no cálculo</li>
+                      <li>Se a compra for cancelada ou estornada depois de gerar números, eles também serão cancelados</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -291,13 +317,13 @@
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
                 <button class="faq-item__btn" type="button" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                  <span class="faq-item__q">Qual é o prêmio?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a4" role="region" aria-labelledby="faq-q4">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">A promoção distribui 1 Cartão Premiação Mastercard pré-pago no valor de R$ 50.000,00, administrado pela Conquiste Digital, para uso em todo o território nacional. O cartão não pode ser sacado, transferido ou convertido em dinheiro, apenas usado para compras, conforme as regras do próprio cartão.</div>
                 </div>
               </div>
             </div>
@@ -308,31 +334,126 @@
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
                 <button class="faq-item__btn" type="button" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                  <span class="faq-item__q">Quando acontece o sorteio?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a5" role="region" aria-labelledby="faq-q5">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">O sorteio é baseado no resultado da Loteria Federal do dia 02/01/2027, com apuração administrativa em 06/01/2027. Caso essa extração não aconteça na data prevista, será usada a próxima disponível.</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- No Figma a 6ª dúvida aparece aberta; para começar todas fechadas, remova "is-open" e use aria-expanded="false" -->
-          <div class="faq-item is-open" data-reveal data-center>
+          <div class="faq-item" data-reveal data-center>
             <div class="faq-item__card">
               <span class="faq-item__fx" aria-hidden="true"></span>
               <h3 class="faq-item__h">
-                <button class="faq-item__btn" type="button" id="faq-q6" aria-expanded="true" aria-controls="faq-a6">
-                  <span class="faq-item__q">Lorem ipsum dolor sit amet, consectetur.</span>
+                <button class="faq-item__btn" type="button" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+                  <span class="faq-item__q">Como vou saber se ganhei?</span>
                   <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
                 </button>
               </h3>
               <div class="faq-item__panel" id="faq-a6" role="region" aria-labelledby="faq-q6">
                 <div class="faq-item__inner">
-                  <p class="faq-item__answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi convallis convallis diam sit amet lacinia. Aliquam in elementum tellus.</p>
+                  <div class="faq-item__answer">
+                    <p>Se você for o participante sorteado, a Karsten vai te ligar primeiro, no dia 06/01/2027, e depois tentar contato por WhatsApp ou outros canais informados no cadastro. Serão feitas até 3 tentativas de contato em pelo menos 2 dias diferentes.</p>
+                    <p>Depois da validação dos seus documentos, o resultado também será divulgado no site celebreopresentecompresenca em até 5 dias úteis.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-center>
+            <div class="faq-item__card">
+              <span class="faq-item__fx" aria-hidden="true"></span>
+              <h3 class="faq-item__h">
+                <button class="faq-item__btn" type="button" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+                  <span class="faq-item__q">Precisarei enviar algum documento para confirmar o prêmio?</span>
+                  <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
+                </button>
+              </h3>
+              <div class="faq-item__panel" id="faq-a7" role="region" aria-labelledby="faq-q7">
+                <div class="faq-item__inner">
+                  <div class="faq-item__answer">
+                    <p>Sim. Para validar sua participação, a Karsten pode pedir:</p>
+                    <ul>
+                      <li>Documento de identidade e CPF</li>
+                      <li>Comprovante de residência</li>
+                      <li>Nota fiscal original ou cópia legível da compra</li>
+                    </ul>
+                    <p>Você terá 3 dias úteis a partir do primeiro contato para enviar tudo o que for solicitado.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-center>
+            <div class="faq-item__card">
+              <span class="faq-item__fx" aria-hidden="true"></span>
+              <h3 class="faq-item__h">
+                <button class="faq-item__btn" type="button" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+                  <span class="faq-item__q">Como recebo o prêmio?</span>
+                  <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
+                </button>
+              </h3>
+              <div class="faq-item__panel" id="faq-a8" role="region" aria-labelledby="faq-q8">
+                <div class="faq-item__inner">
+                  <div class="faq-item__answer">O Cartão Premiação será entregue sem nenhum custo, em até 30 dias após a apuração, no endereço do ganhador ou em outro local indicado por ele.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-center>
+            <div class="faq-item__card">
+              <span class="faq-item__fx" aria-hidden="true"></span>
+              <h3 class="faq-item__h">
+                <button class="faq-item__btn" type="button" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
+                  <span class="faq-item__q">Tenho prazo para resgatar o prêmio?</span>
+                  <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
+                </button>
+              </h3>
+              <div class="faq-item__panel" id="faq-a9" role="region" aria-labelledby="faq-q9">
+                <div class="faq-item__inner">
+                  <div class="faq-item__answer">Sim. Você tem 180 dias a partir da data da apuração para receber o prêmio. Depois desse prazo, o valor é repassado para a União, conforme a legislação.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-center>
+            <div class="faq-item__card">
+              <span class="faq-item__fx" aria-hidden="true"></span>
+              <h3 class="faq-item__h">
+                <button class="faq-item__btn" type="button" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">
+                  <span class="faq-item__q">A promoção é gratuita? Preciso pagar algo para participar?</span>
+                  <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
+                </button>
+              </h3>
+              <div class="faq-item__panel" id="faq-a10" role="region" aria-labelledby="faq-q10">
+                <div class="faq-item__inner">
+                  <div class="faq-item__answer">A participação na promoção é totalmente gratuita. Você só precisa realizar a compra normal de produtos Karsten; não há nenhuma taxa adicional para se cadastrar ou concorrer ao prêmio.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item" data-reveal data-center>
+            <div class="faq-item__card">
+              <span class="faq-item__fx" aria-hidden="true"></span>
+              <h3 class="faq-item__h">
+                <button class="faq-item__btn" type="button" id="faq-q11" aria-expanded="false" aria-controls="faq-a11">
+                  <span class="faq-item__q">Ainda tenho dúvidas. Com quem falo?</span>
+                  <img class="faq-item__icon" src="assets/img/icon-seta-baixo.svg" width="32" height="32" alt="">
+                </button>
+              </h3>
+              <div class="faq-item__panel" id="faq-a11" role="region" aria-labelledby="faq-q11">
+                <div class="faq-item__inner">
+                  <div class="faq-item__answer">Você pode entrar em contato pelo e-mail <a href="mailto:natalcomkarsten@karsten.com.br">natalcomkarsten@karsten.com.br</a> ou pelo WhatsApp <a href="https://wa.me/5547999470772" target="_blank" rel="noopener">(47) 99947-0772</a>, de segunda a sexta-feira, das 8h às 17h (exceto feriados).</div>
                 </div>
               </div>
             </div>
