@@ -194,7 +194,6 @@ main + .footer { margin-top: -1px; }
   transition: transform 200ms var(--ease-out);
 }
 .btn--red { --fill: var(--bordo); background: var(--vermelho-600); }
-.btn--block { width: 100%; }
 .btn__fill {
   position: absolute;
   z-index: -1;
@@ -234,7 +233,6 @@ main + .footer { margin-top: -1px; }
 
 @media (min-width: 768px) {
   .btn { padding: 20px 56px; font-size: 20px; }
-  .btn--block { width: auto; }
 }
 
 /* ==========================================================================
@@ -691,7 +689,9 @@ main + .footer { margin-top: -1px; }
   white-space: nowrap;
   padding-right: 0.08em;
 }
-.premio__media { position: relative; z-index: 1; width: 100%; }
+/* Mobile: a arte tem cartão e foto encostando nas bordas — 16px de respiro de cada lado
+   (mesma margem das outras seções) para o float/zoom não passarem do limite da tela */
+.premio__media { position: relative; z-index: 1; width: calc(100% - 32px); }
 .premio__float { animation: premio-float-m 7s ease-in-out infinite; }
 .premio__zoom {
   transform: translate3d(0, 0, 0) scale3d(1, 1, 1) rotate(0.02deg);
@@ -723,6 +723,7 @@ main + .footer { margin-top: -1px; }
   .premio__arco { width: 55.11vw; }
   .premio__container { max-width: 688px; margin: 0 auto; }
   .premio__stage { display: block; }
+  .premio__media { width: 100%; }
   .premio__head { justify-content: flex-end; padding-right: 3.333em; margin-bottom: -1.5em; font-size: 24px; }
   .premio__title { font-size: 1em; }
   .premio__over { margin-bottom: -1.167em; }
@@ -1203,6 +1204,16 @@ main + .footer { margin-top: -1px; }
 }
 .footer__powered img { width: 116px; height: 35.2px; object-fit: contain; }
 
+/* Texto jurídico (estilo Legal do Figma: Alexandria 12 mobile / 14 tablet+desktop) */
+.footer__juridico {
+  order: 6;
+  max-width: 328px;
+  font: 400 12px/1.5 var(--font-sans);
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  text-wrap: pretty;
+}
+
 /* sublinhado dourado que cresce da esquerda */
 .link-u { position: relative; display: inline-block; transition: color var(--t-300) var(--ease-out); }
 .link-u::after {
@@ -1228,6 +1239,7 @@ main + .footer { margin-top: -1px; }
   .footer__legal, .footer__links, .footer__menu ul { gap: 16px; }
   .footer__links a, .footer__spa, .footer__menu a { font-size: 18px; }
   .footer__powered { font-size: 14px; }
+  .footer__juridico { max-width: 600px; font-size: 14px; }
   .stars--m-only { display: none; }
 }
 @media (min-width: 1024px) {
@@ -1249,6 +1261,8 @@ main + .footer { margin-top: -1px; }
   .footer__menu ul { align-items: flex-start; gap: 12px; }
   .social { width: auto; max-width: none; padding: 0; gap: 28px; justify-content: flex-start; }
   .footer__powered { align-items: flex-start; }
+  /* linha própria, centralizada, abaixo das três colunas */
+  .footer__juridico { order: 0; flex: 0 0 100%; max-width: 980px; margin: 0 auto; }
 }
 
 /* ==========================================================================
