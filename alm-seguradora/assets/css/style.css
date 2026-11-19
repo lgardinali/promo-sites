@@ -377,10 +377,10 @@ ul, ol { padding: 0; list-style: none; }
   display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto minmax(0, 1fr); grid-template-areas: 'win win win win win' '. prev dots next .';
   align-items: center; column-gap: 24px; row-gap: 64px;
 }
-/* Desktop/tablet: a janela NÃO recorta. Os cards seguem saindo e somem rapidamente
-   (opacidade pela fração fora da página visível, calculada no rAF do movimento) —
+/* A janela NÃO recorta (desktop, tablet e mobile). Os cards seguem saindo e somem/aparecem
+   com opacidade proporcional à distância até a vaga na área visível (rAF do movimento) —
    nada é cortado, nem os cards em movimento nem o que sai de dentro deles (ex.: avião).
-   Mobile (1 card + prévia): mantém o recorte na borda do conteúdo, como no Figma. */
+   No mobile a "prévia" do próximo card aparece suave na borda. */
 .carousel__window {
   grid-area: win; position: relative; min-width: 0;
   touch-action: pan-y; cursor: grab;
@@ -840,8 +840,6 @@ ul, ol { padding: 0; list-style: none; }
    CARROSSEL MOBILE (1 card + prévia)
    ========================================================================== */
 @media (max-width: 707px) {
-  .carousel__window { overflow: hidden; padding-top: 110px; margin-top: -110px; }
-  @supports (overflow: clip) { .carousel__window { overflow-x: clip; overflow-y: visible; padding-top: 0; margin-top: 0; } }
   .carousel { --per: 1; --cw: 264px; --gap: 16px; width: 100%; margin-top: 47px; row-gap: 64px; margin-bottom: 8px;
     grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'win win win' 'prev dots next'; }
   .carousel__dots { gap: 6px; }

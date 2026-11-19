@@ -529,10 +529,11 @@
       per = parseInt(cs.getPropertyValue('--per'), 10) || 1;
       cw = parseFloat(cs.getPropertyValue('--cw')) || 302;
       const gap = parseFloat(cs.getPropertyValue('--gap')) || 24;
-      fade = per > 1; // mobile (1 card + prévia): o próprio recorte da janela resolve
-      winW = per * cw + (per - 1) * gap;
+      fade = true;
+      // área visível = largura real da janela (no mobile inclui a "prévia" do próximo card)
+      winW = Math.max(per * cw + (per - 1) * gap, win.clientWidth || 0);
       const key = `${per}|${cw}|${gap}`;
-      if (key === lastKey) return;
+      if (key === lastKey) { updateVis(sp.x); return; }
       lastKey = key;
       step = cw + gap;
       const max = Math.max(0, cards.length - per);
