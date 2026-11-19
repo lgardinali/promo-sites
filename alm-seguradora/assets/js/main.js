@@ -594,10 +594,32 @@
     if (!kv || !artBox) return null;
     const tilt = $('[data-tilt]', artBox);
     const deco = $('[data-kv-deco]', kv);
-    const layers = $$('.ha', artBox).map(el => ({ el, d: parseFloat(el.dataset.depth) || 0, text: el.classList.contains('ha-legal') }));
+    // Só o retângulo e o texto legal giram (tilt 3D); as imagens só se deslocam (parallax), sempre de frente
+    const layers = $$('.ha', artBox).filter(el => !el.classList.contains('ha-homem-clip')).map(el => ({
+      el,
+      d: parseFloat(el.dataset.depth) || 0,
+      tilt: el.classList.contains('ha-card') || el.classList.contains('ha-legal'),
+      text: el.classList.contains('ha-legal'),
+    }));
     const homem = $('.ha-homem', artBox);
-    const clipDepth = 0.16;
-    const homemDepth = homem ? parseFloat(homem.dataset.depth) : 0.72;
+    const clip = $('.ha-homem-clip', artBox);
+    const card = $('.ha-card', artBox);
+    const clipDepth = card ? parseFloat(card.dataset.depth) || 0 : 0;
+    const homemDepth = homem ? parseFloat(homem.dataset.depth) : 0.68;
+    const PERSP = 1400;   // igual ao perspective do .art (CSS)
+    const SHIFT = 34;     // deslocamento máximo do parallax em px (× amplitude do breakpoint)
+    const TILT_X = 6, TILT_Y = 8; // graus
+    const geo = { W: 580, H: 560, clipX: 0, clipY: -103.5, manX: 0, manY: 0 };
+    const DEG = Math.PI / 180;
+    // projeta um ponto do card (px) pelo mesmo transform do retângulo: translate3d · rotateX · rotateY + perspective
+    const proj = (px, py, sa, ca, sb, cb, tx, ty) => {
+      const x = px - geo.W / 2, y = py - geo.H / 2;
+      const x1 = x * cb, z1 = -x * sb;
+      const y2 = y * ca - z1 * sa, z2 = y * sa + z1 * ca;
+      const k = PERSP / (PERSP - z2);
+      return [(x1 + tx) * k + geo.W / 2, (y2 + ty) * k + geo.H / 2];
+    };
+    const n6 = v => v.toFixed(6), n3 = v => v.toFixed(3);
 
     const g = { ax: 0, ay: 0, aw: 1, ah: 1, kvTop: 0, kvH: 0 }; // geometria (só em measure)
     const m = { tx: 0, ty: 0, sx: 0, sy: 0, cx: 0, cy: 0, gtx: 0, gty: 0, gsx: 0, gsy: 0, gcx: 0, gcy: 0, kvC: 0 };
@@ -681,7 +703,7 @@
         current = it && it.zoom ? it : null;
         if (current) current.zoom.classList.add('is-hover');
       };
-      const S = () => 22 * state.amp;
+      const S = () => SHIFT * state.amp;
       return {
         measure() {
           // caixas relativas ao card (offset* ignora transforms)
@@ -766,16 +788,32 @@
       if (!live) return moving;
 
       const amp = state.amp;
-      const S = 22 * amp;
-      const rx = (-m.cy * 6 * amp).toFixed(3), ry = (m.cx * 8 * amp).toFixed(3);
-      put(tilt, `rotateX(${rx}deg) rotateY(${ry}deg) rotate(0.02deg)`);
+      const S = SHIFT * amp;
+      const rx = -m.cy * TILT_X * amp, ry = m.cx * TILT_Y * amp;
+      const rot = `rotateX(${n3(rx)}deg) rotateY(${n3(ry)}deg)`;
       for (const l of layers) {
-        const x = (m.cx * l.d * S).toFixed(3), y = (m.cy * l.d * S).toFixed(3);
-        put(l.el, l.text ? `translate3d(${x}px,${y}px,0)` : `translate3d(${x}px,${y}px,0) rotate(0.02deg)`);
+        const x = n3(m.cx * l.d * S), y = n3(m.cy * l.d * S);
+        if (l.tilt) put(l.el, `translate3d(${x}px,${y}px,0) ${rot}${l.text ? '' : ' rotate(0.02deg)'}`);
+        else put(l.el, `translate3d(${x}px,${y}px,0) rotate(0.02deg)`);
       }
-      if (homem) {
-        const k = (homemDepth - clipDepth) * S;
-        put(homem, `translate3d(${(m.cx * k).toFixed(3)}px,${(m.cy * k).toFixed(3)}px,0) rotate(0.02deg)`);
+      if (clip && homem) {
+        /* O recorte segue a borda inferior (e a lateral) do retângulo inclinado:
+           ajuste afim a partir de 3 pontos projetados. A foto recebe a inversa
+           desse ajuste + o próprio parallax, então continua de frente. */
+        const sa = Math.sin(rx * DEG), ca = Math.cos(rx * DEG), sb = Math.sin(ry * DEG), cb = Math.cos(ry * DEG);
+        const tRx = m.cx * clipDepth * S, tRy = m.cy * clipDepth * S;
+        const A = proj(0, geo.H, sa, ca, sb, cb, tRx, tRy);
+        const B = proj(geo.W, geo.H, sa, ca, sb, cb, tRx, tRy);
+        const C = proj(0, geo.clipY, sa, ca, sb, cb, tRx, tRy);
+        const l11 = (B[0] - A[0]) / geo.W, l21 = (B[1] - A[1]) / geo.W;
+        const dy = geo.clipY - geo.H;
+        const l12 = (C[0] - A[0]) / dy, l22 = (C[1] - A[1]) / dy;
+        const tx = A[0] - l12 * geo.H, ty = A[1] - l22 * geo.H;
+        put(clip, `matrix(${n6(l11)},${n6(l21)},${n6(l12)},${n6(l22)},${n3(tx)},${n3(ty)})`);
+        const det = l11 * l22 - l12 * l21 || 1;
+        const i11 = l22 / det, i12 = -l12 / det, i21 = -l21 / det, i22 = l11 / det;
+        const ex = m.cx * homemDepth * S - tx, ey = m.cy * homemDepth * S - ty;
+        put(homem, `matrix(${n6(i11)},${n6(i21)},${n6(i12)},${n6(i22)},${n3(i11 * ex + i12 * ey)},${n3(i21 * ex + i22 * ey)}) rotate(0.02deg)`);
       }
       if (deco) {
         const x = (-m.gcx * 14 * amp).toFixed(3);
@@ -789,6 +827,16 @@
       measure() {
         const r = artBox.getBoundingClientRect();
         g.ax = r.left + scrollX; g.ay = r.top + scrollY; g.aw = r.width || 1; g.ah = r.height || 1;
+        geo.W = artBox.offsetWidth || 1; geo.H = artBox.offsetHeight || 1;
+        if (clip) {
+          geo.clipX = clip.offsetLeft; geo.clipY = clip.offsetTop;
+          clip.style.transformOrigin = `${-geo.clipX}px ${-geo.clipY}px`; // origem = canto do card
+        }
+        if (homem) {
+          geo.manX = geo.clipX + homem.offsetLeft; geo.manY = geo.clipY + homem.offsetTop;
+          homem.style.transformOrigin = `${-geo.manX}px ${-geo.manY}px`;
+        }
+        written.clear();
         const k = kv.getBoundingClientRect();
         g.kvTop = k.top + scrollY; g.kvH = k.height;
         Hit.measure();
@@ -797,7 +845,7 @@
       },
       reset() {
         written.clear();
-        [tilt, deco, homem, ...layers.map(l => l.el)].forEach(el => { if (el) el.style.transform = ''; });
+        [tilt, deco, homem, clip, ...layers.map(l => l.el)].forEach(el => { if (el) el.style.transform = ''; });
       },
     };
   })();

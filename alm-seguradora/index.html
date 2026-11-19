@@ -30,9 +30,9 @@
   <link rel="preload" href="assets/img/hero-homem.webp" as="image" type="image/webp" fetchpriority="high">
 
   <!-- ?v= força o navegador a buscar CSS/JS novos após cada alteração -->
-  <link rel="stylesheet" href="assets/css/style.css?v=20261119">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261119-2">
   <script>document.documentElement.classList.add('js')</script>
-  <script src="assets/js/main.js?v=20261119" defer></script>
+  <script src="assets/js/main.js?v=20261119-2" defer></script>
 </head>
 <body class="page-home">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -145,25 +145,26 @@
         <!-- Imagem Hero: card com tilt 3D + parallax de profundidade -->
         <div class="kv__art" data-hero-art>
           <div class="art" data-tilt>
-            <div class="ha ha-rings" data-depth="-0.08" aria-hidden="true"><span class="ring ring--a"></span><span class="ring ring--b"></span></div>
-            <div class="ha ha-legal" data-depth="0.04">
+            <div class="ha ha-rings" data-depth="-0.14" aria-hidden="true"><span class="ring ring--a"></span><span class="ring ring--b"></span></div>
+            <div class="ha ha-legal" data-depth="0.02">
               <p class="ha-in">Imagem ilustrativa. Prêmios pagos em crédito <br class="br-d">na carteira PolgoPay. Condições no regulamento.</p>
             </div>
-            <div class="ha ha-card" data-depth="0.16"><div class="ha-in"></div></div>
-            <div class="ha ha-mais2" data-depth="0.3" aria-hidden="true"><div class="ha-in"><svg><use href="#i-spark"/></svg></div></div>
-            <div class="ha ha-aviao" data-depth="0.44" data-hit="aviao">
+            <div class="ha ha-card" data-depth="0.08"><div class="ha-in"></div></div>
+            <div class="ha ha-mais2" data-depth="0.24" aria-hidden="true"><div class="ha-in"><svg><use href="#i-spark"/></svg></div></div>
+            <div class="ha ha-aviao" data-depth="0.38" data-hit="aviao">
               <div class="ha-in"><div class="ha-zoom"><img src="assets/img/hero-aviao.webp" width="985" height="954" alt="" decoding="async"></div></div>
             </div>
-            <div class="ha ha-iphone" data-depth="0.58" data-hit="iphone">
+            <div class="ha ha-iphone" data-depth="0.52" data-hit="iphone">
               <div class="ha-in"><div class="ha-zoom"><img src="assets/img/hero-iphone.webp" width="814" height="924" alt="" decoding="async"></div></div>
             </div>
-            <!-- "Homem": recorte preso ao retângulo (corta só embaixo); a foto tem profundidade própria dentro dele -->
-            <div class="ha ha-homem-clip" data-depth="0.16">
-              <div class="ha-homem" data-depth="0.72">
+            <!-- "Homem": o recorte acompanha o retângulo inclinado (corta só embaixo);
+                 a foto fica de frente e tem profundidade própria dentro dele -->
+            <div class="ha ha-homem-clip">
+              <div class="ha-homem" data-depth="0.68">
                 <div class="ha-in"><img src="assets/img/hero-homem.webp" width="1259" height="1533" alt="Corretor sorrindo enquanto usa o celular" fetchpriority="high"></div>
               </div>
             </div>
-            <div class="ha ha-mais1" data-depth="0.86" aria-hidden="true"><div class="ha-in"><svg><use href="#i-spark"/></svg></div></div>
+            <div class="ha ha-mais1" data-depth="0.84" aria-hidden="true"><div class="ha-in"><svg><use href="#i-spark"/></svg></div></div>
             <div class="ha ha-cafe" data-depth="1" data-hit="cafe">
               <div class="ha-in"><div class="ha-zoom"><img src="assets/img/hero-cafeteira.webp" width="493" height="669" alt="" decoding="async"></div></div>
             </div>
@@ -173,7 +174,7 @@
     </section>
 
     <!-- ============ COMO PARTICIPAR ============ -->
-    <section class="sec sec--white" id="como-participar" data-section>
+    <section class="sec sec--white" id="como-participar" data-section data-live>
       <div class="sec__in passos">
         <header class="sec-head" data-stagger="90">
           <p class="sec-head__label" data-reveal>Passo a passo</p>
@@ -347,7 +348,7 @@
     </section>
 
     <!-- ============ DÚVIDAS FREQUENTES ============ -->
-    <section class="sec sec--white" id="duvidas" data-section>
+    <section class="sec sec--white" id="duvidas" data-section data-live>
       <div class="sec__in duvidas">
         <div class="duvidas__intro" data-stagger="90">
           <p class="sec-head__label" data-reveal>Dúvidas</p>
@@ -426,7 +427,7 @@
   </main>
 
   <!-- ============ RODAPÉ ============ -->
-  <footer class="footer">
+  <footer class="footer" data-live>
     <div class="footer__in">
       <div class="footer__cols">
         <div class="footer__marca" data-stagger="90">
@@ -470,7 +471,7 @@
       </div>
       <hr class="footer__divisor">
       <div class="footer__polgo">
-        <span>Copyright © Feito com <span aria-label="amor">❤</span></span>
+        <span class="feito">Copyright © Feito com <span class="coracao" role="img" aria-label="amor"><span class="coracao__glifo" aria-hidden="true">❤</span><svg class="coracao__spark s1" aria-hidden="true"><use href="#i-spark"/></svg><svg class="coracao__spark s2" aria-hidden="true"><use href="#i-spark"/></svg></span></span>
         <a href="https://polgo.com.br" target="_blank" rel="noopener" aria-label="Grupo Polgo"><img src="assets/img/logo-grupo-polgo.svg" width="200" height="28" alt="Grupo Polgo"></a>
       </div>
     </div>
