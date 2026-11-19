@@ -268,6 +268,11 @@ ul, ol { padding: 0; list-style: none; }
 .art { position: absolute; inset: 0; container-type: inline-size; perspective: 1400px; perspective-origin: 50% 50%; }
 .ha { position: absolute; left: calc(var(--x) * 1cqw); top: calc(var(--y) * 1cqw); width: calc(var(--w) * 1cqw); }
 .ha img { width: 100%; height: auto; }
+/* imagens da Hero: sem seleção, sem arrastar nativo e sem menu "salvar imagem" no toque
+   (o hover/zoom usa a posição do ponteiro, não eventos das imagens) */
+.kv img { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+.art .ha:not(.ha-legal) { user-select: none; -webkit-user-select: none; }
+.art img { pointer-events: none; }
 .ha-zoom { transform-origin: 50% 60%; transform: translate3d(0, 0, 0) rotate(0.02deg); transition: transform var(--t-slow) var(--ease-slow); }
 .ha-zoom.is-hover { transform: scale3d(1.06, 1.06, 1) rotate(0.02deg); }
 .ha-rings { inset: 0; width: auto; left: 0; top: 0; }
@@ -372,21 +377,22 @@ ul, ol { padding: 0; list-style: none; }
   display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto minmax(0, 1fr); grid-template-areas: 'win win win win win' '. prev dots next .';
   align-items: center; column-gap: 24px; row-gap: 64px;
 }
-/* A janela recorta na horizontal (os cards somem ao passar), mas com folga lateral (--clip-m):
-   o que sai de dentro do card — como o avião do maior prêmio — não é cortado.
-   Os cards fora da página visível somem com fade (JS → .is-out), então a folga nunca mostra o vizinho. */
-.carousel { --clip-m: 64px; }
+/* Desktop/tablet: a janela NÃO recorta. Os cards seguem saindo e somem rapidamente
+   (opacidade pela fração fora da página visível, calculada no rAF do movimento) —
+   nada é cortado, nem os cards em movimento nem o que sai de dentro deles (ex.: avião).
+   Mobile (1 card + prévia): mantém o recorte na borda do conteúdo, como no Figma. */
 .carousel__window {
   grid-area: win; position: relative; min-width: 0;
-  margin: -110px calc(var(--clip-m) * -1) 0; padding: 110px var(--clip-m) 0;
-  overflow: hidden; touch-action: pan-y; cursor: grab;
+  touch-action: pan-y; cursor: grab;
   user-select: none; -webkit-user-select: none; -webkit-user-drag: none; -webkit-touch-callout: none;
 }
 .carousel__window * { -webkit-user-drag: none; }
-@supports (overflow: clip) { .carousel__window { overflow-x: clip; overflow-y: visible; padding-top: 0; margin-top: 0; } }
 .carousel__track { display: flex; gap: var(--gap); width: max-content; } /* posição só por rAF (mola) */
 .carousel.is-dragging, .carousel.is-dragging .carousel__window { cursor: grabbing; }
-.premio.is-out { opacity: 0; pointer-events: none; }
+.premio.is-out { pointer-events: none; }
+/* o trilho é mais largo que a tela: a seção corta só na borda da janela do navegador (sem barra horizontal) */
+#premios { overflow: hidden; }
+@supports (overflow: clip) { #premios { overflow: clip; } }
 .carousel.is-live .carousel__track { will-change: transform; backface-visibility: hidden; }
 .carousel__arrow {
   width: 56px; height: 56px; border-radius: 50%;
@@ -429,7 +435,7 @@ ul, ol { padding: 0; list-style: none; }
   box-shadow: 0 8px 12px rgba(15, 46, 82, .08);
   user-select: none; -webkit-user-select: none;
   transform: translate3d(0, 0, 0);
-  transition: transform var(--t-slow) var(--ease-slow), opacity 420ms var(--ease-out);
+  transition: transform var(--t-slow) var(--ease-slow); /* opacidade é do rAF do carrossel: sem transition nela */
 }
 .premio img { -webkit-user-drag: none; pointer-events: none; }
 .premio--top { background: linear-gradient(208.37deg, #2074c6 2.99%, #184673 97.01%); border-color: transparent; }
@@ -470,7 +476,8 @@ ul, ol { padding: 0; list-style: none; }
 .premio.is-hover .premio__img, .premio.is-active .premio__img { transform: translate3d(0, var(--ty, 0), 0) scale3d(var(--s), var(--s), 1) rotate(0.02deg); }
 .premio.is-hover .premio__bg img, .premio.is-active .premio__bg img { transform: scale3d(1.08, 1.08, 1) rotate(0.02deg); }
 .premio.is-hover, .premio.is-active { transform: translate3d(0, -4px, 0); }
-.carousel.is-live .premio, .carousel.is-live .premio__img, .carousel.is-live .premio__bg img { will-change: transform; backface-visibility: hidden; }
+.carousel.is-live .premio { will-change: transform, opacity; backface-visibility: hidden; }
+.carousel.is-live .premio__img, .carousel.is-live .premio__bg img { will-change: transform; backface-visibility: hidden; }
 .premios__aviso { max-width: 860px; text-align: center; font-size: 14px; line-height: 1.55; color: var(--neutro-700); }
 
 /* ==========================================================================
@@ -705,7 +712,8 @@ ul, ol { padding: 0; list-style: none; }
 
 /* Card do SAC */
 .sac { display: flex; flex-direction: column; gap: 16px; padding: 44px 48px; border-radius: 24px; background: var(--azul-500); }
-.sac__label { font-weight: 700; font-size: 13px; line-height: 1.2; letter-spacing: .08em; color: var(--dourado-500); }
+/* .reg-sec .x: precisa vencer o ".reg-sec p" (texto cinza do regulamento) */
+.reg-sec .sac__label { font-weight: 700; font-size: 13px; line-height: 1.2; letter-spacing: .08em; color: var(--dourado-500); }
 .reg-sec .sac__title { font-family: var(--serif); font-weight: 400; font-size: 36px; line-height: 1.15; color: #fff; }
 .reg-sec .sac__text { font-size: 17px; line-height: 1.6; color: #fff; }
 .sac__contatos { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 12px; }
@@ -832,7 +840,9 @@ ul, ol { padding: 0; list-style: none; }
    CARROSSEL MOBILE (1 card + prévia)
    ========================================================================== */
 @media (max-width: 707px) {
-  .carousel { --per: 1; --cw: 264px; --gap: 16px; --clip-m: 0px; width: 100%; margin-top: 47px; row-gap: 64px; margin-bottom: 8px;
+  .carousel__window { overflow: hidden; padding-top: 110px; margin-top: -110px; }
+  @supports (overflow: clip) { .carousel__window { overflow-x: clip; overflow-y: visible; padding-top: 0; margin-top: 0; } }
+  .carousel { --per: 1; --cw: 264px; --gap: 16px; width: 100%; margin-top: 47px; row-gap: 64px; margin-bottom: 8px;
     grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: 'win win win' 'prev dots next'; }
   .carousel__dots { gap: 6px; }
   .carousel__dot[aria-current='true'] { width: 24px; }

@@ -460,12 +460,25 @@
         ? `translate3d(${x.toFixed(3)}px,0,0) rotate(0.02deg)`
         : `translate3d(${Math.round(x)}px,0,0)`;
     };
-    // fade dos cards cujo centro saiu da janela (a janela tem folga lateral)
+    /* Sem recorte: a opacidade de cada card é proporcional à distância que falta até a
+       sua vaga na página visível, ao longo de um passo inteiro (card + espaço):
+       · o card que entra começa a aparecer no primeiro pixel de movimento;
+       · o que sai vai sumindo devagar, na mesma proporção, até 1 passo fora (0%).
+       Escrita no mesmo frame do movimento (rAF): nada é cortado. */
     const updateVis = x => {
       for (let i = 0; i < cards.length; i++) {
-        const c = i * step + x + cw / 2;
-        const out = fade && (c < -1 || c > winW + 1);
-        if (outState[i] !== out) { outState[i] = out; cards[i].classList.toggle('is-out', out); }
+        let o = 1;
+        if (fade) {
+          const left = i * step + x, right = left + cw;
+          const dist = Math.max(0, -left) + Math.max(0, right - winW);
+          o = 1 - clamp(dist / step, 0, 1);
+        }
+        const prev = outState[i];
+        if (prev === null || Math.abs(prev - o) > 0.002 || (o === 0) !== (prev === 0) || (o === 1) !== (prev === 1)) {
+          outState[i] = o;
+          cards[i].style.opacity = o >= 1 ? '' : o.toFixed(3);
+          cards[i].classList.toggle('is-out', o < 0.05);
+        }
       }
     };
     const buildDots = () => {
@@ -687,6 +700,8 @@
     const artBox = $('[data-hero-art]');
     if (!kv || !artBox) return null;
     const tilt = $('[data-tilt]', artBox);
+    // nenhum arrastar nativo de imagem na Hero (logo e card)
+    kv.addEventListener('dragstart', e => { if (e.target.closest && e.target.closest('img, .art')) e.preventDefault(); });
     const deco = $('[data-kv-deco]', kv);
     // Só o retângulo e o texto legal giram (tilt 3D); as imagens só se deslocam (parallax), sempre de frente
     const layers = $$('.ha', artBox).filter(el => !el.classList.contains('ha-homem-clip')).map(el => ({
