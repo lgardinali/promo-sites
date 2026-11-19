@@ -427,8 +427,14 @@
 
   /* ------------------------------------------------------------------------
      Carrossel de prêmios
-     · página = grupo de cards visíveis (Smart animate 450ms ease-in-out)
-     · arrastar/deslizar no toque e no mouse
+     · posição do trilho por rAF com mola criticamente amortecida (sem
+       transition no trilho): sai e chega suave, pode ser interrompida e
+       redirecionada no meio sem "resetar"
+     · arrastar 1:1 (mouse e toque); ao soltar, a velocidade do gesto vira
+       impulso da mola e a página escolhida é a mais próxima da projeção
+     · em movimento: micro-rotação (subpixel); parado: posição inteira (texto nítido)
+     · cards fora da janela somem com fade; a janela recorta com folga lateral
+       para não cortar o que sai do card (ex.: o avião do maior prêmio)
      · hover do componente (625ms "Slow"); no toque, os cards visíveis
        acendem quando o carrossel chega ao centro da tela
      ------------------------------------------------------------------------ */
@@ -441,12 +447,27 @@
     const prev = $('[data-prev]', car);
     const next = $('[data-next]', car);
     const dotsWrap = $('[data-dots]', car);
-    let per = 4, step = 326, index = 0, positions = [0], inView = false;
-    let drag = null, dragX = 0, dragDirty = false;
+    const OMEGA = 10; // rigidez da mola crítica (ω): assenta em ~0,65 s
+    let per = 4, cw = 302, step = 326, winW = 1280, index = 0, positions = [0], inView = false, fade = true, lastKey = '';
+    const sp = { x: 0, v: 0, to: 0, run: false };
+    let drag = null, dragDirty = false;
     const activeTimers = [];
+    const outState = cards.map(() => null);
 
     const page = () => Math.max(0, positions.indexOf(index));
-    const write = x => { track.style.transform = `translate3d(${x.toFixed(3)}px,0,0)`; };
+    const write = (x, moving) => {
+      track.style.transform = moving
+        ? `translate3d(${x.toFixed(3)}px,0,0) rotate(0.02deg)`
+        : `translate3d(${Math.round(x)}px,0,0)`;
+    };
+    // fade dos cards cujo centro saiu da janela (a janela tem folga lateral)
+    const updateVis = x => {
+      for (let i = 0; i < cards.length; i++) {
+        const c = i * step + x + cw / 2;
+        const out = fade && (c < -1 || c > winW + 1);
+        if (outState[i] !== out) { outState[i] = out; cards[i].classList.toggle('is-out', out); }
+      }
+    };
     const buildDots = () => {
       if (dotsWrap.children.length === positions.length) return;
       dotsWrap.textContent = '';
@@ -469,38 +490,52 @@
         activeTimers.push(setTimeout(() => c.classList.add('is-active'), 260 + (i - index) * 140));
       });
     };
-    const apply = () => {
-      write(-index * step);
+    const syncUI = () => {
       const p = page();
       prev.disabled = p === 0;
       next.disabled = p === positions.length - 1;
       $$('.carousel__dot', dotsWrap).forEach((d, i) => d.setAttribute('aria-current', String(i === p)));
-      cards.forEach((c, i) => {
-        const vis = i >= index && i < index + per;
-        c.setAttribute('aria-hidden', String(!vis));
-      });
+      cards.forEach((c, i) => c.setAttribute('aria-hidden', String(!(i >= index && i < index + per))));
       lightCards();
     };
-    const go = p => { index = positions[clamp(p, 0, positions.length - 1)]; apply(); };
+    const animateTo = (p, v0) => {
+      index = positions[clamp(p, 0, positions.length - 1)];
+      sp.to = -index * step;
+      if (typeof v0 === 'number') sp.v = v0;
+      dragDirty = false;
+      syncUI();
+      if (reduced) { sp.x = sp.to; sp.v = 0; sp.run = false; write(sp.x, false); updateVis(sp.x); return; }
+      sp.run = true;
+      Scene.kick();
+    };
+    const go = p => animateTo(p);
+
+    // Layout só reposiciona quando a geometria muda de fato (não interrompe a animação à toa)
     const layout = () => {
       const cs = getComputedStyle(car);
       per = parseInt(cs.getPropertyValue('--per'), 10) || 1;
-      const cw = parseFloat(cs.getPropertyValue('--cw')) || 302;
+      cw = parseFloat(cs.getPropertyValue('--cw')) || 302;
       const gap = parseFloat(cs.getPropertyValue('--gap')) || 24;
+      fade = per > 1; // mobile (1 card + prévia): o próprio recorte da janela resolve
+      winW = per * cw + (per - 1) * gap;
+      const key = `${per}|${cw}|${gap}`;
+      if (key === lastKey) return;
+      lastKey = key;
       step = cw + gap;
       const max = Math.max(0, cards.length - per);
       positions = [];
       for (let i = 0; ; i += per) { positions.push(Math.min(i, max)); if (i >= max) break; }
       positions = [...new Set(positions)];
-      // mantém o card que estava à esquerda dentro do grupo correspondente
       let p = 0;
       for (let i = 0; i < positions.length; i++) if (positions[i] <= index) p = i;
       index = positions[p];
       buildDots();
-      track.style.transition = 'none';
-      apply();
-      void track.offsetWidth;
-      track.style.transition = '';
+      car.classList.toggle('is-fade', fade);
+      sp.run = false; sp.v = 0; sp.x = sp.to = -index * step;
+      write(sp.x, false);
+      outState.fill(null);
+      updateVis(sp.x);
+      syncUI();
     };
 
     prev.addEventListener('click', () => go(page() - 1));
@@ -510,66 +545,115 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); go(page() - 1); }
     });
 
+    // Trackpad / roda horizontal: uma página por gesto
+    let wheelAcc = 0, wheelLock = 0;
+    win.addEventListener('wheel', e => {
+      if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const now = performance.now();
+      if (now < wheelLock) return;
+      wheelAcc += e.deltaX;
+      if (Math.abs(wheelAcc) > 40) {
+        go(page() + (wheelAcc > 0 ? 1 : -1));
+        wheelAcc = 0;
+        wheelLock = now + 450;
+      }
+    }, { passive: false });
+
     // Hover com mouse (estado de componente)
     cards.forEach(c => {
-      c.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !drag) c.classList.add('is-hover'); });
+      c.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !(drag && drag.moved)) c.classList.add('is-hover'); });
       c.addEventListener('pointerleave', () => c.classList.remove('is-hover'));
     });
 
     // Arrastar
     win.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
-      drag = { x0: e.clientX, y0: e.clientY, t0: performance.now(), base: -index * step, id: e.pointerId, moved: false, lastX: e.clientX, lastT: performance.now(), v: 0 };
+      drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, base: sp.x, moved: false, samples: [] };
     });
     win.addEventListener('pointermove', e => {
       if (!drag || e.pointerId !== drag.id) return;
       const dx = e.clientX - drag.x0;
       const dy = e.clientY - drag.y0;
       if (!drag.moved) {
-        if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(dy)) {
+        if (Math.abs(dx) < 6 || Math.abs(dx) < Math.abs(dy) * 1.1) {
           if (Math.abs(dy) > 10) drag = null; // gesto vertical: deixa a página rolar
           return;
         }
         drag.moved = true;
+        drag.x0 = e.clientX;  // começa do ponto atual: sem salto de 6px
+        drag.base = sp.x;     // pega o trilho onde ele estiver, mesmo em movimento
+        sp.run = false;
         car.classList.add('is-dragging');
         cards.forEach(c => c.classList.remove('is-hover'));
         try { win.setPointerCapture(e.pointerId); } catch (_) { /* ok */ }
       }
       const now = performance.now();
-      drag.v = (e.clientX - drag.lastX) / Math.max(1, now - drag.lastT);
-      drag.lastX = e.clientX; drag.lastT = now;
+      drag.samples.push([now, e.clientX]);
+      while (drag.samples.length > 2 && now - drag.samples[0][0] > 100) drag.samples.shift();
       const min = -positions[positions.length - 1] * step;
-      let x = drag.base + dx;
+      let x = drag.base + (e.clientX - drag.x0);
       if (x > 0) x *= 0.35;
       if (x < min) x = min + (x - min) * 0.35;
-      dragX = x; dragDirty = true;
+      sp.x = x;
+      dragDirty = true;
       Scene.kick();
     });
-    const endDrag = e => {
+    const release = (e, cancelled) => {
       if (!drag || (e && e.pointerId !== drag.id)) return;
       const d = drag;
       drag = null;
       if (!d.moved) return;
       car.classList.remove('is-dragging');
-      const dx = (e ? e.clientX : d.lastX) - d.x0;
-      let p = page();
-      if (dx < -50 || d.v < -0.35) p++;
-      else if (dx > 50 || d.v > 0.35) p--;
-      go(p);
+      // velocidade do gesto (px/s) pelas últimas amostras; parado antes de soltar = 0
+      let v = 0;
+      const s = d.samples;
+      if (!cancelled && s.length > 1 && performance.now() - s[s.length - 1][0] < 80) {
+        const a = s[0], b = s[s.length - 1];
+        v = clamp(((b[1] - a[1]) / Math.max(16, b[0] - a[0])) * 1000, -4000, 4000);
+      }
+      const proj = sp.x + v * 0.2;
+      let best = page(), bd = Infinity;
+      positions.forEach((pos, i) => { const dd = Math.abs(-pos * step - proj); if (dd < bd) { bd = dd; best = i; } });
+      const p0 = page();
+      if (v < -260) best = Math.max(best, p0 + 1);
+      else if (v > 260) best = Math.min(best, p0 - 1);
+      animateTo(best, v);
       // evita "clique" ao soltar
       const stopClick = ev => { ev.stopPropagation(); ev.preventDefault(); };
       win.addEventListener('click', stopClick, { capture: true, once: true });
       setTimeout(() => win.removeEventListener('click', stopClick, { capture: true }), 0);
     };
-    win.addEventListener('pointerup', endDrag);
-    win.addEventListener('pointercancel', endDrag);
-    win.addEventListener('lostpointercapture', endDrag);
+    win.addEventListener('pointerup', e => release(e, false));
+    win.addEventListener('pointercancel', e => release(e, true));
+    // no toque a captura começa implícita no card tocado; ao transferi-la para a janela o card
+    // dispara lostpointercapture (que sobe até aqui) — só conta a perda da própria janela
+    win.addEventListener('lostpointercapture', e => { if (e.target === win) release(e, false); });
 
-    Scene.add(() => {
-      if (!dragDirty) return false;
-      dragDirty = false;
-      write(dragX);
-      return false;
+    Scene.add(dt => {
+      if (drag && drag.moved) {
+        if (dragDirty) { dragDirty = false; write(sp.x, true); updateVis(sp.x); }
+        return false; // o próximo pointermove reinicia o loop
+      }
+      if (!sp.run) return false;
+      // mola criticamente amortecida, integrada em passos pequenos (estável em 30/60/120 Hz)
+      let t = Math.min(dt, 64) / 1000;
+      while (t > 1e-6) {
+        const h = Math.min(t, 1 / 240);
+        const a = -OMEGA * OMEGA * (sp.x - sp.to) - 2 * OMEGA * sp.v;
+        sp.v += a * h;
+        sp.x += sp.v * h;
+        t -= h;
+      }
+      if (Math.abs(sp.x - sp.to) < 0.25 && Math.abs(sp.v) < 8) { // < 1/4 px: assenta no inteiro sem salto visível
+        sp.x = sp.to; sp.v = 0; sp.run = false;
+        write(sp.x, false);
+        updateVis(sp.x);
+        return false;
+      }
+      write(sp.x, true);
+      updateVis(sp.x);
+      return true;
     });
 
     new IntersectionObserver(entries => {
