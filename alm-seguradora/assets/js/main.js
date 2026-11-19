@@ -569,8 +569,18 @@
     // Arrastar
     win.addEventListener('pointerdown', e => {
       if (e.button !== 0) return;
+      if (e.pointerType === 'mouse') {
+        // impede o "arrastar nativo" do navegador (imagem fantasma da seção):
+        // sem seleção de texto nem drag de imagem/seleção começando aqui
+        e.preventDefault();
+        const sel = window.getSelection && window.getSelection();
+        if (sel && !sel.isCollapsed) sel.removeAllRanges();
+      }
       drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, base: sp.x, moved: false, samples: [] };
     });
+    // reforço: nenhum drag nativo nem início de seleção dentro do carrossel
+    car.addEventListener('dragstart', e => e.preventDefault());
+    win.addEventListener('selectstart', e => e.preventDefault());
     win.addEventListener('pointermove', e => {
       if (!drag || e.pointerId !== drag.id) return;
       const dx = e.clientX - drag.x0;
