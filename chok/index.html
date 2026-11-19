@@ -46,8 +46,9 @@
   <link rel="preload" as="image" type="image/webp" href="assets/img/selo.webp" fetchpriority="high">
   <link rel="preload" as="image" type="image/webp" href="assets/img/pessoas.webp" fetchpriority="high">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261113">
-  <script src="assets/js/main.js?v=20261113" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css?v=20261123">
+  <script src="assets/js/lojas.js?v=20261123" defer></script>
+  <script src="assets/js/main.js?v=20261123" defer></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -56,6 +57,8 @@
   <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
     <symbol id="i-coracao" viewBox="0 0 24 24"><path fill="currentColor" d="M12 21.2l-1.45-1.32C5.4 15.24 2 12.16 2 8.4 2 5.32 4.42 2.9 7.5 2.9c1.74 0 3.41.81 4.5 2.09A6.03 6.03 0 0 1 16.5 2.9C19.58 2.9 22 5.32 22 8.4c0 3.76-3.4 6.84-8.55 11.48L12 21.2z"/></symbol>
     <symbol id="i-estrela" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0Z"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M20.4631 3.488C18.2171 1.24 15.2311 0.001 12.0501 0C5.49513 0 0.160129 5.334 0.157129 11.892C0.156129 13.988 0.704129 16.034 1.74513 17.838L0.0571289 24L6.36113 22.346C8.09813 23.294 10.0541 23.793 12.0441 23.794H12.0491C18.6031 23.794 23.9391 18.459 23.9421 11.901C23.9441 8.724 22.7081 5.735 20.4631 3.488ZM12.0501 21.785H12.0461C10.2721 21.785 8.53313 21.308 7.01513 20.407L6.65413 20.193L2.91313 21.174L3.91213 17.526L3.67713 17.152C2.68713 15.578 2.16513 13.759 2.16613 11.892C2.16813 6.442 6.60313 2.008 12.0551 2.008C14.6951 2.008 17.1771 3.038 19.0431 4.906C20.9091 6.775 21.9361 9.258 21.9351 11.899C21.9321 17.351 17.4981 21.785 12.0501 21.785ZM17.4721 14.382C17.1751 14.233 15.7141 13.514 15.4411 13.415C15.1691 13.316 14.9711 13.266 14.7721 13.563C14.5731 13.86 14.0051 14.53 13.8311 14.729C13.6581 14.927 13.4841 14.952 13.1871 14.803C12.8901 14.654 11.9321 14.341 10.7971 13.328C9.91413 12.54 9.31713 11.567 9.14413 11.269C8.97113 10.971 9.12613 10.811 9.27413 10.663C9.40813 10.53 9.57113 10.316 9.72013 10.142C9.87013 9.97 9.91913 9.846 10.0191 9.647C10.1181 9.449 10.0691 9.275 9.99413 9.126C9.91913 8.978 9.32513 7.515 9.07813 6.92C8.83713 6.34 8.59213 6.419 8.40913 6.41C8.23613 6.401 8.03813 6.4 7.83913 6.4C7.64113 6.4 7.31913 6.474 7.04713 6.772C6.77513 7.07 6.00713 7.789 6.00713 9.251C6.00713 10.714 7.07213 12.127 7.22013 12.325C7.36813 12.523 9.31513 15.525 12.2961 16.812C13.0051 17.118 13.5591 17.301 13.9901 17.438C14.7021 17.664 15.3501 17.632 15.8621 17.556C16.4331 17.471 17.6201 16.837 17.8681 16.143C18.1161 15.449 18.1161 14.853 18.0411 14.73C17.9671 14.605 17.7691 14.531 17.4721 14.382Z"/></symbol>
+    <symbol id="i-fechar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
     <symbol id="i-topo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5M5.5 11.5 12 5l6.5 6.5"/></symbol>
     <symbol id="logo-polgo" viewBox="0 0 200 28"><g fill="currentColor"><path d="M144.542 23.5133C139.612 23.5133 135.594 19.4984 135.594 14.5652C135.594 9.6321 139.609 5.61719 144.542 5.61719C149.475 5.61719 153.49 9.6321 153.49 14.5652C153.49 19.4984 149.475 23.5133 144.542 23.5133ZM144.542 8.86551C141.402 8.86551 138.843 11.4245 138.843 14.5652C138.843 17.706 141.402 20.2457 144.542 20.2457C147.683 20.2457 150.223 17.706 150.223 14.5652C150.223 11.4245 147.683 8.86551 144.542 8.86551Z"/><path d="M164.867 23.0973C164.867 23.3261 164.638 23.4944 164.349 23.4944H155.528C155.299 23.4944 155.111 23.3289 155.111 23.0973V6.12215C155.111 5.85192 155.299 5.62305 155.528 5.62305H157.96C158.189 5.62305 158.357 5.85192 158.357 6.12215V20.2488H164.349C164.641 20.2488 164.867 20.4363 164.867 20.6652V23.0973Z"/><path d="M180.288 13.3601V20.5379C180.288 20.6619 180.246 20.7667 180.164 20.8302V20.8495C179.871 21.1418 179.56 21.412 179.229 21.6822C178.542 22.2006 177.814 22.5977 177.042 22.9093C173.422 24.3018 169.156 23.2209 166.702 19.9974C163.707 16.0873 164.454 10.4703 168.386 7.47562C171.695 4.93873 176.229 5.08211 179.35 7.5804L179.411 7.62177C179.43 7.64107 179.452 7.66313 179.452 7.68243C179.598 7.86994 179.576 8.12087 179.392 8.26426L177.376 9.80294C177.252 9.90773 177.064 9.90773 176.918 9.82224C174.963 8.53174 172.319 8.5538 170.344 10.0511C167.846 11.9455 167.369 15.522 169.283 18.0175C171.133 20.4496 174.566 20.9735 177.042 19.2446V16.1865H174.191C173.962 16.1865 173.794 16.0211 173.794 15.7895V13.3573C173.794 13.1285 173.959 12.941 174.191 12.941H179.891C179.995 12.941 180.078 12.9823 180.142 13.0651C180.246 13.1505 180.288 13.2305 180.288 13.3573V13.3629V13.3601Z"/><path d="M190.854 23.5133C185.924 23.5133 181.906 19.4984 181.906 14.5652C181.906 9.6321 185.921 5.61719 190.854 5.61719C195.787 5.61719 199.802 9.6321 199.802 14.5652C199.802 19.4984 195.787 23.5133 190.854 23.5133ZM190.854 8.86551C187.714 8.86551 185.155 11.4245 185.155 14.5652C185.155 17.706 187.714 20.2457 190.854 20.2457C193.995 20.2457 196.535 17.706 196.535 14.5652C196.535 11.4245 193.998 8.86551 190.854 8.86551Z"/><path d="M127.981 5.62305H122.394C122.165 5.62305 121.978 5.81056 121.978 6.03943V7.7022L124.065 11.1049C124.142 11.229 124.275 11.3035 124.418 11.3035H127.25C127.572 11.3035 127.771 10.9505 127.606 10.672L126.514 8.86862H128.857C131.32 8.86862 131.541 9.88889 131.541 10.9092C131.541 11.7833 131.323 12.9249 128.857 12.9249H121.978V23.078C121.978 23.3068 122.165 23.4944 122.394 23.4944H124.826C125.044 23.4944 125.223 23.3179 125.223 23.0973V16.1898H128.025C129.98 16.1705 134.786 16.1898 134.786 10.9064C134.786 5.62305 131.03 5.62305 127.983 5.62305H127.981Z"/><path d="M12.8913 23.0195C11.7 23.5489 10.3764 23.8164 8.92325 23.8164C7.47005 23.8164 6.26502 23.5765 5.15927 23.094C4.05076 22.6114 3.11872 21.9579 2.35766 21.1279C1.59659 20.3006 1.01476 19.3327 0.609406 18.2242C0.204054 17.1185 0 15.9383 0 14.6864V14.6367C0 13.4372 0.206812 12.2846 0.620436 11.1761C1.03406 10.0703 1.62692 9.09416 2.39626 8.24761C3.1656 7.40382 4.08936 6.72548 5.17306 6.2181C6.25399 5.71072 7.4535 5.45703 8.77434 5.45703C9.49956 5.45703 10.1641 5.50667 10.7653 5.60869C11.3664 5.71072 11.9234 5.86238 12.439 6.06368C12.9547 6.26773 13.4455 6.51039 13.9088 6.79993C14.3748 7.08671 14.8243 7.41761 15.2655 7.78987L14.4024 8.77981C13.7103 8.1704 12.9189 7.66303 12.0309 7.25767C11.143 6.85232 10.0318 6.64827 8.69713 6.64827C7.61619 6.64827 6.62626 6.86059 5.73007 7.28249C4.83388 7.70439 4.06179 8.27795 3.41102 9.00317C2.76025 9.72839 2.25839 10.5722 1.90267 11.5345C1.54695 12.4969 1.37047 13.5089 1.37047 14.5705V14.6202C1.37047 15.7673 1.5442 16.8317 1.88888 17.8106C2.23633 18.7895 2.73819 19.6333 3.39723 20.342C4.05627 21.0507 4.85594 21.6077 5.79349 22.013C6.73104 22.4184 7.79267 22.6197 8.97564 22.6197C9.53265 22.6197 10.0814 22.5645 10.6246 22.457C11.1651 22.3467 11.678 22.2005 12.1578 22.0158C12.6403 21.831 13.0926 21.6159 13.5145 21.3705C13.9364 21.1279 14.3086 20.8687 14.6313 20.5984V15.5219H8.69989V14.3306H15.8997V21.1582C15.089 21.8669 14.088 22.4845 12.894 23.0167L12.8913 23.0195Z"/><path d="M27.2274 11.747C26.4829 11.747 25.7742 11.8876 25.0986 12.1661C24.423 12.4446 23.8274 12.8582 23.3118 13.4097C22.7961 13.9585 22.3852 14.6341 22.0819 15.4365C21.7786 16.2389 21.6269 17.1654 21.6269 18.2133V23.5132H20.3833V10.5833H21.6269V14.259C21.8806 13.6855 22.2005 13.1533 22.5893 12.6625C22.9781 12.1716 23.4165 11.7552 23.9074 11.4078C24.3982 11.0604 24.9332 10.7984 25.5178 10.6219C26.1023 10.4454 26.7145 10.3655 27.357 10.382V11.7497H27.2302L27.2274 11.747Z"/><path d="M40.1078 23.5129V21.1056C39.6693 21.8667 39.0765 22.5092 38.332 23.0331C37.5874 23.557 36.6251 23.819 35.4421 23.819C34.6314 23.819 33.9034 23.6866 33.2609 23.4246C32.6184 23.1627 32.0724 22.7959 31.6257 22.3217C31.179 21.8474 30.8398 21.2876 30.611 20.6368C30.3821 19.9861 30.269 19.2719 30.269 18.4943V10.583H31.5127V18.2654C31.5127 19.6 31.8684 20.6699 32.5771 21.4723C33.2857 22.2748 34.3005 22.6774 35.6186 22.6774C36.2445 22.6774 36.8319 22.5643 37.3806 22.3354C37.9294 22.1066 38.4064 21.7895 38.8118 21.3841C39.2171 20.9788 39.5342 20.4934 39.7631 19.9254C39.992 19.3601 40.105 18.7369 40.105 18.0613V10.583H41.3459V23.5129H40.105H40.1078Z"/><path d="M58.3732 19.8731C58.0093 20.7086 57.5322 21.42 56.9421 22.0019C56.3492 22.5837 55.6792 23.0332 54.9264 23.3448C54.1736 23.6564 53.4098 23.8135 52.6321 23.8135C51.9896 23.8135 51.3968 23.728 50.8563 23.5598C50.3158 23.3916 49.8305 23.1628 49.3976 22.876C48.9674 22.5892 48.5786 22.2583 48.2312 21.886C47.8837 21.5138 47.5749 21.125 47.3047 20.7196V27.5637H46.061V10.5776H47.3047V13.4674C47.5749 13.0455 47.8865 12.6402 48.2422 12.2514C48.5979 11.8626 48.9895 11.5261 49.4197 11.2366C49.8498 10.9498 50.3324 10.7182 50.8646 10.539C51.3968 10.3597 51.9841 10.2715 52.6266 10.2715C53.4042 10.2715 54.1681 10.4231 54.9209 10.7292C55.6737 11.0326 56.3437 11.4738 56.9366 12.0473C57.5267 12.6209 58.0065 13.3268 58.3677 14.1651C58.7317 15.0006 58.9137 15.9436 58.9137 16.9915V17.0411C58.9137 18.089 58.7317 19.032 58.3677 19.8676L58.3732 19.8731ZM57.6011 17.0466C57.6011 16.2029 57.466 15.4335 57.193 14.7386C56.9228 14.0465 56.5533 13.4591 56.0873 12.9766C55.6213 12.494 55.078 12.1245 54.4604 11.8598C53.8427 11.5978 53.1947 11.4655 52.5163 11.4655C51.838 11.4655 51.1817 11.6006 50.5475 11.8708C49.9133 12.1411 49.348 12.5216 48.8571 13.0124C48.3663 13.5033 47.972 14.0851 47.6742 14.7607C47.3791 15.4363 47.2302 16.1891 47.2302 17.0163V17.0659C47.2302 17.8932 47.3791 18.6515 47.6742 19.3354C47.9692 20.0192 48.3635 20.6038 48.8571 21.0836C49.348 21.5662 49.9105 21.9412 50.5475 22.2114C51.1817 22.4817 51.838 22.6168 52.5163 22.6168C53.2278 22.6168 53.8923 22.4899 54.51 22.2362C55.1277 21.9826 55.6654 21.6186 56.1231 21.147C56.5809 20.6727 56.9393 20.0937 57.2041 19.4098C57.4688 18.726 57.5984 17.9511 57.5984 17.0908V17.0411L57.6011 17.0466Z"/><path d="M74.7004 19.6335C74.3695 20.4442 73.9062 21.1639 73.3051 21.7871C72.704 22.4131 72.0008 22.9067 71.1873 23.2706C70.3766 23.6346 69.4887 23.8166 68.5264 23.8166C67.564 23.8166 66.6788 23.6346 65.8764 23.2706C65.074 22.9067 64.3763 22.4213 63.7862 21.8119C63.1934 21.2025 62.7329 20.4939 62.4047 19.6831C62.0738 18.8724 61.9111 18.0094 61.9111 17.0966V17.047C61.9111 16.1343 62.0766 15.2712 62.4047 14.4605C62.7356 13.6498 63.1989 12.9301 63.8 12.3069C64.3984 11.6809 65.1043 11.1873 65.9178 10.8233C66.7285 10.4593 67.6164 10.2773 68.5787 10.2773C69.5411 10.2773 70.4263 10.4593 71.2287 10.8233C72.0311 11.1873 72.7288 11.6726 73.3216 12.282C73.9117 12.8914 74.375 13.6001 74.7031 14.4108C75.0313 15.2215 75.1967 16.0846 75.1967 16.9974V17.047C75.1967 17.9597 75.0313 18.8228 74.7031 19.6335H74.7004ZM73.8759 17.047C73.8759 16.2721 73.7408 15.5442 73.4678 14.8631C73.1948 14.182 72.817 13.5891 72.3345 13.0845C71.8491 12.5798 71.2811 12.1828 70.6276 11.8987C69.974 11.612 69.2736 11.4686 68.5264 11.4686C67.7791 11.4686 67.0539 11.6147 66.4003 11.9098C65.7468 12.2048 65.187 12.5992 64.7183 13.0955C64.2522 13.5918 63.8855 14.1764 63.6235 14.8493C63.3616 15.5221 63.2292 16.2363 63.2292 16.9946V17.0442C63.2292 17.8191 63.3643 18.5471 63.6373 19.2282C63.9103 19.9093 64.2853 20.5021 64.7707 21.0067C65.256 21.5114 65.824 21.9057 66.4775 22.1925C67.1311 22.4792 67.8315 22.6226 68.5787 22.6226C69.326 22.6226 70.0513 22.4765 70.7048 22.1814C71.3583 21.8864 71.9181 21.4921 72.3868 20.9957C72.8529 20.4994 73.2196 19.9148 73.4816 19.242C73.7435 18.5691 73.8759 17.8549 73.8759 17.0966V17.047Z"/><path class="polgo-mark" d="M108.157 27.5693C107.746 27.5693 107.332 27.5141 106.924 27.4066C105.703 27.0784 104.682 26.2953 104.051 25.2006C102.747 22.9422 103.524 20.0413 105.783 18.737C110.206 16.1836 111.728 10.5059 109.174 6.08287C106.621 1.65985 100.943 0.137717 96.5203 2.69115C94.3777 3.92927 92.8446 5.92569 92.2048 8.31644C91.5651 10.7072 91.8932 13.2027 93.1313 15.3453C93.7628 16.44 93.931 17.714 93.6029 18.9355C93.2747 20.1571 92.4916 21.1774 91.3969 21.8088C89.1385 23.1131 86.2376 22.3355 84.9333 20.0771C84.3018 18.9824 84.1336 17.7085 84.4618 16.4869C84.7899 15.2653 85.573 14.245 86.6678 13.6136C87.0124 13.4123 87.4564 13.5336 87.6549 13.8783C87.8535 14.223 87.7349 14.6669 87.3902 14.8655C86.6292 15.3039 86.0859 16.0126 85.8598 16.8592C85.6337 17.7057 85.7495 18.5909 86.188 19.3519C86.6264 20.113 87.3351 20.6562 88.1816 20.8823C89.0282 21.1084 89.9133 20.9926 90.6744 20.5542C92.2434 19.6497 92.7839 17.634 91.8767 16.0678C90.4455 13.5915 90.065 10.7044 90.8068 7.94142C91.5458 5.17841 93.3188 2.86763 95.7978 1.43925C98.2741 0.00811448 101.161 -0.372419 103.924 0.369346C106.687 1.10835 108.998 2.88142 110.426 5.36041C113.38 10.4756 111.62 17.0384 106.505 19.9917C104.936 20.8961 104.398 22.9118 105.303 24.4781C105.741 25.2392 106.45 25.7824 107.297 26.0085C108.143 26.2346 109.028 26.1188 109.789 25.6804C111.358 24.7759 111.899 22.7602 110.992 21.1939C110.793 20.8465 110.912 20.4053 111.256 20.2067C111.601 20.0055 112.045 20.124 112.244 20.4715C113.548 22.7326 112.77 25.6307 110.512 26.935C109.784 27.3569 108.973 27.572 108.154 27.572L108.157 27.5693Z"/></g></symbol>
   </svg>
@@ -77,7 +80,7 @@
           <li><a class="nav__a" href="#ganhadores" data-nav>Ganhadores</a></li>
         </ul>
       </nav>
-      <a class="btn btn--gold btn--sm hdr__cta" href="#"><span class="btn__t">MEU CADASTRO</span></a>
+      <a class="btn btn--gold btn--sm hdr__cta" href="#" data-cad-open><span class="btn__t">MEU CADASTRO</span></a>
       <button class="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu" data-menu-open>
         <span class="burger__b"></span><span class="burger__b"></span><span class="burger__b"></span>
       </button>
@@ -96,7 +99,7 @@
         <li><a class="menu__link" href="#duvidas" data-nav>Dúvidas</a></li>
         <li><a class="menu__link" href="#ganhadores" data-nav>Ganhadores</a></li>
       </ul>
-      <a class="btn btn--gold menu__cta" href="#"><span class="btn__t">MEU CADASTRO</span></a>
+      <a class="btn btn--gold menu__cta" href="#" data-cad-open><span class="btn__t">MEU CADASTRO</span></a>
     </nav>
   </div>
 
@@ -120,7 +123,7 @@
               </span>
             </p>
             <p class="kv__txt kv-in" style="--i:3">Compre R$50 em produtos das marcas participantes, cadastre sua nota fiscal e concorra a uma viagem internacional e a R$1.000 toda semana.</p>
-            <a class="btn btn--gold btn--lg kv__cta kv-in" style="--i:4" href="#"><span class="btn__t">CADASTRE SEU CUPOM</span></a>
+            <a class="btn btn--gold btn--lg kv__cta kv-in" style="--i:4" href="#" data-cad-open><span class="btn__t">CADASTRE SEU CUPOM</span></a>
           </div>
 
           <!-- Card das pessoas: tilt 3D pelo ponteiro + parallax interno (castelo e família em profundidades diferentes) -->
@@ -191,7 +194,7 @@
           </li>
         </ol>
 
-        <a class="btn btn--plum btn--lg sec__cta" href="#" data-reveal><span class="btn__t">CADASTRAR MINHA NOTA</span></a>
+        <a class="btn btn--plum btn--lg sec__cta" href="#" data-reveal data-cad-open><span class="btn__t">CADASTRAR MINHA NOTA</span></a>
         <p class="sec__legal vd-b" data-reveal>Guarde as notas fiscais cadastradas: elas podem ser solicitadas para validar a participação e entregar o prêmio.</p>
       </div>
     </section>
@@ -266,38 +269,34 @@
           <p class="sec__sub" data-reveal style="--rd:140ms"><span class="vd">A cada R$50 em produtos destas marcas, você ganha 1 Número da Sorte.</span><span class="vm">A cada R$50 nestas marcas, 1 Número da Sorte.</span></p>
         </header>
 
-        <!-- 16 logos: um único SVG (arte do Figma) recortado por célula -->
-        <ul class="logos" data-pop>
-          <li class="logo-c" style="--x:0;--y:0;--n:0"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Maizena" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:126.457;--y:0;--n:1"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Knorr" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:253.171;--y:0;--n:2"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Rexona" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:379.628;--y:0;--n:3"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="OMO" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:507.05;--y:0;--n:4"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Hellmann's" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:633.507;--y:0;--n:5"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Dove" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:760.221;--y:0;--n:6"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Comfort" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:886.678;--y:0;--n:7"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Seda" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:0.708;--y:126.714;--n:8"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Clear" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:127.165;--y:126.714;--n:9"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="AXE" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:253.879;--y:126.714;--n:10"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Brilhante" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:380.336;--y:126.714;--n:11"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Cif" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:507.759;--y:126.714;--n:12"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Mãe Terra" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:634.215;--y:126.714;--n:13"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Lux" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:760.93;--y:126.714;--n:14"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Closeup" loading="lazy" decoding="async"></span></li>
-          <li class="logo-c" style="--x:887.387;--y:126.714;--n:15"><span class="logo-c__in"><img src="assets/img/marcas.svg" width="1000" height="240" alt="Fofo" loading="lazy" decoding="async"></span></li>
-        </ul>
-
-        <!-- Marcas ainda sem logo (trocar pelos logos quando chegarem) -->
-        <ul class="selos" data-pop>
-          <li class="selo" style="--n:0"><span>Arisco</span></li>
-          <li class="selo" style="--n:1"><span>Bonduelle</span></li>
-          <li class="selo" style="--n:2"><span>Dimension</span></li>
-          <li class="selo" style="--n:3"><span>Dove Baby</span></li>
-          <li class="selo" style="--n:4"><span>Karo</span></li>
-          <li class="selo" style="--n:5"><span>Cremog&shy;ema</span></li>
-          <li class="selo" style="--n:6"><span>Suave</span></li>
-          <li class="selo" style="--n:7"><span>Surf</span></li>
-          <li class="selo" style="--n:8"><span>Vasenol</span></li>
-          <li class="selo" style="--n:9"><span>Vim</span></li>
+        <ul class="marcas" data-pop>
+          <li class="marca" style="--n:0"><img src="assets/img/marcas/arisco.webp" width="224" height="224" alt="Arisco" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:1"><img src="assets/img/marcas/axe.webp" width="224" height="224" alt="AXE" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:2"><img src="assets/img/marcas/bonduelle.webp" width="224" height="224" alt="Bonduelle" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:3"><img src="assets/img/marcas/brilhante.webp" width="224" height="224" alt="Brilhante" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:4"><img src="assets/img/marcas/cif.webp" width="224" height="224" alt="Cif" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:5"><img src="assets/img/marcas/clear.webp" width="224" height="224" alt="Clear" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:6"><img src="assets/img/marcas/closeup.webp" width="224" height="224" alt="Closeup" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:7"><img src="assets/img/marcas/comfort.webp" width="224" height="224" alt="Comfort" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:8"><img src="assets/img/marcas/cremogema.webp" width="224" height="224" alt="Cremogema" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:9"><img src="assets/img/marcas/dimension.webp" width="224" height="224" alt="Dimension" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:10"><img src="assets/img/marcas/dove.webp" width="224" height="224" alt="Dove" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:11"><img src="assets/img/marcas/dove-baby.webp" width="224" height="224" alt="Dove Baby" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:12"><img src="assets/img/marcas/fofo.webp" width="224" height="224" alt="Fofo" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:13"><img src="assets/img/marcas/hellmanns.webp" width="224" height="224" alt="Hellmann's" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:14"><img src="assets/img/marcas/karo.webp" width="224" height="224" alt="Karo" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:15"><img src="assets/img/marcas/knorr.webp" width="224" height="224" alt="Knorr" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:16"><img src="assets/img/marcas/lux.webp" width="224" height="224" alt="Lux" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:17"><img src="assets/img/marcas/mae-terra.webp" width="224" height="224" alt="Mãe Terra" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:18"><img src="assets/img/marcas/maizena.webp" width="224" height="224" alt="Maizena" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:19"><img src="assets/img/marcas/omo.webp" width="224" height="224" alt="OMO" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:20"><img src="assets/img/marcas/rexona.webp" width="224" height="224" alt="Rexona" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:21"><img src="assets/img/marcas/seda.webp" width="224" height="224" alt="Seda" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:22"><img src="assets/img/marcas/suave.webp" width="224" height="224" alt="Suave" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:23"><img src="assets/img/marcas/surf.webp" width="224" height="224" alt="Surf" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:24"><img src="assets/img/marcas/tresemme.webp" width="224" height="224" alt="Tresemmé" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:25"><img src="assets/img/marcas/vasenol.webp" width="224" height="224" alt="Vasenol" loading="lazy" decoding="async"></li>
+          <li class="marca" style="--n:26"><img src="assets/img/marcas/vim.webp" width="224" height="224" alt="Vim" loading="lazy" decoding="async"></li>
         </ul>
 
         <p class="sec__legal vd-b" data-reveal>Consulte a lista completa de produtos participantes no regulamento.</p>
@@ -313,28 +312,28 @@
           <p class="sec__sub" data-reveal style="--rd:140ms"><span class="vd">Compre nas redes abaixo. Em breve: busca por cidade com o endereço de cada loja.</span><span class="vm">Em breve: busca por cidade com o endereço de cada loja.</span></p>
         </header>
         <ul class="redes" data-pop>
-          <li class="rede" style="--n:0">Amarelinha</li>
-          <li class="rede" style="--n:1">Arroz Estrela</li>
-          <li class="rede" style="--n:2">Bandeirantes</li>
-          <li class="rede" style="--n:3">Big Compra</li>
-          <li class="rede" style="--n:4">Cocipa</li>
-          <li class="rede" style="--n:5">Cojiba</li>
-          <li class="rede" style="--n:6">Compre Mix</li>
-          <li class="rede" style="--n:7">Copercana</li>
-          <li class="rede" style="--n:8">Estrela</li>
-          <li class="rede" style="--n:9">Giro Certo</li>
-          <li class="rede" style="--n:10">Gricki</li>
-          <li class="rede" style="--n:11">Iquegami</li>
-          <li class="rede" style="--n:12">J M Gaspar</li>
-          <li class="rede" style="--n:13">Kawakami</li>
-          <li class="rede" style="--n:14">Mialich</li>
-          <li class="rede" style="--n:15">Patrocínio</li>
-          <li class="rede" style="--n:16">Porecatu</li>
-          <li class="rede" style="--n:17">Real</li>
-          <li class="rede" style="--n:18">Rede Sol</li>
-          <li class="rede" style="--n:19">Reta</li>
-          <li class="rede" style="--n:20">São Judas Tadeu</li>
-          <li class="rede" style="--n:21">Tiãozinho</li>
+          <li class="rede" style="--n:0" data-focus><button class="rede__in" type="button" data-lojas="amarelinha" aria-haspopup="dialog" aria-label="Amarelinha: ver 21 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/amarelinha.webp" width="320" height="48" style="--lw:160;--lh:24" alt="Amarelinha" loading="lazy" decoding="async"></span><span class="rede__nota">21 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:1" data-focus><button class="rede__in" type="button" data-lojas="bandeirantes" aria-haspopup="dialog" aria-label="Bandeirantes: ver as lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/bandeirantes.webp" width="320" height="61" style="--lw:160;--lh:30.5" alt="Bandeirantes" loading="lazy" decoding="async"></span><span class="rede__nota">*Somente lojas de Araçatuba e Birigui</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede rede--dark" style="--n:2" data-focus><button class="rede__in" type="button" data-lojas="big-compra" aria-haspopup="dialog" aria-label="Big Compra: ver 11 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/big-compra.webp" width="193" height="152" style="--lw:81.3;--lh:64" alt="Big Compra" loading="lazy" decoding="async"></span><span class="rede__nota">11 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:3" data-focus><button class="rede__in" type="button" data-lojas="cocipa" aria-haspopup="dialog" aria-label="Cocipa: ver 1 loja participante"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/cocipa.webp" width="166" height="152" style="--lw:75.4;--lh:69" alt="Cocipa" loading="lazy" decoding="async"></span><span class="rede__nota">1 loja participante</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:4" data-focus><button class="rede__in" type="button" data-lojas="cojiba" aria-haspopup="dialog" aria-label="Cojiba: ver 7 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/cojiba.webp" width="157" height="152" style="--lw:73.3;--lh:71" alt="Cojiba" loading="lazy" decoding="async"></span><span class="rede__nota">7 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede rede--dark" style="--n:5" data-focus><button class="rede__in" type="button" data-lojas="compre-mix" aria-haspopup="dialog" aria-label="Compre Mix: ver 1 loja participante"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/compre-mix.webp" width="320" height="62" style="--lw:160;--lh:31" alt="Compre Mix" loading="lazy" decoding="async"></span><span class="rede__nota">1 loja participante</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede rede--dark" style="--n:6" data-focus><button class="rede__in" type="button" data-lojas="copercana" aria-haspopup="dialog" aria-label="Supermercado Copercana: ver 8 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/copercana.webp" width="320" height="86" style="--lw:139.1;--lh:37.4" alt="Supermercado Copercana" loading="lazy" decoding="async"></span><span class="rede__nota">8 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede rede--sem" style="--n:7"><div class="rede__in"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/emporio-redepas.webp" width="320" height="111" style="--lw:122.4;--lh:42.5" alt="Empório Redepas Supermercados" loading="lazy" decoding="async"></span><span class="rede__nota">*Somente lojas Empório Redepas</span></div></li>
+          <li class="rede" style="--n:8" data-focus><button class="rede__in" type="button" data-lojas="estrela" aria-haspopup="dialog" aria-label="Estrela: ver 12 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/estrela.webp" width="184" height="152" style="--lw:79.3;--lh:65.5" alt="Estrela" loading="lazy" decoding="async"></span><span class="rede__nota">12 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:9" data-focus><button class="rede__in" type="button" data-lojas="giro-certo" aria-haspopup="dialog" aria-label="Giro Certo: ver 10 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/giro-certo.webp" width="320" height="109" style="--lw:123.6;--lh:42.1" alt="Giro Certo" loading="lazy" decoding="async"></span><span class="rede__nota">10 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:10" data-focus><button class="rede__in" type="button" data-lojas="gricki" aria-haspopup="dialog" aria-label="Gricki: ver 14 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/gricki.webp" width="320" height="85" style="--lw:139.9;--lh:37.2" alt="Gricki" loading="lazy" decoding="async"></span><span class="rede__nota">14 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:11" data-focus><button class="rede__in" type="button" data-lojas="iquegami" aria-haspopup="dialog" aria-label="Iquegami: ver 24 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/iquegami.webp" width="320" height="78" style="--lw:146.1;--lh:35.6" alt="Iquegami" loading="lazy" decoding="async"></span><span class="rede__nota">24 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:12" data-focus><button class="rede__in" type="button" data-lojas="jm-gaspar" aria-haspopup="dialog" aria-label="J M Gaspar: ver 1 loja participante"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/jm-gaspar.webp" width="210" height="152" style="--lw:84.8;--lh:61.3" alt="J M Gaspar" loading="lazy" decoding="async"></span><span class="rede__nota">1 loja participante</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:13" data-focus><button class="rede__in" type="button" data-lojas="kawakami" aria-haspopup="dialog" aria-label="Kawakami: ver 8 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/kawakami.webp" width="320" height="105" style="--lw:125.9;--lh:41.3" alt="Kawakami" loading="lazy" decoding="async"></span><span class="rede__nota">8 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:14" data-focus><button class="rede__in" type="button" data-lojas="mialich" aria-haspopup="dialog" aria-label="Mialich: ver 15 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/mialich.webp" width="320" height="63" style="--lw:160;--lh:31.5" alt="Mialich" loading="lazy" decoding="async"></span><span class="rede__nota">15 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:15" data-focus><button class="rede__in" type="button" data-lojas="patrocinio" aria-haspopup="dialog" aria-label="Irmãos Patrocínio: ver 13 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/patrocinio.webp" width="154" height="152" style="--lw:72.6;--lh:71.6" alt="Irmãos Patrocínio" loading="lazy" decoding="async"></span><span class="rede__nota">13 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:16" data-focus><button class="rede__in" type="button" data-lojas="paulista" aria-haspopup="dialog" aria-label="Paulista Supermercados: ver 12 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/paulista.webp" width="320" height="57" style="--lw:160;--lh:28.5" alt="Paulista Supermercados" loading="lazy" decoding="async"></span><span class="rede__nota">12 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:17" data-focus><button class="rede__in" type="button" data-lojas="porecatu" aria-haspopup="dialog" aria-label="Porecatu Supermercados: ver 12 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/porecatu.webp" width="320" height="112" style="--lw:121.9;--lh:42.7" alt="Porecatu Supermercados" loading="lazy" decoding="async"></span><span class="rede__nota">12 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:18" data-focus><button class="rede__in" type="button" data-lojas="real" aria-haspopup="dialog" aria-label="Real: ver 5 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/real.webp" width="180" height="152" style="--lw:78.5;--lh:66.3" alt="Real" loading="lazy" decoding="async"></span><span class="rede__nota">5 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:19" data-focus><button class="rede__in" type="button" data-lojas="rede-sol" aria-haspopup="dialog" aria-label="Rede Sol: ver as lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/rede-sol.webp" width="320" height="90" style="--lw:136;--lh:38.2" alt="Rede Sol" loading="lazy" decoding="async"></span><span class="rede__nota">*Somente lojas Empório Alfredo Antunes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:20" data-focus><button class="rede__in" type="button" data-lojas="sao-judas-tadeu" aria-haspopup="dialog" aria-label="São Judas Tadeu: ver 8 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/sao-judas-tadeu.webp" width="320" height="80" style="--lw:144.2;--lh:36.1" alt="São Judas Tadeu" loading="lazy" decoding="async"></span><span class="rede__nota">8 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
+          <li class="rede" style="--n:21" data-focus><button class="rede__in" type="button" data-lojas="tiaozinho" aria-haspopup="dialog" aria-label="Tiãozinho: ver 10 lojas participantes"><span class="rede__marca"><img class="rede__logo" src="assets/img/redes/tiaozinho.webp" width="320" height="96" style="--lw:131.7;--lh:39.5" alt="Tiãozinho" loading="lazy" decoding="async"></span><span class="rede__nota">10 lojas participantes</span><span class="rede__mais" aria-hidden="true"><span class="rede__ver">ver lojas</span><span class="rede__plus"></span></span></button></li>
         </ul>
       </div>
     </section>
@@ -443,7 +442,7 @@
           <h2 class="cta__t" id="cta-title"><span class="ttl" data-live>A VIAGEM DOS SEUS SONHOS PODE SER SUA!</span></h2>
           <p class="cta__s"><span class="vd">Cadastre suas notas e concorra a R$1.000 toda semana e à viagem para Orlando.</span><span class="vm">Cadastre suas notas e concorra.</span></p>
         </div>
-        <a class="btn btn--plum btn--lg cta__btn" href="#" data-reveal style="--rd:120ms"><span class="btn__t">CADASTRAR MINHA NOTA</span></a>
+        <a class="btn btn--plum btn--lg cta__btn" href="#" data-reveal style="--rd:120ms" data-cad-open><span class="btn__t">CADASTRAR MINHA NOTA</span></a>
       </div>
     </section>
   </main>
@@ -487,7 +486,7 @@
         </nav>
       </div>
       <span class="ftr__div" aria-hidden="true"></span>
-      <p class="ftr__legal"><span class="vd">*Prêmios entregues em crédito, sem função saque, pessoais e intransferíveis; o prêmio final tem sugestão de uso para viagem a Orlando. Participação válida de 20/11/2026 (00h00) a 06/03/2027 (23h59), horário de Brasília/DF. Guarde as notas fiscais cadastradas. Imagens meramente ilustrativas. Regras de participação, datas de sorteio e demais informações em viagemdossonhos.g4distribuidora.com.br. Certificado de Autorização SPA/MF nº XXXXXXX/XXXX.</span><span class="vm">*Prêmios entregues em crédito, sem função saque, pessoais e intransferíveis; o prêmio final tem sugestão de uso para viagem a Orlando. Participação válida de 20/11/2026 (00h00) a 06/03/2027 (23h59), horário de Brasília/DF. Imagens meramente ilustrativas. Regulamento em viagemdossonhos.g4distribuidora.com.br. Certificado de Autorização SPA/MF nº XXXXXXX/XXXX.</span></p>
+      <p class="ftr__legal">*Prêmios entregues em crédito, sem função saque, pessoais e intransferíveis; o prêmio final tem sugestão de uso para viagem a Orlando. Participação válida de 20/11/2026 (00h00) a 06/03/2027 (23h59), horário de Brasília/DF. Guarde as notas fiscais cadastradas. Imagens meramente ilustrativas. Regras de participação, datas de sorteio e demais informações em <a href="https://viagemdossonhos.g4distribuidora.com.br/" target="_blank" rel="noopener noreferrer">viagemdossonhos.g4distribuidora.com.br</a>. CERTIFICADO DE AUTORIZAÇÃO SPA/ME Nº 04.054367/2026.</p>
 
       <!-- "Feito com ❤ Grupo Polgo": o coração bate a cada ~5s e, de tempos em tempos, uma estrelinha cruza o "céu" do crédito -->
       <p class="credits" data-live>
@@ -496,6 +495,45 @@
       </p>
     </div>
   </footer>
+
+  <!-- WhatsApp do bot (flutuante) -->
+  <a class="wa" href="https://wa.me/551931440204" target="_blank" rel="noopener noreferrer" aria-label="Fale com o bot no WhatsApp: +55 19 3144-0204 (abre em nova aba)" data-wa>
+    <span class="wa__label" aria-hidden="true">Cadastre pelo WhatsApp</span>
+    <span class="wa__btn"><svg width="28" height="28" aria-hidden="true"><use href="#i-whatsapp"/></svg></span>
+  </a>
+
+  <!-- Pop-up: como deseja se cadastrar? -->
+  <div class="cad" data-cad hidden>
+    <div class="cad__bg" data-cad-close></div>
+    <div class="cad__box" role="dialog" aria-modal="true" aria-labelledby="cad-title">
+      <button class="cad__x" type="button" aria-label="Fechar" data-cad-close><svg width="22" height="22" aria-hidden="true"><use href="#i-fechar"/></svg></button>
+      <h2 class="cad__t" id="cad-title">Como deseja se cadastrar?</h2>
+      <span class="fio fio--ouro cad__fio" aria-hidden="true"></span>
+      <div class="cad__opts">
+        <a class="btn btn--gold cad__opt" href="#"><span class="btn__t">Cadastro pelo site</span></a>
+        <a class="btn btn--plum cad__opt" href="https://wa.me/551931440204" target="_blank" rel="noopener noreferrer"><span class="btn__t">Cadastro pelo WhatsApp<small class="cad__num">+55 19 3144-0204</small></span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pop-up: lojas participantes da rede (preenchido pelo main.js com assets/js/lojas.js) -->
+  <div class="cad cad--lojas" data-lojas-modal hidden>
+    <div class="cad__bg" data-cad-close></div>
+    <div class="cad__box lojas" role="dialog" aria-modal="true" aria-labelledby="lojas-title">
+      <button class="cad__x" type="button" aria-label="Fechar" data-cad-close><svg width="22" height="22" aria-hidden="true"><use href="#i-fechar"/></svg></button>
+      <div class="lojas__head">
+        <span class="lojas__logo" aria-hidden="true"></span>
+        <div>
+          <p class="lojas__k">LOJAS PARTICIPANTES</p>
+          <h2 class="lojas__t" id="lojas-title">Rede</h2>
+          <p class="lojas__n"></p>
+          <p class="lojas__obs" hidden></p>
+        </div>
+      </div>
+      <div class="lojas__list" tabindex="0" aria-label="Lista de lojas participantes"></div>
+      <p class="lojas__foot">Confira o CNPJ impresso na nota fiscal da sua compra.</p>
+    </div>
+  </div>
 
   <button class="totop" type="button" aria-label="Voltar ao topo" data-totop>
     <svg width="22" height="22" aria-hidden="true"><use href="#i-topo"/></svg>

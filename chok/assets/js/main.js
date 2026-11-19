@@ -645,6 +645,138 @@
   });
 
   /* ---------------------------------------------------------------------------
+     Pop-ups (mesmo comportamento para todos): Esc, o X ou o fundo fecham; o foco
+     fica preso no pop-up e volta ao botão de origem; a rolagem da página trava.
+     - "Como deseja se cadastrar?": botões de cadastro ([data-cad-open])
+     - "Lojas participantes": cards das redes ([data-lojas]), com os dados de
+       window.CHOK_LOJAS (assets/js/lojas.js, gerado da planilha do cliente)
+     ------------------------------------------------------------------------ */
+  const dlgOutside = [hdr, $('main'), footer, totop, $('[data-wa]'), $('.skip')];
+  let dlgOpen = null;
+
+  function makeDialog(root) {
+    if (!root) return null;
+    const box = $('.cad__box', root);
+    let from = null;
+    let t = 0;
+    const d = {
+      root,
+      box,
+      show(src, focusSel) {
+        if (dlgOpen) return;
+        if (menuOpen) closeMenu(false);
+        dlgOpen = d;
+        from = src || null;
+        clearTimeout(t);
+        root.hidden = false;
+        void root.offsetWidth; // fixa o estado inicial antes da transição
+        root.classList.add('is-open');
+        dlgOutside.forEach((el) => el && el.setAttribute('inert', ''));
+        doc.classList.add('is-locked');
+        scroller.lock(true);
+        setTimeout(() => { const f = $(focusSel || '.cad__opt', root) || $('.cad__x', root); if (f) f.focus({ preventScroll: true }); }, 60);
+      },
+      hide() {
+        if (dlgOpen !== d) return;
+        dlgOpen = null;
+        root.classList.remove('is-open');
+        dlgOutside.forEach((el) => el && el.removeAttribute('inert'));
+        doc.classList.remove('is-locked');
+        scroller.lock(false);
+        t = setTimeout(() => { root.hidden = true; }, reduce ? 0 : 600);
+        // aberto pelo menu mobile (que fechou ao abrir o pop-up): o foco volta ao hambúrguer
+        const back = from && from.closest('[data-menu]') ? burger : from;
+        if (back && back.isConnected && back.offsetParent !== null) back.focus({ preventScroll: true });
+      },
+    };
+    return d;
+  }
+
+  const cadDlg = makeDialog($('[data-cad]'));
+  const lojasDlg = makeDialog($('[data-lojas-modal]'));
+
+  // Preenche o pop-up de lojas com a rede clicada (logo copiada do próprio card)
+  function fillLojas(card, slug) {
+    const data = (window.CHOK_LOJAS || {})[slug];
+    if (!data || !lojasDlg) return false;
+    const root = lojasDlg.root;
+    const logo = $('.lojas__logo', root);
+    const img = $('.rede__logo', card);
+    logo.classList.toggle('is-dark', card.closest('.rede').classList.contains('rede--dark'));
+    logo.textContent = '';
+    if (img) {
+      const c = new Image();
+      c.src = img.currentSrc || img.src;
+      c.alt = '';
+      logo.appendChild(c);
+    } else {
+      const s = document.createElement('span');
+      s.textContent = data.nome;
+      logo.appendChild(s);
+    }
+    $('.lojas__t', root).textContent = data.nome;
+    const nota = $('.rede__nota', card);
+    const total = data.total === 1 ? '1 loja participante' : `${data.total} lojas participantes`;
+    $('.lojas__n', root).textContent = total;
+    const obs = $('.lojas__obs', root);
+    obs.textContent = nota && nota.textContent.startsWith('*') ? nota.textContent : '';
+    obs.hidden = !obs.textContent;
+    const list = $('.lojas__list', root);
+    list.textContent = '';
+    data.grupos.forEach((g) => {
+      const sec = document.createElement('section');
+      sec.className = 'lojas__g';
+      const h = document.createElement('h3');
+      h.textContent = g.razao + ' ';
+      if (g.cnpjs.length > 1) {
+        const q = document.createElement('span');
+        q.className = 'lojas__qt';
+        q.textContent = `· ${g.cnpjs.length} lojas`;
+        h.appendChild(q);
+      }
+      const ul = document.createElement('ul');
+      ul.className = 'lojas__cnpjs';
+      g.cnpjs.forEach((c) => {
+        const li = document.createElement('li');
+        const b = document.createElement('b');
+        b.textContent = 'CNPJ ';
+        li.append(b, c);
+        ul.appendChild(li);
+      });
+      sec.append(h, ul);
+      list.appendChild(sec);
+    });
+    list.scrollTop = 0;
+    return true;
+  }
+
+  document.addEventListener('click', (e) => {
+    const opener = e.target.closest('[data-cad-open]');
+    if (opener && cadDlg) { e.preventDefault(); cadDlg.show(opener); return; }
+    const rede = e.target.closest('[data-lojas]');
+    if (rede && lojasDlg && fillLojas(rede, rede.dataset.lojas)) { lojasDlg.show(rede, '.cad__x'); return; }
+    if (!dlgOpen) return;
+    if (e.target.closest('[data-cad-close]')) { dlgOpen.hide(); return; }
+    // escolheu o WhatsApp: abre em outra aba e o pop-up fecha
+    const opt = e.target.closest('.cad__opt');
+    if (opt && opt.target === '_blank') setTimeout(() => dlgOpen && dlgOpen.hide(), 80);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (!dlgOpen) return;
+    if (e.key === 'Escape') { e.preventDefault(); dlgOpen.hide(); return; }
+    if (e.key !== 'Tab') return;
+    const box = dlgOpen.box;
+    const f = $$('a[href], button:not([disabled]), [tabindex="0"]', box);
+    if (!f.length) return;
+    const first = f[0];
+    const last = f[f.length - 1];
+    if (!box.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* ---------------------------------------------------------------------------
      Intro do KV: começa quando as imagens principais estão decodificadas
      ------------------------------------------------------------------------ */
   function ready() {
